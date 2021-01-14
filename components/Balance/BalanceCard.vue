@@ -56,7 +56,7 @@ export default {
   data() {
     return {
       show: false,
-      headers: [{ text: 'Value', value: 'value' }, { text: 'Date', value: 'date' }]
+      headers: [{ text: 'Value', value: 'value' }, { text: 'Date', value: 'date' }, { text: 'Info', value: 'description' }]
     }
   },
   methods: {

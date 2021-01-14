@@ -42,7 +42,7 @@ $flag: "/images/flag-logo.png";
 
 @media screen and (max-width: 320px) {
   .logo-title {
-    font-size: 15px
+    font-size: 15px;
   }
 }
 
@@ -167,7 +167,8 @@ $flag: "/images/flag-logo.png";
 }
 
 .header-content {
-  height: fit-content !important;
+  //height: fit-content !important;
+  height: 100% !important;
   padding: 0 !important;
   display: flex;
   align-items: center;
@@ -273,7 +274,7 @@ $flag: "/images/flag-logo.png";
           content: "";
           height: 5px;
           border-radius: 5px;
-          background: #7ABE8F;
+          background: #7abe8f;
           // @include use-theme(
           //   background,
           //   $palette-primary-main,
@@ -379,7 +380,7 @@ $flag: "/images/flag-logo.png";
 }
 
 .v-list-item--link:hover {
-  background:  #7ABE8F;
+  background: #7abe8f;
 }
 
 // Theme switcher
