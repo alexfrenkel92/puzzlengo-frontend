@@ -1,5 +1,5 @@
 <template>
-  <div id="card-container">
+  <nuxt-link id="card-container" :to="openCard">
     <h1>{{ title }}</h1>
     <div class="content-wrapper">
       <div class="image">
@@ -10,7 +10,7 @@
       </div>
     </div>
     <footer />
-  </div>
+  </nuxt-link>
 </template>
 
 <script>
@@ -40,6 +40,9 @@ export default {
   computed: {
     imageName() {
       return require('~/static/images/' + this.img + '.png')
+    },
+    openCard() {
+      return this.$route.path + '/' + this.id
     }
   }
 }
@@ -67,6 +70,9 @@ export default {
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
   transform: translateY(4px);
 }
+a {
+  text-decoration: none;
+}
 h1 {
   text-align: end;
   margin: 0 5px 10px 0;
@@ -81,7 +87,7 @@ h1 {
 .image {
   /* border: 2px solid red; */
   position: relative;
-  bottom: 35px;
+  bottom: 45px;
 }
 img {
   width: 100px;
@@ -89,6 +95,7 @@ img {
 }
 .completion {
   font-size: x-large;
+  color: black;
 }
 footer {
   display: flex;

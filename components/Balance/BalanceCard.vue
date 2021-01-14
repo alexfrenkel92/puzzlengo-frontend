@@ -52,6 +52,7 @@
 
 <script>
 export default {
+  // eslint-disable-next-line vue/require-prop-types
   props: ['title', 'total', 'details', 'icon'],
   data() {
     return {
@@ -64,7 +65,7 @@ export default {
       this.$router.push('/dashboard')
     },
     spend() {
-      console.log('spending money')
+      /// code comes here
     }
   }
 }
