@@ -3,13 +3,21 @@
     <ActiveSurveys @openModal="openModal" />
     <EnrolledSurveys @openModal="openModal" />
     <CompletedSurveys />
-    <OnlineSurveyModal :show-modal="onlineSurveyModal" @confirm="confirmEnrollment" @withdraw="closeOnlineModal" />
-    <PersonelSurveyModal :id="surveyId" :show-modal="personalSurveyModal" @confirm="confirmEnrollment" @withdraw="closePersonelModal" />
+    <OnlineSurveyModal
+      :show-modal="onlineSurveyModal"
+      @confirm="confirmEnrollment"
+      @withdraw="closeOnlineModal"
+    />
+    <PersonelSurveyModal
+      :id="surveyId"
+      :show-modal="personalSurveyModal"
+      @confirm="confirmEnrollment"
+      @withdraw="closePersonelModal"
+    />
   </div>
 </template>
 
 <script>
-
 export default {
   data() {
     return {

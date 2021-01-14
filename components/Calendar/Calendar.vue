@@ -51,8 +51,12 @@
           @click:date="viewDay"
           @click:event="showEvent"
         />
-        <PersonelSurveyModal :activator="selectedElement" :show-modal="selectedOpen" @confirm="confirm" @withdraw="withdraw" />
-
+        <PersonelSurveyModal
+          :activator="selectedElement"
+          :show-modal="selectedOpen"
+          @confirm="confirm"
+          @withdraw="withdraw"
+        />
       </v-sheet>
     </v-col>
   </v-row>

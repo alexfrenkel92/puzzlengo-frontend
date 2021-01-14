@@ -1,23 +1,17 @@
 <template>
   <div>
-    <h1 class="text-center display-1 font-weight-thin mb-4 mt-4">Personal information</h1>
+    <h1 class="text-center display-1 font-weight-thin mb-4 mt-4">
+      Personal information
+    </h1>
     <form>
-      <v-text-field
-        v-model="personal.name"
-        label="Name"
-        readonly
-      />
-      <v-text-field
-        v-model="personal.email"
-        label="Email"
-      />
-      <v-text-field
-        v-model="personal.phone"
-        label="Phone"
-      />
+      <v-text-field v-model="personal.name" label="Name" readonly />
+      <v-text-field v-model="personal.email" label="Email" />
+      <v-text-field v-model="personal.phone" label="Phone" />
     </form>
     <hr>
-    <h1 class="text-center display-1 font-weight-thin mb-4 mt-4">Permissions</h1>
+    <h1 class="text-center display-1 font-weight-thin mb-4 mt-4">
+      Permissions
+    </h1>
     <v-row>
       <v-col>
         <v-switch
@@ -34,15 +28,13 @@
         />
       </v-col>
       <v-col>
-        <v-switch
-          v-model="permissions.steps"
-          class="ml-4 mt-4"
-          label="Steps"
-        />
+        <v-switch v-model="permissions.steps" class="ml-4 mt-4" label="Steps" />
       </v-col>
     </v-row>
     <hr>
-    <h1 class="text-center display-1 font-weight-thin mb-4 mt-4">Page settings</h1>
+    <h1 class="text-center display-1 font-weight-thin mb-4 mt-4">
+      Page settings
+    </h1>
     <v-switch
       v-model="$vuetify.theme.dark"
       class="ml-4 mt-4"

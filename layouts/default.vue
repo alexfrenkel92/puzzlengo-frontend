@@ -7,13 +7,6 @@
           <nuxt />
         </v-container>
       </v-main>
-      <!-- <v-footer
-        :absolute="!fixed"
-        app
-        padless
-      >
-          <span>&copy; {{ new Date().getFullYear() }}</span>
-      </v-footer> -->
       <v-footer padless app>
         <v-col
           class="text-center"
@@ -33,11 +26,6 @@ export default {
   components: {
     'main-header': Header
   },
-  // data() {
-  //   return {
-  //     fixed: false
-  //   }
-  // },
   computed: {
     isMobile() {
       const smDown = this.$store.state.breakpoints.smDown
@@ -58,5 +46,13 @@ export default {
 <style scopped>
   .text-center {
     padding: 4px;
+  }
+  .v-main {
+    padding-top: 100px;
+    /* background-color: red !important; */
+  }
+  .container {
+    margin: auto;
+    padding: 30px 0 0 0;
   }
 </style>

@@ -1,7 +1,6 @@
 <template>
   <v-menu
-    v-model="open"
-    :close-on-content-click="closeOnContentClick"
+    v-model="closeOnContentClick"
     transition="slide-y-transition"
     offset-y
     nudge-top="-6"
@@ -10,17 +9,8 @@
   >
     <template v-slot:activator="{ on }">
       <div class="setting">
-        <v-btn
-          fab
-          text
-          small
-          class="ma-3"
-          v-on="on"
-        >
-          <v-icon
-            :class="{ invert: invert, active: open }"
-            class="icon"
-          >
+        <v-btn fab text small class="ma-3" v-on="on">
+          <v-icon :class="{ invert: invert, active: open }" class="icon">
             settings
           </v-icon>
         </v-btn>
@@ -30,17 +20,19 @@
       <v-list class="mode-menu">
         <v-list-item>
           <v-list-item-content>
-            <nuxt-link class="menu-nuxtlink" to="/accountSettings">Account</nuxt-link>
-            <nuxt-link class="menu-nuxtlink" to="/profiling">My Profiling</nuxt-link>
-            <button v-if="isLoggedIn" class="menu-btn" @click="handleAuth">Logout</button>
+            <nuxt-link class="menu-nuxtlink" to="/settings">Account</nuxt-link>
+            <nuxt-link class="menu-nuxtlink" to="/profile">My Profiling</nuxt-link>
+            <button v-if="isLoggedIn" class="menu-btn" @click="handleAuth">
+              Logout
+            </button>
           </v-list-item-content>
         </v-list-item>
-        <v-subheader>{{ $t('menu.header_theme') }}</v-subheader>
+        <v-subheader>{{ $t("menu.header_theme") }}</v-subheader>
         <v-list-item class="switcher-wrapper">
           <v-list-item-content>
             <div class="flex-menu">
               <label>
-                {{ $t('menu.header_light') }}
+                {{ $t("menu.header_light") }}
               </label>
               <v-switch
                 v-model="dark"
@@ -50,7 +42,7 @@
                 @change="setDark()"
               />
               <label>
-                {{ $t('menu.header_dark') }}
+                {{ $t("menu.header_dark") }}
               </label>
             </div>
           </v-list-item-content>
@@ -58,7 +50,7 @@
       </v-list>
       <v-divider />
       <v-list class="lang-menu">
-        <v-subheader>{{ $t('menu.header_language') }}</v-subheader>
+        <v-subheader>{{ $t("menu.header_language") }}</v-subheader>
         <v-list-item
           v-for="locale in $i18n.locales"
           :key="locale.code"
@@ -70,14 +62,11 @@
           </v-list-item-avatar>
           <v-list-item-content>
             <v-list-item-title class="lang-opt">
-              {{ $t('common.'+locale.code) }}
+              {{ $t("common." + locale.code) }}
             </v-list-item-title>
           </v-list-item-content>
           <v-list-item-action>
-            <v-icon
-              v-if="locale.code === $i18n.locale"
-              color="primary"
-            >
+            <v-icon v-if="locale.code === $i18n.locale" color="primary">
               mdi-check
             </v-icon>
           </v-list-item-action>
@@ -88,14 +77,15 @@
 </template>
 
 <style lang="scss" scoped>
-@import './header-style.scss';
+@import "./header-style.scss";
 </style>
 
 <script>
 import { mapGetters, mapState } from 'vuex'
 
 let darkMode = false
-if (typeof Storage !== 'undefined') { // eslint-disable-line
+if (typeof Storage !== 'undefined') {
+  // eslint-disable-line
   darkMode = localStorage.getItem('luxiDarkMode') || false
 }
 
@@ -144,23 +134,23 @@ export default {
 </script>
 
 <style scoped>
-  .menu-nuxtlink {
-    text-decoration: none !important;
-    color: black;
-    padding: 10px 16px;
-    margin: 0;
-  }
-  .menu-nuxtlink:hover,
-  .menu-btn:hover {
-    background:  #7ABE8F;
-  }
-  .menu-btn {
-    text-align: left;
-    text-decoration: none !important;
-    box-shadow: none !important;
-    border: none !important;
-    color: black;
-    padding: 10px 16px;
-    margin: 0;
-  }
+.menu-nuxtlink {
+  text-decoration: none !important;
+  color: black;
+  padding: 10px 16px;
+  margin: 0;
+}
+.menu-nuxtlink:hover,
+.menu-btn:hover {
+  background: #7abe8f;
+}
+.menu-btn {
+  text-align: left;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  color: black;
+  padding: 10px 16px;
+  margin: 0;
+}
 </style>
