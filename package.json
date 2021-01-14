@@ -1,0 +1,36 @@
+{
+  "name": "rxcommunity",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.12.5",
+    "@nuxtjs/vuetify": "^1.11.2",
+    "axios": "^0.21.1",
+    "core-js": "^3.6.5",
+    "echarts": "^5.0.0",
+    "nuxt": "^2.14.6",
+    "nuxt-i18n": "^6.17.0",
+    "nuxt-mq": "^2.0.2",
+    "rtl-sass": "^1.5.0",
+    "vue-echarts": "^5.0.0-beta.0",
+    "vue-fragment": "^1.5.1",
+    "vue-parallax": "^1.1.1",
+    "vue-parallaxy": "^1.1.1",
+    "vue-scrollactive": "^0.9.3",
+    "vue-slick": "^1.1.15"
+  },
+  "devDependencies": {
+    "@nuxtjs/color-mode": "^2.0.2",
+    "@nuxtjs/eslint-config": "^3.1.0",
+    "@nuxtjs/eslint-module": "^2.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.10.0",
+    "eslint-plugin-nuxt": "^1.0.0"
+  }
+}
