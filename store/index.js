@@ -161,12 +161,6 @@ const createStore = () => {
       toogleCompletion(state, surveyId) {
         const surveyToComplete = state.activeSurveys.find(survey => survey.id === surveyId)
         surveyToComplete.isCompleted = true
-      },
-      getSpecificProfile(state, profileId) {
-        const specificProfile = state.profilingCats.find(profile => profile.id === profileId)
-        console.log(profileId)
-        console.log(specificProfile)
-        return specificProfile
       }
     },
     actions: {
@@ -181,9 +175,6 @@ const createStore = () => {
       },
       toogleCompletion(context, payload) {
         context.commit('toogleCompletion', payload)
-      },
-      getSpecificProfile(context, payload) {
-        context.commit('getSpecificProfile', payload)
       }
     }
   })
