@@ -27,25 +27,8 @@
       </v-list-item>
 
       <v-card-actions>
-        <v-btn @click="show = !show"> Details </v-btn>
-        <v-spacer />
-        <v-btn icon @click="show = !show">
-          <v-icon>{{ show ? "mdi-chevron-up" : "mdi-chevron-down" }}</v-icon>
-        </v-btn>
+        <v-btn @click="getMore"> Get more points </v-btn>
       </v-card-actions>
-      <v-expand-transition>
-        <div v-show="show">
-          <v-divider />
-          <v-card-text>
-            <v-data-table
-              :headers="headers"
-              :items="details"
-              hide-default-footer
-              class="elevation-1"
-            />
-          </v-card-text>
-        </div>
-      </v-expand-transition>
     </v-card>
   </div>
 </template>
@@ -53,16 +36,15 @@
 <script>
 export default {
   // eslint-disable-next-line vue/require-prop-types
-  props: ['title', 'total', 'details', 'icon'],
+  props: ['title', 'total', 'icon'],
   data() {
     return {
-      show: false,
-      headers: [{ text: 'Value', value: 'value' }, { text: 'Date', value: 'date' }, { text: 'Info', value: 'description' }]
+      show: false
     }
   },
   methods: {
     getMore() {
-      this.$router.push('/dashboard')
+      this.$emit('getMore')
     },
     spend() {
       /// code comes here
