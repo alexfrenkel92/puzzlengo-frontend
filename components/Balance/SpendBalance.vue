@@ -7,7 +7,7 @@
     >
       <v-card
         class="mx-2"
-        max-width="250"
+        max-width="170"
         outlined
       >
         <v-list-item three-line>
@@ -20,17 +20,12 @@
             </v-list-item-title>
             <v-list-item-subtitle>{{ item.info }}</v-list-item-subtitle>
           </v-list-item-content>
-
-          <v-list-item-avatar
-            tile
-            size="80"
-            color="grey"
-          />
         </v-list-item>
 
         <v-card-actions>
-          <v-btn>
-            Get this offer
+          <v-btn v-if="item.value<total" color="#7ABE8F">Get this offer
+          </v-btn>
+          <v-btn v-else color="red" @click="getMore">Get more ponts
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -40,22 +35,10 @@
 
 <script>
 export default {
-  data() {
-    return {
-      coupons: [
-        { company: 'Amazon', value: 30, info: 'Free delivery' },
-        { company: 'Amazon', value: 120, info: '5% off' },
-        { company: 'Nike', value: 300, info: '20% off' },
-        { company: 'Amazon', value: 30, info: 'Free delivery' },
-        { company: 'Amazon', value: 120, info: '5% off' },
-        { company: 'Nike', value: 300, info: '20% off' },
-        { company: 'Amazon', value: 30, info: 'Free delivery' },
-        { company: 'Amazon', value: 120, info: '5% off' },
-        { company: 'Nike', value: 300, info: '20% off' },
-        { company: 'Amazon', value: 30, info: 'Free delivery' },
-        { company: 'Amazon', value: 120, info: '5% off' },
-        { company: 'Nike', value: 300, info: '20% off' }
-      ]
+  props: ['coupons', 'total'],
+  methods: {
+    getMore() {
+      this.$emit('getMore')
     }
   }
 }
