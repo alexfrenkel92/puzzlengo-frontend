@@ -3,7 +3,6 @@
     <v-slide-item
       v-for="(item, i) in coupons"
       :key="i"
-      cycle
     >
       <v-card
         class="mx-2"

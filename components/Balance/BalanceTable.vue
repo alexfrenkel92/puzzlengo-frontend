@@ -4,7 +4,6 @@
       <v-data-table
         :headers="headers"
         :items="details"
-        hide-default-footer
         class="elevation-1"
       />
     </v-card-text></div>
