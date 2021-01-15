@@ -1,13 +1,15 @@
 <template>
   <div>
     <div class="balanceContainer">
-      <Balance @getMore="getMore" :icon="'mdi-currency-usd-circle-outline'" :title="'My balance'" :total="total" :details="details" />
+      <Balance :icon="'mdi-currency-usd-circle-outline'" :title="'My balance'" :total="total" :details="details" @getMore="getMore" />
       <BalanceTable :details="details" />
+
     </div>
     <div class="offerContainer">
       <v-switch
         v-model="showAll"
         :label="'Show all offers'"
+        color="#7ABE8F"
       />
       <SpendBalance :coupons="couponsShow" :total="total" @getMore="getMore" />
     </div>
@@ -94,6 +96,7 @@ export default {
     align-items: center;
   }
   .offerContainer{
-    margin-top: 60px;
+
+    padding: 60px;
   }
 </style>
