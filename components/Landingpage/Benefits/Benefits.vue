@@ -10,7 +10,7 @@
         v-for="benefit in benefits"
         :key="benefit.id"
       >
-        <ExpandCard
+        <expand-card
           :image="benefit.image"
           :title="benefit.title"
           :subtitle="benefit.subtitle"

@@ -5,7 +5,7 @@
       <h3>There are no surveys available, check back later</h3>
     </div>
     <div v-else class="survey-card-wrapper">
-      <ActiveSurveyCard
+      <active-survey-card
         v-for="survey in activeSurveys"
         :id="survey.id"
         :key="survey.id"
@@ -20,7 +20,6 @@
         @enroll="toogleEnrollment"
       />
     </div>
-    <div class="divider div-transparent" />
   </div>
 </template>
 

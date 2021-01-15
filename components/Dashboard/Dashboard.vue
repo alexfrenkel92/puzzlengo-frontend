@@ -1,14 +1,17 @@
 <template>
   <div class="dashboard-wrapper">
-    <ActiveSurveys @openModal="openModal" />
-    <EnrolledSurveys @openModal="openModal" />
-    <CompletedSurveys />
-    <OnlineSurveyModal
+    <div class="active-enrolled-container">
+      <active-surveys class="active-container" @openModal="openModal" />
+      <enrolled-surveys class="enrolled-container" @openModal="openModal" />
+    </div>
+    <div class="divider div-transparent" />
+    <completed-surveys />
+    <online-survey-modal
       :show-modal="onlineSurveyModal"
       @confirm="confirmEnrollment"
       @withdraw="closeOnlineModal"
     />
-    <PersonelSurveyModal
+    <personel-survey-modal
       :id="surveyId"
       :show-modal="personalSurveyModal"
       @confirm="confirmEnrollment"
@@ -56,7 +59,44 @@ export default {
 </script>
 
 <style scoped>
+.active-container,
+.enrolled-container {
+  width: 50%;
+  float: left;
+}
+/* .active-container {
+  background-color: sandybrown;
+}
+.enrolled-container {
+  background-color: salmon;
+} */
+.active-enrolled-container {
+  content: "";
+  display: table;
+  clear: both;
+}
 .dashboard-wrapper {
   width: 100%;
+}
+.divider {
+  position: relative;
+  margin: 10px 0 20px 0;
+  height: 1px;
+}
+
+.div-transparent:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 5%;
+  right: 5%;
+  width: 90%;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    rgb(48, 49, 51),
+    transparent
+  );
 }
 </style>

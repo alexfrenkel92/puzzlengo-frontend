@@ -1,6 +1,6 @@
 <template>
   <div class="profile-wrapper">
-    <ProfileCard
+    <profile-card
       v-for="cat in profilingCatsDemo"
       :id="cat.id"
       :key="cat.id"

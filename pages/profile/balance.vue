@@ -1,8 +1,8 @@
 <template>
   <div class="balanceContainer">
-    <Balance :icon="'mdi-currency-usd-circle-outline'" :title="'My balance'" :total="total" :details="details" />
-    <Balance :icon="'mdi-chevron-up-circle-outline'" :title="'Total credits earned'" :total="totalEarned" :details="earn" />
-    <Balance :icon="'mdi-chevron-down-circle-outline'" :title="'Total credits spent'" :total="totalSpent" :details="spend" />
+    <balance :icon="'mdi-currency-usd-circle-outline'" :title="'My balance'" :total="total" :details="details" />
+    <balance :icon="'mdi-chevron-up-circle-outline'" :title="'Total credits earned'" :total="totalEarned" :details="earn" />
+    <balance :icon="'mdi-chevron-down-circle-outline'" :title="'Total credits spent'" :total="totalSpent" :details="spend" />
 
   </div>
 </template>

@@ -5,7 +5,7 @@
       <h3>No enrollments yet</h3>
     </div>
     <div v-else class="survey-card-wrapper">
-      <EnrolledSurveyCard
+      <enrolled-survey-card
         v-for="survey in enrolledSurveys"
         :id="survey.id"
         :key="survey.id"
@@ -23,7 +23,6 @@
         @proceed="toogleCompletion"
       />
     </div>
-    <div class="divider div-transparent" />
   </div>
 </template>
 

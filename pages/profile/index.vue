@@ -1,5 +1,5 @@
 <template>
   <div>
-    <Profile />
+    <profile />
   </div>
 </template>

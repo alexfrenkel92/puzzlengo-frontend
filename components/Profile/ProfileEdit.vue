@@ -7,14 +7,14 @@
         {{ filteredFields.totalQuestions }} completed
       </p>
     </div>
-    <AppButton
+    <app-button
       type="button"
       btn-style="approve"
       style="height: 50px; width: 150px"
       @click="$router.go(-1)"
     >
       Back to Profiling
-    </AppButton>
+    </app-button>
   </div>
 </template>
 

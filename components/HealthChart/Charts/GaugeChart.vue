@@ -1,5 +1,5 @@
 <template>
-  <Echarts :options="option" />
+  <echarts :options="option" />
 </template>
 
 <script>

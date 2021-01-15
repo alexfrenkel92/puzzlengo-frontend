@@ -5,19 +5,6 @@ $red: #CD4A45;
 $darkBackground: #3F5567;
 // $darkBackground: #256389;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  // font-family: "Roboto", arial, sans-serif;
-  color: black
-}
 // favágó megoldás
 #card-container-completed {
   height: 220px;
@@ -32,11 +19,11 @@ body {
     // font-family: 'Sriracha', arial, sans-serif;
     text-align: center;
     margin-bottom: 10px;
-    font-size: large;
+    font-size: 1rem;
     color: black;
   }
   p {
-    font-size: 15px !important;
+    font-size: 1rem !important;
     // margin: 0 !important;
   }
   .description{
@@ -77,44 +64,45 @@ body {
   }
 }
 #card-container {
-  height: 290px;
-  width: 300px;
-  padding: 15px;
+  height: fit-content;
+  width: 90%;
+  padding: 8px;
   margin: 10px;
-  border-radius: 5px;
+  border-radius: 8px;
   background: $background;
   position: relative;
   box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
   h1 {
-    // font-family: 'Sriracha', arial, sans-serif;
-    text-align: center;
-    margin-bottom: 10px;
-    font-size: large;
+    height: fit-content;
+    text-align: left;
+    margin-bottom: 5px;
+    font-size: 1.2rem;
     color: black;
   }
   p {
-    font-size: 15px !important;
-    // margin: 0 !important;
+    font-size: 1rem !important;
   }
   .description{
-    margin-bottom: 5px;
+    margin-top: 5px;
   }
   .description-title {
-    margin: 0 0 2px 0;
+    margin: 0;
     font-weight: 550;
+  }
+  .description-content {
+    margin: 0;
+    height: fit-content;
   }
   .payment-value {
     margin-bottom: 0;
     font-weight: 550;
   }
-  .description-content {
-    margin: 0;
-  }
   .btn-enroll {
-    width: 80%;
-    height: 50px;
-    font-size: 2rem;
-    margin: 7px 10% 8px 10%;
+    width: fit-content;
+    height: fit-content;
+    font-size: 1rem;
+    padding: 5px 20px;
+    margin: 0 10% 35px 10%;
     color: $background;
     border: none;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
@@ -142,10 +130,11 @@ body {
     justify-content: center;
   }
   .btn-withdraw {
-    width: 110px;
-    height: 50px;
-    font-size: 1.2rem;
-    margin: 10px 10px 8px 10px;
+    width: 120px;
+    height: fit-content;
+    font-size: 1rem;
+    padding: 5px 20px;
+    margin: 0 10% 35px 10%;
     color: $background;
     border: none;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
@@ -167,10 +156,11 @@ body {
     }
   }
   .btn-resume {
-    width: 110px;
-    height: 50px;
-    font-size: 1.2rem;
-    margin: 10px 10px 8px 10px;
+    width: 120px;
+    height: fit-content;
+    font-size: 1rem;
+    padding: 5px 20px;
+    margin: 0 10% 35px 10%;
     color: $background;
     border: none;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
@@ -194,9 +184,8 @@ body {
   .completion-btn {
     width: 20px;
     height: 20px;
-    position: relative;
-    bottom: 10px;
-    left: -10px;
+    position: absolute;
+    bottom: 20px;
     background-color: red;
   }
   footer {
@@ -210,7 +199,7 @@ body {
     bottom: 0;
     height: 30px;
     padding: 0 15px;
-    margin-left: -15px;
+    margin-left: -5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     div {

@@ -1,29 +1,15 @@
 <template>
   <div>
-    <About />
+    <about />
     <div class="divider div-transparent" />
-    <HowItWorks />
+    <how-it-works />
     <div class="divider div-transparent" />
-    <Benefits />
+    <benefits />
   </div>
 </template>
 
-<script>
-import About from '@/components/Landingpage/About'
-import HowItWorks from '@/components/Landingpage/HowItWorks'
-import Benefits from '@/components/Landingpage/Benefits/Benefits'
-
-export default {
-  components: {
-    About,
-    HowItWorks,
-    Benefits
-  }
-}
-</script>
-
 <style scoped>
-  .divider {
+.divider {
   position: relative;
   margin: 30px 0;
   height: 1px;

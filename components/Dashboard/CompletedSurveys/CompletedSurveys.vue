@@ -5,7 +5,7 @@
       <h3>No completed surveys yet</h3>
     </div>
     <div v-else class="survey-card-wrapper">
-      <CompletedSurveyCard
+      <completed-survey-card
         v-for="survey in completedSurveys"
         :id="survey.id"
         :key="survey.id"

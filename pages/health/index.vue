@@ -12,7 +12,7 @@
           <v-card-title>
             Steps {{ item.date }}
           </v-card-title>
-          <GaugeChart :max="item.max" :current="item.current" :color="item.current < item.max? item.current < item.max/2? 'red': 'orange' :'green'" :date="item.date" :title="'Steps'" />
+          <gauge-chart :max="item.max" :current="item.current" :color="item.current < item.max? item.current < item.max/2? 'red': 'orange' :'green'" :date="item.date" :title="'Steps'" />
         </v-carousel-item>
       </v-carousel>
     </v-card>
@@ -23,7 +23,7 @@
       <v-card-title>
         Heart Rate
       </v-card-title>
-      <LineChart
+      <line-chart
         :data="heartRateToday.data"
         :mindata="heartRateMin.data"
         :maxdata="heartRateMax.data"
@@ -38,7 +38,7 @@
       <v-card-title>
         Steps this week
       </v-card-title>
-      <BarChart :data="weeklySteps.data" :color="weeklySteps.color" />
+      <bar-chart :data="weeklySteps.data" :color="weeklySteps.color" />
     </v-card>
   </div>
 </template>
@@ -53,6 +53,7 @@ export default {
     GaugeChart,
     LineChart,
     BarChart
+
   },
   data() {
     return {

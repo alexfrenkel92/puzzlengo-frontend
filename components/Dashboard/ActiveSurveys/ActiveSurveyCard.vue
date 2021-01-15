@@ -14,7 +14,9 @@
     <div class="payment">
       <p class="payment-value">Payment: {{ payment }}$</p>
     </div>
-    <button class="btn-enroll" @click="enroll">Enroll</button>
+    <div class="btn-wrapper">
+      <button class="btn-enroll" @click="enroll">Enroll</button>
+    </div>
     <footer>
       <div class="duration">
         <p>Duration</p>

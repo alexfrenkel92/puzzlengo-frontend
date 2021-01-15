@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Echarts :options="option" />
+    <echarts :options="option" />
   </div>
 </template>
 
