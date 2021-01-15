@@ -19,42 +19,33 @@ export default {
 <style scoped>
 .button {
   font: inherit;
-  background-color: black;
-  color: white;
-  padding: 5px;
+  border-radius: 5px;
+  color: #fffffb;
+  margin: 7px 10% 8px 10%;
+  border: none;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  outline: none;
+  transition: all 200ms ease-in-out;
+}
+
+.button:hover {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  transform: translateY(2px);
+  -webkit-animation: gradientBG 1.5s ease-in-out forwards;
+  animation: gradientBG 1.5s ease-in-out forwards;
   cursor: pointer;
-  border: 1px solid black;
 }
-
-.button:hover,
 .button:active {
-  background-color: rgb(51, 51, 51);
-  border: 1px solid black;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+  transform: translateY(4px);
 }
 
-.inverted {
-  background-color: rgb(245, 220, 220);
-  color: black;
-  border: 1px solid transparent;
-}
-
-.inverted:hover,
-.inverted:active {
-  color: #ccc;
-  background-color: white;
-  border: 1px solid transparent;
+.approve {
+  background-color: #7abe8f;
 }
 
 .cancel {
-  background-color: red;
-  color: white;
-  border: 1px solid transparent;
-}
-
-.cancel:hover,
-.cancel:active {
-  background-color: salmon;
-  border: 1px solid transparent;
-  color: white;
+  background-color: #cd4a45;
 }
 </style>

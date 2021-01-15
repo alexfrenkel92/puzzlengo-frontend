@@ -1,7 +1,7 @@
 <template>
   <div class="profile-wrapper">
     <ProfileCard
-      v-for="cat in profilingCats"
+      v-for="cat in profilingCatsDemo"
       :id="cat.id"
       :key="cat.id"
       class="profile-card"
@@ -14,15 +14,15 @@
 </template>
 
 <script>
-import profilingCats from './profiling-demo'
-import educationPng from '~/static/images/education.png'
 
 export default {
   data() {
     return {
-      educationPng,
-      profilingCats
+      profilingCatsDemo: []
     }
+  },
+  created() {
+    this.profilingCatsDemo = this.$store.getters.getProfilingCats
   }
 }
 </script>
