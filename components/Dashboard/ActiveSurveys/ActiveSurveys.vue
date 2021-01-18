@@ -20,6 +20,7 @@
         @enroll="toogleEnrollment"
       />
     </div>
+    <div class="divider div-transparent" />
   </div>
 </template>
 
@@ -37,7 +38,9 @@ export default {
   },
   computed: {
     activeSurveysLength() {
-      const activeSurveys = this.activeSurveys.filter(item => item.isEnrolled === false)
+      const activeSurveys = this.activeSurveys.filter(
+        item => item.isEnrolled === false
+      )
       return activeSurveys.length
     }
   },
@@ -53,5 +56,5 @@ export default {
 </script>
 
 <style lang="css" scoped>
-@import '../dashboard-style.css'
+@import "../dashboard-style.css";
 </style>
