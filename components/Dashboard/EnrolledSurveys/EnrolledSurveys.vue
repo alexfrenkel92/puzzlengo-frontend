@@ -40,7 +40,9 @@ export default {
   },
   computed: {
     enrolledSurveysLength() {
-      const enrolledSurveys = this.enrolledSurveys.filter(item => item.isEnrolled === true && item.isCompleted === false)
+      const enrolledSurveys = this.enrolledSurveys.filter(
+        item => item.isEnrolled === true && item.isCompleted === false
+      )
       return enrolledSurveys.length
     }
   },
@@ -63,5 +65,5 @@ export default {
 </script>
 
 <style lang="css" scoped>
-@import '../dashboard-style.css'
+@import "../dashboard-style.css";
 </style>
