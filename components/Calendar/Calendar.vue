@@ -1,65 +1,68 @@
 <template>
-  <v-row class="fill-height">
-    <v-col>
-      <v-sheet height="64">
-        <v-toolbar flat>
-          <v-btn outlined class="mr-4" color="grey darken-2" @click="setToday">
-            Today
-          </v-btn>
-          <v-btn fab text small color="grey darken-2" @click="prev">
-            <v-icon small> mdi-chevron-left </v-icon>
-          </v-btn>
-          <v-btn fab text small color="grey darken-2" @click="next">
-            <v-icon small>mdi-chevron-right</v-icon>
-          </v-btn>
-          <v-toolbar-title v-if="$refs.calendar">
-            {{ $refs.calendar.title }}
-          </v-toolbar-title>
-          <v-spacer />
-          <v-menu bottom right>
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn outlined color="grey darken-2" v-bind="attrs" v-on="on">
-                <span>{{ typeToLabel[type] }}</span>
-                <v-icon right> mdi-menu-down </v-icon>
-              </v-btn>
-            </template>
-            <v-list>
-              <v-list-item @click="type = 'day'">
-                <v-list-item-title>Day</v-list-item-title>
-              </v-list-item>
-              <v-list-item @click="type = 'week'">
-                <v-list-item-title>Week</v-list-item-title>
-              </v-list-item>
-              <v-list-item @click="type = 'month'">
-                <v-list-item-title>Month</v-list-item-title>
-              </v-list-item>
-              <v-list-item @click="type = '4day'">
-                <v-list-item-title>4 days</v-list-item-title>
-              </v-list-item>
-            </v-list>
-          </v-menu>
-        </v-toolbar>
-      </v-sheet>
-      <v-sheet height="600">
-        <v-calendar
-          ref="calendar"
-          v-model="focus"
-          color="primary"
-          :events="events"
-          :type="type"
-          @click:more="viewDay"
-          @click:date="viewDay"
-          @click:event="showEvent"
-        />
-        <PersonelSurveyModal
-          :activator="selectedElement"
-          :show-modal="selectedOpen"
-          @confirm="confirm"
-          @withdraw="withdraw"
-        />
-      </v-sheet>
-    </v-col>
-  </v-row>
+  <div>
+    <v-row class="fill-height">
+      <v-col>
+        <v-sheet height="64">
+          <v-toolbar flat>
+            <v-btn outlined class="mr-4" color="grey darken-2" @click="setToday">
+              Today
+            </v-btn>
+            <v-btn fab text small color="grey darken-2" @click="prev">
+              <v-icon small> mdi-chevron-left </v-icon>
+            </v-btn>
+            <v-btn fab text small color="grey darken-2" @click="next">
+              <v-icon small>mdi-chevron-right</v-icon>
+            </v-btn>
+            <v-toolbar-title v-if="$refs.calendar">
+              {{ $refs.calendar.title }}
+            </v-toolbar-title>
+            <v-spacer />
+            <v-menu bottom right>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn outlined color="grey darken-2" v-bind="attrs" v-on="on">
+                  <span>{{ typeToLabel[type] }}</span>
+                  <v-icon right> mdi-menu-down </v-icon>
+                </v-btn>
+              </template>
+              <v-list>
+                <v-list-item @click="type = 'day'">
+                  <v-list-item-title>Day</v-list-item-title>
+                </v-list-item>
+                <v-list-item @click="type = 'week'">
+                  <v-list-item-title>Week</v-list-item-title>
+                </v-list-item>
+                <v-list-item @click="type = 'month'">
+                  <v-list-item-title>Month</v-list-item-title>
+                </v-list-item>
+                <v-list-item @click="type = '4day'">
+                  <v-list-item-title>4 days</v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+          </v-toolbar>
+        </v-sheet>
+        <v-sheet height="600">
+          <v-calendar
+            ref="calendar"
+            v-model="focus"
+            color="primary"
+            :events="eventList"
+            :type="type"
+            @click:more="viewDay"
+            @click:date="viewDay"
+            @click:event="showEvent"
+          />
+          <PersonelSurveyModal
+            :id="selectedEvent.id"
+            :show-modal="selectedOpen"
+            :selected-time="selectedEvent"
+            @confirm="confirm"
+            @withdraw="withdraw"
+          />
+        </v-sheet>
+      </v-col>
+    </v-row>
+  </div>
 </template>
 
 <script>
@@ -76,31 +79,27 @@ export default {
     selectedEvent: {},
     selectedElement: null,
     selectedOpen: false,
-    events: [
-      {
-        id: 1,
-        name: 'A survey',
-        start: '2021-01-11T14:00:00',
-        end: '2021-01-11T18:00:00'
-      },
-      {
-        id: 2,
-        name: 'Another survey',
-        start: '2021-01-11T18:00:00',
-        end: '2021-01-11T19:00:00'
-      },
-      {
-        id: 3,
-        name: 'A third survey',
-        start: '2021-01-21T09:00:00',
-        end: '2021-01-21T10:00:00'
-      }
-    ]
+    enrolledSurveys: null,
+    eventList: []
   }),
   mounted() {
     this.$refs.calendar.checkChange()
   },
+  created() {
+    const _this = this
+    _this.enrolledSurveys = _this.$store.getters.getActiveSurveys.filter(item => item.isEnrolled === true && item.isCompleted === false)
+    _this.enrolledSurveys.forEach((element) => {
+      const id = element.id
+      const name = element.title
+      const start = element.allTime.filter(item => item.id === element.myTime)[0].date
+      _this.eventList.push({ id, name, start })
+    })
+  },
   methods: {
+    updateData(id) {
+      const newDate = this.enrolledSurveys.filter(item => item.id === this.selectedEvent.id)[0].allTime.filter(item => item.id === id)[0].date
+      this.eventList.find(event => event.id === this.selectedEvent.id).start = newDate
+    },
     viewDay({ date }) {
       this.focus = date
       this.type = 'day'
@@ -116,7 +115,6 @@ export default {
           this.selectedOpen = true
         }, 10)
       }
-
       if (this.selectedOpen) {
         this.selectedOpen = false
         setTimeout(open, 10)
@@ -129,7 +127,8 @@ export default {
     withdraw() {
       this.selectedOpen = false
     },
-    confirm() {
+    confirm(id) {
+      this.updateData(id)
       this.selectedOpen = false
     },
     prev() {

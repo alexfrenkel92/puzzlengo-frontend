@@ -1,41 +1,72 @@
 <template>
-  <v-dialog v-model="showModal" persistent width="500">
-    <v-card>
-      <v-card-title class="headline grey lighten-2">
-        Please select an appointment for {{ title }}
-      </v-card-title>
-      <v-card-text>
-        {{ description }}
-      </v-card-text>
-      <v-divider />
-      <v-text-field
-        v-model="search"
-        append-icon="mdi-magnify"
-        label="Search"
-        single-line
-        hide-details
-      />
-      <v-data-table
-        :headers="headers"
-        :items="times"
-        :item-class="displaySelected"
-        :search="search"
-        hide-default-footer
-        class="elevation-1"
-      >
-        <template v-slot:[`item.actions`]="{ item }">
-          <v-icon small class="mr-2" @click="book(item)">
-            mdi-calendar-multiple-check
+  <div>
+    <v-dialog v-model="showModal" persistent width="500">
+
+      <v-tabs>
+        <v-tab>
+          <v-icon left>
+            mdi-calendar
           </v-icon>
-        </template>
-      </v-data-table>
-      <v-divider />
-      <v-card-actions>
-        <v-btn @click="withdraw">Cancel</v-btn>
-        <v-btn v-if="selectedTime != null" @click="toogleModal">Confirm</v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-dialog>
+          Schedule appointment
+        </v-tab>
+        <v-tab>
+          <v-icon left>
+            mdi-information-variant
+          </v-icon>
+          More information
+        </v-tab>
+
+        <v-tab-item>
+          <v-card>
+            <v-card-title class="headline grey lighten-2">
+              Pleas select an appointment for <br>{{ survey.title }}
+            </v-card-title>
+            <v-divider />
+            <v-text-field
+              v-model="search"
+              append-icon="mdi-magnify"
+              label="Search"
+              single-line
+              hide-details
+            />
+            <v-data-table
+              :headers="headers"
+              :items="appointments"
+              :item-class="displaySelected"
+              :search="search"
+              hide-default-footer
+              class="elevation-1"
+            >
+              <template v-slot:[`item.actions`]="{ item }">
+                <v-icon small class="mr-2" @click="book(item)">
+                  mdi-calendar-multiple-check
+                </v-icon>
+              </template>
+            </v-data-table>
+            <v-btn @click="withdraw">Cancel</v-btn>
+            <v-btn v-if="selectedTimeLocal!=null" @click="toogleAppointment">Confirm</v-btn>
+          </v-card>
+        </v-tab-item>
+        <v-tab-item>
+          <v-card>
+            <v-card-title class="headline grey lighten-2">
+              {{ survey.title }}
+            </v-card-title>
+            <v-divider />
+            <v-card-subtitle>
+              {{ survey.description }}
+            </v-card-subtitle>
+            <v-card-text>
+              Your appointment: {{ selectedTimeLocal }} + {{ selectedTime }}
+              <v-divider />
+              Location: <span v-if="selectedTime===null">Please select an appointment</span><span v-else>{{ selectedTime.date }}</span>
+            </v-card-text>
+            <v-btn @click="withdraw">Cancel</v-btn>
+            <v-btn v-if="selectedTimeLocal!=null" @click="toogleAppointment">Confirm</v-btn>
+          </v-card>
+        </v-tab-item>
+      </v-tabs></v-dialog>
+  </div>
 </template>
 
 <script>
@@ -44,73 +75,63 @@ export default {
     showModal: {
       type: Boolean,
       required: true
+    },
+    id: {
+      type: Number,
+      required: false,
+      default: -1
+    },
+    selectedTime: {
+      type: Object,
+      required: false,
+      default: null
     }
   },
   data() {
     return {
+      survey: [],
+      appointments: null,
+      selectedTimeLocal: null,
       search: '',
-      id: 1,
-      selectedTime: null,
-      title: 'Survey 1',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla, tellus at finibus interdum, dui tortor suscipit nisi, et tempor nunc nisl nec diam.',
-      address: 'Dex street 6',
       headers: [
         {
-          text: 'Day',
-          value: 'day'
+          text: 'Date',
+          value: 'date'
         },
-        { text: 'Time', value: 'time' },
         { text: 'Address', value: 'address' },
         { text: 'Book appointment', value: 'actions', sortable: false }
-      ],
-      times: [
-        {
-          id: 1,
-          day: '2021-01-14',
-          time: '14:00:00',
-          address: 'steet 7/v'
-        },
-        {
-          id: 2,
-          day: '2021-01-14',
-          time: '18:00:00',
-          address: 'steet 7/v'
-        },
-        {
-          id: 3,
-          day: '2021-01-14',
-          time: '20:00:00',
-          address: 'othersteet 62'
-        },
-        {
-          id: 4,
-          day: '2021-01-15',
-          time: '10:00:00',
-          address: 'steet 7/v'
-        },
-        {
-          id: 5,
-          day: '2021-01-15',
-          time: '15:00:00',
-          address: 'steet 7/v'
-        }
       ]
     }
   },
+  watch: {
+    showModal(val) {
+      if (val) {
+        this.survey = this.$store.getters.getActiveSurveys.filter(item => item.id === this.id)[0]
+      }
+      this.appointments = this.survey.allTime
+    }
+  },
+  created() {
+    this.selectedTimeLocal = this.selectedTime
+  },
   methods: {
     book(item) {
-      if (this.selectedTime === item) {
-        this.selectedTime = null
+      if (this.selectedTimeLocal === item) {
+        this.selectedTimeLocal = null
       } else {
-        this.selectedTime = item
+        this.selectedTimeLocal = item
       }
     },
-    toogleModal() {
-      this.$emit('confirm')
+    toogleAppointment() {
+      this.$store.dispatch('toogleAppointment', [this.id, this.selectedTimeLocal.id])
+      this.$emit('confirm', this.selectedTimeLocal.id)
     },
     displaySelected(item) {
-      return item === this.selectedTime ? 'selected' : ''
+      if (this.selectedTimeLocal !== null) {
+        return item === this.selectedTimeLocal ? 'selected' : ''
+      } else {
+        return ''
+      }
     },
     withdraw() {
       this.$emit('withdraw')

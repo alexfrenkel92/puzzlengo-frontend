@@ -30,7 +30,7 @@ const createStore = () => {
           isEnrolled: false,
           isCompleted: false,
           myTime: null,
-          allTime: ['2021-01-08T11:00:00', '2021-01-08T14:00:00', '2021-01-08T22:00:00']
+          allTime: [{ id: 1, date: '2021-01-08T11:00:00', address: 'Street1' }, { id: 2, date: '2021-01-08T14:00:00', address: 'Street 2' }, { id: 3, date: '2021-01-08T22:00:00', address: 'Street 1' }]
         },
         {
           id: 2,
@@ -45,9 +45,7 @@ const createStore = () => {
           postponable: true,
           isPostponed: true,
           isEnrolled: false,
-          isCompleted: false,
-          myTime: null,
-          allTime: ['2021-01-08T11:00:00', '2021-01-08T14:00:00', '2021-01-08T22:00:00']
+          isCompleted: false
         },
         {
           id: 3,
@@ -64,7 +62,7 @@ const createStore = () => {
           isEnrolled: false,
           isCompleted: false,
           myTime: null,
-          allTime: ['2021-01-08T11:00:00', '2021-01-08T14:00:00', '2021-01-08T22:00:00']
+          allTime: [{ id: 1, date: '2021-06-08T11:00:00', address: 'Street1' }, { id: 2, date: '2021-06-08T14:00:00', address: 'Street 2' }, { id: 3, date: '2021-06-08T22:00:00', address: 'Street 1' }]
         },
         {
           id: 4,
@@ -157,10 +155,15 @@ const createStore = () => {
       toogleWithdrawal(state, surveyId) {
         const surveyToEnroll = state.activeSurveys.find(survey => survey.id === surveyId)
         surveyToEnroll.isEnrolled = false
+        surveyToEnroll.myTime = null
       },
       toogleCompletion(state, surveyId) {
         const surveyToComplete = state.activeSurveys.find(survey => survey.id === surveyId)
         surveyToComplete.isCompleted = true
+      },
+      toogleAppointment(state, [surveyId, timeId]) {
+        const surveyToBook = state.activeSurveys.find(survey => survey.id === surveyId)
+        surveyToBook.myTime = timeId
       }
     },
     actions: {
@@ -175,6 +178,9 @@ const createStore = () => {
       },
       toogleCompletion(context, payload) {
         context.commit('toogleCompletion', payload)
+      },
+      toogleAppointment(context, playload) {
+        context.commit('toogleAppointment', playload)
       }
     }
   })
