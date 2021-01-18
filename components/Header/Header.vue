@@ -79,6 +79,10 @@
               </li>
             </ul>
           </div>
+          <nuxt-link class="balance-button" to="/profile/balance">
+            <p class="balance-text">240 </p>
+            <img :src="coin" alt="balance-button">
+          </nuxt-link>
           <setting-menu v-if="isLoggedIn" :invert="invert" />
           <v-btn
             v-if="isMobile"
@@ -169,10 +173,10 @@ export default {
     },
     invert() {
       return !!this.isMobile
+    },
+    coin() {
+      return require('~/static/images/coinGold.png')
     }
-  },
-  mounted() {
-    // this.loaded = true
   },
   methods: {
     handleScroll() {
@@ -204,3 +208,29 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.balance-button {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+.balance-text {
+  color: black;
+  padding: 2px 5px 0 ;
+  margin: 0;
+}
+@media screen and (max-width: 500px) {
+  .balance-button {
+    display: none;
+  }
+}
+
+img {
+  width: 20px;
+  height: 20px;
+}
+</style>

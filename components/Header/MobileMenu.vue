@@ -1,7 +1,7 @@
 <template>
   <div class="mobile-nav">
     <div class="menu" :class="{ 'menu-open': open }">
-      <v-list v-if="isLoggedIn" dense tag="nav">
+      <v-list v-if="isLoggedIn" dense tag="nav" class="mobile-menu-list">
         <v-list-item
           v-for="(item, index) in navMenu"
           :key="index"
@@ -9,12 +9,10 @@
           :style="{ animationDuration: index * 0.15 + 's' }"
           @click="navigate(item)"
         >
-          <v-list-item-content>
-            <v-list-item-title class="menu-list">
-              <!-- {{ $t('menu.header_'+item) }} -->
-              {{ item.title }}
-            </v-list-item-title>
-          </v-list-item-content>
+          <div class="menu-list">
+            <!-- {{ $t('menu.header_'+item) }} -->
+            {{ item.title }}
+          </div>
         </v-list-item>
         <!-- <v-list-item
           link

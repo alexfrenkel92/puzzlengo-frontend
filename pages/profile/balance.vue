@@ -1,12 +1,13 @@
 <template>
   <div>
     <div class="balanceContainer">
-      <Balance :icon="'mdi-currency-usd-circle-outline'" :title="'My balance'" :total="total" :details="details" @getMore="getMore" />
+      <MyBalance :icon="'mdi-currency-usd-circle-outline'" :title="'My balance'" :total="total" :details="details" @getMore="getMore" />
       <BalanceTable :details="details" />
     </div>
     <div class="offerContainer">
       <v-switch
         v-model="showAll"
+        class="all-offers-switcher"
         :label="'Show all offers'"
         color="#7ABE8F"
       />
@@ -16,12 +17,12 @@
 </template>
 
 <script>
-import Balance from '@/components/Balance/BalanceCard'
+import MyBalance from '@/components/Balance/MyBalance'
 import BalanceTable from '@/components/Balance/BalanceTable'
 import SpendBalance from '@/components/Balance/SpendBalance'
 export default {
   components: {
-    Balance,
+    MyBalance,
     SpendBalance,
     BalanceTable
   },
@@ -95,7 +96,9 @@ export default {
     align-items: center;
   }
   .offerContainer{
-
-    padding: 60px;
+    padding: 0;
+  }
+  .all-offers-switcher {
+    padding-left: 20px;
   }
 </style>

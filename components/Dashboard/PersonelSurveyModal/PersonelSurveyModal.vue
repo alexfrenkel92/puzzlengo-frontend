@@ -1,40 +1,41 @@
 <template>
-  <div>
-    <v-dialog v-model="showModal" persistent width="500">
-      <v-card>
-        <v-card-title class="headline grey lighten-2">
-          Pleas select an appointment for {{ title }}
-        </v-card-title>
-        <v-card-text>
-          {{ description }}
-        </v-card-text>
-        <v-divider />
-        <v-text-field
-          v-model="search"
-          append-icon="mdi-magnify"
-          label="Search"
-          single-line
-          hide-details
-        />
-        <v-data-table
-          :headers="headers"
-          :items="times"
-          :item-class="displaySelected"
-          :search="search"
-          hide-default-footer
-          class="elevation-1"
-        >
-          <template v-slot:[`item.actions`]="{ item }">
-            <v-icon small class="mr-2" @click="book(item)">
-              mdi-calendar-multiple-check
-            </v-icon>
-          </template>
-        </v-data-table>
+  <v-dialog v-model="showModal" persistent width="500">
+    <v-card>
+      <v-card-title class="headline grey lighten-2">
+        Please select an appointment for {{ title }}
+      </v-card-title>
+      <v-card-text>
+        {{ description }}
+      </v-card-text>
+      <v-divider />
+      <v-text-field
+        v-model="search"
+        append-icon="mdi-magnify"
+        label="Search"
+        single-line
+        hide-details
+      />
+      <v-data-table
+        :headers="headers"
+        :items="times"
+        :item-class="displaySelected"
+        :search="search"
+        hide-default-footer
+        class="elevation-1"
+      >
+        <template v-slot:[`item.actions`]="{ item }">
+          <v-icon small class="mr-2" @click="book(item)">
+            mdi-calendar-multiple-check
+          </v-icon>
+        </template>
+      </v-data-table>
+      <v-divider />
+      <v-card-actions>
         <v-btn @click="withdraw">Cancel</v-btn>
-        <v-btn v-if="selectedTime!=null" @click="toogleModal">Confirm</v-btn>
-      </v-card>
-    </v-dialog>
-  </div>
+        <v-btn v-if="selectedTime != null" @click="toogleModal">Confirm</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script>
@@ -119,17 +120,25 @@ export default {
 </script>
 
 <style>
-  .v-text-field {
-    width: 90%;
-    margin: auto;
-  }
-  .v-data-table{
-    margin-bottom: 10px;
-  }
-  .selected {
-     background-color: #7ABE8F
-  }
-  .selected:hover{
-    background-color: #7abe90bb!important
-  }
+.footer {
+  background-color: red;
+  position: relative;
+  bottom: 0;
+}
+.v-card__title {
+  word-break: normal;
+}
+.v-text-field {
+  width: 90%;
+  margin: auto;
+}
+.v-data-table {
+  margin-bottom: 10px;
+}
+.selected {
+  background-color: #7abe8f;
+}
+.selected:hover {
+  background-color: #7abe90bb !important;
+}
 </style>

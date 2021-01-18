@@ -1,8 +1,8 @@
 <template>
   <div class="about-us-wrapper">
-    <h1 id="aboutUs" class="text-center display-1 mb-4 mt-4">About Us</h1>
+    <h1 id="aboutUs" class="text-center">About Us</h1>
     <v-row align="center" justify="center">
-      <v-col class="text-center" cols="12">
+      <div>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
           fringilla, tellus at finibus interdum, dui tortor suscipit nisi, et
@@ -26,19 +26,24 @@
           sem, a scelerisque ex rhoncus at. Maecenas blandit ut erat eget
           pharetra.
         </p>
-      </v-col>
+      </div>
     </v-row>
   </div>
 </template>
 
 <style scoped>
   .about-us-wrapper {
-    padding: 10px 20px;
+    padding: 0 20px !important;
   }
   p {
     text-align: justify;
   }
   h1 {
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 1.7rem;
+    padding: 0;
+  }
+  div {
+    padding: 5px 8px;
   }
 </style>

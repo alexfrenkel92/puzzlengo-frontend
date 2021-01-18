@@ -1,10 +1,6 @@
 <template>
   <div>
-    <v-card
-      class="mx-auto"
-      max-width="344"
-      outlined
-    >
+    <v-card class="mx-auto" max-width="344" outlined>
       <v-list-item three-line>
         <v-list-item-content>
           <div class="overline mb-4">
@@ -14,16 +10,9 @@
             {{ total }} points
           </v-list-item-title>
         </v-list-item-content>
-
-        <v-list-item-avatar
-          tile
-          size="80"
-          color="#7ABE8F"
-        >
-          <v-icon x-large>
-            {{ icon }}
-          </v-icon>
-        </v-list-item-avatar>
+        <div class="image">
+          <img :src="coin" alt="balance-picture">
+        </div>
       </v-list-item>
 
       <v-card-actions>
@@ -36,10 +25,15 @@
 <script>
 export default {
   // eslint-disable-next-line vue/require-prop-types
-  props: ['title', 'total', 'icon'],
+  props: ['title', 'total'],
   data() {
     return {
       show: false
+    }
+  },
+  computed: {
+    coin() {
+      return require('~/static/images/coinGold.png')
     }
   },
   methods: {
@@ -52,3 +46,13 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.image {
+  margin: 10px 0 10px 10px;
+}
+img {
+  width: 100px;
+  height: 100px;
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <v-slide-group>
+  <v-slide-group show-arrows>
     <v-slide-item
       v-for="(item, i) in coupons"
       :key="i"
