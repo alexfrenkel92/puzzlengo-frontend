@@ -44,7 +44,7 @@
               </template>
             </v-data-table>
             <v-btn @click="withdraw">Cancel</v-btn>
-            <v-btn v-if="selectedTimeLocal!=null" @click="toogleAppointment">Confirm</v-btn>
+            <v-btn v-if="myAppointment!=null" @click="toogleAppointment">Confirm</v-btn>
           </v-card>
         </v-tab-item>
         <v-tab-item>
@@ -57,12 +57,12 @@
               {{ survey.description }}
             </v-card-subtitle>
             <v-card-text>
-              Your appointment: {{ selectedTimeLocal }} + {{ selectedTime }}
+              Your appointment: <span v-if="selectedTime===null">Please select an appointment</span><span v-else>{{ myAppointment.date }}</span>
               <v-divider />
-              Location: <span v-if="selectedTime===null">Please select an appointment</span><span v-else>{{ selectedTime.date }}</span>
+              Location: <span v-if="selectedTime===null">Please select an appointment</span><span v-else>{{ myAppointment.address }}</span>
             </v-card-text>
             <v-btn @click="withdraw">Cancel</v-btn>
-            <v-btn v-if="selectedTimeLocal!=null" @click="toogleAppointment">Confirm</v-btn>
+            <v-btn v-if="myAppointment!=null" @click="toogleAppointment">Confirm</v-btn>
           </v-card>
         </v-tab-item>
       </v-tabs></v-dialog>
@@ -91,6 +91,7 @@ export default {
     return {
       survey: [],
       appointments: null,
+      myAppointment: { id: Number, date: String, address: String },
       selectedTimeLocal: null,
       search: '',
       headers: [
@@ -108,30 +109,20 @@ export default {
       if (val) {
         this.survey = this.$store.getters.getActiveSurveys.filter(item => item.id === this.id)[0]
       }
+      this.myAppointment = this.survey.allTime.filter(item => item.id === this.survey.myTime)[0]
       this.appointments = this.survey.allTime
     }
   },
-  created() {
-    this.selectedTimeLocal = this.selectedTime
-  },
   methods: {
     book(item) {
-      if (this.selectedTimeLocal === item) {
-        this.selectedTimeLocal = null
-      } else {
-        this.selectedTimeLocal = item
-      }
+      this.myAppointment = item
     },
     toogleAppointment() {
-      this.$store.dispatch('toogleAppointment', [this.id, this.selectedTimeLocal.id])
-      this.$emit('confirm', this.selectedTimeLocal.id)
+      this.$store.dispatch('toogleAppointment', [this.id, this.myAppointment.id])
+      this.$emit('confirm', this.myAppointment.id)
     },
     displaySelected(item) {
-      if (this.selectedTimeLocal !== null) {
-        return item === this.selectedTimeLocal ? 'selected' : ''
-      } else {
-        return ''
-      }
+      return item === this.myAppointment ? 'selected' : ''
     },
     withdraw() {
       this.$emit('withdraw')
