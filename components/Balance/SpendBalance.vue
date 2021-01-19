@@ -22,10 +22,12 @@
         </v-list-item>
 
         <v-card-actions>
-          <v-btn v-if="item.value<total" color="#7ABE8F">Get this offer
-          </v-btn>
-          <v-btn v-else color="red" @click="getMore">Get more ponts
-          </v-btn>
+          <AppButton v-if="item.value<total" class="action-btn" btn-style="approve">
+            Get this offer
+          </AppButton>
+          <AppButton v-else class="action-btn" btn-style="cancel" @click="getMore">
+            Get more ponts
+          </AppButton>
         </v-card-actions>
       </v-card>
     </v-slide-item>
@@ -43,3 +45,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .action-btn{
+    padding: 5px;
+  }
+</style>

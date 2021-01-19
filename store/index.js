@@ -62,7 +62,7 @@ const createStore = () => {
           isEnrolled: false,
           isCompleted: false,
           myTime: null,
-          allTime: [{ id: 1, date: '2021-06-08T11:00:00', address: 'Street1' }, { id: 2, date: '2021-06-08T14:00:00', address: 'Street 2' }, { id: 3, date: '2021-06-08T22:00:00', address: 'Street 1' }]
+          allTime: [{ id: 1, date: '2021-01-08T12:00:00', address: 'Street1' }, { id: 2, date: '2021-06-08T14:00:00', address: 'Street 2' }, { id: 3, date: '2021-06-08T22:00:00', address: 'Street 1' }]
         },
         {
           id: 4,

@@ -16,7 +16,9 @@
       </v-list-item>
 
       <v-card-actions>
-        <v-btn @click="getMore"> Get more points </v-btn>
+        <AppButton class="action-btn" btn-style="approve" @click="getMore">
+          Get more ponts
+        </AppButton>
       </v-card-actions>
     </v-card>
   </div>
@@ -55,4 +57,7 @@ img {
   width: 100px;
   height: 100px;
 }
+  .action-btn{
+    padding: 5px;
+  }
 </style>

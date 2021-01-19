@@ -7,49 +7,55 @@
           <v-icon left>
             mdi-calendar
           </v-icon>
-          Schedule appointment
         </v-tab>
         <v-tab>
           <v-icon left>
             mdi-information-variant
           </v-icon>
-          More information
         </v-tab>
 
         <v-tab-item>
           <v-card>
-            <v-card-title class="headline grey lighten-2">
-              Pleas select an appointment for <br>{{ survey.title }}
+            <v-card-title class="headline">
+              <span v-if="selectedTime===null">Pleas select an appointment for<br></span>{{ survey.title }}
             </v-card-title>
             <v-divider />
-            <v-text-field
-              v-model="search"
-              append-icon="mdi-magnify"
-              label="Search"
-              single-line
-              hide-details
-            />
-            <v-data-table
-              :headers="headers"
-              :items="appointments"
-              :item-class="displaySelected"
-              :search="search"
-              hide-default-footer
-              class="elevation-1"
-            >
-              <template v-slot:[`item.actions`]="{ item }">
-                <v-icon small class="mr-2" @click="book(item)">
-                  mdi-calendar-multiple-check
-                </v-icon>
-              </template>
-            </v-data-table>
-            <v-btn @click="withdraw">Cancel</v-btn>
-            <v-btn v-if="myAppointment!=null" @click="toogleAppointment">Confirm</v-btn>
+            <v-card-text>
+              <v-text-field
+                v-model="search"
+                append-icon="mdi-magnify"
+                label="Search"
+                single-line
+                hide-details
+              />
+              <v-data-table
+                :headers="headers"
+                :items="appointments"
+                :item-class="displaySelected"
+                :search="search"
+                hide-default-footer
+                class="elevation-1"
+              >
+                <template v-slot:[`item.actions`]="{ item }">
+                  <v-icon small class="mr-2" @click="book(item)">
+                    mdi-calendar-multiple-check
+                  </v-icon>
+                </template>
+              </v-data-table>
+            </v-card-text>
+            <v-card-actions>
+              <AppButton class="action-btn" btn-style="cancel" @click="withdraw">
+                Cancel
+              </AppButton>
+              <AppButton v-if="myAppointment!=null" class="action-btn" btn-style="approve" @click="toogleAppointment">
+                Confirm
+              </AppButton>
+            </v-card-actions>
           </v-card>
         </v-tab-item>
         <v-tab-item>
           <v-card>
-            <v-card-title class="headline grey lighten-2">
+            <v-card-title class="headline">
               {{ survey.title }}
             </v-card-title>
             <v-divider />
@@ -61,8 +67,14 @@
               <v-divider />
               Location: <span v-if="selectedTime===null">Please select an appointment</span><span v-else>{{ myAppointment.address }}</span>
             </v-card-text>
-            <v-btn @click="withdraw">Cancel</v-btn>
-            <v-btn v-if="myAppointment!=null" @click="toogleAppointment">Confirm</v-btn>
+            <v-card-actions>
+              <AppButton class="action-btn" btn-style="cancel" @click="withdraw">
+                Cancel
+              </AppButton>
+              <AppButton v-if="myAppointment!=null" class="action-btn" btn-style="approve" @click="toogleAppointment">
+                Confirm
+              </AppButton>
+            </v-card-actions>
           </v-card>
         </v-tab-item>
       </v-tabs></v-dialog>
@@ -92,7 +104,6 @@ export default {
       survey: [],
       appointments: null,
       myAppointment: { id: Number, date: String, address: String },
-      selectedTimeLocal: null,
       search: '',
       headers: [
         {
@@ -139,6 +150,7 @@ export default {
 }
 .v-card__title {
   word-break: normal;
+  background-color: #7abe8f !important;
 }
 .v-text-field {
   width: 90%;
@@ -147,10 +159,19 @@ export default {
 .v-data-table {
   margin-bottom: 10px;
 }
-.selected {
+.selected, .selected > .v-data-table__mobile-row {
   background-color: #7abe8f;
 }
 .selected:hover {
   background-color: #7abe90bb !important;
+}
+.v-tab.v-tab {
+    color: #7abe8f;
+}
+.action-btn {
+  margin: 0 10px;
+  padding: 5px;
+  width: 100px !important;
+  height: 36px;
 }
 </style>

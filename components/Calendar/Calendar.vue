@@ -25,17 +25,11 @@
                 </v-btn>
               </template>
               <v-list>
-                <v-list-item @click="type = 'day'">
-                  <v-list-item-title>Day</v-list-item-title>
-                </v-list-item>
                 <v-list-item @click="type = 'week'">
                   <v-list-item-title>Week</v-list-item-title>
                 </v-list-item>
                 <v-list-item @click="type = 'month'">
                   <v-list-item-title>Month</v-list-item-title>
-                </v-list-item>
-                <v-list-item @click="type = '4day'">
-                  <v-list-item-title>4 days</v-list-item-title>
                 </v-list-item>
               </v-list>
             </v-menu>
@@ -45,11 +39,9 @@
           <v-calendar
             ref="calendar"
             v-model="focus"
-            color="primary"
+            color="#7abe8f"
             :events="eventList"
             :type="type"
-            @click:more="viewDay"
-            @click:date="viewDay"
             @click:event="showEvent"
           />
           <PersonelSurveyModal
@@ -72,9 +64,7 @@ export default {
     type: 'month',
     typeToLabel: {
       month: 'Month',
-      week: 'Week',
-      day: 'Day',
-      '4day': '4 Days'
+      week: 'Week'
     },
     selectedEvent: {},
     selectedElement: null,
@@ -92,17 +82,13 @@ export default {
       const id = element.id
       const name = element.title
       const start = element.allTime.filter(item => item.id === element.myTime)[0].date
-      _this.eventList.push({ id, name, start })
+      _this.eventList.push({ id, name, start, color: '#7abe8f' })
     })
   },
   methods: {
     updateData(id) {
       const newDate = this.enrolledSurveys.filter(item => item.id === this.selectedEvent.id)[0].allTime.filter(item => item.id === id)[0].date
       this.eventList.find(event => event.id === this.selectedEvent.id).start = newDate
-    },
-    viewDay({ date }) {
-      this.focus = date
-      this.type = 'day'
     },
     setToday() {
       this.focus = ''
