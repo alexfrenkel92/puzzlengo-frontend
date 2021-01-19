@@ -5,16 +5,20 @@
     </div>
     <div class="title">Rx Community Site Demo</div>
     <div class="description">
-      Take part in engaging research, earn cash, and help improve human
+      Take part in engaging research, earn credits, and help improve human
       knowledge
     </div>
     <div class="signup-container">
-      <v-text-field
-        v-model="eMail"
-        solo
-        label="Your E-mail Address"
-        clearable
-      />
+      <v-form ref="form" v-model="valid" @submit.prevent>
+        <v-text-field
+          v-model="email"
+          solo
+          :rules="emailRules"
+          required
+          label="Your E-mail Address"
+          clearable
+        />
+      </v-form>
       <AppButton class="signup-btn" btn-style="approve" @click="handleSignUp">
         Sign Up
       </AppButton>
@@ -26,6 +30,7 @@
     <div class="big-image-container">
       <img :src="bigpic" alt="people's opinion" height="400px">
     </div>
+    <SignUp :show-modal="toogleSignUpModal" @closeModal="closeModal" />
   </div>
 </template>
 
@@ -33,7 +38,13 @@
 export default {
   data() {
     return {
-      email: ''
+      valid: true,
+      email: '',
+      toogleSignUpModal: false,
+      emailRules: [
+        v => !!v || 'E-mail is required',
+        v => /.+@.+/.test(v) || 'E-mail must be valid'
+      ]
     }
   },
   computed: {
@@ -55,7 +66,16 @@ export default {
       }
     },
     handleSignUp() {
-      console.log(this.eMail)
+      this.validate()
+      if (this.valid) {
+        this.toogleSignUpModal = !this.toogleSignUpModal
+      }
+    },
+    validate() {
+      this.$refs.form.validate()
+    },
+    closeModal() {
+      this.toogleSignUpModal = !this.toogleSignUpModal
     }
   }
 }
@@ -69,10 +89,9 @@ export default {
   align-items: center;
   padding: 25px;
   margin-bottom: 30px;
-  background-color: #f3eae5;
 }
 .title {
-  font-size: 2.5rem;
+  font-size: 2.5rem !important;
   padding: 10px;
 }
 .description {
@@ -103,7 +122,7 @@ export default {
   font-size: 2rem !important;
   margin: 10px;
   padding: 0 5px 5px 5px;
-  width: 160px;
+  width: 165px;
   height: 48px;
 }
 .big-image-container {

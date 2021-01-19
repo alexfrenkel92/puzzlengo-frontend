@@ -1,6 +1,11 @@
 <template>
   <div class="wrapper">
-    <h1 id="howItWorks" class="text-center display-1 font-weight-thin mb-4 mt-4">How It Works</h1>
+    <h1
+      id="howItWorks"
+      class="text-center display-1 font-weight-thin mb-4 mt-4"
+    >
+      How It Works
+    </h1>
     <v-timeline align-top :dense="$vuetify.breakpoint.smAndDown">
       <v-timeline-item
         v-for="(item, i) in items"
@@ -9,7 +14,7 @@
         fill-dot
         color="#7abe8f"
       >
-        <v-card color="#f3eae5">
+        <v-card color="#ffffff">
           <v-card-title class="title">
             {{ item.title }}
           </v-card-title>
@@ -56,7 +61,12 @@ export default {
 </script>
 
 <style scoped>
+.wrapper {
+  padding: 20px 80px;
+}
+@media screen and (max-width: 350px) {
   .wrapper {
-    padding: 20px;
+    padding: 20px 15px 20px 0;
   }
+}
 </style>
