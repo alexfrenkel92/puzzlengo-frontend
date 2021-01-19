@@ -122,7 +122,6 @@ export default {
       this.$emit('confirm', this.myAppointment.id)
     },
     displaySelected(item) {
-      console.log(this.myAppointment)
       return item === this.myAppointment ? 'selected' : ''
     },
     withdraw() {
