@@ -91,7 +91,7 @@ footer {
   justify-content: space-between;
   align-items: center;
   background:#7abe8f;
-  color: white;
+  color: #ffffff;
   width: 100%;
   position: absolute;
   bottom: 0;
