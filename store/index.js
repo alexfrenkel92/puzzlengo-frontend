@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 const createStore = () => {
   return new Vuex.Store({
     state: {
-      isLoggedIn: true,
+      isLoggedIn: false,
       breakpoints: {
         smUp: ['smDown', 'mdDown', 'lgDown', 'xl'],
         mdUp: ['mdDown', 'lgDown', 'xl'],

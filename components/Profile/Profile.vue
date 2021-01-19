@@ -4,7 +4,6 @@
       v-for="cat in profilingCatsDemo"
       :id="cat.id"
       :key="cat.id"
-      class="profile-card"
       :title="cat.title"
       :total-questions="cat.totalQuestions"
       :answered="cat.answered"
