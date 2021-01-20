@@ -367,6 +367,7 @@ $flag: "/images/flag-logo.png";
       color: $palette-common-white;
     }
   }
+  padding: 5px 17px;
   .active {
     transform: rotate(30deg);
   }
@@ -466,11 +467,3 @@ paper-nav {
     }
   }
 }
-
-// .nav-button {
-//   padding-bottom: 5px;
-// }
-// .nav-button:hover {
-//   border-bottom: 4px solid #7abe8f;
-//   border-radius: 2px;
-// }

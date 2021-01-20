@@ -7,7 +7,7 @@
       temporary
       class="mobile-nav"
     >
-      <mobile-menu :open="openDrawer" @click="handleToggleOpen" />
+      <mobile-menu :open="openDrawer" @closeMobileMenu="closeMobileMenu" />
     </v-navigation-drawer>
     <v-app-bar
       id="header"
@@ -84,7 +84,7 @@
             <p class="balance-text">240 </p>
             <img :src="coin" alt="balance-button">
           </nuxt-link>
-          <setting-menu v-if="isLoggedIn" :invert="invert" />
+          <!-- <setting-menu v-if="isLoggedIn" :invert="invert" /> -->
           <v-btn
             v-if="isMobile"
             :class="{ 'is-active': openDrawer }"
@@ -109,7 +109,7 @@
 
 <script>
 import navMenu from './menu'
-import Settings from './Settings'
+// import Settings from './Settings'
 import MobileMenu from './MobileMenu'
 import logo from '~/static/images/de_emblema_RGB.png'
 // import link from '~/static/text/link'
@@ -128,7 +128,7 @@ import brand from '~/static/text/brand'
 
 export default {
   components: {
-    'setting-menu': Settings,
+    // 'setting-menu': Settings,
     MobileMenu
   },
   props: {
@@ -192,6 +192,10 @@ export default {
     handleToggleOpen() {
       this.openDrawer = !this.openDrawer
     },
+    closeMobileMenu() {
+      this.openDrawer = !this.openDrawer
+      console.log('header')
+    },
     handleAuth() {
       this.$store.dispatch('setAuth')
       if (this.isLoggedIn) {
@@ -224,11 +228,11 @@ export default {
   padding: 2px 5px 0 ;
   margin: 0;
 }
-@media screen and (max-width: 500px) {
+/* @media screen and (max-width: 500px) {
   .balance-button {
     display: none;
   }
-}
+} */
 
 img {
   width: 20px;

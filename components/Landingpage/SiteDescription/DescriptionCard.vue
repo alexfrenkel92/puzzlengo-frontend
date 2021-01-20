@@ -43,8 +43,8 @@ export default {
 
 <style scoped>
 #card-container {
-  height: 300px;
-  width: 350px;
+  height: 290px;
+  width: 300px;
   padding: 15px;
   margin: 20px;
   border-radius: 5px;
@@ -55,7 +55,7 @@ export default {
 h1 {
   text-align: start;
   margin: 0 0 10px 0;
-  font-size: 1.38rem;
+  font-size: 1.2rem;
   color: black;
 }
 .image {
@@ -68,7 +68,7 @@ img {
 }
 .description {
   text-align: justify;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: black;
   padding: 10px 0 0 10px;
 }

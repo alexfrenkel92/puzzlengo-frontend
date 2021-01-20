@@ -20,7 +20,7 @@ export default {
         {
           id: 1,
           title: 'Join us on our mission to improve human knowledge.',
-          description: 'Researchers want to understand how people feel, think and behave. On Prolific, you get paid cash for taking part in engaging research (no silly points or prize draws). No PhDs required!',
+          description: 'Researchers want to understand how people feel, think and behave. Take part in engaging researches and help them to achieve their goals. No PhDs required!',
           img: 'improve'
         },
         {

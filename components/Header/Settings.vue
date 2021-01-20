@@ -5,12 +5,12 @@
     offset-y
     nudge-top="-6"
     bottom
-    class="menu-setting"
+    max-width="210"
   >
     <template v-slot:activator="{ on }">
       <div class="setting">
         <v-btn fab text small class="ma-3" v-on="on">
-          <v-icon :class="{ invert: invert, active: open }" class="icon">
+          <v-icon :class="{ invert: invert, active: open }" class="icon" color="#7abe8f">
             settings
           </v-icon>
         </v-btn>
@@ -20,9 +20,9 @@
       <v-list class="mode-menu">
         <v-list-item>
           <v-list-item-content>
-            <nuxt-link class="menu-nuxtlink" to="/settings">Account</nuxt-link>
             <nuxt-link class="menu-nuxtlink" to="/profile">My Profiling</nuxt-link>
             <nuxt-link class="menu-nuxtlink" to="/profile/balance">Balance</nuxt-link>
+            <nuxt-link class="menu-nuxtlink" to="/settings">Settings</nuxt-link>
             <button v-if="isLoggedIn" class="menu-btn" @click="handleAuth">
               Logout
             </button>
@@ -153,5 +153,8 @@ export default {
   color: black;
   padding: 10px 16px;
   margin: 0;
+}
+.v-btn {
+  margin: 0 !important;
 }
 </style>

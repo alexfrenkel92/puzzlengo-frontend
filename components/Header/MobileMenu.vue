@@ -7,13 +7,14 @@
           :key="index"
           link
           :style="{ animationDuration: index * 0.15 + 's' }"
-          @click="navigate(item)"
+          @click="closeMenu"
         >
-          <div class="menu-list">
+          <nuxt-link class="menu-list" :to="item.url">
             <!-- {{ $t('menu.header_'+item) }} -->
             {{ item.title }}
-          </div>
+          </nuxt-link>
         </v-list-item>
+        <Settings v-if="isLoggedIn" :invert="invert" />
         <!-- <v-list-item
           link
           :style="{ animationDuration: navMenu.length * 0.15 + 's' }"
@@ -43,17 +44,17 @@
 </style>
 
 <script>
+import Settings from './Settings'
 import navMenu from '~/components/Header/menu'
 import logo from '~/static/images/de_emblema_RGB.png'
 // import link from '~/static/text/link'
 
 export default {
+  components: {
+    Settings
+  },
   props: {
     open: {
-      type: Boolean,
-      default: false
-    },
-    isDrawerOpen: {
       type: Boolean,
       default: false
     }
@@ -63,7 +64,7 @@ export default {
       // link,
       navMenu,
       logo,
-      isSideMenuOpen: this.isDrawerOpen // closes menu after clicking on it, if already on route
+      isSideMenuOpen: this.open // closes menu after clicking on it, if already on route
     }
   },
   computed: {
@@ -75,6 +76,9 @@ export default {
     },
     isLoggedIn() {
       return this.$store.getters.isLoggedIn
+    },
+    invert() {
+      return !!this.isMobile
     }
   },
   methods: {
@@ -89,9 +93,9 @@ export default {
     signUp() {
       this.$router.push('/auth/signup')
     },
-    navigate(item) {
-      this.$router.push({ path: item.url })
-      this.$emit('click', this.isSideMenuOpen)
+    closeMenu() {
+      console.log(this.open)
+      this.$emit('closeMobileMenu')
     },
     close() {
     }
