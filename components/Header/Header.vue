@@ -84,7 +84,7 @@
             <p class="balance-text">240 </p>
             <img :src="coin" alt="balance-button">
           </nuxt-link>
-          <!-- <setting-menu v-if="isLoggedIn" :invert="invert" /> -->
+          <setting-menu v-if="isLoggedIn && isDesktop" :invert="invert" />
           <v-btn
             v-if="isMobile"
             :class="{ 'is-active': openDrawer }"
@@ -109,7 +109,7 @@
 
 <script>
 import navMenu from './menu'
-// import Settings from './Settings'
+import Settings from './Settings'
 import MobileMenu from './MobileMenu'
 import logo from '~/static/images/de_emblema_RGB.png'
 // import link from '~/static/text/link'
@@ -128,7 +128,7 @@ import brand from '~/static/text/brand'
 
 export default {
   components: {
-    // 'setting-menu': Settings,
+    'setting-menu': Settings,
     MobileMenu
   },
   props: {

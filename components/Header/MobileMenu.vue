@@ -94,7 +94,6 @@ export default {
       this.$router.push('/auth/signup')
     },
     closeMenu() {
-      console.log(this.open)
       this.$emit('closeMobileMenu')
     },
     close() {

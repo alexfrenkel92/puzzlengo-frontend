@@ -10,7 +10,7 @@
     <template v-slot:activator="{ on }">
       <div class="setting">
         <v-btn fab text small class="ma-3" v-on="on">
-          <v-icon :class="{ invert: invert, active: open }" class="icon" color="#7abe8f">
+          <v-icon :class="{ invert: invert, active: open }" class="icon" color="#4d4a4a">
             settings
           </v-icon>
         </v-btn>
