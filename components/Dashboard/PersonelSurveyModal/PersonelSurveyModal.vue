@@ -7,11 +7,13 @@
           <v-icon left>
             mdi-calendar
           </v-icon>
+          Date
         </v-tab>
         <v-tab>
           <v-icon left>
             mdi-information-variant
           </v-icon>
+          More information
         </v-tab>
 
         <v-tab-item>
@@ -150,7 +152,7 @@ export default {
 }
 .v-card__title {
   word-break: normal;
-  background-color: #7abe8f !important;
+  background-color: #d3d8d5 !important;
 }
 .v-text-field {
   width: 90%;

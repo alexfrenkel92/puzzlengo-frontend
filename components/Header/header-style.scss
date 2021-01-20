@@ -88,7 +88,7 @@ $flag: "/images/flag-logo.png";
 }
 .header.v-app-bar.v-toolbar.v-sheet {
   // border-bottom: 2px solid#E7CF6E;
-  background-color: transparent;
+  background-color: #ffffff;
   @include palette-text-primary;
   z-index: 11;
   box-shadow: none;
@@ -258,6 +258,7 @@ $flag: "/images/flag-logo.png";
       list-style: none;
       position: relative;
       display: inline-block;
+      .nav-btn,
       .v-btn {
         text-transform: capitalize;
         font-size: 18px;
@@ -465,3 +466,11 @@ paper-nav {
     }
   }
 }
+
+// .nav-button {
+//   padding-bottom: 5px;
+// }
+// .nav-button:hover {
+//   border-bottom: 4px solid #7abe8f;
+//   border-radius: 2px;
+// }

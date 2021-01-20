@@ -40,16 +40,17 @@
 
           </div>
           <div>
+            <!-- :class="$route.path === item.url ? 'active anchor-link scrollactive-item':'anchor-link scrollactive-item'" -->
             <ul class="scrollactive-nav">
               <li v-for="(item, index) in showMenus" :key="index">
-                <v-btn
+                <nuxt-link
                   v-if="!invert"
-                  :class="$route.path === item.url ? 'active anchor-link scrollactive-item':'anchor-link scrollactive-item'"
+                  class="nav-btn"
                   text
-                  @click="navigate(item)"
+                  :to="item.url"
                 >
                   {{ item.title }}
-                </v-btn>
+                </nuxt-link>
               </li>
             </ul>
           </div>

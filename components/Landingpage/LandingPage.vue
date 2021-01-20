@@ -28,7 +28,12 @@
       Login
     </AppButton>
     <div class="big-image-container">
-      <img :src="bigpic" alt="people's opinion" height="400px">
+      <img
+        class="survey-image"
+        :src="bigpic"
+        alt="survey-image"
+        height="400px"
+      >
     </div>
     <SignUp :show-modal="toogleSignUpModal" @closeModal="closeModal" />
   </div>
@@ -93,6 +98,7 @@ export default {
 .title {
   font-size: 2.5rem !important;
   padding: 10px;
+  text-align: center;
 }
 .description {
   font-size: 1.5rem;
@@ -128,5 +134,36 @@ export default {
 .big-image-container {
   padding: 10px;
   background: transparent;
+}
+@media screen and (max-width: 500px) {
+  .survey-image {
+    display: block;
+    max-width: 400px;
+    width: auto;
+    height: auto;
+  }
+}
+@media screen and (max-width: 380px) {
+  .landing-wrapper {
+    padding-bottom: 0;
+    margin-bottom: 15px;
+  }
+  .title {
+    font-size: 2rem !important;
+    text-align: center;
+  }
+  .signup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+  }
+  .survey-image {
+    display: block;
+    max-width: 280px;
+    width: auto;
+    height: auto;
+  }
 }
 </style>

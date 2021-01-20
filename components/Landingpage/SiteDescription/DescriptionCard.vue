@@ -52,20 +52,6 @@ export default {
   position: relative;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
-/* #card-container:hover {
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-  transform: translateY(2px);
-  -webkit-animation: gradientBG 1.5s ease-in-out forwards;
-  animation: gradientBG 1.5s ease-in-out forwards;
-  cursor: pointer;
-}
-#card-container:active {
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
-  transform: translateY(4px);
-} */
-/* a {
-  text-decoration: none;
-} */
 h1 {
   text-align: start;
   margin: 0 0 10px 0;
@@ -90,7 +76,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background:#7abe8f;
+  background: #7abe8f;
   color: #ffffff;
   width: 100%;
   position: absolute;
@@ -100,5 +86,21 @@ footer {
   margin-left: -15px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+@media screen and (max-width: 370px) {
+  #card-container {
+    height: fit-content;
+  }
+  h1 {
+    margin: 0;
+    font-size: 1rem;
+  }
+  img {
+    width: 80px;
+    height: 80px;
+  }
+  .description {
+    font-size: 0.9rem;
+  }
 }
 </style>

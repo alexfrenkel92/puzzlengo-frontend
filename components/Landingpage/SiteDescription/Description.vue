@@ -50,4 +50,9 @@ export default {
   justify-content: center;
   width: 100%;
 }
+@media screen and (max-width: 380px) {
+  .description-wrapper {
+    padding-top: 0;
+  }
+}
 </style>

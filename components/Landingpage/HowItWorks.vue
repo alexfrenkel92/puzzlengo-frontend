@@ -64,6 +64,11 @@ export default {
 .wrapper {
   padding: 20px 80px;
 }
+@media screen and (max-width: 800px) {
+  .wrapper {
+    padding: 20px 15px 20px 0;
+  }
+}
 @media screen and (max-width: 350px) {
   .wrapper {
     padding: 20px 15px 20px 0;
