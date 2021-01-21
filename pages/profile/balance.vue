@@ -1,12 +1,20 @@
 <template>
   <div>
+    <div class="offerContainer">
+      <v-switch
+        v-model="showAllCharity"
+        class="all-offers-switcher"
+        :label="'Show all offers'"
+        color="#7ABE8F"
+      />
+      <SpendBalance :coupons="charityShow" :total="total" @getMore="getMore" />
+    </div>
     <div class="balanceContainer">
       <MyBalance :icon="'mdi-currency-usd-circle-outline'" :title="'My balance'" :total="total" :details="details" @getMore="getMore" />
-      <BalanceTable :details="details" />
     </div>
     <div class="offerContainer">
       <v-switch
-        v-model="showAll"
+        v-model="showAllCoupon"
         class="all-offers-switcher"
         :label="'Show all offers'"
         color="#7ABE8F"
@@ -18,58 +26,63 @@
 
 <script>
 import MyBalance from '@/components/Balance/MyBalance'
-import BalanceTable from '@/components/Balance/BalanceTable'
 import SpendBalance from '@/components/Balance/SpendBalance'
 export default {
   components: {
     MyBalance,
-    SpendBalance,
-    BalanceTable
+    SpendBalance
   },
   data() {
     return {
       details: [{ value: 10, date: '01.03.', description: 'Survey 1' }, { value: 340, date: '01.23.', description: 'Survey 3' }, { value: -150, date: '02.03.', description: 'Amazon' }, { value: 60, date: '02.20.', description: 'Survey 12' }, { value: -20, date: '03.30.', description: 'Nike' }],
       total: 0,
-      showAll: false,
+      showAllCoupon: false,
+      showAllCharity: false,
       coupons: [
-        { company: 'Amazon', value: 30, info: 'Free delivery' },
-        { company: 'Amazon', value: 120, info: '5% off' },
-        { company: 'Nike', value: 300, info: '20% off' },
-        { company: 'Amazon', value: 30, info: 'Free delivery' },
-        { company: 'Amazon', value: 120, info: '5% off' },
-        { company: 'Nike', value: 300, info: '20% off' },
-        { company: 'Amazon', value: 30, info: 'Free delivery' },
-        { company: 'Amazon', value: 120, info: '5% off' },
-        { company: 'Nike', value: 300, info: '20% off' },
-        { company: 'Amazon', value: 30, info: 'Free delivery' },
-        { company: 'Amazon', value: 120, info: '5% off' },
-        { company: 'Nike', value: 300, info: '20% off' }
+        { company: 'Amazon', value: 30, info: 'Free delivery', type: 'coupon' },
+        { company: 'Amazon', value: 120, info: '5% off', type: 'coupon' },
+        { company: 'Nike', value: 300, info: '20% off', type: 'coupon' },
+        { company: 'Amazon', value: 30, info: 'Free delivery', type: 'coupon' },
+        { company: 'Amazon', value: 120, info: '5% off', type: 'coupon' },
+        { company: 'Nike', value: 300, info: '20% off', type: 'coupon' },
+        { company: 'Amazon', value: 30, info: 'Free delivery', type: 'coupon' },
+        { company: 'Amazon', value: 120, info: '5% off', type: 'coupon' },
+        { company: 'Nike', value: 300, info: '20% off', type: 'coupon' },
+        { company: 'Amazon', value: 30, info: 'Free delivery', type: 'coupon' },
+        { company: 'Amazon', value: 120, info: '5% off', type: 'coupon' },
+        { company: 'Nike', value: 300, info: '20% off', type: 'coupon' },
+        { company: 'Charity 1', value: 120, info: '20$', type: 'charity' },
+        { company: 'Charity 2', value: 300, info: '60$', type: 'charity' },
+        { company: 'Charity 1', value: 30, info: '5$', type: 'charity' },
+        { company: 'Charity 1', value: 1200, info: '2200$', type: 'charity' },
+        { company: 'Charity 3', value: 300, info: '60$', type: 'charity' }
       ]
     }
   },
   computed: {
     couponsShow() {
-      if (!this.showAll) {
+      if (!this.showAllCoupon) {
         return this.coupons.filter((d) => {
-          return d.value <= this.total
+          return (d.value <= this.total && d.type === 'coupon')
         })
       } else {
-        return this.coupons
+        return this.coupons.filter((d) => {
+          return d.type === 'coupon'
+        })
+      }
+    },
+    charityShow() {
+      if (!this.showAllCharity) {
+        return this.coupons.filter((d) => {
+          return (d.value <= this.total && d.type === 'charity')
+        })
+      } else {
+        return this.coupons.filter((d) => {
+          return d.type === 'charity'
+        })
       }
     }
   },
-  /* computed: {
-    earn() {
-      return this.details.filter((d) => {
-        return d.value > 0
-      })
-    },
-    spend() {
-      return this.details.filter((d) => {
-        return d.value < 0
-      })
-    }
-  }, */
   created() {
     this.details.forEach((element) => {
       this.total += element.value
@@ -90,6 +103,7 @@ export default {
 
 <style scoped>
   .balanceContainer{
+    margin-top: 50px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
