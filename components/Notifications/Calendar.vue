@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="calendar">
     <v-row class="fill-height">
       <v-col>
         <v-sheet height="64">
@@ -126,3 +126,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .calendar{
+    flex: 1 1 0;
+    margin: 10px;
+  }
+</style>
