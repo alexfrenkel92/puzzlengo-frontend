@@ -46,9 +46,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
   .action-btn{
     padding: 5px;
     width: 130px !important;
+  }
+  .v-slide-group__content{
+    justify-content: center;
   }
 </style>

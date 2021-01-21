@@ -64,8 +64,38 @@ export default {
   data() {
     return {
       page: 1,
-      itemsPerPage: 5,
+      itemsPerPage: 10,
       notifications: [
+        {
+          title: 'Survey approved - 30 credits earned',
+          description: 'Thank you for completing our survey, your answers have been approved. Please check your balance to spend your credits.'
+        },
+        {
+          title: 'Survey approved - 15 credits earned',
+          description: 'Thank you for completing our survey, your answers have been approved. Please check your balance to spend your credits.'
+        },
+        {
+          title: '35 credits spent',
+          description: 'We have successfully sent your credits to Example Charity. Thank you for helping.'
+        }, {
+          title: 'Survey approved - 30 credits earned',
+          description: 'Thank you for completing our survey, your answers have been approved. Please check your balance to spend your credits.'
+        },
+        {
+          title: 'Survey approved - 30 credits earned',
+          description: 'Thank you for completing our survey, your answers have been approved. Please check your balance to spend your credits.'
+        },
+        {
+          title: 'Survey approved - 15 credits earned',
+          description: 'Thank you for completing our survey, your answers have been approved. Please check your balance to spend your credits.'
+        },
+        {
+          title: '35 credits spent',
+          description: 'We have successfully sent your credits to Example Charity. Thank you for helping.'
+        }, {
+          title: 'Survey approved - 30 credits earned',
+          description: 'Thank you for completing our survey, your answers have been approved. Please check your balance to spend your credits.'
+        },
         {
           title: 'Survey approved - 30 credits earned',
           description: 'Thank you for completing our survey, your answers have been approved. Please check your balance to spend your credits.'

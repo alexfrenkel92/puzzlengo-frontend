@@ -15,8 +15,8 @@ const menu = [
   },
   {
     icon: 'mdi-calendar',
-    title: 'Calendar',
-    url: '/calendar',
+    title: 'Notifications',
+    url: '/notifications',
     alwaysShow: false,
     loginShow: true
   },
