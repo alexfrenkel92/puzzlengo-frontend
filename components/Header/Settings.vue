@@ -22,7 +22,7 @@
           <v-list-item-content>
             <nuxt-link class="menu-nuxtlink" to="/profile">My Profiling</nuxt-link>
             <nuxt-link class="menu-nuxtlink" to="/profile/balance">Balance</nuxt-link>
-            <nuxt-link class="menu-nuxtlink" to="/settings">Settings</nuxt-link>
+            <nuxt-link class="menu-nuxtlink" to="/profile/settings">Settings</nuxt-link>
             <button v-if="isLoggedIn" class="menu-btn" @click="handleAuth">
               Logout
             </button>

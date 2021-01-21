@@ -13,33 +13,14 @@
       Permissions
     </h1>
     <v-row>
-      <v-col>
+      <v-col v-for="(item, index) in permissions" :key="index">
         <v-switch
-          v-model="permissions.location"
+          v-model="item.allowed"
           class="ml-4 mt-4"
-          label="Location"
+          :label="item.permission"
         />
-      </v-col>
-      <v-col>
-        <v-switch
-          v-model="permissions.heartrate"
-          class="ml-4 mt-4"
-          label="Heartrate"
-        />
-      </v-col>
-      <v-col>
-        <v-switch v-model="permissions.steps" class="ml-4 mt-4" label="Steps" />
       </v-col>
     </v-row>
-    <hr>
-    <h1 class="text-center display-1 font-weight-thin mb-4 mt-4">
-      Page settings
-    </h1>
-    <v-switch
-      v-model="$vuetify.theme.dark"
-      class="ml-4 mt-4"
-      label="Dark mode"
-    />
   </div>
 </template>
 
@@ -47,11 +28,28 @@
 export default {
   data() {
     return {
-      permissions: {
-        location: false,
-        heartrate: true,
-        steps: true
-      },
+      permissions: [
+        {
+          permission: 'Location',
+          allowed: true
+        },
+        {
+          permission: 'Heartrate',
+          allowed: true
+        },
+        {
+          permission: 'Steps',
+          allowed: true
+        },
+        {
+          permission: 'Blood pressure',
+          allowed: false
+        },
+        {
+          permission: 'Sleep data',
+          allowed: true
+        }
+      ],
       personal: {
         name: 'Your Name',
         email: 'your.email@address.com',
