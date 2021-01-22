@@ -1,28 +1,20 @@
 <template>
   <div>
-    <v-card class="mx-auto" max-width="344" outlined>
-      <v-list-item three-line>
-        <v-list-item-content>
-          <div class="overline mb-4">
-            {{ title }}
-          </div>
-          <v-list-item-title class="headline mb-1">
-            {{ total }} points
-          </v-list-item-title>
-        </v-list-item-content>
-        <div class="coinImage">
-          <img :src="coin" alt="balance-picture">
-        </div>
-      </v-list-item>
+    <h1>
+      {{ title }}
+    </h1>
+    <h3>
+      {{ total }} points
+    </h3>
+    <div class="coinImage">
+      <img :src="coin" alt="balance-picture">
+    </div>
 
-      <v-card-actions>
-        <AppButton class="action-btn" btn-style="approve" @click="getMore">
-          Get more ponts
-        </AppButton>
-        <v-spacer />
-        <v-icon @click="show=true">mdi-information</v-icon>
-      </v-card-actions>
-    </v-card>
+    <AppButton class="action-btn" btn-style="approve" @click="getMore">
+      Get more ponts
+    </AppButton>
+    <v-spacer />
+    <v-icon @click="show=true">mdi-information</v-icon>
     <v-dialog
       v-model="show"
       max-width="590"
