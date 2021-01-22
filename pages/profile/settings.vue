@@ -14,11 +14,18 @@
     </h1>
     <v-row>
       <v-col v-for="(item, index) in permissions" :key="index">
-        <v-switch
-          v-model="item.allowed"
-          class="ml-4 mt-4"
-          :label="item.permission"
-        />
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on, attrs }">
+            <v-switch
+              v-model="item.allowed"
+              class="ml-4 mt-4"
+              :label="item.permission"
+              v-bind="attrs"
+              v-on="on"
+            />
+          </template>
+          <span>{{ item.info }}</span>
+        </v-tooltip>
       </v-col>
     </v-row>
   </div>
@@ -31,23 +38,28 @@ export default {
       permissions: [
         {
           permission: 'Location',
-          allowed: true
+          allowed: true,
+          info: 'By selecting this you agree to share your location information. For further information please read the terms and conditions.'
         },
         {
           permission: 'Heartrate',
-          allowed: true
+          allowed: true,
+          info: 'By selecting this you agree to share your heartrate information. For further information please read the terms and conditions.'
         },
         {
           permission: 'Steps',
-          allowed: true
+          allowed: true,
+          info: 'By selecting this you agree to share your steps information. For further information please read the terms and conditions.'
         },
         {
           permission: 'Blood pressure',
-          allowed: false
+          allowed: false,
+          info: 'By selecting this you agree to share your blood pressure information. For further information please read the terms and conditions.'
         },
         {
           permission: 'Sleep data',
-          allowed: true
+          allowed: true,
+          info: 'By selecting this you agree to share your sleep information. For further information please read the terms and conditions.'
         }
       ],
       personal: {
