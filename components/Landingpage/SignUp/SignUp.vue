@@ -9,50 +9,62 @@
     >
       <v-card color="#E0F2F1">
         <v-toolbar dark flat color="transparent">
-          <v-toolbar-title class="black--text">Sign Up form</v-toolbar-title>
-          <v-spacer />
           <v-btn icon dark @click="closeModal">
             <v-icon color="black">mdi-close</v-icon>
           </v-btn>
         </v-toolbar>
-        <div class="form-wrapper">
-          <v-form ref="form" v-model="valid" lazy-validation @submit.prevent>
-            <div v-if="basicUserInfo.firstName == ''">
-              <v-text-field
-                v-model="formInput.firstName"
-                solo
-                :rules="nameRules"
-                label="First Name"
-                clearable
-              />
+        <div class="main-wrapper">
+          <div class="form-container">
+            <h1>Let’s get started</h1>
+            <h4>Sign up with</h4>
+            <div class="social-container">
+              <nuxt-link to=""><v-icon large>mdi-facebook</v-icon></nuxt-link>
+              <nuxt-link to=""><v-icon large>mdi-google</v-icon></nuxt-link>
+              <nuxt-link to=""><v-icon large>mdi-linkedin</v-icon></nuxt-link>
             </div>
-            <div v-show="basicUserInfo.firstName !== '' && basicUserInfo.lastName == ''">
-              <v-text-field
-                v-model="formInput.lastName"
-                solo
-                :rules="nameRules"
-                label="Last Name"
-                clearable
-              />
+            <h4>Or fill in and submit this form, and we’ll get back to you very soon.</h4>
+            <div class="sign-up-form">
+              <v-form ref="form" v-model="valid" lazy-validation @submit.prevent>
+                <div v-if="basicUserInfo.firstName == ''">
+                  <v-text-field
+                    v-model="formInput.firstName"
+                    class="centered-input"
+                    solo
+                    :rules="nameRules"
+                    label="First Name"
+                    clearable
+                  />
+                </div>
+                <div v-show="basicUserInfo.firstName !== '' && basicUserInfo.lastName == ''">
+                  <v-text-field
+                    v-model="formInput.lastName"
+                    class="centered-input"
+                    solo
+                    :rules="nameRules"
+                    label="Last Name"
+                    clearable
+                  />
+                </div>
+                <div v-if="basicUserInfo.lastName !== ''">
+                  <v-text-field
+                    v-model="formInput.age"
+                    class="centered-input"
+                    solo
+                    :rules="ageRules"
+                    label="Age"
+                    clearable
+                  />
+                </div>
+              </v-form>
+              <AppButton class="continue-btn" btn-style="approve" @click="saveUserInfo">
+                Continue
+              </AppButton>
             </div>
-            <div v-if="basicUserInfo.lastName !== ''">
-              <v-text-field
-                v-model="formInput.age"
-                solo
-                :rules="ageRules"
-                label="Age"
-                clearable
-              />
-            </div>
-          </v-form>
-          <AppButton class="continue-btn" btn-style="approve" @click="saveUserInfo">
-            Continue
-          </AppButton>
-        </div>
-        <div class="progressBar">
-          <v-progress-linear :value="progressBar" height="20" color="#7abe8f">
-            <strong>{{ Math.floor(progressBar) }}%</strong>
-          </v-progress-linear>
+            <!-- <div class="progressBar" /> -->
+            <v-progress-linear :value="progressBar" height="20" color="#7abe8f">
+              <strong>{{ Math.floor(progressBar) }}%</strong>
+            </v-progress-linear>
+          </div>
         </div>
       </v-card>
     </v-dialog>
@@ -82,12 +94,12 @@ export default {
         age: ''
       },
       nameRules: [
-        v => !!v || 'Input is required',
-        v => (v && v.length >= 2) || 'Input must be at least 2 characters'
+        v => !!v || 'Input is required'
+        // v => (v && v.length >= 2) || 'Input must be at least 2 characters'
       ],
       ageRules: [
-        v => !!v || 'Input is required',
-        v => (v && v.length >= 2) || 'Input must be at least 2 characters'
+        v => !!v || 'Input is required'
+        // v => (v && v.length >= 2) || 'Input must be at least 2 characters'
       ]
     }
   },
@@ -127,24 +139,84 @@ export default {
 </script>
 
 <style scoped>
-.form-wrapper {
-  margin-top: 10%;
+.centered-input >>> input {
+  text-align: center
+}
+h1 {
+  font-weight: bold;
+  margin: 10px 0;
+}
+.form-container h4:nth-child(4) {
+  font-weight: 400;
+}
+span {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+a {
+  color: #333;
+  font-size: 14px;
+  text-decoration: none;
+  margin: 15px 0;
+}
+.v-input {
+  border: none;
+  padding: 0 10px;
+  width: 85%;
+  margin: auto;
+}
+.v-text-field__details {
+  width: 300px;
+}
+.main-wrapper {
+  margin: auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: relative;
+  overflow: hidden;
+  width: 550px;
+  min-height: 480px;
+}
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  transition: all 0.6s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.social-container {
+  margin: 20px 0 10px 0;
+}
+.social-container a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  height: 40px;
+  width: 40px;
+}
+.sign-up-form {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 300px;
 }
 .continue-btn {
   font-size: 2rem !important;
-  margin: 0 10px;
-  padding: 0 5px 5px 5px;
+  /* margin: 0 10px;
+  padding: 0 5px 5px 5px; */
   width: 160px !important;
   height: 48px;
 }
-.v-text-field__details {
-  display: none;
-}
-.progressBar {
-  margin: 30px 10%;
+.v-progress-linear {
+  width: 80%;
+  margin: 25px 0;
 }
 </style>

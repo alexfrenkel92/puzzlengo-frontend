@@ -12,7 +12,7 @@
           <v-icon color="black">mdi-close</v-icon>
         </v-btn>
       </v-toolbar>
-      <div class="container">
+      <div class="main-wrapper">
         <div class="form-container">
           <h1>Sign in with</h1>
           <div class="social-container">
@@ -124,7 +124,8 @@ form {
   padding: 0 10px;
   width: 85%;
 }
-.container {
+.main-wrapper {
+  margin: auto;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);

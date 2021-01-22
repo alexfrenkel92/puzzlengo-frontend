@@ -12,6 +12,7 @@
       <v-form ref="form" v-model="valid" @submit.prevent>
         <v-text-field
           v-model="email"
+          class="centered-input"
           solo
           :rules="emailRules"
           required
@@ -91,6 +92,9 @@ export default {
 </script>
 
 <style scoped>
+.centered-input >>> input {
+  text-align: center
+}
 .landing-wrapper {
   display: flex;
   flex-direction: column;
