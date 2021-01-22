@@ -17,7 +17,7 @@ export default {
     }
   },
   created() {
-    this.profilingFields = this.$store.getters.getProfilingCats
+    this.profilingFields = this.$store.getters.getDemographicProfiling
     this.filteredFields = this.profilingFields.find(field => field.id === this.profileId)
   }
 }

@@ -59,18 +59,18 @@ export default {
   },
   data() {
     return {
-      valid: false,
+      valid: true,
       user: {
         loginEmail: '',
         loginPassword: ''
       },
       loginEmailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+/.test(v) || 'E-mail must be valid'
+        v => !!v || 'E-mail is required'
+        // v => /.+@.+/.test(v) || 'E-mail must be valid'
       ],
       loginPasswordRules: [
-        v => !!v || 'Password is required',
-        v => (v && v.length >= 2) || 'Password must be at least 2 characters'
+        v => !!v || 'Password is required'
+        // v => /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/.test(v) || 'Password must contain at least lowercase letter, one number, a special character and one uppercase letter'
       ]
     }
   },

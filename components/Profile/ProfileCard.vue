@@ -74,6 +74,7 @@ a {
   text-decoration: none;
 }
 h1 {
+  word-wrap: break-word;
   text-align: end;
   margin: 0 5px 10px 0;
   font-size: xx-large;

@@ -1,38 +1,66 @@
 <template>
   <div class="profile-wrapper">
-    <profile-card
-      v-for="cat in profilingCatsDemo"
-      :id="cat.id"
-      :key="cat.id"
-      :title="cat.title"
-      :total-questions="cat.totalQuestions"
-      :answered="cat.answered"
-      :img="cat.img"
-    />
+    <v-tabs v-model="tab" background-color="transparent" grow>
+      <v-tabs-slider color="#7abe8f" />
+      <v-tab> Demographic </v-tab>
+      <v-tab> Psychological </v-tab>
+    </v-tabs>
+    <v-tabs-items v-model="tab">
+      <v-tab-item>
+        <div class="profile-wrapper">
+          <profile-card
+            v-for="cat in demographicProfiling"
+            :id="cat.id"
+            :key="cat.id"
+            :title="cat.title"
+            :total-questions="cat.totalQuestions"
+            :answered="cat.answered"
+            :img="cat.img"
+          />
+        </div>
+      </v-tab-item>
+      <v-tab-item>
+        <div class="profile-wrapper">
+          <profile-card
+            v-for="cat in psychologicalProfiling"
+            :id="cat.id"
+            :key="cat.id"
+            :title="cat.title"
+            :total-questions="cat.totalQuestions"
+            :answered="cat.answered"
+            :img="cat.img"
+          />
+        </div>
+      </v-tab-item>
+    </v-tabs-items>
   </div>
 </template>
 
 <script>
-
 export default {
   data() {
     return {
-      profilingCatsDemo: []
+      demographicProfiling: [],
+      psychologicalProfiling: [],
+      tab: null
     }
   },
   created() {
-    this.profilingCatsDemo = this.$store.getters.getProfilingCats
+    this.demographicProfiling = this.$store.getters.getDemographicProfiling
+    this.psychologicalProfiling = this.$store.getters.getPsychologicalProfiling
   }
 }
 </script>
 
 <style scoped>
 .profile-wrapper {
-  padding-top: 30px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   width: 100%;
+}
+.v-tab {
+  color: black;
 }
 </style>
