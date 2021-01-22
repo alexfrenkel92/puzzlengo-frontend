@@ -171,7 +171,8 @@ const createStore = () => {
           img: 'relationship',
           type: 'psy'
         }
-      ]
+      ],
+      torolj: ''
     },
     getters: {
       isLoggedIn(state) {
