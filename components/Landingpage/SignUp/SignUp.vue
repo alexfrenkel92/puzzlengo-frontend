@@ -7,56 +7,45 @@
       hide-overlay
       transition="dialog-bottom-transition"
     >
-      <v-card color="#f7f0ec">
-        <v-toolbar dark color="#7abe8f">
-          <v-btn icon dark @click="closeModal">
-            <v-icon>mdi-close</v-icon>
-          </v-btn>
-          <v-toolbar-title>Sign Up form</v-toolbar-title>
+      <v-card color="#E0F2F1">
+        <v-toolbar dark flat color="transparent">
+          <v-toolbar-title class="black--text">Sign Up form</v-toolbar-title>
           <v-spacer />
-          <v-toolbar-items>
-            <v-btn dark text @click="closeModal"> Save </v-btn>
-          </v-toolbar-items>
+          <v-btn icon dark @click="closeModal">
+            <v-icon color="black">mdi-close</v-icon>
+          </v-btn>
         </v-toolbar>
-        <div v-if="basicUserInfo.firstName == ''" class="sigup-questions-wrapper">
-          <v-form ref="form" v-model="valid" @submit.prevent>
-            <v-text-field
-              v-model="formInput.firstName"
-              solo
-              :rules="nameRules"
-              label="First Name"
-              clearable
-            />
+        <div class="form-wrapper">
+          <v-form ref="form" v-model="valid" lazy-validation @submit.prevent>
+            <div v-if="basicUserInfo.firstName == ''">
+              <v-text-field
+                v-model="formInput.firstName"
+                solo
+                :rules="nameRules"
+                label="First Name"
+                clearable
+              />
+            </div>
+            <div v-show="basicUserInfo.firstName !== '' && basicUserInfo.lastName == ''">
+              <v-text-field
+                v-model="formInput.lastName"
+                solo
+                :rules="nameRules"
+                label="Last Name"
+                clearable
+              />
+            </div>
+            <div v-if="basicUserInfo.lastName !== ''">
+              <v-text-field
+                v-model="formInput.age"
+                solo
+                :rules="ageRules"
+                label="Age"
+                clearable
+              />
+            </div>
           </v-form>
           <AppButton class="continue-btn" btn-style="approve" @click="saveUserInfo">
-            Continue
-          </AppButton>
-        </div>
-        <div v-show="basicUserInfo.firstName !== '' && basicUserInfo.lastName == ''" class="sigup-questions-wrapper">
-          <v-form ref="form" v-model="valid" @submit.prevent>
-            <v-text-field
-              v-model="formInput.lastName"
-              solo
-              :rules="nameRules"
-              label="Last Name"
-              clearable
-            />
-          </v-form>
-          <AppButton class="continue-btn" btn-style="approve" @click="saveUserInfo">
-            Continue
-          </AppButton>
-        </div>
-        <div v-if="basicUserInfo.lastName !== ''" class="sigup-questions-wrapper">
-          <v-form ref="form" v-model="valid" @submit.prevent>
-            <v-text-field
-              v-model="formInput.age"
-              solo
-              :rules="ageRules"
-              label="Age"
-              clearable
-            />
-          </v-form>
-          <AppButton class="continue-btn" btn-style="approve" @click="saveForm">
             Continue
           </AppButton>
         </div>
@@ -115,10 +104,15 @@ export default {
       this.$refs.form.validate()
     },
     saveUserInfo() {
+      this.validate()
       this.basicUserInfo.firstName = this.formInput.firstName
       this.basicUserInfo.lastName = this.formInput.lastName
       this.basicUserInfo.age = this.formInput.age
       this.getProgress()
+      if (this.progress === 3) {
+        this.$store.dispatch('setAuth')
+        this.$router.push('/dashboard')
+      }
     },
     saveForm() {
       this.$store.dispatch('setAuth')
@@ -133,12 +127,12 @@ export default {
 </script>
 
 <style scoped>
-.sigup-questions-wrapper {
+.form-wrapper {
+  margin-top: 10%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  padding: 70px 20px;
+  align-items: center;
 }
 .continue-btn {
   font-size: 2rem !important;
@@ -151,6 +145,6 @@ export default {
   display: none;
 }
 .progressBar {
-  margin: 0 10%;
+  margin: 30px 10%;
 }
 </style>

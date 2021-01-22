@@ -194,7 +194,6 @@ export default {
     },
     closeMobileMenu() {
       this.openDrawer = !this.openDrawer
-      console.log('header')
     },
     handleAuth() {
       this.$store.dispatch('setAuth')

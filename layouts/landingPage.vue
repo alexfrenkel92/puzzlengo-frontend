@@ -3,7 +3,7 @@
     <div>
       <nuxt />
     </div>
-    <v-footer padless app color="#f7f0ec">
+    <v-footer padless app color="#E0F2F1">
       <v-col
         class="text-center"
         cols="12"
@@ -19,7 +19,6 @@
 <style>
 body {
   margin: 0;
-  background-color: rgb(243, 237, 238);
   font-family: 'Open Sans', sans-serif;
 }
 a {

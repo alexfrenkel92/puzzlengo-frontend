@@ -25,7 +25,7 @@
     </div>
     <div class="already-registered">Already registered?</div>
     <AppButton class="login-btn" btn-style="approve" @click="handleLogin">
-      Login
+      Sign In
     </AppButton>
     <div class="big-image-container">
       <img
@@ -36,6 +36,7 @@
       >
     </div>
     <SignUp :show-modal="toogleSignUpModal" @closeModal="closeModal" />
+    <Login :show-modal="toogleLoginModal" @closeModal="closeModal" />
   </div>
 </template>
 
@@ -46,6 +47,7 @@ export default {
       valid: true,
       email: '',
       toogleSignUpModal: false,
+      toogleLoginModal: false,
       emailRules: [
         v => !!v || 'E-mail is required',
         v => /.+@.+/.test(v) || 'E-mail must be valid'
@@ -65,10 +67,11 @@ export default {
   },
   methods: {
     handleLogin() {
-      this.$store.dispatch('setAuth')
-      if (this.isLoggedIn) {
-        this.$router.push('/dashboard')
-      }
+      // this.$store.dispatch('setAuth')
+      // if (this.isLoggedIn) {
+      //   this.$router.push('/dashboard')
+      // }
+      this.toogleLoginModal = !this.toogleLoginModal
     },
     handleSignUp() {
       this.validate()
@@ -80,7 +83,8 @@ export default {
       this.$refs.form.validate()
     },
     closeModal() {
-      this.toogleSignUpModal = !this.toogleSignUpModal
+      this.toogleSignUpModal = false
+      this.toogleLoginModal = false
     }
   }
 }
@@ -112,6 +116,9 @@ export default {
 /* Some stuff coming with vuetify text-field...not needed */
 .v-text-field__details {
   display: none;
+}
+.v-text-field {
+  width: 300px;
 }
 .signup-btn {
   font-size: 2rem !important;

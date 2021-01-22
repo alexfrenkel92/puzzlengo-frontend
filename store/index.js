@@ -17,7 +17,7 @@ const createStore = () => {
       activeSurveys: [
         {
           id: 1,
-          title: 'PERSONEL1',
+          title: 'PERSONAL1',
           description:
             'Lorem ipsum dolor ',
           duration: 5,
@@ -49,7 +49,7 @@ const createStore = () => {
         },
         {
           id: 3,
-          title: 'PERSONEL3',
+          title: 'PERSONAL3',
           description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla, tellus at finibus interdum, dui tortor suscipit nisi, et tempor nunc nisl nec diam and again dui tortor suscipit nisi, et tempor nunc nisl nec diam.',
           duration: 25,
