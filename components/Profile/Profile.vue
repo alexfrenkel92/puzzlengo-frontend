@@ -16,6 +16,7 @@
             :total-questions="cat.totalQuestions"
             :answered="cat.answered"
             :img="cat.img"
+            :type="cat.type"
           />
         </div>
       </v-tab-item>
@@ -29,6 +30,7 @@
             :total-questions="cat.totalQuestions"
             :answered="cat.answered"
             :img="cat.img"
+            :type="cat.type"
           />
         </div>
       </v-tab-item>

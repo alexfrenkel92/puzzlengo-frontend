@@ -172,7 +172,7 @@ const createStore = () => {
           type: 'psy'
         }
       ],
-      torolj: ''
+      profileCompletion: 13
     },
     getters: {
       isLoggedIn(state) {
@@ -186,6 +186,9 @@ const createStore = () => {
       },
       getPsychologicalProfiling(state) {
         return state.psychologicalProfiling
+      },
+      getProfileCompletion(state) {
+        return state.profileCompletion
       }
     },
     mutations: {

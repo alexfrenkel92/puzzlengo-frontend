@@ -7,6 +7,7 @@
         {{ filteredFields.totalQuestions }} completed
       </p>
     </div>
+    <h4>Category specific questions will come here</h4>
     <app-button
       type="button"
       btn-style="approve"
@@ -41,5 +42,9 @@ export default {
 .completion {
   font-size: x-large;
   color: black;
+}
+h4 {
+  margin: 30px 0;
+  background-color: aqua;
 }
 </style>

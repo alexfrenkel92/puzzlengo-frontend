@@ -50,8 +50,8 @@ export default {
       toogleSignUpModal: false,
       toogleLoginModal: false,
       emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+/.test(v) || 'E-mail must be valid'
+        // v => !!v || 'E-mail is required',
+        // v => /.+@.+/.test(v) || 'E-mail must be valid'
       ]
     }
   },

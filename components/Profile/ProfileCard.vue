@@ -1,13 +1,11 @@
 <template>
   <nuxt-link id="card-container" :to="openCard">
     <h1>{{ title }}</h1>
-    <div class="content-wrapper">
-      <div class="image">
-        <img :src="imageName" :alt="img">
-      </div>
-      <div class="completion">
-        <p>{{ answered }} / {{ totalQuestions }} completed</p>
-      </div>
+    <div class="image">
+      <img :src="imageName" :alt="img">
+    </div>
+    <div class="completion">
+      <p>{{ answered }} / {{ totalQuestions }} completed</p>
     </div>
     <footer />
   </nuxt-link>
@@ -35,6 +33,10 @@ export default {
     img: {
       type: String,
       required: true
+    },
+    type: {
+      type: String,
+      required: true
     }
   },
   computed: {
@@ -42,7 +44,7 @@ export default {
       return require('~/static/images/' + this.img + '.png')
     },
     openCard() {
-      return this.$route.path + '/' + this.id
+      return this.$route.path + '/' + this.id + '-' + this.type
     }
   }
 }
@@ -58,6 +60,9 @@ export default {
   background: #fffffb;
   position: relative;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  display: grid;
+  grid-template-columns: 100px auto;
+  grid-template-rows: 1fr 1fr;
 }
 #card-container:hover {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
@@ -74,27 +79,27 @@ a {
   text-decoration: none;
 }
 h1 {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
   word-wrap: break-word;
   text-align: end;
-  margin: 0 5px 10px 0;
+  margin: 5px 5px 10px 0;
   font-size: xx-large;
   color: black;
-}
-.content-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.image {
-  /* border: 2px solid red; */
-  position: relative;
-  bottom: 45px;
+  line-height: 35px;
 }
 img {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
   width: 100px;
   height: 100px;
 }
 .completion {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  text-align: end;
+  position: relative;
+  bottom: 15px;
   font-size: x-large;
   color: black;
 }
@@ -109,7 +114,7 @@ footer {
   bottom: 0;
   height: 30px;
   padding: 0 15px;
-  margin-left: -15px;
+  /* margin-left: -15px; */
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
