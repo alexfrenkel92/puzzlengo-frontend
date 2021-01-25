@@ -28,16 +28,29 @@
     <AppButton class="login-btn" btn-style="approve" @click="handleLogin">
       Sign In
     </AppButton>
-    <div class="big-image-container">
+    <!-- <div class="big-image-container">
       <img
         class="survey-image"
         :src="bigpic"
         alt="survey-image"
         height="400px"
       >
-    </div>
+    </div> -->
     <SignUp :show-modal="toogleSignUpModal" @closeModal="closeModal" />
     <Login :show-modal="toogleLoginModal" @closeModal="closeModal" />
+    <v-btn
+      v-show="fab"
+      v-scroll="onScroll"
+      fab
+      dark
+      fixed
+      bottom
+      right
+      color="#7abe8f"
+      @click="toTop"
+    >
+      <v-icon>keyboard_arrow_up</v-icon>
+    </v-btn>
   </div>
 </template>
 
@@ -52,7 +65,8 @@ export default {
       emailRules: [
         // v => !!v || 'E-mail is required',
         // v => /.+@.+/.test(v) || 'E-mail must be valid'
-      ]
+      ],
+      fab: false
     }
   },
   computed: {
@@ -86,6 +100,14 @@ export default {
     closeModal() {
       this.toogleSignUpModal = false
       this.toogleLoginModal = false
+    },
+    onScroll(e) {
+      if (typeof window === 'undefined') { return }
+      const top = window.pageYOffset || e.target.scrollTop || 0
+      this.fab = top > 20
+    },
+    toTop() {
+      this.$vuetify.goTo(0)
     }
   }
 }
@@ -100,8 +122,8 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 25px;
-  margin-bottom: 30px;
+  padding: 25px 25px 10px 25px;
+  /* margin-bottom: 30px; */
 }
 .title {
   font-size: 2.5rem !important;
@@ -176,5 +198,18 @@ export default {
     width: auto;
     height: auto;
   }
+}
+.v-btn {
+  width: 40px;
+  height: 40px;
+}
+.v-btn:hover {
+  transform: translateY(2px);
+  -webkit-animation: gradientBG 1.5s ease-in-out forwards;
+  animation: gradientBG 1.5s ease-in-out forwards;
+  cursor: pointer;
+}
+.v-btn:active {
+  transform: translateY(4px);
 }
 </style>

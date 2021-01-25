@@ -62,16 +62,16 @@ export default {
 
 <style scoped>
 .wrapper {
-  padding: 20px 80px;
+  padding: 20px 80px 0 80px;
 }
 @media screen and (max-width: 800px) {
   .wrapper {
-    padding: 20px 15px 20px 0;
+    padding: 20px 15px 0 0;
   }
 }
 @media screen and (max-width: 350px) {
   .wrapper {
-    padding: 20px 15px 20px 0;
+    padding: 20px 15px 0 0;
   }
 }
 </style>
