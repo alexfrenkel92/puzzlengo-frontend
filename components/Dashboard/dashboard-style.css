@@ -5,13 +5,14 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
 }
-.active-container,
-.enrolled-container {
+.enrolled-container,
+.active-container {
   width: 49%;
   float: left;
+  margin-bottom: 20px;
 }
 .dashboard-wrapper {
   width: 100%;
@@ -47,10 +48,6 @@
 
 
 /* Dashboard.vue's components styling */
-.container {
-  padding: 0 0 20px 0;
-  margin-top: 0;
-}
 .container-completed-surveys {
   padding: 0 0 20px 0;
   margin-bottom: 50px;
@@ -80,17 +77,6 @@ h3 {
   .surveys-title {
     font-size: 1.5rem;
   }
-}
-.divider {
-  position: relative;
-  margin: 20px 0 0 0;
-  height: 1px;
-  background-image: linear-gradient(
-    to right,
-    transparent,
-    rgb(51, 50, 48),
-    transparent
-  );
 }
 @media screen and (min-width: 750px) {
   .divider {

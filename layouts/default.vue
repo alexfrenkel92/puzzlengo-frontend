@@ -71,7 +71,6 @@ export default {
 }
 .v-main {
     padding-top: 100px;
-    /* background-color: red !important; */
 }
 .container {
     margin: auto;
@@ -87,6 +86,7 @@ export default {
   background-color:#FF4081;
   text-align: center;
   font-style: italic;
+  padding: 0 25px;
 }
 .progress-text a {
   margin: 0 5px;
@@ -95,7 +95,7 @@ export default {
 }
 .v-btn {
   position: absolute;
-  right: 0;
+  right: 5px;
   height: 20px;
   width: 20px;
   margin-top: 2px;

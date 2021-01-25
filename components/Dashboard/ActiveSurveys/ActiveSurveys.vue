@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <div class="active surveys-title">Active surveys to enroll</div>
     <div v-if="activeSurveysLength === 0" class="error-case">
       <h3>There are no surveys available, check back later</h3>
