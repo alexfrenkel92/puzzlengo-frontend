@@ -260,6 +260,7 @@ $flag: "/images/flag-logo.png";
       display: inline-block;
       .nav-btn,
       .v-btn {
+        text-decoration: none;
         text-transform: capitalize;
         font-size: 18px;
         font-weight: $font-medium;
