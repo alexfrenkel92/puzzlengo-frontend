@@ -1,18 +1,8 @@
 <template>
   <v-app>
-    <div>
+    <v-main>
       <nuxt />
-    </div>
-    <!-- <v-footer color="#E0F2F1">
-      <v-col
-        class="text-center"
-        cols="12"
-      >
-        <span>&copy; {{ new Date().getFullYear() }}</span>
-        <nuxt-link to="/privacy">Privacy Policy</nuxt-link>
-        <nuxt-link to="/terms">Terms of Service</nuxt-link>
-      </v-col>
-    </v-footer> -->
+    </v-main>
     <Footer />
   </v-app>
 </template>

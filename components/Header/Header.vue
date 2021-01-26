@@ -80,7 +80,7 @@
               </li>
             </ul>
           </div>
-          <nuxt-link class="balance-button" to="/profile/balance">
+          <nuxt-link class="balance-button" to="/balance">
             <p class="balance-text">240 </p>
             <img :src="coin" alt="balance-button">
           </nuxt-link>

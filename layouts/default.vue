@@ -21,11 +21,7 @@
           <nuxt />
         </v-container>
       </v-main>
-      <v-footer padless app>
-        <v-col class="text-center" cols="12">
-          <span>&copy; {{ new Date().getFullYear() }}</span>
-        </v-col>
-      </v-footer>
+      <Footer />
     </div>
   </v-app>
 </template>
@@ -74,7 +70,7 @@ export default {
 }
 .container {
     margin: auto;
-    padding: 30px 0 0 0;
+    padding: 0;
 }
 .progress-bar {
   margin-top: 5px;
@@ -92,6 +88,8 @@ export default {
   margin: 0 5px;
   font-style: normal;
   font-weight: 700;
+  text-decoration: none;
+  color: black !important;
 }
 .v-btn {
   position: absolute;

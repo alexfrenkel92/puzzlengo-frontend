@@ -20,7 +20,6 @@
         @enroll="toogleEnrollment"
       />
     </div>
-    <div class="divider div-transparent" />
   </div>
 </template>
 

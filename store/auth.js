@@ -1,7 +1,7 @@
 export default {
   state() {
     return {
-      isLoggedIn: false
+      isLoggedIn: true
     }
   },
   getters: {

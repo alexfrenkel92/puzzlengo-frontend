@@ -1,5 +1,5 @@
 <template>
-  <div class="healthContainer">
+  <div class="health-container">
     <v-card
       class="mx-auto"
       width="320"
@@ -73,10 +73,10 @@ export default {
 </script>
 
 <style scoped>
-  .healthContainer{
+  .health-container{
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    padding-top: 20px;
+    padding-top: 40px;
   }
 </style>

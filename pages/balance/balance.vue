@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="balanceContainer">
+    <!-- <div class="balanceContainer">
       <MyBalance :icon="'mdi-currency-usd-circle-outline'" :title="'My balance'" :total="total" :details="details" @getMore="getMore" />
     </div>
     <div class="divider-horizontal" />
@@ -12,19 +12,12 @@
         :title="cat.title"
         :img="cat.img"
       />
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
-import Cards from '@/components/Balance/Cards'
-import MyBalance from '@/components/Balance/MyBalance copy'
-
 export default {
-  components: {
-    Cards,
-    MyBalance
-  },
   data() {
     return {
       balanceCards: [
@@ -45,26 +38,6 @@ export default {
         },
         {
           id: 4,
-          title: 'Amazon',
-          img: 'basics'
-        },
-        {
-          id: 5,
-          title: 'Amazon',
-          img: 'basics'
-        },
-        {
-          id: 6,
-          title: 'Amazon',
-          img: 'basics'
-        },
-        {
-          id: 7,
-          title: 'Amazon',
-          img: 'basics'
-        },
-        {
-          id: 8,
           title: 'Amazon',
           img: 'basics'
         }

@@ -1,5 +1,5 @@
 <template>
-  <v-footer padless>
+  <v-footer absolute inset app>
     <div class="image">
       <img :src="logo" :alt="logo" width="80px" height="80px">
       <span>Some motto xyz</span>

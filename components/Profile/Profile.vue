@@ -2,8 +2,8 @@
   <div class="profile-wrapper">
     <v-tabs v-model="tab" background-color="transparent" grow>
       <v-tabs-slider color="#7abe8f" />
-      <v-tab> Demographic </v-tab>
-      <v-tab> Psychological </v-tab>
+      <v-tab>Demographic</v-tab>
+      <v-tab>Psychological</v-tab>
     </v-tabs>
     <v-tabs-items v-model="tab">
       <v-tab-item>
@@ -64,5 +64,9 @@ export default {
 }
 .v-tab {
   color: black;
+  font-weight: 600;
+}
+.v-tab--active {
+  color: black !important;
 }
 </style>
