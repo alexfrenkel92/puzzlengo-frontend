@@ -1,16 +1,12 @@
 <template>
   <div>
-    <profile-edit :filtered-fields="filteredFields" :profile-id="profileId" :profile-type="profileType" />
+    <ProfileEdit :filtered-fields="filteredFields" :profile-id="profileId" :profile-type="profileType" />
   </div>
 </template>
 
 <script>
-import ProfileEdit from '@/components/Profile/ProfileEdit'
 
 export default {
-  components: {
-    ProfileEdit
-  },
   data() {
     return {
       profileId: parseInt(this.$route.params.profileId.slice(0, 1)),

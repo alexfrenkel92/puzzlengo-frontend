@@ -1,7 +1,7 @@
 <template>
   <div class="card-container">
     <div class="card-title">{{ brandName }}</div>
-    <nuxt-link class="card" to="/">
+    <nuxt-link class="card" :to="openCard">
       <img :src="imgUrl" :alt="brandName + ' logo'">
     </nuxt-link>
   </div>
@@ -45,13 +45,12 @@ export default {
     }
   },
   computed: {
-    opencard() {
+    openCard() {
       return this.$route.path + '/' + this.brandKey
     }
   },
   created() {
     this.imgUrl = this.image['1200w-326ppi']
-    console.log(this.brandKey)
   }
 }
 </script>

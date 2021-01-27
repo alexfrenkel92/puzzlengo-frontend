@@ -7,10 +7,10 @@
     </v-tabs>
     <v-tabs-items v-model="tab">
       <v-tab-item>
-        <div class="title">Decide how you want to spend your earned credits. Click to learn more</div>
+        <div class="title">Chose your reward below.</div>
         <div class="tango-cards-wrapper">
           <TangoCard
-            v-for="brand in loadedTangoCards.slice(0, 20)"
+            v-for="brand in loadedTangoCards.slice(0, 30)"
             :key="brand.brandKey"
             :brand-key="brand.brandKey"
             :brand-name="brand.brandName"
@@ -20,6 +20,7 @@
             :items="brand.items"
             :terms="brand.terms"
           />
+          <!-- <v-btn @click="log">log stuff</v-btn> -->
         </div>
       </v-tab-item>
       <v-tab-item>
@@ -39,6 +40,11 @@ export default {
   },
   created() {
     this.loadedTangoCards = this.$store.getters.getTangoCards.brands
+  },
+  methods: {
+    // log() {
+    //   console.log(this.loadedTangoCards)
+    // }
   }
 }
 </script>
