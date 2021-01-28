@@ -34,7 +34,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #card-container {
   height: 175px;
   width: 350px;

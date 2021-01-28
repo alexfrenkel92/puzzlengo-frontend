@@ -41,5 +41,5 @@ export default {
 </script>
 
 <style lang="css" scoped>
-@import '../dashboard-style.css'
+@import '../dashboard-style.css';
 </style>

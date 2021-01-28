@@ -18,24 +18,8 @@ export default {
       type: String,
       required: true
     },
-    description: {
-      type: String,
-      required: true
-    },
-    disclaimer: {
-      type: String,
-      required: true
-    },
     image: {
       type: Object,
-      required: true
-    },
-    items: {
-      type: Array,
-      required: true
-    },
-    terms: {
-      type: String,
       required: true
     }
   },

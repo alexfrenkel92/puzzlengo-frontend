@@ -1,14 +1,6 @@
 <template>
   <div id="tango-card-details-container">
-    <TangoCardDetails :brand="brand" />
-    <app-button
-      type="button"
-      btn-style="approve"
-      style="height: 50px; width: 150px"
-      @click="$router.go(-1)"
-    >
-      Back to Cards
-    </app-button>
+    <GiftCardDetails :brand="brand" />
   </div>
 </template>
 
@@ -27,7 +19,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #tango-card-details-container {
   padding-top: 30px;
   display: flex;

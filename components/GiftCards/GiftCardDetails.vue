@@ -1,10 +1,10 @@
 <template>
   <div class="card-details-wrapper">
-    <div class="image">
+    <div class="image-container">
       <img :src="imgUrl" :alt="brand.brandName + ' logo'">
       <p class="item-value">{{ rewardName }}</p>
     </div>
-    <div class="details">
+    <div class="details-container">
       <p class="brand-name">{{ brand.brandName }} eGift Card</p>
       <div class="divider-horizontal" />
       <div class="form-container">
@@ -23,7 +23,8 @@
               </div>
             </div>
             <div v-else class="form-control">
-              <input v-model.trim="amount" type="text" :placeholder="minMaxValues">
+              <input v-model.trim="amount" type="text" :placeholder="minMaxValues" class="usd-input-field">
+              <p class="usd-sign">$</p>
             </div>
           </div>
           <div class="form-control">
@@ -39,17 +40,34 @@
             <input id="lastName" v-model.trim="lastName.val" type="text">
           </div>
         </form>
-        <app-button
-          type="button"
-          btn-style="approve"
-          style="height: 50px; width: 100px"
-          @click="sendOrder"
-        >
-          Buy
-        </app-button>
-        <!-- <v-btn @click="log">log stuff</v-btn> -->
+        <div class="buttons-wrapper">
+          <app-button
+            type="button"
+            btn-style="approve"
+            @click="sendOrder"
+          >
+            Buy
+          </app-button>
+          <app-button
+            type="button"
+            btn-style="approve"
+            @click="$router.go(-1)"
+          >
+            Back to Cards
+          </app-button>
+        </div>
+        <v-btn @click="log">log stuff</v-btn>
       </div>
     </div>
+    <div class="brand-details-container">
+      <p class="details-title">Description:</p>
+      <!-- eslint-disable-next-line vue/no-v-html -->
+      <div class="details-content" v-html="brand.description" />
+      <p class="details-title">Disclaimer:</p>
+      <!-- eslint-disable-next-line vue/no-v-html -->
+      <div class="details-content" v-html="brand.disclaimer" />
+    </div>
+    <PurchaseConfirmModal :show-modal="tooglePurchaseConfirmModal" @closeModal="closeModal" />
   </div>
 </template>
 
@@ -84,7 +102,8 @@ export default {
       },
       formIsValid: true,
       itemRewardName: '',
-      faceValueExist: null
+      faceValueExist: null,
+      tooglePurchaseConfirmModal: false
     }
   },
   computed: {
@@ -116,24 +135,41 @@ export default {
       const formData = {
         accountIdentifier: 'aaron',
         amount: this.amount,
+        campaign: 'string',
         customerIdentifier: 'aaron',
+        emailSubject: 'string',
+        etid: 'E000000',
+        externalRefID: 'string',
+        message: 'string',
+        notes: 'string',
         recipient: {
           email: 'aaron.zide@tangocard.com',
           firstName: 'Arthur',
           lastName: 'Dent'
         },
+        sendEmail: true,
+        sender: {
+          email: '',
+          firstName: '',
+          lastName: ''
+        },
         utid: this.utid
       }
-      console.log(formData)
+      this.$store.dispatch('postOrders', formData)
+      this.tooglePurchaseConfirmModal = !this.tooglePurchaseConfirmModal
+      // console.log(formData)
+    },
+    closeModal() {
+      this.tooglePurchaseConfirmModal = false
     },
     log() {
-      console.log(this.brand.items)
+      console.log(this.brand)
     }
   }
 }
 </script>
 
-<style scoped>
+<style lang="css" scoped>
 .form-container {
   display: flex;
   flex-direction: column;
@@ -142,31 +178,34 @@ export default {
 }
 .button {
   margin: 10px;
+  height: 50px;
+  width: 120px;
 }
 .card-details-wrapper {
   width: 100%;
   padding-top: 20px;
   display: grid;
   grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr auto;
 }
-.image {
+.image-container {
   grid-column: 1 / 2;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 350px;
+  height: fit-content;
 }
 img {
   width: 350px;
 }
-.details {
+.details-container {
   grid-column: 2 / 3;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 350px;
+  height: fit-content;
 }
 p {
   margin: 0;
@@ -196,23 +235,27 @@ form {
 .form-control {
   display: flex;
   flex-direction: row;
-  /* width: 100%; */
 }
 .face-values {
-  width: 90%;
+  width: fit-content;
 }
 label, .amount {
-  width: 130px;
+  width: 100px;
   font-weight: bold;
   /* display: block; */
   margin: 10px 0 10px 0;
 }
-.amount {
-  width: 102px;
+.usd-sign {
+  font-weight: bold;
+  margin: 10px 0 10px 5px;
+}
+.usd-input-field {
+  width: 130px;
+  float: left;
 }
 input {
   /* display: block; */
-  width: 90%;
+  width: 200px;
   border: 1px solid #ccc;
   font: inherit;
   margin: 10px 0 10px 0;
@@ -232,7 +275,7 @@ input:focus {
   height: 30px;
   background-color: rgb(228, 222, 222);
   border: 1px solid slategrey;
-  margin: 10px 5px;
+  margin: 10px 10px 10px 0;
 }
 .btn-amount:hover {
   background-color: rgb(196, 192, 192);
@@ -243,5 +286,20 @@ input:focus {
 }
 .active {
   background-color: rgb(196, 192, 192);
+}
+
+/* DESCRIPTION PART */
+.brand-details-container {
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+  margin: 20px 10px 10px 10px;
+}
+.details-title {
+  font-weight: bold
+}
+.description-content >>> p >>> a {
+  text-decoration: none !important;
+  color: black !important;
+  border: 1px solid red;
 }
 </style>

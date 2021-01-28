@@ -46,7 +46,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .action-btn{
     padding: 5px;
     width: 130px !important;
