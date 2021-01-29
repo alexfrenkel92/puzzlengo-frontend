@@ -18,67 +18,33 @@
       app
     >
       <v-container fluid class="header-content" :class="{ 'fixed-width': mdUp }">
-        <nav
-          :class="{ invert: invert }"
-          class="nav-menu"
-        >
+        <nav :class="{ invert: invert }">
           <div class="nav-logo">
             <div class="logo">
-              <scrollactive
-                class="scollactive-logo logo"
-              >
-                <nuxt-link :to="brand.dex.url" class="anchor-link scrollactive-item">
-                  <img
-                    :src="logo"
-                    alt="logo"
-                  >
-                  <!-- header-style.scss 188-as sor palette-text-primary-t irja felul...az szurke szint ad neki, de hunnét -->
-                  <span class="logo-title">{{ brand.dex.name }}</span>
-                </nuxt-link>
-              </scrollactive>
-            </div>
-
-          </div>
-          <div>
-            <!-- :class="$route.path === item.url ? 'active anchor-link scrollactive-item':'anchor-link scrollactive-item'" -->
-            <ul class="scrollactive-nav">
-              <li v-for="(item, index) in showMenus" :key="index">
-                <nuxt-link
-                  v-if="!invert"
-                  class="nav-btn"
-                  text
-                  :to="item.url"
+              <nuxt-link :to="brand.dex.url">
+                <img
+                  :src="logo"
+                  alt="logo"
                 >
-                  {{ item.title }}
-                </nuxt-link>
-              </li>
-            </ul>
+                <!-- header-style.scss 188-as sor palette-text-primary-t irja felul...az szurke szint ad neki, de hunnét -->
+                <span class="logo-title">{{ brand.dex.name }}</span>
+              </nuxt-link>
+            </div>
+          </div>
+          <div v-for="(item, index) in showMenus" :key="index">
+            <nuxt-link
+              v-if="!invert"
+              class="nav-btn"
+              text
+              :to="item.url"
+            >
+              {{ item.title }}
+            </nuxt-link>
           </div>
         </nav>
-
-        <nav
-          :class="{ invert: invert }"
-          class="nav-menu"
-        >
+        <nav :class="{ invert: invert }">
           <div v-if="isDesktop">
-            <ul class="scrollactive-nav">
-              <!-- <li v-for="(item, index) in showMenus" :key="index">
-                  <v-btn
-                    v-if="!invert"
-                    :class="$route.path === item.url ? 'active anchor-link scrollactive-item':'anchor-link scrollactive-item'"
-                    text
-                    @click="$router.push({path:item.url})"
-                  >
-                    {{ item.title }}
-                    {{ $t('menu.header_'+item.title) }}
-                  </v-btn>
-                </li> -->
-              <li>
-                <v-btn v-show="!isLoggedIn" @click="signUp">Sign Up</v-btn>
-                <v-btn v-if="!isLoggedIn" @click="handleAuth">Login</v-btn>
-                <!-- <v-btn v-else @click="handleAuth">Logout</v-btn> -->
-              </li>
-            </ul>
+            <button v-if="!isLoggedIn" @click="handleAuth">Login</button>
           </div>
           <nuxt-link class="balance-button" to="/giftcards">
             <p class="balance-text">240 </p>
@@ -112,19 +78,7 @@ import navMenu from './menu'
 import Settings from './Settings'
 import MobileMenu from './MobileMenu'
 import logo from '~/static/images/de_emblema_RGB.png'
-// import link from '~/static/text/link'
 import brand from '~/static/text/brand'
-
-// let counter = 0
-// function createData(name, url, offset) {
-//   counter += 1
-//   return {
-//     id: counter,
-//     name,
-//     url,
-//     offset
-//   }
-// }
 
 export default {
   components: {
@@ -144,13 +98,6 @@ export default {
       fixed: false,
       openDrawer: false,
       navOffset: 20
-      // menuList: [
-      //   createData(navMenu[0], '/'),
-      //   createData(navMenu[1], '/' + navMenu[1]),
-      //   createData(navMenu[2], navMenu[2]),
-      //   createData(navMenu[2], navMenu[2]),
-      //   createData(navMenu[3], navMenu[3], -40)
-      // ],
     }
   },
   computed: {
@@ -227,12 +174,6 @@ export default {
   padding: 2px 5px 0 ;
   margin: 0;
 }
-/* @media screen and (max-width: 500px) {
-  .balance-button {
-    display: none;
-  }
-} */
-
 img {
   width: 20px;
   height: 20px;

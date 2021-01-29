@@ -30,8 +30,8 @@
       <v-list dense tag="nav" class="auth-section">
         <v-list-item :style="{ animationDuration: 1 * 0.15 + 's' }">
           <v-list-item-content v-if="!isLoggedIn">
-            <v-list-item-title class="menu-list" @click="signUp">Sign Up</v-list-item-title>
-            <v-list-item-title class="menu-list" @click="handleAuth">Login</v-list-item-title>
+            <v-list-item-title class="auth-btns" @click="signUp">Sign Up</v-list-item-title>
+            <v-list-item-title class="auth-btns" @click="handleAuth">Login</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -47,7 +47,6 @@
 import Settings from './Settings'
 import navMenu from '~/components/Header/menu'
 import logo from '~/static/images/de_emblema_RGB.png'
-// import link from '~/static/text/link'
 
 export default {
   components: {

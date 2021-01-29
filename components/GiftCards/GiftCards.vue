@@ -10,7 +10,7 @@
         <div class="title">Chose your reward below.</div>
         <div class="tango-cards-wrapper">
           <GiftCard
-            v-for="brand in loadedTangoCards.slice(0, 30)"
+            v-for="brand in giftCards.slice(0, 30)"
             :key="brand.brandKey"
             :brand-key="brand.brandKey"
             :brand-name="brand.brandName"
@@ -19,9 +19,18 @@
         </div>
       </v-tab-item>
       <v-tab-item>
-        Charity stuff here
+        <div class="tango-cards-wrapper">
+          <GiftCard
+            v-for="brand in donationCards.slice(0, 30)"
+            :key="brand.brandKey"
+            :brand-key="brand.brandKey"
+            :brand-name="brand.brandName"
+            :image="brand.imageUrls"
+          />
+        </div>
       </v-tab-item>
     </v-tabs-items>
+    <!-- <v-btn @click="log">log stuff</v-btn> -->
   </div>
 </template>
 
@@ -30,11 +39,19 @@ export default {
   data() {
     return {
       loadedTangoCards: [],
+      giftCards: [],
+      donationCards: [],
       tab: null
     }
   },
   created() {
     this.loadedTangoCards = this.$store.getters.getTangoCards.brands
+    this.giftCards = this.loadedTangoCards.filter(card => card.items[0].rewardType === 'gift card')
+    this.donationCards = this.loadedTangoCards.filter(card => card.items[0].rewardType === 'donation')
+  },
+  methods: {
+    log() {
+    }
   }
 }
 </script>

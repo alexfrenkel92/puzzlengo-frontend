@@ -48,10 +48,15 @@ export default {
   align-items: center;
 }
 .card-title {
+  width: 390px;
+  height: 58px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
   font-size: 1.2rem;
   padding: 0;
-  margin: 10px 0 0 0;
+  margin: 0;
 }
 img {
   width: 350px;

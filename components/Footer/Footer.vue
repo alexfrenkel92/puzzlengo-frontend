@@ -61,6 +61,11 @@ a {
   text-decoration: none;
   color: black !important;
 }
+a:focus, a:active {
+  text-decoration: none !important;
+  outline: none !important;
+  border: none !important;
+}
 .image,
 .column1,
 .column2 {

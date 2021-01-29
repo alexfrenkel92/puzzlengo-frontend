@@ -3,468 +3,408 @@
 $flag: "/images/flag-logo.png";
 
 @mixin flag-icon {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  display: inline-block;
-  position: relative;
-  @include margin-right(5px);
-  top: 1px;
-  background: url($flag) no-repeat transparent;
-  background-size: 16px auto;
-  &.ar {
-    background-position: 0 3px;
-  }
-  &.zh {
-    background-position: 0 -12px;
-  }
-  &.en {
-    background-position: 0 -28px;
-  }
-  &.de {
-    background-position: 0 -44px;
-  }
-  &.id {
-    background-position: 0 -62px;
-  }
-  &.pt {
-    background-position: 0 -79px;
-  }
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    @include margin-right(5px);
+    top: 1px;
+    background: url($flag) no-repeat transparent;
+    background-size: 16px auto;
+    &.ar {
+        background-position: 0 3px;
+    }
+    &.zh {
+        background-position: 0 -12px;
+    }
+    &.en {
+        background-position: 0 -28px;
+    }
+    &.de {
+        background-position: 0 -44px;
+    }
+    &.id {
+        background-position: 0 -62px;
+    }
+    &.pt {
+        background-position: 0 -79px;
+    }
 }
 
 .scollactive-logo {
-  padding: 0 !important;
+    padding: 0 !important;
 }
 
 .logo-title {
-  color: black;
+    color: black;
+    font-size: 1.5rem;
+    padding-bottom: 2px;
 }
 
 @media screen and (max-width: 320px) {
-  .logo-title {
-    font-size: 15px;
-  }
+    .logo-title {
+        font-size: 15px;
+    }
 }
 
-.popover {
-  @include palette-background-paper;
-  width: 200px;
-  .v-list {
-    border-radius: 0;
-  }
-}
-
-.switch-toggle {
-  margin: spacing(0, 2);
-  ::v-deep .v-input--switch__thumb {
-    color: var(--v-secondary-base);
-  }
-}
-
-.flex-menu {
-  display: flex;
-  margin-top: $spacing1;
-  label {
-    padding-top: 8px;
-  }
-  ::v-deep .v-messages {
-    display: none;
-  }
-}
-
-@keyframes slideRight {
-  from {
-    opacity: 0;
-    transform: translateX(-100px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
 .header {
-  // height: fit-content !important;
-  padding: 5px !important;
+    padding: 5px !important;
 }
 .header.v-app-bar.v-toolbar.v-sheet {
-  // border-bottom: 2px solid#E7CF6E;
-  background-color: #ffffff;
-  @include palette-text-primary;
-  z-index: 11;
-  box-shadow: none;
-  transition: all 0.3s ease;
-  position: fixed;
-  padding: spacing(1, 0);
-  @include breakpoints-down(md) {
-    z-index: 90;
-  }
-  .container {
-    #main-wrap & {
-      @include breakpoints-down(sm) {
-        padding: 0;
-      }
-    }
-  }
-  nav {
-    transition: all 0.5s ease-out;
-  }
-  &.fixed {
+    background-color: #ffffff;
+    @include palette-text-primary;
+    z-index: 11;
+    box-shadow: none;
+    transition: all 0.3s ease;
     position: fixed;
-    top: 0;
-    height: auto !important;
-    padding: 4px 0;
-    @include shadow5;
-    @include palette-background-paper;
-    .logo {
-      a {
-        @include palette-text-primary;
-      }
-      img {
-        height: 32px;
-        width: 32px;
-      }
+    padding: spacing(1, 0);
+    @include breakpoints-down(md) {
+        z-index: 90;
     }
-    .bar {
-      @include breakpoints-down(sm) {
-        @include palette-background-text-secondary;
-        &:after,
-        &:before {
-          @include palette-background-text-secondary;
+    .container {
+        #main-wrap & {
+            @include breakpoints-down(sm) {
+                padding: 0;
+            }
         }
-      }
     }
     nav {
-      padding: spacing(1.5, 0);
+        transition: all 0.5s ease-out;
     }
-    .icon {
-      @include palette-text-secondary;
-    }
-  }
-  .invert {
-    .bar {
-      @include breakpoints-down(sm) {
-        @include palette-background-text-secondary;
-        &:after,
-        &:before {
-          @include palette-background-text-secondary;
+    &.fixed {
+        position: fixed;
+        top: 0;
+        height: auto !important;
+        padding: 4px 0;
+        @include shadow5;
+        @include palette-background-paper;
+        .logo {
+            a {
+                @include palette-text-primary;
+            }
+            img {
+                height: 32px;
+                width: 32px;
+            }
         }
-      }
+        .bar {
+            @include breakpoints-down(sm) {
+                @include palette-background-text-secondary;
+                &:after,
+                &:before {
+                    @include palette-background-text-secondary;
+                }
+            }
+        }
+        nav {
+            padding: spacing(1.5, 0);
+        }
+        .icon {
+            @include palette-text-secondary;
+        }
     }
-  }
-  &.open-drawer {
-    box-shadow: none !important;
-    .logo {
-      a {
-        @include palette-text-primary;
-      }
+    .invert {
+        .bar {
+            @include breakpoints-down(sm) {
+                @include palette-background-text-secondary;
+                &:after,
+                &:before {
+                    @include palette-background-text-secondary;
+                }
+            }
+        }
     }
-  }
+    &.open-drawer {
+        box-shadow: none !important;
+        .logo {
+            a {
+                @include palette-text-primary;
+            }
+        }
+    }
 }
 
 .v-toolbar__content,
 .v-toolbar__extension {
-  padding: 0;
+    padding: 0;
 }
 
 .header-content {
-  //height: fit-content !important;
-  height: 100% !important;
-  padding: 0 !important;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  & nav {
-    align-items: center;
-    padding: $spacing2;
+    //height: fit-content !important;
+    height: 100% !important;
+    padding: 0 !important;
     display: flex;
-    @include breakpoints-down(md) {
-      padding: spacing(2, 0);
+    align-items: center;
+    justify-content: space-between;
+    & nav {
+        align-items: center;
+        padding: $spacing2;
+        display: flex;
+        @include breakpoints-down(md) {
+            padding: spacing(2, 0);
+        }
     }
-  }
 }
 
 .v-application .v-application--wrap .logo {
-  a {
-    @include breakpoints-down("sm") {
-      //color: $palette-common-white;
+    a {
+        @include breakpoints-down("sm") {
+            //color: $palette-common-white;
+        }
     }
-  }
 }
 
 .logo {
-  a {
-    text-decoration: none;
-    display: flex;
-    font-size: 22px;
-    align-items: center;
-    font-weight: $font-medium;
-    @include breakpoints-up("md") {
-      // @include palette-text-primary;
+    a {
+        text-decoration: none;
+        display: flex;
+        font-size: 22px;
+        align-items: center;
+        font-weight: $font-medium;
+        @include breakpoints-up("md") {
+            // @include palette-text-primary;
+        }
     }
-  }
-  img {
-    transition: all 0.3s ease;
-    max-width: 48px;
-    height: 48px;
-    width: 48px;
-    @include margin-right($spacing1);
-  }
+    img {
+        transition: all 0.3s ease;
+        max-width: 48px;
+        height: 48px;
+        width: 48px;
+        @include margin-right($spacing1);
+    }
 }
 
 .nav-logo {
-  display: flex;
-  // background-color: pink;
-  &.invert .logo a {
-    @include palette-text-primary;
-  }
-  &.mobile-menu {
-    bar {
-      @include breakpoints-down(sm) {
-        @include palette-background-text-secondary;
-        &:after,
-        &:before {
-          @include palette-background-text-secondary;
-        }
-      }
+    display: flex;
+    // background-color: pink;
+    &.invert .logo a {
+        @include palette-text-primary;
     }
-  }
+    &.mobile-menu {
+        bar {
+            @include breakpoints-down(sm) {
+                @include palette-background-text-secondary;
+                &:after,
+                &:before {
+                    @include palette-background-text-secondary;
+                }
+            }
+        }
+    }
+}
+button {
+    color: black !important;
+    margin: 10px 20px;
+    text-decoration: none;
+    font-size: 1.2rem !important;
+    display: inline-block;
+}
+button:hover, button:active {
+    text-decoration: none;
+    outline: none
+}
+.nav-btn {
+    color: black !important;
+    margin: 10px 20px;
+    text-decoration: none;
+    font-size: 1.2rem !important;
+    display: inline-block;
+}
+.nav-btn::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 5px;
+    border-radius: 5px;
+    background: #7abe8f;
+    transition: width 0.3s;
+}
+.nav-btn:hover::after {
+    width: 100%;
+}
+.active-class-link {
+    color: red !important;
+    border: 2px solid red;
+}
+.nuxt-link-exact-active::after {
+    border: 2px solid #7abe8f;
+    width: 100%;
 }
 
-.nav-menu {
-  //padding: 0 16px !important;
-  // background-color: rgb(199, 143, 143);
-  > * {
-    margin: 0;
-    @include breakpoints-up(lg) {
-      margin: spacing(0, 1);
-    }
-  }
-  &.invert {
-    ul li a {
-      transition: all 0.3s ease-out;
-      @include palette-text-primary;
-    }
-    .icon.v-icon {
-      @include palette-text-secondary;
-    }
-  }
-  .scrollactive-nav {
-    list-style: none;
-    @include padding-left($spacing1);
-    li {
-      @include breakpoints-up(lg) {
-        margin: spacing(0, 2);
-      }
-      list-style: none;
-      position: relative;
-      display: inline-block;
-      .nav-btn,
-      .v-btn {
-        text-decoration: none;
-        text-transform: capitalize;
-        font-size: 18px;
-        font-weight: $font-medium;
-        background: none !important;
-        box-shadow: none;
-        position: relative;
-        padding: 6px;
-        margin: spacing(0, 1);
-        margin-top: $spacing1 / 2;
-        min-width: 0;
-        @include palette-text-primary;
-        &:after {
-          content: "";
-          height: 5px;
-          border-radius: 5px;
-          background: #7abe8f;
-          // @include use-theme(
-          //   background,
-          //   $palette-primary-main,
-          //   $palette-primary-light
-          // );
-          width: 0%;
-          position: absolute;
-          bottom: 0;
-          @include left(50%);
-          transition: all 0.2s cubic-bezier(0.42, 0.16, 0.21, 0.93);
-        }
-        &:hover {
-          transition: all 0.3s ease-out;
-          background: none;
-          &:before {
-            opacity: 0;
-          }
-          &:after {
-            width: 100%;
-            @include left(1px);
-            // @include use-theme(
-            //   border-bottom-color,
-            //   $palette-primary-main,
-            //   $palette-primary-light
-            // );
-          }
-        }
-        &.active {
-          @include use-theme(
-            color,
-            $palette-primary-dark,
-            $palette-primary-light
-          );
-          &:after {
-            // @include use-theme(
-            //   border-bottom-color,
-            //   $palette-primary-dark,
-            //   $palette-primary-light
-            // );
-            width: 100%;
-            @include left(1px);
-          }
-        }
-      }
-    }
-  }
+.nav-btn .nuxt-link-exact-active .nuxt-link-active {
+    border: 1px solid red !important;
 }
 
 .lang-menu {
-  text-transform: capitalize;
-  .flag {
-    margin: 0;
-    & i {
-      @include flag-icon;
+    text-transform: capitalize;
+    .flag {
+        margin: 0;
+        & i {
+            @include flag-icon;
+        }
     }
-  }
-  .lang-list {
-    padding: 0;
-    .lang-opt {
-      font-size: 0.875rem;
-      @include margin-left($spacing2);
+    .lang-list {
+        padding: 0;
+        .lang-opt {
+            font-size: 0.875rem;
+            @include margin-left($spacing2);
+        }
     }
-  }
-}
-
-.mode-menu {
-  text-transform: capitalize;
-}
-
-.user-menu {
-  & > button {
-    margin: 0 $spacing1;
-  }
 }
 
 .vertical-divider {
-  margin: 0 $spacing1;
-  border-left: 1px solid;
-  @include palette-divider;
-  min-height: $spacing3;
-  transition: all 0.5s ease-out;
+    margin: 0 $spacing1;
+    border-left: 1px solid;
+    @include palette-divider;
+    min-height: $spacing3;
+    transition: all 0.5s ease-out;
 }
 
 .setting {
-  .icon.v-icon {
-    font-size: 32px;
-    transition: all 0.3s ease;
-    @include breakpoints-down(sm) {
-      color: $palette-common-white;
+    .icon.v-icon {
+        font-size: 32px;
+        transition: all 0.3s ease;
+        @include breakpoints-down(sm) {
+            color: $palette-common-white;
+        }
     }
-  }
-  padding: 5px 17px;
-  .active {
-    transform: rotate(30deg);
-  }
+    padding: 5px 25px;
+    .active {
+        transform: rotate(30deg);
+    }
 }
 
 .title-menu {
-  text-transform: capitalize;
+    text-transform: capitalize;
 }
 
 .mobile-menu-list {
-  padding: 0;
-}
-
-.v-list-item {
-  padding: 0;
+    padding: 0;
 }
 
 .v-list-item--link:hover {
-  background: #7abe8f;
+    background: #7abe8f !important;
 }
 
 // Theme switcher
 .switcher-wrapper {
-  padding-left: 16px;
-}
-
-.v-list-item__content {
-  padding: 0;
+    padding-left: 16px;
 }
 
 paper-nav {
-  width: 100%;
-  @media (min-width: 680px) {
-    width: 300px;
-  }
+    width: 100%;
+    @media (min-width: 680px) {
+        width: 300px;
+    }
 }
 
 .mobile-menu {
-  margin: spacing(0, 1);
-  .bar {
-    background-color: $palette-common-white;
-    &:after,
-    &:before {
-      background-color: $palette-common-white;
-    }
-    &.hamburger-inner,
-    &:after,
-    &:before {
-      background-color: $palette-common-white;
-    }
-  }
-  &.is-active {
+    margin: spacing(0, 1);
     .bar {
-      @include palette-background-text-secondary;
-      &:after,
-      &:before {
-        @include palette-background-text-secondary;
-      }
-      &.hamburger-inner,
-      &:after,
-      &:before {
-        @include palette-background-text-secondary;
-      }
+        background-color: $palette-common-white;
+        &:after,
+        &:before {
+            background-color: $palette-common-white;
+        }
+        &.hamburger-inner,
+        &:after,
+        &:before {
+            background-color: $palette-common-white;
+        }
     }
-  }
+    &.is-active {
+        .bar {
+            @include palette-background-text-secondary;
+            &:after,
+            &:before {
+                @include palette-background-text-secondary;
+            }
+            &.hamburger-inner,
+            &:after,
+            &:before {
+                @include palette-background-text-secondary;
+            }
+        }
+    }
 }
 
 .mobile-nav {
-  @include palette-background-paper;
-  z-index: 90;
-  min-width: 300px;
-  @include breakpoints-down(xs) {
-    width: 100% !important;
-  }
-  .menu {
-    padding: spacing(0, 2);
-    overflow: auto;
-    top: spacing(15);
-    width: 100%;
-    position: absolute;
-    height: calc(100% - 80px);
-    .menu-list {
-      text-transform: capitalize;
-      font-size: 24px;
-      // margin-top: 4px;
-      // margin-bottom: 4px;
-      font-weight: $font-regular;
-      // padding: spacing(1, 0);
-      padding: 8px 15px;
+    @include palette-background-paper;
+    z-index: 90;
+    min-width: 300px;
+    @include breakpoints-down(xs) {
+        width: 100% !important;
     }
-    &.menu-open {
-      padding: 0;
-      a {
-        animation-name: slideRight;
-        animation-timing-function: ease;
-      }
+    .menu {
+        padding: spacing(0, 2);
+        overflow: auto;
+        top: spacing(15);
+        width: 100%;
+        position: absolute;
+        height: calc(100% - 80px);
+        .menu-list {
+            text-transform: capitalize;
+            text-decoration: none;
+            color: black;
+            font-size: 24px;
+            font-weight: $font-regular;
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+        // .menu-list:hover, .menu-list:active {
+        //   background: #7abe8f !important;
+        // }
+        .auth-btns {
+            text-transform: capitalize;
+            font-size: 24px;
+            font-weight: $font-regular;
+            padding: 15px 15px;
+            cursor: pointer;
+        }
+        &.menu-open {
+            padding: 0;
+            a {
+                animation-name: slideRight;
+                animation-timing-function: ease;
+            }
+        }
     }
-  }
+}
+
+.switch-toggle {
+    margin: spacing(0, 2);
+    ::v-deep .v-input--switch__thumb {
+        color: var(--v-secondary-base);
+    }
+}
+
+.flex-menu {
+    display: flex;
+    margin-top: $spacing1;
+    label {
+        padding-top: 8px;
+    }
+    ::v-deep .v-messages {
+        display: none;
+    }
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.popover {
+    @include palette-background-paper;
+    width: 200px;
+    .v-list {
+        border-radius: 0;
+    }
 }

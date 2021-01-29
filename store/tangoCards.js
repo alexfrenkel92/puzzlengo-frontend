@@ -5,7 +5,8 @@ export default {
   state() {
     return {
       loadedTangoCards: [],
-      orderResponseData: null
+      orderResponseData: '',
+      orderIsLoading: false
     }
   },
   getters: {
@@ -13,7 +14,10 @@ export default {
       return state.loadedTangoCards
     },
     getOrderResponseData(state) {
-      return state.postedOrder
+      return state.orderResponseData
+    },
+    getOrderIsLoading(state) {
+      return state.orderIsLoading
     }
   },
   actions: {
@@ -30,6 +34,7 @@ export default {
         .catch(error => context.error(error))
     },
     postOrders(vuexContext, order) {
+      vuexContext.commit('setOrderIsLoading')
       return this.$axios
         .$post('http://localhost:8080/api/postorder', order)
       // .$post(url + 'orders', order, {
@@ -38,18 +43,21 @@ export default {
       //   }
       // })
         .then((data) => {
-          vuexContext.commit('setOrderResponseData', data)
           console.log(order)
-          console.log('RESPONSE DATA BELOW')
+          console.log('STORE DATA BELOW')
           if (data.status === 'COMPLETE') {
-            console.log(data)
             console.log('successss')
-          } else if (data.name === 'Error') {
             console.log(data)
-            console.log('faiiiiiiil')
+            vuexContext.commit('setOrderResponseData', data)
           }
+          if (data.name === 'Error') {
+            console.log('faiiiiiiil')
+            console.log(data)
+            vuexContext.commit('setOrderResponseData', data)
+          }
+          vuexContext.commit('setOrderIsLoading')
         })
-        .catch(error => console.log(error))
+        .catch(error => vuexContext.commit('setError', error))
     }
   },
   mutations: {
@@ -57,7 +65,10 @@ export default {
       state.loadedTangoCards = payload
     },
     setOrderResponseData(state, payload) {
-      state.postedOrder = payload
+      state.orderResponseData = payload
+    },
+    setOrderIsLoading(state) {
+      state.orderIsLoading = !state.orderIsLoading
     }
   }
 }

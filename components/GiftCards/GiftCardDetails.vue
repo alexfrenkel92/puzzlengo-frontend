@@ -56,7 +56,6 @@
             Back to Cards
           </app-button>
         </div>
-        <v-btn @click="log">log stuff</v-btn>
       </div>
     </div>
     <div class="brand-details-container">
@@ -157,13 +156,9 @@ export default {
       }
       this.$store.dispatch('postOrders', formData)
       this.tooglePurchaseConfirmModal = !this.tooglePurchaseConfirmModal
-      // console.log(formData)
     },
     closeModal() {
       this.tooglePurchaseConfirmModal = false
-    },
-    log() {
-      console.log(this.brand)
     }
   }
 }
