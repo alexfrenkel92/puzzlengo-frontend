@@ -37,6 +37,10 @@ export default {
     type: {
       type: String,
       required: true
+    },
+    tabNr: {
+      type: Number,
+      required: true
     }
   },
   computed: {
@@ -46,6 +50,9 @@ export default {
     openCard() {
       return this.$route.path + '/' + this.id + '-' + this.type
     }
+  },
+  created() {
+    this.$store.dispatch('setActiveTabNr', this.tabNr)
   }
 }
 </script>

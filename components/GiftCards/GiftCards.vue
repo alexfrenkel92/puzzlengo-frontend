@@ -1,11 +1,11 @@
 <template>
   <div>
-    <v-tabs v-model="tab" background-color="transparent" grow>
+    <v-tabs v-model="activeTab" background-color="transparent" grow>
       <v-tabs-slider color="#7abe8f" />
       <v-tab>Tango Cards</v-tab>
       <v-tab>Charity</v-tab>
     </v-tabs>
-    <v-tabs-items v-model="tab">
+    <v-tabs-items v-model="activeTab">
       <v-tab-item>
         <div class="title">Chose your reward below.</div>
         <div class="tango-cards-wrapper">
@@ -15,6 +15,7 @@
             :brand-key="brand.brandKey"
             :brand-name="brand.brandName"
             :image="brand.imageUrls"
+            :tab-nr="activeTab"
           />
         </div>
       </v-tab-item>
@@ -26,11 +27,11 @@
             :brand-key="brand.brandKey"
             :brand-name="brand.brandName"
             :image="brand.imageUrls"
+            :tab-nr="activeTab"
           />
         </div>
       </v-tab-item>
     </v-tabs-items>
-    <!-- <v-btn @click="log">log stuff</v-btn> -->
   </div>
 </template>
 
@@ -41,10 +42,11 @@ export default {
       loadedTangoCards: [],
       giftCards: [],
       donationCards: [],
-      tab: null
+      activeTab: ''
     }
   },
   created() {
+    this.activeTab = this.$store.getters.getActiveTabNr
     this.loadedTangoCards = this.$store.getters.getTangoCards.brands
     this.giftCards = this.loadedTangoCards.filter(card => card.items[0].rewardType === 'gift card')
     this.donationCards = this.loadedTangoCards.filter(card => card.items[0].rewardType === 'donation')

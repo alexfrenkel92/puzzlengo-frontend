@@ -30,7 +30,7 @@
         </v-list-item>
         <v-subheader>{{ $t("menu.header_theme") }}</v-subheader>
         <v-list-item class="switcher-wrapper">
-          <v-list-item-content>
+          <div>
             <div class="flex-menu">
               <label>
                 {{ $t("menu.header_light") }}
@@ -46,7 +46,7 @@
                 {{ $t("menu.header_dark") }}
               </label>
             </div>
-          </v-list-item-content>
+          </div>
         </v-list-item>
       </v-list>
       <v-divider />

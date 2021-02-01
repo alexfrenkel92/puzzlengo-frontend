@@ -376,12 +376,28 @@ paper-nav {
 .v-list-item {
     padding: 0;
 }
+.v-list-item__content {
+    padding: 0;
+}
+.v-subheader {
+    margin-top: 15px;
+    height: 30px !important;
+}
+.switcher-wrapper {
+    height: 20px !important;
+}
+.flex-menu {
+    padding-left: 15px;
+    margin: 0;
+}
 .menu-nuxtlink,
 .menu-btn {
     padding: 10px 15px !important;
     font-size: 1rem !important;
 }
-
+.v-input__slot {
+    margin: 0 !important;
+}
 .switch-toggle {
     margin: spacing(0, 2);
     ::v-deep .v-input--switch__thumb {

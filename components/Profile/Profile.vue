@@ -1,11 +1,11 @@
 <template>
   <div class="profile-wrapper">
-    <v-tabs v-model="tab" background-color="transparent" grow>
+    <v-tabs v-model="activeTab" background-color="transparent" grow>
       <v-tabs-slider color="#7abe8f" />
       <v-tab>Demographic</v-tab>
       <v-tab>Psychological</v-tab>
     </v-tabs>
-    <v-tabs-items v-model="tab">
+    <v-tabs-items v-model="activeTab">
       <v-tab-item>
         <div class="profile-wrapper">
           <profile-card
@@ -17,6 +17,7 @@
             :answered="cat.answered"
             :img="cat.img"
             :type="cat.type"
+            :tab-nr="activeTab"
           />
         </div>
       </v-tab-item>
@@ -31,6 +32,7 @@
             :answered="cat.answered"
             :img="cat.img"
             :type="cat.type"
+            :tab-nr="activeTab"
           />
         </div>
       </v-tab-item>
@@ -44,10 +46,11 @@ export default {
     return {
       demographicProfiling: [],
       psychologicalProfiling: [],
-      tab: null
+      activeTab: 0
     }
   },
   created() {
+    this.activeTab = this.$store.getters.getActiveTabNr
     this.demographicProfiling = this.$store.getters.getDemographicProfiling
     this.psychologicalProfiling = this.$store.getters.getPsychologicalProfiling
   }

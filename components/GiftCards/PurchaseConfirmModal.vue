@@ -34,7 +34,7 @@
             </div>
           </div>
         </div>
-        <div v-if="responseData.name === 'Error' && !isLoading" class="error">{{ responseData.message }}</div>
+        <div v-if="responseData.name === 'Error' && !isLoading" class="error">Error: {{ responseData.message }}</div>
         <div v-if="isLoading" class="error">
           <div class="lds-ring"><div /><div /><div /><div /></div>
         </div>
@@ -55,11 +55,6 @@ export default {
       required: true
     }
   },
-  // data() {
-  //   return {
-  //     isLoading: false
-  //   }
-  // },
   computed: {
     responseData() {
       return this.$store.getters.getOrderResponseData

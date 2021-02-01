@@ -12,7 +12,7 @@
       type="button"
       btn-style="approve"
       style="height: 50px; width: 150px"
-      @click="$router.go(-1)"
+      @click="navigateBack"
     >
       Back to Profiling
     </app-button>
@@ -25,6 +25,11 @@ export default {
     filteredFields: {
       type: Object,
       required: true
+    }
+  },
+  methods: {
+    navigateBack() {
+      this.$router.go(-1)
     }
   }
 }

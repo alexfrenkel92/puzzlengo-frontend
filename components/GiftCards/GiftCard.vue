@@ -21,6 +21,10 @@ export default {
     image: {
       type: Object,
       required: true
+    },
+    tabNr: {
+      type: Number,
+      required: true
     }
   },
   data() {
@@ -35,6 +39,7 @@ export default {
   },
   created() {
     this.imgUrl = this.image['1200w-326ppi']
+    this.$store.dispatch('setActiveTabNr', this.tabNr)
   }
 }
 </script>
