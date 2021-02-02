@@ -66,12 +66,63 @@ export default {
           isEnrolled: false,
           isCompleted: false
         }
+      ],
+      completedSurveys: [
+        {
+          id: 1,
+          title: 'PERSONAL1',
+          description:
+            'Lorem ipsum dolor ',
+          duration: 5,
+          quota: 250,
+          enrolled: 198,
+          payment: 1,
+          type: 'personel',
+          isEnrolled: true,
+          isCompleted: true,
+          completedOn: '01/09/2010'
+        },
+        {
+          id: 2,
+          title: 'ONLINE2',
+          description:
+          'This survey is postponable. Once started, it can be paused and continued at a later time. It will be found in the \'Enrolled Surveys\' section.',
+          duration: 15,
+          quota: 100,
+          enrolled: 27,
+          payment: 1.5,
+          type: 'online',
+          postponable: true,
+          isPostponed: true,
+          isEnrolled: true,
+          isCompleted: true,
+          completedOn: '01/03/2010'
+        },
+        {
+          id: 3,
+          title: 'PERSONAL3',
+          description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla, tellus at finibus interdum, dui tortor suscipit nisi, et tempor nunc nisl nec diam and again dui tortor suscipit nisi, et tempor nunc nisl nec diam.',
+          duration: 25,
+          quota: 100,
+          enrolled: 79,
+          payment: 4,
+          type: 'personel',
+          postponable: null,
+          isPostponed: null,
+          isEnrolled: true,
+          isCompleted: true,
+          completedOn: '01/05/2010'
+        }
       ]
     }
   },
   getters: {
     getActiveSurveys(state) {
       return state.activeSurveys
+    },
+    getCompletedSurveys(state) {
+      return state.completedSurveys
     }
   },
   mutations: {

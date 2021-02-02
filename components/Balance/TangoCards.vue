@@ -39,27 +39,6 @@
             </v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
-        <!-- <div class="e-gift-card-instruction">
-          <p class="e-gift-title">
-            eGift cards mean instant delivery, a digital trail, and no need for
-            inventory
-          </p>
-          <ul>
-            <li>Select a card from a brand</li>
-            <li>Select or provide an amount to spend</li>
-            <li>
-              Fill in the recipient's name and e-mail address and add a message if you wish
-            </li>
-            <li>
-              In case you are buying for yourself, press the <b>Buying For Myself</b> button
-            </li>
-            <li>Review your order then click on the <b>Buy Card</b> button</li>
-            <li>
-              The recipient receives the Claim Code to active the eGift Card on
-              the brand's page
-            </li>
-          </ul>
-        </div> -->
         <app-button
           type="button"
           btn-style="approve"
@@ -89,18 +68,6 @@
             </v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
-        <!-- <div class="charity-instruction">
-          <p class="charity-title">
-            Charity gift cards allow you, the gift giver to make a charitable
-            donation to the gift card provider
-          </p>
-          <ul>
-            <li>Select a card from a non-profit card provider</li>
-            <li>Select the amount you want to donate to</li>
-            <li>Review your order</li>
-            <li>Click on the <b>Donate</b> button to finish</li>
-          </ul>
-        </div> -->
         <app-button
           type="button"
           btn-style="approve"
@@ -135,8 +102,8 @@ export default {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
 }
 .e-gift-card-container,
 .charity-container {

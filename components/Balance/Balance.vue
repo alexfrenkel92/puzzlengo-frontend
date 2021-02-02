@@ -1,6 +1,7 @@
 <template>
   <div class="balance-container">
     <TangoCards />
+    <UserCashflow />
   </div>
 </template>
 
@@ -15,5 +16,6 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  margin-bottom: 20px;
 }
 </style>
