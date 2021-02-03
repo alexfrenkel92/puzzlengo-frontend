@@ -2,36 +2,33 @@
   <v-form>
     <v-container>
       <v-row>
-<<<<<<< HEAD
         <v-col cols="12" sm="6">
           <v-text-field v-model="first" label="First Name" filled />
         </v-col>
         <v-col cols="12" sm="6">
           <v-text-field v-model="last" label="Last Name" filled />
-=======
-        <v-col
-          cols="12"
-          sm="6"
-        >
-          <v-text-field
-            v-model="firstName"
-            label="First Name"
-            filled
-          />
-        </v-col>
+          <v-col
+            cols="12"
+            sm="6"
+          >
+            <v-text-field
+              v-model="firstName"
+              label="First Name"
+              filled
+            />
+          </v-col>
 
-        <v-col
-          cols="12"
-          sm="6"
-        >
-          <v-text-field
-            v-model="lastName"
-            label="Last Name"
-            filled
-          />
->>>>>>> 049e03b3a894b7cb8c63af7328b71173cc711d95
-        </v-col>
-      </v-row>
+          <v-col
+            cols="12"
+            sm="6"
+          >
+            <v-text-field
+              v-model="lastName"
+              label="Last Name"
+              filled
+            />
+          </v-col>
+        </v-col></v-row>
       <v-row>
         <v-col>
           <v-menu
@@ -53,28 +50,25 @@
                 v-on="on"
               />
             </template>
-<<<<<<< HEAD
             <v-date-picker v-model="date" no-title scrollable>
-=======
-            <v-date-picker
-              v-model="birthDate"
-              no-title
-              scrollable
-            >
->>>>>>> 049e03b3a894b7cb8c63af7328b71173cc711d95
-              <v-spacer />
-              <v-btn text color="primary" @click="menu = false">
-                Cancel
-              </v-btn>
-              <v-btn
-                text
-                color="primary"
-                @click="$refs.menu.save(birthDate)"
+              <v-date-picker
+                v-model="birthDate"
+                no-title
+                scrollable
               >
-                OK
-              </v-btn>
-            </v-date-picker>
-          </v-menu>
+                <v-spacer />
+                <v-btn text color="primary" @click="menu = false">
+                  Cancel
+                </v-btn>
+                <v-btn
+                  text
+                  color="primary"
+                  @click="$refs.menu.save(birthDate)"
+                >
+                  OK
+                </v-btn>
+              </v-date-picker>
+            </v-date-picker></v-menu>
         </v-col>
       </v-row>
       <v-btn @click="refreshPersonal">Cancel</v-btn>

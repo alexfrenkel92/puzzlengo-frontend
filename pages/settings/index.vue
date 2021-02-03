@@ -28,8 +28,9 @@ export default {
 <style scoped>
   .settingsContainer{
     display: flex;
+    margin-top: 30px;
   }
   .settingsChild{
-    padding: 50px;
+    padding: 10px 50px;
   }
 </style>

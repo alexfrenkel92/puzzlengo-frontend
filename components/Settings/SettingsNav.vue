@@ -39,11 +39,7 @@ export default {
   data() {
     return {
       items: [
-<<<<<<< HEAD
-        { title: 'Account Settings', subtitle: 'Personal information, notifications', icon: 'mdi-account', to: '/settings/settings/account' },
-=======
         { title: 'Account Settings', subtitle: 'Personal information, notifications', icon: 'mdi-account', to: '/settings/account' },
->>>>>>> 049e03b3a894b7cb8c63af7328b71173cc711d95
         { title: 'Permissions', subtitle: 'Location, health, personal information', icon: 'mdi-lock', to: '/settings/permissions' },
         { title: 'Appearance', subtitle: 'Color mode, font size, language', icon: 'mdi-heart', to: '/settings/appearance' }
       ],

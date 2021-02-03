@@ -1,14 +1,5 @@
 <template>
   <div>
-<<<<<<< HEAD
-    <v-switch
-      v-for="item in notifications"
-      :key="item.title"
-      v-model="item.value"
-      inset
-      :label="item.title"
-    />
-=======
     <v-container>
       <v-switch
         v-for="item in localNotifications"
@@ -21,7 +12,6 @@
       <v-btn @click="updateNotifications">Save</v-btn>
     </v-container>
 
->>>>>>> 049e03b3a894b7cb8c63af7328b71173cc711d95
   </div>
 </template>
 <script>
