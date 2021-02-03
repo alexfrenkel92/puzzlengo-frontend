@@ -46,7 +46,8 @@
             btn-style="approve"
             @click="sendOrder"
           >
-            Buy
+            <span v-if="brand.items[0].rewardType === 'donation'">Donate</span>
+            <span v-else>Buy Card</span>
           </app-button>
           <app-button
             type="button"
@@ -102,7 +103,8 @@ export default {
       formIsValid: true,
       itemRewardName: '',
       faceValueExist: null,
-      tooglePurchaseConfirmModal: false
+      tooglePurchaseConfirmModal: false,
+      buyMoreBtn: false
     }
   },
   computed: {
@@ -159,6 +161,8 @@ export default {
     },
     closeModal() {
       this.tooglePurchaseConfirmModal = false
+    },
+    log() {
     }
   }
 }

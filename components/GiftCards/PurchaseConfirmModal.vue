@@ -34,7 +34,7 @@
             </div>
           </div>
         </div>
-        <div v-if="responseData.name === 'Error' && !isLoading" class="error">{{ responseData.message }}</div>
+        <div v-if="responseData.name === 'Error' && !isLoading" class="error">Error: {{ responseData.message }}</div>
         <div v-if="isLoading" class="error">
           <div class="lds-ring"><div /><div /><div /><div /></div>
         </div>
@@ -55,11 +55,6 @@ export default {
       required: true
     }
   },
-  // data() {
-  //   return {
-  //     isLoading: false
-  //   }
-  // },
   computed: {
     responseData() {
       return this.$store.getters.getOrderResponseData
@@ -70,6 +65,9 @@ export default {
   },
   methods: {
     closeModal() {
+      if (this.responseData.status === 'COMPLETE') {
+        this.$router.push('/balance')
+      }
       this.$emit('closeModal')
     },
     log() {
@@ -114,7 +112,12 @@ span {
   padding: 0 5px 5px 5px;
   width: 160px !important;
   height: 48px;
-  margin-bottom: 15px;
+  margin: 0 0 10px 0;
+}
+button {
+  outline-style: none;
+  text-decoration: none;
+  color: rgb(165, 164, 164);
 }
 .order-details-wrapper, .redemption {
   display: flex;

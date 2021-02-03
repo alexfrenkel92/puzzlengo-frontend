@@ -46,7 +46,7 @@
           <div v-if="isDesktop">
             <button v-if="!isLoggedIn" @click="handleAuth">Login</button>
           </div>
-          <nuxt-link class="balance-button" to="/giftcards">
+          <nuxt-link class="balance-button" to="/balance">
             <p class="balance-text">240 </p>
             <img :src="coin" alt="balance-button">
           </nuxt-link>
@@ -91,7 +91,6 @@ export default {
     return {
       navMenu,
       logo,
-      // link,
       loaded: true,
       brand,
       section: 0,

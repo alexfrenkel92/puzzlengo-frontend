@@ -6,7 +6,8 @@ export default {
     return {
       loadedTangoCards: [],
       orderResponseData: '',
-      orderIsLoading: false
+      orderIsLoading: false,
+      pastOrders: ''
     }
   },
   getters: {
@@ -18,23 +19,40 @@ export default {
     },
     getOrderIsLoading(state) {
       return state.orderIsLoading
+    },
+    getPastOrders(state) {
+      return state.pastOrders
     }
   },
   actions: {
-    nuxtServerInit(vuexContext, context) {
-      return context.app.$axios
-        .$get(url + 'catalogs?verbose=true', {
-          headers: {
-            Authorization: `Basic ${key}`
-          }
-        })
-        .then((data) => {
-          vuexContext.commit('setTangoCards', data)
-        })
-        .catch(error => context.error(error))
+    async nuxtServerInit({ commit }, { app }) {
+      const tangoCards = await app.$axios.get(url + 'catalogs?verbose=true', {
+        headers: {
+          Authorization: `Basic ${key}`
+        }
+      })
+      commit('setTangoCards', tangoCards.data)
+      const pastOrders = await app.$axios.get(url + 'orders', {
+        headers: {
+          Authorization: `Basic ${key}`
+        }
+      })
+      commit('setPastOders', pastOrders.data)
     },
-    postOrders(vuexContext, order) {
-      vuexContext.commit('setOrderIsLoading')
+    // nuxtServerInit(context, context) {
+    //   return context.app.$axios
+    //     .$get(url + 'catalogs?verbose=true', {
+    //       headers: {
+    //         Authorization: `Basic ${key}`
+    //       }
+    //     })
+    //     .then((data) => {
+    //       context.commit('setTangoCards', data)
+    //     })
+    //     .catch(error => context.error(error))
+    // },
+    postOrders(context, order) {
+      context.commit('setOrderIsLoading')
       return this.$axios
         .$post('http://localhost:8080/api/postorder', order)
       // .$post(url + 'orders', order, {
@@ -43,21 +61,21 @@ export default {
       //   }
       // })
         .then((data) => {
-          console.log(order)
-          console.log('STORE DATA BELOW')
+          // console.log(order)
+          // console.log('STORE DATA BELOW')
           if (data.status === 'COMPLETE') {
-            console.log('successss')
-            console.log(data)
-            vuexContext.commit('setOrderResponseData', data)
+            // console.log('successss')
+            // console.log(data)
+            context.commit('setOrderResponseData', data)
           }
           if (data.name === 'Error') {
-            console.log('faiiiiiiil')
-            console.log(data)
-            vuexContext.commit('setOrderResponseData', data)
+            // console.log('faiiiiiiil')
+            // console.log(data)
+            context.commit('setOrderResponseData', data)
           }
-          vuexContext.commit('setOrderIsLoading')
+          context.commit('setOrderIsLoading')
         })
-        .catch(error => vuexContext.commit('setError', error))
+        .catch(error => context.commit('setError', error))
     }
   },
   mutations: {
@@ -69,6 +87,9 @@ export default {
     },
     setOrderIsLoading(state) {
       state.orderIsLoading = !state.orderIsLoading
+    },
+    setPastOders(state, payload) {
+      state.pastOrders = payload
     }
   }
 }
