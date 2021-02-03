@@ -22,6 +22,7 @@
             label="Search"
             single-line
             hide-details
+            class="search-bar"
           />
         </v-toolbar>
       </template>
@@ -29,8 +30,13 @@
         <td :colspan="headers.length" class="expanded-content">
           <div>{{ item.message }}</div>
           <div class="recipient">
-            <p><span>Recipient's name: </span>{{ item.recipient.firstName }} {{ item.recipient.lastName }}</p>
-            <p><span>Recipient's e-mail: </span>{{ item.recipient.email }}</p>
+            <p>
+              <span>Recipient's name: </span>{{ item.recipient.firstName }}
+              {{ item.recipient.lastName }}
+            </p>
+            <p>
+              <span>Recipient's e-mail: </span>{{ item.recipient.email }}
+            </p>
           </div>
         </td>
       </template>
@@ -56,6 +62,7 @@
             label="Search"
             single-line
             hide-details
+            class="search-bar"
           />
         </v-toolbar>
       </template>
@@ -102,7 +109,7 @@ export default {
       expandedTangoCards: [],
       singleExpand2: false,
       tangoCardOrders: null,
-      // FETCHED TANGO CARDS ARE MODIFIED AND SAVED IN NEW VARIABLE: FAILED ORDERS ARE DELETED. DATE AND CURRENCY ARE FORMATTED
+      // FETCHED TANGO CARDS FROM STORE ARE MODIFIED AND SAVED IN NEW VARIABLE: FAILED ORDERS ARE DELETED. DATE AND CURRENCY ARE FORMATTED
       modifiedGiftCards: []
     }
   },
@@ -120,7 +127,10 @@ export default {
       const formattedDate = copiedCard.createdAt.substring(0, 10)
       copiedCard.createdAt = formattedDate
       if (copiedCard.amountCharged) {
-        const amountChargedFormatted = copiedCard.amountCharged.total + ' ' + copiedCard.amountCharged.currencyCode
+        const amountChargedFormatted =
+                    copiedCard.amountCharged.total +
+                    ' ' +
+                    copiedCard.amountCharged.currencyCode
         copiedCard.amountChargedFormatted = amountChargedFormatted
         this.modifiedGiftCards.push(copiedCard)
       }
@@ -152,7 +162,7 @@ export default {
     }
 }
 .v-data-table >>> thead th.text-start {
-  font-size: .8rem !important;
+    font-size: 0.8rem !important;
 }
 .v-data-table >>> tbody tr:hover {
     background-color: #7abe8f !important;
@@ -165,12 +175,17 @@ export default {
     background-color: ivory;
 }
 .recipient {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 span {
-  font-weight: bold;
+    font-weight: bold;
 }
 p {
-  margin: 5px 0 0 0;
+    margin: 5px 0 0 0;
+}
+@media only screen and (max-width: 400px) {
+    .search-bar {
+      width: 90px !important;
+    }
 }
 </style>

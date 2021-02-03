@@ -55,11 +55,6 @@ export default {
       context.commit('setOrderIsLoading')
       return this.$axios
         .$post('http://localhost:8080/api/postorder', order)
-      // .$post(url + 'orders', order, {
-        //   headers: {
-      //     Authorization: `Basic ${key}`
-      //   }
-      // })
         .then((data) => {
           // console.log(order)
           // console.log('STORE DATA BELOW')

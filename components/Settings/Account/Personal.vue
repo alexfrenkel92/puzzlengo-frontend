@@ -2,26 +2,11 @@
   <v-form>
     <v-container>
       <v-row>
-        <v-col
-          cols="12"
-          sm="6"
-        >
-          <v-text-field
-            v-model="firstName"
-            label="First Name"
-            filled
-          />
+        <v-col cols="12" sm="6">
+          <v-text-field v-model="firstName" label="First Name" filled />
         </v-col>
-
-        <v-col
-          cols="12"
-          sm="6"
-        >
-          <v-text-field
-            v-model="lastName"
-            label="Last Name"
-            filled
-          />
+        <v-col cols="12" sm="6">
+          <v-text-field v-model="lastName" label="Last Name" filled />
         </v-col>
       </v-row>
       <v-row>
@@ -43,6 +28,7 @@
                 v-on="on"
               />
             </template>
+<<<<<<< HEAD
             <v-date-picker
               v-model="birthDate"
               no-title
@@ -61,6 +47,19 @@
               </v-btn>
             </v-date-picker>
           </v-dialog>
+=======
+            <v-date-picker v-model="birthDate" no-title scrollable>
+              <v-date-picker v-model="birthDate" no-title scrollable>
+                <v-spacer />
+                <v-btn text color="primary" @click="menu = false">
+                  Cancel
+                </v-btn>
+                <v-btn text color="primary" @click="$refs.menu.save(birthDate)">
+                  OK
+                </v-btn>
+              </v-date-picker>
+            </v-date-picker></v-menu>
+>>>>>>> footer
         </v-col>
       </v-row>
       <v-btn text @click="refreshPersonal"><v-icon>mdi-alpha-x-circle</v-icon> Cancel</v-btn>
@@ -89,7 +88,11 @@ export default {
       this.birthDate = this.personal.birthDate
     },
     updatePersonal() {
-      this.$store.dispatch('updatePersonal', [this.firstName, this.lastName, this.birthDate])
+      this.$store.dispatch('updatePersonal', [
+        this.firstName,
+        this.lastName,
+        this.birthDate
+      ])
     }
   }
 }

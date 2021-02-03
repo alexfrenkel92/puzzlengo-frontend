@@ -28,7 +28,7 @@
             </button>
           </v-list-item-content>
         </v-list-item>
-        <v-subheader>{{ $t("menu.header_theme") }}</v-subheader>
+        <!-- <v-subheader>{{ $t("menu.header_theme") }}</v-subheader> -->
         <v-list-item class="switcher-wrapper">
           <div>
             <div class="flex-menu">
