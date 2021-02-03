@@ -14,8 +14,8 @@
         label="E-mail"
         required
       />
-      <v-btn @click="refreshContact">Cancel</v-btn>
-      <v-btn @click="updateContact">Save</v-btn>
+      <v-btn text @click="refreshContact"><v-icon>mdi-alpha-x-circle</v-icon> Cancel</v-btn>
+      <v-btn text @click="updateContact"><v-icon>mdi-check-circle</v-icon> Save</v-btn>
     </v-container>
   </form>
 </template>

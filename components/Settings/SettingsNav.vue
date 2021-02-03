@@ -1,6 +1,6 @@
 <template>
-  <v-navigation-drawer permanent>
-    <v-list-item>
+  <v-navigation-drawer permanent :mini-variant="isMobile">
+    <v-list-item v-if="!isMobile">
       <v-list-item-content>
         <v-list-item-title class="title">
           <ProfileInfo :progress="progress" />
@@ -40,10 +40,16 @@ export default {
     return {
       items: [
         { title: 'Account Settings', subtitle: 'Personal information, notifications', icon: 'mdi-account', to: '/settings/account' },
-        { title: 'Permissions', subtitle: 'Location, health, personal information', icon: 'mdi-lock', to: '/settings/permissions' },
+        { title: 'Permissions', subtitle: 'Location, health, activity information', icon: 'mdi-lock', to: '/settings/permissions' },
         { title: 'Appearance', subtitle: 'Color mode, font size, language', icon: 'mdi-heart', to: '/settings/appearance' }
       ],
       right: null
+    }
+  },
+  computed: {
+    isMobile() {
+      const smDown = this.$store.state.breakpoints.smDown
+      return smDown.includes(this.$mq)
     }
   }
 }
@@ -52,7 +58,11 @@ export default {
 <style scoped>
   .v-navigation-drawer{
     width: 350px !important;
+    min-width: 60px !important;
     height: auto !important;
+  }
+  .v-navigation-drawer--mini-variant{
+    width: 60px !important;
   }
   #profileInfo{
     margin: 20px 0px;

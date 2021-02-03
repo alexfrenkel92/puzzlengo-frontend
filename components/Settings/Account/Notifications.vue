@@ -8,8 +8,8 @@
         inset
         :label="item.title"
       />
-      <v-btn @click="refreshNotifications">Cancel</v-btn>
-      <v-btn @click="updateNotifications">Save</v-btn>
+      <v-btn text @click="refreshNotifications"><v-icon>mdi-alpha-x-circle</v-icon> Cancel</v-btn>
+      <v-btn text @click="updateNotifications"><v-icon>mdi-check-circle</v-icon> Save</v-btn>
     </v-container>
 
   </div>
