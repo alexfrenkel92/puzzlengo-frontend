@@ -47,8 +47,8 @@
             <button v-if="!isLoggedIn" @click="handleAuth">Login</button>
           </div>
           <nuxt-link class="balance-button" to="/balance">
-            <p class="balance-text">240 </p>
-            <img :src="coin" alt="balance-button">
+            <p class="balance-text">240</p>
+            <img :src="usd" alt="balance-button">
           </nuxt-link>
           <setting-menu v-if="isLoggedIn && isDesktop" :invert="invert" />
           <v-btn
@@ -121,8 +121,8 @@ export default {
     invert() {
       return !!this.isMobile
     },
-    coin() {
-      return require('~/static/images/coinGold.png')
+    usd() {
+      return require('~/static/images/usd2.png')
     }
   },
   methods: {
@@ -174,7 +174,7 @@ export default {
   margin: 0;
 }
 img {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
 }
 </style>

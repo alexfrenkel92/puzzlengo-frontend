@@ -5,12 +5,9 @@
         <v-list-item-title class="title">
           <ProfileInfo :progress="progress" />
         </v-list-item-title>
-
       </v-list-item-content>
     </v-list-item>
-
     <v-divider />
-
     <v-list
       dense
       nav
@@ -24,7 +21,6 @@
         <v-list-item-icon>
           <v-icon>{{ item.icon }}</v-icon>
         </v-list-item-icon>
-
         <v-list-item-content>
           <!--<nuxt-link :to="item.to">-->
           <v-list-item-title>{{ item.title }}</v-list-item-title>
@@ -37,19 +33,15 @@
 </template>
 
 <script>
-import ProfileInfo from '@/components/Settings/ProfileInfo'
-
 export default {
-  components: {
-    ProfileInfo
-  },
+  // eslint-disable-next-line vue/require-prop-types
   props: ['progress'],
   data() {
     return {
       items: [
-        { title: 'Account Settings', subtitle: 'Personal information, notifications', icon: 'mdi-account', to: '/profile/settings/account' },
-        { title: 'Permissions', subtitle: 'Location, health, personal information', icon: 'mdi-lock', to: '/profile/settings/permissions' },
-        { title: 'Appearance', subtitle: 'Color mode, font size, language', icon: 'mdi-heart', to: '/profile/settings/appearance' }
+        { title: 'Account Settings', subtitle: 'Personal information, notifications', icon: 'mdi-account', to: '/settings/settings/account' },
+        { title: 'Permissions', subtitle: 'Location, health, personal information', icon: 'mdi-lock', to: '/settings/permissions' },
+        { title: 'Appearance', subtitle: 'Color mode, font size, language', icon: 'mdi-heart', to: '/settings/appearance' }
       ],
       right: null
     }

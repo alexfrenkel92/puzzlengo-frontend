@@ -20,6 +20,7 @@ export default {
   components: {
     Echarts
   },
+  // eslint-disable-next-line vue/require-prop-types
   props: ['progress'],
   data() {
     return {

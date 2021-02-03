@@ -1,6 +1,6 @@
 <template>
   <div class="user-cashflow-container">
-    <v-btn @click="logHistory">Fetch Orders</v-btn>
+    <!-- <v-btn @click="logHistory">Fetch Orders</v-btn> -->
     <v-data-table
       :headers="headerTangoCards"
       :items="modifiedGiftCards"
@@ -128,7 +128,7 @@ export default {
   },
   methods: {
     logHistory() {
-      console.log(this.modifiedGiftCards)
+      // console.log(this.modifiedGiftCards)
     }
   }
 }

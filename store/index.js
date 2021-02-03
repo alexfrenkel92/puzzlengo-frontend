@@ -2,7 +2,7 @@ import Vuex from 'vuex'
 
 import authModule from './auth.js'
 import surveysModule from './surveys.js'
-import profilingModule from './profiling.js'
+import userProfileModule from './userProfile.js'
 import tangoCardModule from './tangoCards.js'
 import activeTabNrModule from './activeTabNr'
 import brakePointsModule from './breakPoints'
@@ -12,7 +12,7 @@ const createStore = () => {
     modules: {
       auth: authModule,
       surveys: surveysModule,
-      profiling: profilingModule,
+      userProfile: userProfileModule,
       tangoCards: tangoCardModule,
       activeTabNr: activeTabNrModule,
       brakePoints: brakePointsModule

@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <v-switch
       v-for="item in notifications"
       :key="item.title"
@@ -8,10 +7,8 @@
       inset
       :label="item.title"
     />
-
   </div>
 </template>
-
 <script>
 export default {
   data() {

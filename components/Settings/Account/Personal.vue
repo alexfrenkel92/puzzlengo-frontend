@@ -2,26 +2,11 @@
   <v-form>
     <v-container>
       <v-row>
-        <v-col
-          cols="12"
-          sm="6"
-        >
-          <v-text-field
-            v-model="first"
-            label="First Name"
-            filled
-          />
+        <v-col cols="12" sm="6">
+          <v-text-field v-model="first" label="First Name" filled />
         </v-col>
-
-        <v-col
-          cols="12"
-          sm="6"
-        >
-          <v-text-field
-            v-model="last"
-            label="Last Name"
-            filled
-          />
+        <v-col cols="12" sm="6">
+          <v-text-field v-model="last" label="Last Name" filled />
         </v-col>
       </v-row>
       <v-row>
@@ -45,17 +30,9 @@
                 v-on="on"
               />
             </template>
-            <v-date-picker
-              v-model="date"
-              no-title
-              scrollable
-            >
+            <v-date-picker v-model="date" no-title scrollable>
               <v-spacer />
-              <v-btn
-                text
-                color="primary"
-                @click="menu = false"
-              >
+              <v-btn text color="primary" @click="menu = false">
                 Cancel
               </v-btn>
               <v-btn
