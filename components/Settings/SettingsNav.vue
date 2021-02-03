@@ -47,9 +47,9 @@ export default {
   data() {
     return {
       items: [
-        { title: 'Account Settings', subtitle: 'Personal information, notifications', icon: 'mdi-account', to: '/profile/settings/account' },
-        { title: 'Permissions', subtitle: 'Location, health, personal information', icon: 'mdi-lock', to: '/profile/settings/permissions' },
-        { title: 'Appearance', subtitle: 'Color mode, font size, language', icon: 'mdi-heart', to: '/profile/settings/appearance' }
+        { title: 'Account Settings', subtitle: 'Personal information, notifications', icon: 'mdi-account', to: '/settings/account' },
+        { title: 'Permissions', subtitle: 'Location, health, personal information', icon: 'mdi-lock', to: '/settings/permissions' },
+        { title: 'Appearance', subtitle: 'Color mode, font size, language', icon: 'mdi-heart', to: '/settings/appearance' }
       ],
       right: null
     }
@@ -60,6 +60,7 @@ export default {
 <style scoped>
   .v-navigation-drawer{
     width: 350px !important;
+    height: auto !important;
   }
   #profileInfo{
     margin: 20px 0px;

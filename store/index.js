@@ -4,6 +4,7 @@ import authModule from './auth.js'
 import surveysModule from './surveys.js'
 import profilingModule from './profiling.js'
 import tangoCardModule from './tangoCards.js'
+import settingsModule from './settings.js'
 
 const createStore = () => {
   return new Vuex.Store({
@@ -11,7 +12,8 @@ const createStore = () => {
       auth: authModule,
       surveys: surveysModule,
       profiling: profilingModule,
-      tangoCard: tangoCardModule
+      tangoCard: tangoCardModule,
+      settings: settingsModule
     },
     state: {
       breakpoints: {
