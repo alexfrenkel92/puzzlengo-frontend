@@ -103,7 +103,7 @@ export default {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 .e-gift-card-container,
 .charity-container {
@@ -120,25 +120,12 @@ export default {
   padding: 15px 20px;
   line-height: 1.2rem;
 }
-/* .e-gift-card-instruction,
-.charity-instruction {
-  height: fit-content;
-  min-height: 330px;
-  width: 85%;
-  max-width: 500px;
-  margin: 10px 10px;
-  padding: 10px 15px 15px 15px;
-  border-radius: 5px;
-  background: #fffffb;
-  position: relative;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-} */
 li {
   list-style: none;
   padding-bottom: 5px;
   margin-left: -15px;
 }
 .button {
-  margin-top: 15px;
+  margin: 15px 0;
 }
 </style>

@@ -1,44 +1,47 @@
 <template>
-  <!-- <div class="user-cashflow-container">
-    <v-card>
-      <v-card-title>
-        Earnings
-        <v-spacer />
-        <v-text-field
-          v-model="search"
-          append-icon="mdi-magnify"
-          label="Search"
-          single-line
-          hide-details
-        />
-      </v-card-title>
-      <v-data-table :headers="headers1" :items="completedSurveys" :search="search" />
-    </v-card>
-    <v-card>
-      <v-card-title>
-        Spendings
-        <v-spacer />
-        <v-text-field
-          v-model="search"
-          append-icon="mdi-magnify"
-          label="Search"
-          single-line
-          hide-details
-        />
-      </v-card-title>
-      <v-data-table class="spendings" :headers="headers2" :items="giftCard" :search="search" />
-    </v-card>
-    <v-btn @click="logHistory">Fetch Orders</v-btn>
-  </div> -->
   <div class="user-cashflow-container">
     <v-btn @click="logHistory">Fetch Orders</v-btn>
     <v-data-table
-      :headers="headers1"
+      :headers="headerTangoCards"
+      :items="modifiedGiftCards"
+      :items-per-page="5"
+      :single-expand="singleExpand2"
+      :expanded.sync="expandedTangoCards"
+      :search="searchTangoCards"
+      item-key="referenceOrderID"
+      show-expand
+      class="past-orders-container"
+    >
+      <template v-slot:top>
+        <v-toolbar flat>
+          <v-toolbar-title>Spendings</v-toolbar-title>
+          <v-spacer />
+          <v-text-field
+            v-model="searchTangoCards"
+            append-icon="mdi-magnify"
+            label="Search"
+            single-line
+            hide-details
+          />
+        </v-toolbar>
+      </template>
+      <template v-slot:expanded-item="{ headers, item }">
+        <td :colspan="headers.length" class="expanded-content">
+          <div>{{ item.message }}</div>
+          <div class="recipient">
+            <p><span>Recipient's name: </span>{{ item.recipient.firstName }} {{ item.recipient.lastName }}</p>
+            <p><span>Recipient's e-mail: </span>{{ item.recipient.email }}</p>
+          </div>
+        </td>
+      </template>
+    </v-data-table>
+    <v-data-table
+      :headers="headerSurveys"
       :items="completedSurveys"
       :items-per-page="5"
       :single-expand="singleExpand1"
-      :expanded.sync="expanded1"
-      :search="search1"
+      :expanded.sync="expandedSurveys"
+      :search="searchSurveys"
       item-key="id"
       show-expand
       class="completed-surveys-container"
@@ -48,7 +51,7 @@
           <v-toolbar-title>Earnings</v-toolbar-title>
           <v-spacer />
           <v-text-field
-            v-model="search1"
+            v-model="searchSurveys"
             append-icon="mdi-magnify"
             label="Search"
             single-line
@@ -62,36 +65,6 @@
         </td>
       </template>
     </v-data-table>
-    <v-data-table
-      :headers="headers2"
-      :items="giftCards"
-      :items-per-page="5"
-      :single-expand="singleExpand2"
-      :expanded.sync="expanded2"
-      :search="search2"
-      item-key="referenceOrderID"
-      show-expand
-      class="past-orders-container"
-    >
-      <template v-slot:top>
-        <v-toolbar flat>
-          <v-toolbar-title>Spendings</v-toolbar-title>
-          <v-spacer />
-          <v-text-field
-            v-model="search2"
-            append-icon="mdi-magnify"
-            label="Search"
-            single-line
-            hide-details
-          />
-        </v-toolbar>
-      </template>
-      <template v-slot:expanded-item="{ headers, item }">
-        <td :colspan="headers.length" class="expanded-content">
-          {{ item.message }}
-        </td>
-      </template>
-    </v-data-table>
   </div>
 </template>
 
@@ -99,13 +72,7 @@
 export default {
   data() {
     return {
-      search1: '',
-      search2: '',
-      expanded1: [],
-      singleExpand1: false,
-      expanded2: [],
-      singleExpand2: false,
-      headers1: [
+      headerSurveys: [
         {
           text: 'Survey Name',
           align: 'start',
@@ -113,9 +80,14 @@ export default {
           value: 'title'
         },
         { text: 'Completed', value: 'completedOn' },
-        { text: 'Payment ($)', value: 'payment' }
+        { text: 'Payment', value: 'paymentFormatted' }
       ],
-      headers2: [
+      searchSurveys: '',
+      expandedSurveys: [],
+      singleExpand1: false,
+      completedSurveys: null,
+
+      headerTangoCards: [
         {
           text: 'Card Name',
           align: 'start',
@@ -123,28 +95,40 @@ export default {
           value: 'rewardName'
         },
         { text: 'Purchased on', value: 'createdAt' },
-        { text: 'Value ($)', value: 'amountCharged.total' },
+        { text: 'Payment', value: 'amountChargedFormatted' },
         { text: 'Status', value: 'status' }
       ],
-      completedSurveys: null,
-      giftCards: null
+      searchTangoCards: '',
+      expandedTangoCards: [],
+      singleExpand2: false,
+      tangoCardOrders: null,
+      // FETCHED TANGO CARDS ARE MODIFIED AND SAVED IN NEW VARIABLE: FAILED ORDERS ARE DELETED. DATE AND CURRENCY ARE FORMATTED
+      modifiedGiftCards: []
     }
   },
   created() {
     this.completedSurveys = this.$store.getters.getCompletedSurveys
-    this.giftCards = this.$store.getters.getPastOrders.orders
-    for (let i = 0; i < this.giftCards.length; i++) {
-      const formatedDate = this.giftCards[i].createdAt.substring(0, 10)
-      this.giftCards[i].createdAt = formatedDate
-      // const formatedAmountCharged = this.giftCards[i].amountCharged['total'] + this.giftCards[i].amountCharged['currencyCode']
-      // console.log(this.giftCards[i].amountCharged.total)
+    for (let i = 0; i < this.completedSurveys.length; i++) {
+      const paymentFormatted = this.completedSurveys[i].payment + ' USD'
+      this.completedSurveys[i].paymentFormatted = paymentFormatted
     }
-    // console.log(this.giftCards)
+
+    this.tangoCardOrders = this.$store.getters.getPastOrders.orders
+    // // FORMAT DATE AND ADD amountCharged.total TO amountCharged.curencyCode
+    for (let i = 0; i < this.tangoCardOrders.length; i++) {
+      const copiedCard = this.tangoCardOrders[i]
+      const formattedDate = copiedCard.createdAt.substring(0, 10)
+      copiedCard.createdAt = formattedDate
+      if (copiedCard.amountCharged) {
+        const amountChargedFormatted = copiedCard.amountCharged.total + ' ' + copiedCard.amountCharged.currencyCode
+        copiedCard.amountChargedFormatted = amountChargedFormatted
+        this.modifiedGiftCards.push(copiedCard)
+      }
+    }
   },
   methods: {
     logHistory() {
-      console.log(this.$store.getters.getPastOrders)
-      console.log(this.$store.getters.getPastOrders.orders[0])
+      console.log(this.modifiedGiftCards)
     }
   }
 }
@@ -156,20 +140,19 @@ export default {
     width: 700px;
     max-width: fit-content;
 }
-.completed-surveys-container {
-    margin-bottom: 20px;
-    border: 1px solid #7abe8f;
-    border-radius: 5px;
-}
-.past-orders-container {
+.v-data-table {
+    margin: 20px 5px;
     border: 1px solid #7abe8f;
     border-radius: 5px;
     width: 800px;
 }
 @media only screen and (max-width: 700px) {
-    .past-orders-container {
+    .v-data-table {
         width: fit-content;
     }
+}
+.v-data-table >>> thead th.text-start {
+  font-size: .8rem !important;
 }
 .v-data-table >>> tbody tr:hover {
     background-color: #7abe8f !important;
@@ -180,5 +163,14 @@ export default {
 .expanded-content {
     padding: 10px !important;
     background-color: ivory;
+}
+.recipient {
+  margin-top: 10px;
+}
+span {
+  font-weight: bold;
+}
+p {
+  margin: 5px 0 0 0;
 }
 </style>

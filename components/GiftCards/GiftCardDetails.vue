@@ -103,7 +103,8 @@ export default {
       formIsValid: true,
       itemRewardName: '',
       faceValueExist: null,
-      tooglePurchaseConfirmModal: false
+      tooglePurchaseConfirmModal: false,
+      buyMoreBtn: false
     }
   },
   computed: {

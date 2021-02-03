@@ -65,6 +65,9 @@ export default {
   },
   methods: {
     closeModal() {
+      if (this.responseData.status === 'COMPLETE') {
+        this.$router.push('/balance')
+      }
       this.$emit('closeModal')
     },
     log() {
@@ -109,7 +112,12 @@ span {
   padding: 0 5px 5px 5px;
   width: 160px !important;
   height: 48px;
-  margin-bottom: 15px;
+  margin: 0 0 10px 0;
+}
+button {
+  outline-style: none;
+  text-decoration: none;
+  color: rgb(165, 164, 164);
 }
 .order-details-wrapper, .redemption {
   display: flex;
