@@ -2,11 +2,34 @@
   <v-form>
     <v-container>
       <v-row>
+<<<<<<< HEAD
         <v-col cols="12" sm="6">
           <v-text-field v-model="first" label="First Name" filled />
         </v-col>
         <v-col cols="12" sm="6">
           <v-text-field v-model="last" label="Last Name" filled />
+=======
+        <v-col
+          cols="12"
+          sm="6"
+        >
+          <v-text-field
+            v-model="firstName"
+            label="First Name"
+            filled
+          />
+        </v-col>
+
+        <v-col
+          cols="12"
+          sm="6"
+        >
+          <v-text-field
+            v-model="lastName"
+            label="Last Name"
+            filled
+          />
+>>>>>>> 049e03b3a894b7cb8c63af7328b71173cc711d95
         </v-col>
       </v-row>
       <v-row>
@@ -15,14 +38,14 @@
             ref="menu"
             v-model="menu"
             :close-on-content-click="false"
-            :return-value.sync="date"
+            :return-value.sync="birthDate"
             transition="scale-transition"
             offset-y
             min-width="auto"
           >
             <template v-slot:activator="{ on, attrs }">
               <v-text-field
-                v-model="date"
+                v-model="birthDate"
                 label="Date of birth"
                 prepend-icon="mdi-calendar"
                 readonly
@@ -30,7 +53,15 @@
                 v-on="on"
               />
             </template>
+<<<<<<< HEAD
             <v-date-picker v-model="date" no-title scrollable>
+=======
+            <v-date-picker
+              v-model="birthDate"
+              no-title
+              scrollable
+            >
+>>>>>>> 049e03b3a894b7cb8c63af7328b71173cc711d95
               <v-spacer />
               <v-btn text color="primary" @click="menu = false">
                 Cancel
@@ -38,7 +69,7 @@
               <v-btn
                 text
                 color="primary"
-                @click="$refs.menu.save(date)"
+                @click="$refs.menu.save(birthDate)"
               >
                 OK
               </v-btn>
@@ -46,6 +77,8 @@
           </v-menu>
         </v-col>
       </v-row>
+      <v-btn @click="refreshPersonal">Cancel</v-btn>
+      <v-btn @click="updatePersonal">Save</v-btn>
     </v-container>
   </v-form>
 </template>
@@ -53,10 +86,25 @@
 <script>
 export default {
   data: () => ({
-    first: 'John',
-    last: 'Doe',
-    date: new Date().toISOString().substr(0, 10),
-    menu: false
-  })
+    menu: false,
+    personal: {},
+    firstName: '',
+    lastName: '',
+    birthDate: new Date().toISOString().substr(0, 10)
+  }),
+  created() {
+    this.personal = this.$store.getters.personalSettings
+    this.refreshPersonal()
+  },
+  methods: {
+    refreshPersonal() {
+      this.firstName = this.personal.firstName
+      this.lastName = this.personal.lastName
+      this.birthDate = this.personal.birthDate
+    },
+    updatePersonal() {
+      this.$store.dispatch('updatePersonal', [this.firstName, this.lastName, this.birthDate])
+    }
+  }
 }
 </script>
