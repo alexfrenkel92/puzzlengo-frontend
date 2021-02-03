@@ -8,23 +8,23 @@
     <div class="column1">
       <ul>
         <li>
-          <nuxt-link to="">About Us</nuxt-link>
+          <nuxt-link to="/ak/aboutus">About Us</nuxt-link>
         </li>
         <li>
-          <nuxt-link to="">Terms of Service</nuxt-link>
+          <nuxt-link to="/ak/terms">Terms of Service</nuxt-link>
         </li>
         <li>
-          <nuxt-link to="">Privacy Policy</nuxt-link>
+          <nuxt-link to="/ak/privacy">Privacy Policy</nuxt-link>
         </li>
       </ul>
     </div>
     <div class="column2">
       <ul>
         <li>
-          <nuxt-link to="">FAQ</nuxt-link>
+          <nuxt-link to="/ak/faq">FAQ</nuxt-link>
         </li>
         <li>
-          <nuxt-link to="">GDPR</nuxt-link>
+          <nuxt-link to="/ak/gdpr">GDPR</nuxt-link>
         </li>
       </ul>
     </div>

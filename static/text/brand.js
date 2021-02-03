@@ -6,7 +6,7 @@ const brand = {
     footerText: 'Footer text',
     logoText: 'RX Community',
     projectName: 'Dex Project',
-    url: '/',
+    url: '/dashboard',
     img: '/static/images/de_emblema_RGB.png',
     notifMsg:
       'test notification text'

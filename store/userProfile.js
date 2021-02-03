@@ -93,6 +93,63 @@ export default {
           type: 'psy'
         }
       ],
+      notifications: [
+        {
+          title: 'Survey approved - 2 USD earned',
+          description:
+            'Thank you for completing our survey, your answers have been approved. Please check your balance to spend your credits.'
+        },
+        {
+          title: 'Survey approved - 15 USD earned',
+          description:
+            'Thank you for completing our survey, your answers have been approved. Please check your balance to spend your credits.'
+        },
+        {
+          title: 'Survey declined',
+          description:
+            'The data provided cannot be validated.'
+        },
+        {
+          title: 'Survey declined',
+          description:
+            'The data provided cannot be validated.'
+        },
+        {
+          title: 'Survey approved - 7 USD earned',
+          description:
+            'Thank you for completing our survey, your answers have been approved. Please check your balance to spend your credits.'
+        },
+        {
+          title: 'Survey declined',
+          description:
+            'The data provided cannot be validated.'
+        },
+        {
+          title: 'Survey approved - 2 USD earned',
+          description:
+            'Thank you for completing our survey, your answers have been approved. Please check your balance to spend your credits.'
+        },
+        {
+          title: 'Survey approved - 10 USD earned',
+          description:
+            'Thank you for completing our survey, your answers have been approved. Please check your balance to spend your credits.'
+        },
+        {
+          title: 'Survey approved - 5 USD earned',
+          description:
+            'Thank you for completing our survey, your answers have been approved. Please check your balance to spend your credits.'
+        },
+        {
+          title: 'Survey approved - 15 USD earned',
+          description:
+            'Thank you for completing our survey, your answers have been approved. Please check your balance to spend your credits.'
+        },
+        {
+          title: 'Survey declined',
+          description:
+            'The data provided cannot be validated.'
+        }
+      ],
       profileCompletion: 13
     }
   },
@@ -105,6 +162,9 @@ export default {
     },
     getProfileCompletion(state) {
       return state.profileCompletion
+    },
+    getNotifications(state) {
+      return state.notifications
     }
   }
 }

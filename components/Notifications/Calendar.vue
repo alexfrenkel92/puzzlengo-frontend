@@ -3,8 +3,13 @@
     <v-row class="fill-height">
       <v-col>
         <v-sheet height="64">
-          <v-toolbar flat>
-            <v-btn outlined class="mr-4" color="grey darken-2" @click="setToday">
+          <v-toolbar flat class="toolbar">
+            <v-btn
+              outlined
+              class="mr-4"
+              color="grey darken-2"
+              @click="setToday"
+            >
               Today
             </v-btn>
             <v-btn fab text small color="grey darken-2" @click="prev">
@@ -77,18 +82,26 @@ export default {
   },
   created() {
     const _this = this
-    _this.enrolledSurveys = _this.$store.getters.getActiveSurveys.filter(item => item.isEnrolled === true && item.isCompleted === false)
+    _this.enrolledSurveys = _this.$store.getters.getActiveSurveys.filter(
+      item => item.isEnrolled === true && item.isCompleted === false
+    )
     _this.enrolledSurveys.forEach((element) => {
       const id = element.id
       const name = element.title
-      const start = element.allTime.filter(item => item.id === element.myTime)[0].date
+      const start = element.allTime.filter(
+        item => item.id === element.myTime
+      )[0].date
       _this.eventList.push({ id, name, start, color: '#7abe8f' })
     })
   },
   methods: {
     updateData(id) {
-      const newDate = this.enrolledSurveys.filter(item => item.id === this.selectedEvent.id)[0].allTime.filter(item => item.id === id)[0].date
-      this.eventList.find(event => event.id === this.selectedEvent.id).start = newDate
+      const newDate = this.enrolledSurveys
+        .filter(item => item.id === this.selectedEvent.id)[0]
+        .allTime.filter(item => item.id === id)[0].date
+      this.eventList.find(
+        event => event.id === this.selectedEvent.id
+      ).start = newDate
     },
     setToday() {
       this.focus = ''
@@ -128,8 +141,14 @@ export default {
 </script>
 
 <style scoped>
-  .calendar{
-    flex: 1 1 0;
-    margin: 10px;
-  }
+.calendar {
+  flex: 1 1 0;
+  margin: 10px;
+}
+.col {
+  padding: 0 12px;
+}
+.toolbar >>> .v-toolbar__content {
+  padding: 0 16px !important;
+}
 </style>
