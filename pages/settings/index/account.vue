@@ -22,11 +22,6 @@ export default {
     Personal,
     Contact,
     Notifications
-  },
-  data() {
-    return {
-
-    }
   }
 }
 </script>
