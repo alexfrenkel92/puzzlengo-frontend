@@ -14,8 +14,8 @@ export default {
           type: 'personel',
           postponable: null,
           isPostponed: null,
-          isEnrolled: false,
-          isCompleted: false,
+          isEnrolled: true,
+          isCompleted: true,
           completedOn: '31/01/2021',
           myTime: null,
           allTime: [{ id: 1, date: '2021-01-08T11:00:00', address: 'Street1' }, { id: 2, date: '2021-01-08T14:00:00', address: 'Street 2' }, { id: 3, date: '2021-01-08T22:00:00', address: 'Street 1' }]
@@ -32,8 +32,8 @@ export default {
           type: 'online',
           postponable: true,
           isPostponed: false,
-          isEnrolled: false,
-          isCompleted: false,
+          isEnrolled: true,
+          isCompleted: true,
           completedOn: '06/22/2018'
         },
         {
@@ -48,8 +48,8 @@ export default {
           type: 'personel',
           postponable: null,
           isPostponed: null,
-          isEnrolled: false,
-          isCompleted: false,
+          isEnrolled: true,
+          isCompleted: true,
           completedOn: '01/03/2010',
           myTime: null,
           allTime: [{ id: 1, date: '2021-01-08T12:00:00', address: 'Street1' }, { id: 2, date: '2021-06-08T14:00:00', address: 'Street 2' }, { id: 3, date: '2021-06-08T22:00:00', address: 'Street 1' }]
@@ -72,19 +72,21 @@ export default {
         },
         {
           id: 5,
-          title: 'ONLINE5',
+          title: 'PERSONAL5',
           description:
-            'This survey is not postponable. Once the modal is confirmed, it moves to the \'Completed Surveys\' section. Has to be finished at once.',
-          duration: 15,
-          quota: 80,
-          enrolled: 33,
-          payment: 2,
-          type: 'online',
-          postponable: false,
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla, tellus at finibus interdum, dui tortor suscipit nisi, et tempor nunc nisl nec diam and again dui tortor suscipit nisi, et tempor nunc nisl nec diam.',
+          duration: 25,
+          quota: 100,
+          enrolled: 79,
+          payment: 4,
+          type: 'personel',
+          postponable: null,
           isPostponed: null,
-          isEnrolled: true,
-          isCompleted: true,
-          completedOn: '09/27/2018'
+          isEnrolled: false,
+          isCompleted: false,
+          completedOn: '01/03/2010',
+          myTime: null,
+          allTime: [{ id: 1, date: '2021-01-08T12:00:00', address: 'Street1' }, { id: 2, date: '2021-06-08T14:00:00', address: 'Street 2' }, { id: 3, date: '2021-06-08T22:00:00', address: 'Street 1' }]
         },
         {
           id: 6,
@@ -98,8 +100,8 @@ export default {
           type: 'online',
           postponable: false,
           isPostponed: null,
-          isEnrolled: true,
-          isCompleted: true,
+          isEnrolled: false,
+          isCompleted: false,
           completedOn: '12/15/2013'
         },
         {
@@ -114,11 +116,43 @@ export default {
           type: 'personel',
           postponable: null,
           isPostponed: null,
-          isEnrolled: true,
-          isCompleted: true,
+          isEnrolled: false,
+          isCompleted: false,
           completedOn: '02/16/2021',
           myTime: null,
           allTime: [{ id: 1, date: '2021-01-08T12:00:00', address: 'Street1' }, { id: 2, date: '2021-06-08T14:00:00', address: 'Street 2' }, { id: 3, date: '2021-06-08T22:00:00', address: 'Street 1' }]
+        }
+      ],
+      notifications: [
+        {
+          id: 5,
+          type: 'approved',
+          title: 'Survey approved',
+          surveyTitle: 'PERSONAL1',
+          description:
+            'Thank you for completing our survey, your answers have been approved.',
+          payment: 3,
+          approvedOn: '09/27/2018'
+        },
+        {
+          id: 6,
+          type: 'declined',
+          title: 'Survey declined',
+          surveyTitle: 'ONLINE2',
+          description:
+            'The data provided cannot be validated.',
+          payment: 2,
+          approvedOn: '12/15/2013'
+        },
+        {
+          id: 7,
+          type: 'approved',
+          title: 'Survey approved',
+          surveyTitle: 'PERSONAL3',
+          description:
+            'Thank you for completing our survey, your answers have been approved.',
+          payment: 2,
+          approvedOn: '12/15/2013'
         }
       ]
     }
@@ -126,6 +160,9 @@ export default {
   getters: {
     getActiveSurveys(state) {
       return state.activeSurveys
+    },
+    getNotifications(state) {
+      return state.notifications
     }
   },
   mutations: {
@@ -134,6 +171,16 @@ export default {
       if (surveyToEnroll.postponable === false) {
         surveyToEnroll.isEnrolled = true
         surveyToEnroll.isCompleted = true
+        state.notifications.push({
+          id: surveyToEnroll.id,
+          type: 'approved',
+          title: 'Survey approved',
+          surveyTitle: surveyToEnroll.title,
+          description:
+            'Thank you for completing our survey, your answers have been approved.',
+          payment: surveyToEnroll.payment,
+          approvedOn: surveyToEnroll.completedOn
+        })
       } else {
         surveyToEnroll.isEnrolled = true
       }
@@ -149,6 +196,16 @@ export default {
     toogleCompletion(state, surveyId) {
       const surveyToComplete = state.activeSurveys.find(survey => survey.id === surveyId)
       surveyToComplete.isCompleted = true
+      state.notifications.push({
+        id: surveyToComplete.id,
+        type: 'approved',
+        title: 'Survey approved',
+        surveyTitle: surveyToComplete.title,
+        description:
+          'Thank you for completing our survey, your answers have been approved.',
+        payment: surveyToComplete.payment,
+        approvedOn: surveyToComplete.completedOn
+      })
     },
     toogleAppointment(state, [surveyId, timeId]) {
       const surveyToBook = state.activeSurveys.find(survey => survey.id === surveyId)

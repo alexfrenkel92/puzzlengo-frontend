@@ -12,36 +12,38 @@
           :key="survey.id"
         >
           <v-expansion-panel-header>
-            <div class="card-details-wrapper">
-              <h1>Survey name: {{ survey.title }}</h1>
-              <div class="payment">
-                <p class="payment-value">Payment: {{ survey.payment }}$</p>
-              </div>
-              <div v-if="survey.isEnrolled === false" class="btn-wrapper">
-                <v-btn class="btn-enroll" @click="toogleEnrollment(survey.id, survey.type)" @click.native.stop>
-                  Enroll
-                </v-btn>
-              </div>
-              <div v-if="survey.isEnrolled === true && survey.isCompleted === false" class="btn-wrapper">
-                <v-btn class="btn-withdraw" @click="withdraw(survey.id)" @click.native.stop>
-                  Withdraw
-                </v-btn>
-                <v-btn class="btn-resume" @click="toogleCompletion(survey.id, survey.type)" @click.native.stop>
-                  {{ btnText }}
-                </v-btn>
-                <div v-if="survey.type === 'personel'" class="completion-btn" title="cheatBtn for hackers, press to detonate" @click="hackerStyle(survey.id)" />
-              </div>
-              <footer>
-                <div class="duration">
-                  <p>Duration</p>
-                  <p>{{ survey.duration }} minutes</p>
+            <client-only>
+              <div class="card-details-wrapper">
+                <h1>Survey name: {{ survey.title }}</h1>
+                <div class="payment">
+                  <p class="payment-value">Payment: {{ survey.payment }}$</p>
                 </div>
-                <div class="quota">
-                  <p>Quota</p>
-                  <p>{{ survey.enrolled }}/{{ survey.quota }}</p>
+                <div v-if="survey.isEnrolled === false" class="btn-wrapper">
+                  <v-btn class="btn-enroll" @click="toogleEnrollment(survey.id, survey.type)" @click.native.stop>
+                    Enroll
+                  </v-btn>
                 </div>
-              </footer>
-            </div>
+                <div v-if="survey.isEnrolled === true && survey.isCompleted === false" class="btn-wrapper">
+                  <v-btn class="btn-withdraw" @click="withdraw(survey.id)" @click.native.stop>
+                    Withdraw
+                  </v-btn>
+                  <v-btn class="btn-resume" @click="toogleCompletion(survey.id, survey.type)" @click.native.stop>
+                    {{ btnText }}
+                  </v-btn>
+                  <div v-if="survey.type === 'personel'" class="completion-btn" title="cheatBtn for hackers, press to detonate" @click="hackerStyle(survey.id)" />
+                </div>
+                <footer>
+                  <div class="duration">
+                    <p>Duration</p>
+                    <p>{{ survey.duration }} minutes</p>
+                  </div>
+                  <div class="quota">
+                    <p>Quota</p>
+                    <p>{{ survey.enrolled }}/{{ survey.quota }}</p>
+                  </div>
+                </footer>
+              </div>
+            </client-only>
           </v-expansion-panel-header>
           <v-expansion-panel-content>
             <div class="description">

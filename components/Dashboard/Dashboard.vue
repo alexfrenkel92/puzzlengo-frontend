@@ -3,7 +3,7 @@
     <div class="active-completed-container">
       <active-surveys class="active-container" @openModal="openModal" />
       <div class="divider-vertical" />
-      <enrolled-surveys class="completed-container" @openModal="openModal" />
+      <completed-surveys class="completed-container" @openModal="openModal" />
     </div>
     <online-survey-modal
       :show-modal="onlineSurveyModal"

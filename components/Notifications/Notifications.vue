@@ -1,8 +1,8 @@
 <template>
-  <div class="notifications">
-    <v-expansion-panels>
+  <div class="notification-wrapper">
+    <v-expansion-panels accordion>
       <v-data-iterator
-        class="notifList"
+        class="pagination"
         :items="notifications"
         :page="page"
         :items-per-page.sync="itemsPerPage"
@@ -22,12 +22,22 @@
           </div>
         </template>
         <template v-slot:default="props">
-          <v-expansion-panel v-for="(item, i) in props.items" :key="i">
+          <v-expansion-panel
+            v-for="notification in props.items"
+            :key="notification.id"
+          >
             <v-expansion-panel-header>
-              {{ item.title }}
+              {{ notification.title }}: {{ notification.surveyTitle }}
             </v-expansion-panel-header>
             <v-expansion-panel-content>
-              {{ item.description }}
+              <div class="completion-details">
+                <p class="completed-on">
+                  Completed on: {{ notification.description }}
+                </p>
+                <p class="payment-value">
+                  Payment: {{ notification.payment }}$
+                </p>
+              </div>
             </v-expansion-panel-content>
           </v-expansion-panel>
         </template>
@@ -41,17 +51,16 @@ export default {
   data() {
     return {
       page: 1,
-      itemsPerPage: 10,
-      notifications: null
+      itemsPerPage: 10
     }
   },
   computed: {
     numberOfPages() {
       return Math.ceil(this.notifications.length / this.itemsPerPage)
+    },
+    notifications() {
+      return this.$store.getters.getNotifications
     }
-  },
-  created() {
-    this.notifications = this.$store.getters.getNotifications
   },
   methods: {
     nextPage() {
@@ -69,17 +78,30 @@ export default {
 </script>
 
 <style scoped>
-.notifications {
+.notification-wrapper {
   flex: 1 1 0;
   margin: 10px;
 }
-.notifList {
+.pagination {
   width: 100%;
 }
 .page-controller {
   padding: 14px;
 }
 .v-expansion-panel-header--active {
-  background-color:  #7abe8f !important;
+  background-color: #7abe8f !important;
+}
+.v-expansion-panel--active {
+  margin: 0 0 16px 0;
+}
+.v-expansion-panel-content >>> .v-expansion-panel-content__wrap {
+  padding: 5px 10px !important;
+}
+.v-expansion-panel-header {
+  font-weight: 550;
+}
+.payment-value,
+.completed-on {
+  margin: 0 0 5px 0;
 }
 </style>
