@@ -172,6 +172,9 @@ export default {
   color: black;
   padding: 2px 5px 0 ;
   margin: 0;
+  font-size: 1rem !important;
+  font-weight: 450;
+  color: rgb(58, 57, 57);
 }
 img {
   width: 30px;

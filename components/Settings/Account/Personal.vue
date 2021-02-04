@@ -28,26 +28,6 @@
                 v-on="on"
               />
             </template>
-<<<<<<< HEAD
-            <v-date-picker
-              v-model="birthDate"
-              no-title
-              scrollable
-            >
-              <v-spacer />
-              <v-btn text color="primary" @click="menu = false">
-                Cancel
-              </v-btn>
-              <v-btn
-                text
-                color="primary"
-                @click="$refs.dialog.save(birthDate)"
-              >
-                OK
-              </v-btn>
-            </v-date-picker>
-          </v-dialog>
-=======
             <v-date-picker v-model="birthDate" no-title scrollable>
               <v-date-picker v-model="birthDate" no-title scrollable>
                 <v-spacer />
@@ -59,8 +39,7 @@
                 </v-btn>
               </v-date-picker>
             </v-date-picker></v-menu>
->>>>>>> footer
-        </v-col>
+          </v-dialog></v-col>
       </v-row>
       <v-btn text @click="refreshPersonal"><v-icon>mdi-alpha-x-circle</v-icon> Cancel</v-btn>
       <v-btn text @click="updatePersonal"><v-icon>mdi-check-circle</v-icon> Save</v-btn>
