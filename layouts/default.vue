@@ -67,6 +67,12 @@ export default {
 }
 .v-main {
     padding-top: 100px;
+    margin-bottom: 20px;
+}
+@media screen and (max-width: 320px) {
+  .v-main {
+    margin-bottom: 100px;
+  }
 }
 .container {
     margin: auto;

@@ -16,6 +16,7 @@ export default {
           isPostponed: null,
           isEnrolled: false,
           isCompleted: false,
+          completedOn: '31/01/2021',
           myTime: null,
           allTime: [{ id: 1, date: '2021-01-08T11:00:00', address: 'Street1' }, { id: 2, date: '2021-01-08T14:00:00', address: 'Street 2' }, { id: 3, date: '2021-01-08T22:00:00', address: 'Street 1' }]
         },
@@ -30,9 +31,10 @@ export default {
           payment: 1.5,
           type: 'online',
           postponable: true,
-          isPostponed: true,
+          isPostponed: false,
           isEnrolled: false,
-          isCompleted: false
+          isCompleted: false,
+          completedOn: '06/22/2018'
         },
         {
           id: 3,
@@ -48,6 +50,7 @@ export default {
           isPostponed: null,
           isEnrolled: false,
           isCompleted: false,
+          completedOn: '01/03/2010',
           myTime: null,
           allTime: [{ id: 1, date: '2021-01-08T12:00:00', address: 'Street1' }, { id: 2, date: '2021-06-08T14:00:00', address: 'Street 2' }, { id: 3, date: '2021-06-08T22:00:00', address: 'Street 1' }]
         },
@@ -64,43 +67,44 @@ export default {
           postponable: false,
           isPostponed: null,
           isEnrolled: false,
-          isCompleted: false
-        }
-      ],
-      completedSurveys: [
-        {
-          id: 1,
-          title: 'PERSONAL1',
-          description:
-            'Lorem ipsum dolor ',
-          duration: 5,
-          quota: 250,
-          enrolled: 198,
-          payment: 1,
-          type: 'personel',
-          isEnrolled: true,
-          isCompleted: true,
+          isCompleted: false,
           completedOn: '01/09/2010'
         },
         {
-          id: 2,
-          title: 'ONLINE2',
+          id: 5,
+          title: 'ONLINE5',
           description:
-          'This survey is postponable. Once started, it can be paused and continued at a later time. It will be found in the \'Enrolled Surveys\' section.',
+            'This survey is not postponable. Once the modal is confirmed, it moves to the \'Completed Surveys\' section. Has to be finished at once.',
           duration: 15,
-          quota: 100,
-          enrolled: 27,
-          payment: 1.5,
+          quota: 80,
+          enrolled: 33,
+          payment: 2,
           type: 'online',
-          postponable: true,
-          isPostponed: true,
+          postponable: false,
+          isPostponed: null,
           isEnrolled: true,
           isCompleted: true,
-          completedOn: '01/03/2010'
+          completedOn: '09/27/2018'
         },
         {
-          id: 3,
-          title: 'PERSONAL3',
+          id: 6,
+          title: 'ONLINE6',
+          description:
+            'This survey is not postponable. Once the modal is confirmed, it moves to the \'Completed Surveys\' section. Has to be finished at once.',
+          duration: 15,
+          quota: 80,
+          enrolled: 33,
+          payment: 2,
+          type: 'online',
+          postponable: false,
+          isPostponed: null,
+          isEnrolled: true,
+          isCompleted: true,
+          completedOn: '12/15/2013'
+        },
+        {
+          id: 7,
+          title: 'PERSONAL7',
           description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla, tellus at finibus interdum, dui tortor suscipit nisi, et tempor nunc nisl nec diam and again dui tortor suscipit nisi, et tempor nunc nisl nec diam.',
           duration: 25,
@@ -112,7 +116,9 @@ export default {
           isPostponed: null,
           isEnrolled: true,
           isCompleted: true,
-          completedOn: '01/05/2010'
+          completedOn: '02/16/2021',
+          myTime: null,
+          allTime: [{ id: 1, date: '2021-01-08T12:00:00', address: 'Street1' }, { id: 2, date: '2021-06-08T14:00:00', address: 'Street 2' }, { id: 3, date: '2021-06-08T22:00:00', address: 'Street 1' }]
         }
       ]
     }
@@ -120,9 +126,6 @@ export default {
   getters: {
     getActiveSurveys(state) {
       return state.activeSurveys
-    },
-    getCompletedSurveys(state) {
-      return state.completedSurveys
     }
   },
   mutations: {

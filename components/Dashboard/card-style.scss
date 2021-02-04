@@ -1,270 +1,220 @@
 $background: #fffffb;
-$green: #7ABE8F;
-// $green: #5AB15F; 
-$red: #CD4A45;
-$darkBackground: #3F5567;
+$green: #7abe8f;
+// $green: #5AB15F;
+$red: #cd4a45;
+$darkBackground: #3f5567;
 // $darkBackground: #256389;
 
 // favágó megoldás
-#card-container-completed {
-  height: fit-content;
-  width: 90%;
-  padding: 8px;
-  margin: 10px;
-  border-radius: 8px;
-  background: $background;
-  position: relative;
-  box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
-  h1 {
-    height: fit-content;
-    text-align: left;
-    margin-bottom: 5px;
-    font-size: 1.2rem;
-    color: black;
-  }
-  .description{
-    height: fit-content;
-    margin: 5px 0 35px 0;
-  }
-  .description-title {
-    margin: 0;
-    font-weight: 550;
-  }
-  .description-content {
-    margin: 0;
-    height: fit-content;
-  }
-  .payment-value {
-    margin-bottom: 0;
-    font-weight: 550;
-  }
-  footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: $darkBackground;
-    color: white;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    height: 30px;
-    padding: 0 15px;
-    margin-left: -8px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    div {
-      display: flex;
-      p {
-        margin-bottom: 0;
-      }
-      p:first-child{
-        margin-right: 5px;
-        border-right: 4px solid white;
-        padding-right: 5px;
-      }
-    }
-  }
-}
+
 #card-container {
-  height: fit-content;
-  width: 90%;
-  padding: 8px;
-  margin: 10px;
-  border-radius: 8px;
-  background: $background;
-  position: relative;
-  box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
-  h1 {
     height: fit-content;
-    text-align: left;
-    margin-bottom: 5px;
-    font-size: 1.2rem;
-    color: black;
-  }
-  .description{
-    margin-top: 5px;
-  }
-  .description-title {
-    margin: 0;
-    font-weight: 550;
-  }
-  .description-content {
-    margin: 0;
-    height: fit-content;
-  }
-  .payment-value {
-    margin-bottom: 0;
-    font-weight: 550;
-  }
-  .btn-enroll {
-    width: fit-content;
-    height: fit-content;
-    font-size: 1rem;
-    padding: 5px 20px;
-    margin: 5px 10% 35px 10%;
-    color: $background;
-    border: none;
-    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
-    border-radius: 5px;
-    background: $green;
-    background-size: 300% 300%;
-    outline: none;
-    transition: all 200ms ease-in-out;
-    &:hover{
-      box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
-      transform: translateY(2px);
-      -webkit-animation: gradientBG 1.5s ease-in-out forwards;
-      animation: gradientBG 1.5s ease-in-out forwards;
-      cursor: pointer;
+    width: 90%;
+    position: relative;
+    box-shadow: 5px 5px 10px rgba(92, 92, 92, 0.5);
+    .card-details-wrapper {
+        padding: 8px;
     }
-    &:active {
-      box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
-      transform: translateY(4px);
+    h1 {
+        height: fit-content;
+        text-align: left;
+        margin-bottom: 5px;
+        font-size: 1.2rem;
+        color: black;
     }
-  }
-  .btn-wrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
-  .btn-withdraw {
-    width: 120px;
-    height: fit-content;
-    font-size: 1rem;
-    padding: 5px 20px;
-    margin: 5px 10% 35px 10%;
-    color: $background;
-    border: none;
-    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
-    border-radius: 5px;
-    background: $red;
-    background-size: 300% 300%;
-    outline: none;
-    transition: all 200ms ease-in-out;
-    &:hover{
-      box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
-      transform: translateY(2px);
-      -webkit-animation: gradientBG 1.5s ease-in-out forwards;
-      animation: gradientBG 1.5s ease-in-out forwards;
-      cursor: pointer;
+    .description-title {
+        margin: 0;
+        font-weight: 550;
     }
-    &:active {
-      box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
-      transform: translateY(4px);
+    .description-content {
+        margin: 0;
+        height: fit-content;
     }
-  }
-  .btn-resume {
-    width: 120px;
-    height: fit-content;
-    font-size: 1rem;
-    padding: 5px 20px;
-    margin: 5px 10% 35px 10%;
-    color: $background;
-    border: none;
-    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
-    border-radius: 5px;
-    background: $green;
-    background-size: 300% 300%;
-    outline: none;
-    transition: all 200ms ease-in-out;
-    &:hover{
-      box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
-      transform: translateY(2px);
-      -webkit-animation: gradientBG 1.5s ease-in-out forwards;
-      animation: gradientBG 1.5s ease-in-out forwards;
-      cursor: pointer;
+    .completion-details {
+        margin: 10px 0 35px 0;
+        font-weight: 550;
     }
-    &:active {
-      box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
-      transform: translateY(4px);
+    .payment-value,
+    .completed-on {
+      margin: 0 0 5px 0;
     }
-  }
-  .completion-btn {
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    bottom: 20px;
-    background-color: red;
-  }
-  footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: $darkBackground;
-    color: white;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    height: 30px;
-    padding: 0 15px;
-    margin-left: -8px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    div {
-      display: flex;
-      p {
-        margin-bottom: 0;
-      }
-      p:first-child{
-        margin-right: 5px;
-        border-right: 4px solid white;
-        padding-right: 5px;
-      }
+    .payment {
+      margin: 10px 0 5px 0;
+      font-weight: 550;
     }
-  }
+    .btn-enroll {
+        width: fit-content;
+        height: fit-content;
+        font-size: 1rem;
+        font-weight: normal;
+        padding: 5px 20px;
+        color: $background;
+        border: none;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        background: $green;
+        background-size: 300% 300%;
+        outline: none;
+        transition: all 200ms ease-in-out;
+        &:hover {
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+            transform: translateY(2px);
+            -webkit-animation: gradientBG 1.5s ease-in-out forwards;
+            animation: gradientBG 1.5s ease-in-out forwards;
+            cursor: pointer;
+        }
+        &:active {
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+            transform: translateY(4px);
+        }
+    }
+    .btn-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+                margin: 5px 10% 35px 10%;
+
+    }
+    .btn-withdraw {
+        width: 120px;
+        height: fit-content;
+        font-size: 1rem;
+        font-weight: normal;
+        padding: 5px 20px;
+        margin: 0 10% 0 10%;
+        color: $background;
+        border: none;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        background: $red;
+        background-size: 300% 300%;
+        outline: none;
+        transition: all 200ms ease-in-out;
+        &:hover {
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+            transform: translateY(2px);
+            -webkit-animation: gradientBG 1.5s ease-in-out forwards;
+            animation: gradientBG 1.5s ease-in-out forwards;
+            cursor: pointer;
+        }
+        &:active {
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+            transform: translateY(4px);
+        }
+    }
+    .btn-resume {
+        width: 120px;
+        height: fit-content;
+        font-size: 1rem;
+        font-weight: normal;
+        padding: 5px 20px;
+        margin: 0 10% 0 10%;
+        color: $background;
+        border: none;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        background: $green;
+        background-size: 300% 300%;
+        outline: none;
+        transition: all 200ms ease-in-out;
+        &:hover {
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+            transform: translateY(2px);
+            -webkit-animation: gradientBG 1.5s ease-in-out forwards;
+            animation: gradientBG 1.5s ease-in-out forwards;
+            cursor: pointer;
+        }
+        &:active {
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+            transform: translateY(4px);
+        }
+    }
+    .completion-btn {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        bottom: 20px;
+        background-color: red;
+    }
+    footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: $darkBackground;
+        color: white;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        height: 30px;
+        padding: 0 15px;
+        margin-left: -8px;
+        // border-bottom-left-radius: 5px;
+        // border-bottom-right-radius: 5px;
+        div {
+            display: flex;
+            p {
+                margin-bottom: 0;
+            }
+            p:first-child {
+                margin-right: 5px;
+                border-right: 4px solid white;
+                padding-right: 5px;
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 800px) {
-  .duration p,
-  .quota p {
-    font-size: 0.9rem;
-  }
+    .duration p,
+    .quota p {
+        font-size: 0.9rem;
+    }
 }
 @media screen and (max-width: 325px) {
-  .duration p,
-  .quota p {
-    font-size: 0.9rem;
-  }
-  .btn-withdraw {
-    margin: 5px 5% 35px 10% !important;
-  }
-  .btn-resume {
-    margin: 5px 10% 35px 5% !important;
-  }
+    .duration p,
+    .quota p {
+        font-size: 0.9rem;
+    }
+    .btn-withdraw {
+        margin: 5px 5% 35px 10% !important;
+    }
+    .btn-resume {
+        margin: 5px 10% 35px 5% !important;
+    }
 }
 @media screen and (max-width: 280px) {
-  .duration p,
-  .quota p {
-    font-size: 0.7rem;
-  }
-  .btn-withdraw {
-    margin: 5px 2% 35px 10% !important;
-  }
-  .btn-resume {
-    margin: 5px 10% 35px 2% !important;
-  }
+    .duration p,
+    .quota p {
+        font-size: 0.7rem;
+    }
+    .btn-withdraw {
+        margin: 5px 2% 35px 10% !important;
+    }
+    .btn-resume {
+        margin: 5px 10% 35px 2% !important;
+    }
 }
 
 @-webkit-keyframes gradientBG {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
-  // 100% {
-  //   background-position: 0% 50%;
-  // }
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+    // 100% {
+    //   background-position: 0% 50%;
+    // }
 }
 @keyframes gradientBG {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
-  // 100% {
-  //   background-position: 0% 50%;
-  // }
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+    // 100% {
+    //   background-position: 0% 50%;
+    // }
 }
