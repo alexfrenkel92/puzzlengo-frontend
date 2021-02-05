@@ -93,7 +93,8 @@ export default {
           type: 'psy'
         }
       ],
-      profileCompletion: 13
+      profileCompletion: 13,
+      balanceNr: 75
     }
   },
   getters: {
@@ -105,6 +106,19 @@ export default {
     },
     getProfileCompletion(state) {
       return state.profileCompletion
+    },
+    getBalanceNr(state) {
+      return state.balanceNr
+    }
+  },
+  mutations: {
+    calculateBalance(state, balanceNr) {
+      state.balanceNr += balanceNr
+    }
+  },
+  actions: {
+    calculateBalance(context, payload) {
+      context.commit('calculateBalance', payload)
     }
   }
 }

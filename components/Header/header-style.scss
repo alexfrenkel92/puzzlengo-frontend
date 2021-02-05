@@ -224,6 +224,20 @@ button:hover, button:active {
 .nav-btn:hover::after {
     width: 100%;
 }
+.notification-btn-wrapper {
+    position: relative;
+    // background-color: rgb(235, 157, 157) !important;
+}
+.notification-nr {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    font-size: .7rem;
+    color: ghostwhite;
+    background-color: #7abe8f;
+    padding: 1px 3px;
+    border-radius: 35px;
+}
 .active-class-link {
     color: red !important;
     border: 2px solid red;
@@ -280,10 +294,6 @@ button:hover, button:active {
     text-transform: capitalize;
 }
 
-.mobile-menu-list {
-    padding: 0;
-}
-
 .v-list-item--link:hover {
     background: #7abe8f !important;
 }
@@ -329,7 +339,20 @@ paper-nav {
         }
     }
 }
-
+.notification-btn-wrapper {
+    position: relative;
+    // background-color: rgb(235, 157, 157) !important;
+}
+.notification-nr-mobile {
+    position: absolute;
+    bottom: 105px;
+    left: 150px;
+    font-size: .7rem;
+    color: ghostwhite;
+    background-color: #7abe8f;
+    padding: 1px 3px;
+    border-radius: 35px;
+}
 .mobile-nav {
     @include palette-background-paper;
     z-index: 90;
@@ -343,15 +366,17 @@ paper-nav {
         top: spacing(15);
         width: 100%;
         position: absolute;
-        height: calc(100% - 80px);
+        height: fit-content;
+        // height: calc(100% - 80px);
         .menu-list {
             text-transform: capitalize;
             text-decoration: none;
             color: black;
-            font-size: 24px;
+            font-size: 1.5rem;
             font-weight: $font-regular;
-            padding: 5px 15px;
-            cursor: pointer;
+        }
+        .setting {
+            padding-left: 0;
         }
         // .menu-list:hover, .menu-list:active {
         //   background: #7abe8f !important;
@@ -362,13 +387,6 @@ paper-nav {
             font-weight: $font-regular;
             padding: 15px 15px;
             cursor: pointer;
-        }
-        &.menu-open {
-            padding: 0;
-            a {
-                animation-name: slideRight;
-                animation-timing-function: ease;
-            }
         }
     }
 }

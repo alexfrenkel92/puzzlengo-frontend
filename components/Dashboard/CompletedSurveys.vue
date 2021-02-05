@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="enrolled component-title">Completed Surveys</div>
+    <div class="enrolled component-title">Completed surveys</div>
     <div v-if="completedSurveysLength === 0" class="error-case">
       <h3>No completed surveys yet</h3>
     </div>

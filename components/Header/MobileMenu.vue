@@ -1,8 +1,8 @@
 <template>
   <div class="mobile-nav">
-    <div class="menu" :class="{ 'menu-open': open }">
-      <v-list v-if="isLoggedIn" dense tag="nav" class="mobile-menu-list">
-        <v-list-item
+    <div class="menu">
+      <div v-if="isLoggedIn">
+        <!-- <v-list-item
           v-for="(item, index) in navMenu"
           :key="index"
           link
@@ -10,31 +10,27 @@
           @click="closeMenu"
         >
           <nuxt-link class="menu-list" :to="item.url">
-            <!-- {{ $t('menu.header_'+item) }} -->
             {{ item.title }}
           </nuxt-link>
-        </v-list-item>
-        <Settings v-if="isLoggedIn" :invert="invert" />
-        <!-- <v-list-item
-          link
-          :style="{ animationDuration: navMenu.length * 0.15 + 's' }"
-          @click="navigate('contact')"
-        >
-          <v-list-item-content>
-            <v-list-item-title class="menu-list">
-              {{ $t('menu.header_static') }}
-            </v-list-item-title>
-          </v-list-item-content>
         </v-list-item> -->
-      </v-list>
-      <v-list dense tag="nav" class="auth-section">
+        <nuxt-link v-if="!invert" class="menu-list" to="/dashboard">Dashboard</nuxt-link>
+        <div v-if="!invert" class="notification-btn-wrapper-mobile">
+          <nuxt-link class="menu-list" to="/notifications">
+            Notifications
+            <div v-if="notificationNumber > 0" class="notification-nr-mobile">{{ notificationNumber }}</div>
+          </nuxt-link>
+        </div>
+        <nuxt-link v-if="!invert" class="menu-list" to="/health">My Health</nuxt-link>
+        <Settings v-if="isLoggedIn" class="setting-btn" :invert="invert" />
+      </div>
+      <!-- <v-list tag="nav" class="auth-section">
         <v-list-item :style="{ animationDuration: 1 * 0.15 + 's' }">
           <v-list-item-content v-if="!isLoggedIn">
             <v-list-item-title class="auth-btns" @click="signUp">Sign Up</v-list-item-title>
             <v-list-item-title class="auth-btns" @click="handleAuth">Login</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-      </v-list>
+      </v-list> -->
     </div>
   </div>
 </template>
@@ -78,6 +74,9 @@ export default {
     },
     invert() {
       return !!this.isMobile
+    },
+    notificationNumber() {
+      return this.$store.getters.getNotificationNr
     }
   },
   methods: {

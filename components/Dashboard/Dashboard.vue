@@ -35,7 +35,7 @@ export default {
       this.surveyType = surveyType
       if (surveyType === 'online') {
         this.onlineSurveyModal = !this.onlineSurveyModal
-      } else if (surveyType === 'personel') {
+      } else if (surveyType === 'personal') {
         this.personalSurveyModal = !this.personalSurveyModal
       }
     },
@@ -49,7 +49,7 @@ export default {
       this.$store.dispatch('toogleEnrollment', this.surveyId)
       if (this.surveyType === 'online') {
         this.closeOnlineModal()
-      } else if (this.surveyType === 'personel') {
+      } else if (this.surveyType === 'personal') {
         this.closePersonelModal()
       }
     }

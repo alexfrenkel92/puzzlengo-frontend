@@ -31,23 +31,19 @@
               </nuxt-link>
             </div>
           </div>
-          <div v-for="(item, index) in showMenus" :key="index">
-            <nuxt-link
-              v-if="!invert"
-              class="nav-btn"
-              text
-              :to="item.url"
-            >
-              {{ item.title }}
-            </nuxt-link>
+          <nuxt-link v-if="!invert" class="nav-btn" to="/dashboard">Dashboard</nuxt-link>
+          <div v-if="!invert" class="notification-btn-wrapper">
+            <nuxt-link class="nav-btn" to="/notifications">Notifications</nuxt-link>
+            <div v-if="notificationNumber > 0" class="notification-nr">{{ notificationNumber }}</div>
           </div>
+          <nuxt-link v-if="!invert" class="nav-btn" to="/health">My Health</nuxt-link>
         </nav>
         <nav :class="{ invert: invert }">
           <div v-if="isDesktop">
             <button v-if="!isLoggedIn" @click="handleAuth">Login</button>
           </div>
           <nuxt-link class="balance-button" to="/balance">
-            <p class="balance-text">240</p>
+            <p class="balance-text">{{ balanceNr }}</p>
             <img :src="usd" alt="balance-button">
           </nuxt-link>
           <setting-menu v-if="isLoggedIn && isDesktop" :invert="invert" />
@@ -74,7 +70,6 @@
 </style>
 
 <script>
-import navMenu from './menu'
 import Settings from './Settings'
 import MobileMenu from './MobileMenu'
 import logo from '~/static/images/de_emblema_RGB.png'
@@ -89,7 +84,6 @@ export default {
   },
   data() {
     return {
-      navMenu,
       logo,
       loaded: true,
       brand,
@@ -102,10 +96,6 @@ export default {
   computed: {
     isLoggedIn() {
       return this.$store.getters.isLoggedIn
-    },
-    showMenus() {
-      return this.navMenu.filter(navItem => navItem.loginShow === this.isLoggedIn || navItem.alwaysShow
-      )
     },
     isMobile() {
       const smDown = this.$store.state.breakpoints.smDown
@@ -123,6 +113,19 @@ export default {
     },
     usd() {
       return require('~/static/images/usd2.png')
+    },
+    notificationNumber() {
+      const notifications = this.$store.getters.getNotifications
+      let notificationNumber = 0
+      for (let i = 0; i < notifications.length; i++) {
+        if (notifications[i].notificationChecked === false) {
+          notificationNumber++
+        }
+      }
+      return notificationNumber
+    },
+    balanceNr() {
+      return this.$store.getters.getBalanceNr
     }
   },
   methods: {

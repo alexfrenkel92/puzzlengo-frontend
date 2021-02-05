@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="active component-title">Active surveys to enroll</div>
+    <div class="active component-title">Available surveys to enroll</div>
     <div v-if="activeSurveysLength === 0" class="error-case">
       <h3>There are no surveys available, check back later</h3>
     </div>
@@ -19,7 +19,7 @@
                   <p class="payment-value">Payment: {{ survey.payment }}$</p>
                 </div>
                 <div v-if="survey.isEnrolled === false" class="btn-wrapper">
-                  <v-btn class="btn-enroll" @click="toogleEnrollment(survey.id, survey.type)" @click.native.stop>
+                  <v-btn class="btn-enroll" @click="toogleEnrollment(survey)" @click.native.stop>
                     Enroll
                   </v-btn>
                 </div>
@@ -27,10 +27,10 @@
                   <v-btn class="btn-withdraw" @click="withdraw(survey.id)" @click.native.stop>
                     Withdraw
                   </v-btn>
-                  <v-btn class="btn-resume" @click="toogleCompletion(survey.id, survey.type)" @click.native.stop>
+                  <v-btn class="btn-resume" @click="toogleCompletion(survey)" @click.native.stop>
                     {{ btnText }}
                   </v-btn>
-                  <div v-if="survey.type === 'personel'" class="completion-btn" title="cheatBtn for hackers, press to detonate" @click="hackerStyle(survey.id)" />
+                  <div v-if="survey.type === 'personal'" class="completion-btn" title="cheatBtn for hackers, press to detonate" @click="hackerStyle(survey)" />
                 </div>
                 <footer>
                   <div class="duration">
@@ -77,26 +77,29 @@ export default {
     }
   },
   methods: {
-    toogleEnrollment(surveyId, surveyType) {
-      if (surveyType === 'online') {
+    toogleEnrollment(survey) {
+      if (survey.type === 'online') {
         this.btnText = 'Resume'
-      } else if (surveyType === 'personel') {
+        this.$store.dispatch('calculateBalance', survey.payment)
+      } else if (survey.type === 'personal') {
         this.btnText = 'Reschedule'
       }
-      this.$emit('openModal', surveyId, surveyType)
+      this.$emit('openModal', survey.id, survey.type)
     },
     withdraw(surveyId) {
       this.$store.dispatch('toogleWithdrawal', surveyId)
     },
-    toogleCompletion(surveyId, surveyType) {
-      if (surveyType === 'online') {
-        this.$store.dispatch('toogleCompletion', surveyId)
-      } else if (surveyType === 'personel') {
-        this.$emit('openModal', surveyId, surveyType)
+    toogleCompletion(survey) {
+      if (survey.type === 'online') {
+        this.$store.dispatch('toogleCompletion', survey.id)
+        this.$store.dispatch('calculateBalance', survey.payment)
+      } else if (survey.type === 'personal') {
+        this.$emit('openModal', survey.id, survey.type)
       }
     },
-    hackerStyle(id) {
-      this.$store.dispatch('toogleCompletion', id)
+    hackerStyle(survey) {
+      this.$store.dispatch('toogleCompletion', survey.id)
+      this.$store.dispatch('calculateBalance', survey.payment)
     }
   }
 }

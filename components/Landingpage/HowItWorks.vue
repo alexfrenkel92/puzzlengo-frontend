@@ -45,7 +45,7 @@ export default {
       },
       {
         icon: 'mdi-airballoon',
-        title: 'Participate in online or personel surveys',
+        title: 'Participate in online or personal surveys',
         text:
           'Ut fermentum leo sit amet sapien pharetra, non facilisis mauris lacinia. Suspendisse in odio in urna cursus dictum a id ex.'
       },

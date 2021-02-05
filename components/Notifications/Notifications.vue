@@ -26,19 +26,54 @@
             v-for="notification in props.items"
             :key="notification.id"
           >
-            <v-expansion-panel-header>
-              {{ notification.title }}: {{ notification.surveyTitle }}
-            </v-expansion-panel-header>
-            <v-expansion-panel-content>
-              <div class="completion-details">
-                <p class="completed-on">
-                  Completed on: {{ notification.description }}
-                </p>
-                <p class="payment-value">
-                  Payment: {{ notification.payment }}$
-                </p>
-              </div>
-            </v-expansion-panel-content>
+            <div v-if="notification.type === 'online'">
+              <v-expansion-panel-header :class="{ notified: !notification.notificationChecked }" @click="notified(notification)">
+                {{ notification.title }}: {{ notification.surveyTitle }}
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <div class="completion-details">
+                  <p class="completed-on">
+                    Description: {{ notification.description }}
+                  </p>
+                  <p class="payment-value">
+                    Payment: {{ notification.payment }}$
+                  </p>
+                </div>
+              </v-expansion-panel-content>
+            </div>
+            <div v-if="notification.type === 'personal' && notification.status === 'request'">
+              <v-expansion-panel-header :class="{ notified: !notification.notificationChecked }" @click="notified(notification)">
+                {{ notification.title }} for '{{ notification.surveyTitle }}' has been approved
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <div class="completion-details">
+                  <p class="completed-on">
+                    Description: {{ notification.description }}
+                  </p>
+                  <p class="payment-value">
+                    Payment on completion: {{ notification.payment }}$
+                  </p>
+                  <p class="payment-value">
+                    Duration: {{ notification.duration }} min
+                  </p>
+                </div>
+              </v-expansion-panel-content>
+            </div>
+            <div v-if="notification.type === 'personal' && notification.status === 'approved'">
+              <v-expansion-panel-header :class="{ notified: !notification.notificationChecked }" @click="notified(notification)">
+                {{ notification.title }}: {{ notification.surveyTitle }}
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <div class="completion-details">
+                  <p class="completed-on">
+                    Description: {{ notification.description }}
+                  </p>
+                  <p class="payment-value">
+                    Payment: {{ notification.payment }}$
+                  </p>
+                </div>
+              </v-expansion-panel-content>
+            </div>
           </v-expansion-panel>
         </template>
       </v-data-iterator>
@@ -72,6 +107,11 @@ export default {
       if (this.page - 1 >= 1) {
         this.page -= 1
       }
+    },
+    notified(notification) {
+      if (notification.notificationChecked === false) {
+        this.$store.dispatch('toogleNotification', notification.id)
+      }
     }
   }
 }
@@ -90,6 +130,17 @@ export default {
 }
 .v-expansion-panel-header--active {
   background-color: #7abe8f !important;
+}
+.notified {
+  animation: pulse .1s infinite;
+}
+@keyframes pulse {
+  0% {
+    background-color: #AEEA00;
+  }
+  100% {
+    background-color: #9C27B0;
+  }
 }
 .v-expansion-panel--active {
   margin: 0 0 16px 0;

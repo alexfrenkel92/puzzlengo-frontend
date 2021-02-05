@@ -11,7 +11,7 @@ export default {
           quota: 250,
           enrolled: 198,
           payment: 1,
-          type: 'personel',
+          type: 'personal',
           postponable: null,
           isPostponed: null,
           isEnrolled: true,
@@ -45,7 +45,7 @@ export default {
           quota: 100,
           enrolled: 79,
           payment: 4,
-          type: 'personel',
+          type: 'personal',
           postponable: null,
           isPostponed: null,
           isEnrolled: true,
@@ -79,7 +79,7 @@ export default {
           quota: 100,
           enrolled: 79,
           payment: 4,
-          type: 'personel',
+          type: 'personal',
           postponable: null,
           isPostponed: null,
           isEnrolled: false,
@@ -92,13 +92,13 @@ export default {
           id: 6,
           title: 'ONLINE6',
           description:
-            'This survey is not postponable. Once the modal is confirmed, it moves to the \'Completed Surveys\' section. Has to be finished at once.',
+            'This survey is postponable. Once started, it can be paused and continued at a later time. It will be found in the \'Enrolled Surveys\' section.',
           duration: 15,
           quota: 80,
           enrolled: 33,
           payment: 2,
           type: 'online',
-          postponable: false,
+          postponable: true,
           isPostponed: null,
           isEnrolled: false,
           isCompleted: false,
@@ -113,7 +113,7 @@ export default {
           quota: 100,
           enrolled: 79,
           payment: 4,
-          type: 'personel',
+          type: 'personal',
           postponable: null,
           isPostponed: null,
           isEnrolled: false,
@@ -125,34 +125,56 @@ export default {
       ],
       notifications: [
         {
-          id: 5,
-          type: 'approved',
+          id: 11,
+          type: 'personal',
+          status: 'approved',
           title: 'Survey approved',
           surveyTitle: 'PERSONAL1',
           description:
             'Thank you for completing our survey, your answers have been approved.',
           payment: 3,
-          approvedOn: '09/27/2018'
+          duration: 5,
+          approvedOn: '09/27/2018',
+          notificationChecked: true
         },
         {
-          id: 6,
-          type: 'declined',
+          id: 22,
+          type: 'online',
+          status: 'declined',
           title: 'Survey declined',
           surveyTitle: 'ONLINE2',
           description:
             'The data provided cannot be validated.',
           payment: 2,
-          approvedOn: '12/15/2013'
+          duration: 15,
+          approvedOn: '12/15/2013',
+          notificationChecked: false
         },
         {
-          id: 7,
-          type: 'approved',
+          id: 33,
+          type: 'personal',
+          status: 'request',
+          title: 'Participation request',
+          surveyTitle: 'Work ethics',
+          description:
+            'Your are invited to a personal survey participation on the selected date in the topic of work ethics.',
+          payment: 8,
+          duration: 20,
+          approvedOn: '12/15/2013',
+          notificationChecked: true
+        },
+        {
+          id: 8,
+          type: 'personal',
+          status: 'approved',
           title: 'Survey approved',
           surveyTitle: 'PERSONAL3',
           description:
             'Thank you for completing our survey, your answers have been approved.',
           payment: 2,
-          approvedOn: '12/15/2013'
+          duration: 25,
+          approvedOn: '12/15/2013',
+          notificationChecked: true
         }
       ]
     }
@@ -173,14 +195,18 @@ export default {
         surveyToEnroll.isCompleted = true
         state.notifications.push({
           id: surveyToEnroll.id,
-          type: 'approved',
+          type: surveyToEnroll.type,
+          status: 'approved',
           title: 'Survey approved',
           surveyTitle: surveyToEnroll.title,
           description:
             'Thank you for completing our survey, your answers have been approved.',
           payment: surveyToEnroll.payment,
-          approvedOn: surveyToEnroll.completedOn
+          duration: surveyToEnroll.duration,
+          approvedOn: surveyToEnroll.completedOn,
+          notificationChecked: false
         })
+        state.newNotification++
       } else {
         surveyToEnroll.isEnrolled = true
       }
@@ -198,18 +224,26 @@ export default {
       surveyToComplete.isCompleted = true
       state.notifications.push({
         id: surveyToComplete.id,
-        type: 'approved',
+        type: surveyToComplete.type,
+        status: 'approved',
         title: 'Survey approved',
         surveyTitle: surveyToComplete.title,
         description:
           'Thank you for completing our survey, your answers have been approved.',
         payment: surveyToComplete.payment,
-        approvedOn: surveyToComplete.completedOn
+        duration: surveyToComplete.duration,
+        approvedOn: surveyToComplete.completedOn,
+        notificationChecked: false
       })
+      state.newNotification++
     },
     toogleAppointment(state, [surveyId, timeId]) {
       const surveyToBook = state.activeSurveys.find(survey => survey.id === surveyId)
       surveyToBook.myTime = timeId
+    },
+    toogleNotification(state, notificationId) {
+      const notification = state.notifications.find(notification => notification.id === notificationId)
+      notification.notificationChecked = true
     }
   },
   actions: {
@@ -224,6 +258,9 @@ export default {
     },
     toogleAppointment(context, playload) {
       context.commit('toogleAppointment', playload)
+    },
+    toogleNotification(context, payload) {
+      context.commit('toogleNotification', payload)
     }
   }
 }
