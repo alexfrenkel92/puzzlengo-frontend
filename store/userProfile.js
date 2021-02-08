@@ -93,7 +93,7 @@ export default {
           type: 'psy'
         }
       ],
-      profileCompletion: 13,
+      profileCompletion: 100,
       balanceNr: 75
     }
   },

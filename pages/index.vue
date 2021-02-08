@@ -15,7 +15,5 @@ export default {
 <style scopped>
 .wrapper {
   padding: 0;
-  background-color: #faffff;
-  /* background-color: #f3eae5; */
 }
 </style>

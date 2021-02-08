@@ -43,16 +43,18 @@ $palette-secondary-dark: var(--v-secondarydark-base);
 $palette-common-white: #fff;
 $palette-common-black: #000;
 
-// Light color palette
-$light-text-primary: rgba(0, 0, 0, 0.87);
+
 $light-text-secondary: rgba(0, 0, 0, 0.54);
 $light-text-disabled: rgba(0, 0, 0, 0.38);
 $light-text-hint: rgba(0, 0, 0, 0.38);
 
 $light-divider: rgba(0, 0, 0, 0.12);
 
-$light-background-paper: #fff;
+$light-background-paper: #f6f6f8;
 $light-background-default: #fafafa;
+
+$light-footer-background: #FAE596;
+$light-footer-background: #92875e;
 
 // Dark Color Palette
 $dark-text-primary: #fff;
@@ -69,3 +71,32 @@ $dark-background-default: #303030;
 $rounded-small: 8px;
 $rounded-medium: 12px;
 $rounded-big: 20px;
+
+
+//////////////////////////////////////////////////////////////////
+// Landing page colors
+// $light-background-color-gradient: linear-gradient(to right bottom, #ffa17a, #d2ad63, #9db56c, #69b58b, #3fb0ac) !important;
+// $light-background-color-gradient: linear-gradient(to right bottom, #3fb0ac, #299d8f, #158973, #057657, #00633b) !important;
+$light-background-color-gradient: linear-gradient(to right bottom, #f3eada, #c7c5a6, #94a278, #5a8254, #00633b) !important;
+// $light-background-color-gradient: linear-gradient(to right bottom, #f5e482, #e4b75f, #cf8a46, #b65f34, #983428) !important;
+
+//////////////////////////////////////////////////////////////////
+// Text colors
+$light-text-primary: #3a3939;
+$light-error-orange: #c73a2b;
+
+//////////////////////////////////////////////////////////////////
+// Background colors
+$light-creamy-white: #fcf5ea;
+$light-whitish-background-color: #f7f6f4;
+$light-default-layout-background: #F3EADA;
+$light-dark-green: #00633B;
+$ligth-dark-color: #3a3939;
+
+//////////
+$color0: #fcf5ea;
+$color1: #00633B;
+$color2: #f7f3ec;
+$color3: #FFA17A;
+$color4: #F5E482;
+$color5: #983428;

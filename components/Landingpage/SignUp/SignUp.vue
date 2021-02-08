@@ -7,10 +7,10 @@
       hide-overlay
       transition="dialog-bottom-transition"
     >
-      <v-card color="#E0F2F1">
+      <v-card>
         <v-toolbar dark flat color="transparent">
           <v-btn icon dark @click="closeModal">
-            <v-icon color="black">mdi-close</v-icon>
+            <v-icon color="#3a3939">mdi-close</v-icon>
           </v-btn>
         </v-toolbar>
         <div class="main-wrapper">
@@ -138,7 +138,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang='scss'>
+.v-card {
+  @include background-color-gradient;
+}
 .centered-input >>> input {
   text-align: center
 }
@@ -170,7 +173,7 @@ a {
 }
 .main-wrapper {
   margin: auto;
-  background-color: #fff;
+  @include creamy-white-color;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   position: relative;

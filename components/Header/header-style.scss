@@ -1,43 +1,11 @@
 @import "~/assets/styles";
 
-$flag: "/images/flag-logo.png";
-
-@mixin flag-icon {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    display: inline-block;
-    position: relative;
-    @include margin-right(5px);
-    top: 1px;
-    background: url($flag) no-repeat transparent;
-    background-size: 16px auto;
-    &.ar {
-        background-position: 0 3px;
-    }
-    &.zh {
-        background-position: 0 -12px;
-    }
-    &.en {
-        background-position: 0 -28px;
-    }
-    &.de {
-        background-position: 0 -44px;
-    }
-    &.id {
-        background-position: 0 -62px;
-    }
-    &.pt {
-        background-position: 0 -79px;
-    }
-}
-
 .scollactive-logo {
     padding: 0 !important;
 }
 
 .logo-title {
-    color: black;
+    color: rgb(58, 57, 57);
     font-size: 1.5rem;
     padding-bottom: 2px;
 }
@@ -52,8 +20,8 @@ $flag: "/images/flag-logo.png";
     padding: 5px !important;
 }
 .header.v-app-bar.v-toolbar.v-sheet {
-    background-color: #ffffff;
-    @include palette-text-primary;
+    @include whitish-background-color;
+    @include primary-text-color;
     z-index: 11;
     box-shadow: none;
     transition: all 0.3s ease;
@@ -78,7 +46,6 @@ $flag: "/images/flag-logo.png";
         height: auto !important;
         padding: 4px 0;
         @include shadow5;
-        @include palette-background-paper;
         .logo {
             a {
                 @include palette-text-primary;
@@ -162,8 +129,8 @@ $flag: "/images/flag-logo.png";
         font-size: 22px;
         align-items: center;
         font-weight: $font-medium;
+        margin-bottom: 6px;
         @include breakpoints-up("md") {
-            // @include palette-text-primary;
         }
     }
     img {
@@ -177,7 +144,6 @@ $flag: "/images/flag-logo.png";
 
 .nav-logo {
     display: flex;
-    // background-color: pink;
     &.invert .logo a {
         @include palette-text-primary;
     }
@@ -201,12 +167,13 @@ button {
     font-size: 1.2rem !important;
     display: inline-block;
 }
-button:hover, button:active {
+button:hover,
+button:active {
     text-decoration: none;
-    outline: none
+    outline: none;
 }
 .nav-btn {
-    color: black !important;
+    color: rgb(58, 57, 57) !important;
     margin: 10px 20px;
     text-decoration: none;
     font-size: 1.2rem !important;
@@ -219,6 +186,7 @@ button:hover, button:active {
     height: 5px;
     border-radius: 5px;
     background: #7abe8f;
+    // background-image: linear-gradient(to left, #5a8254, #629162, #6a9f70, #72af7f, #7abe8f);
     transition: width 0.3s;
 }
 .nav-btn:hover::after {
@@ -232,18 +200,14 @@ button:hover, button:active {
     position: absolute;
     top: 7px;
     right: 7px;
-    font-size: .7rem;
+    font-size: 0.7rem;
     color: ghostwhite;
     background-color: #7abe8f;
     padding: 1px 3px;
     border-radius: 35px;
 }
-.active-class-link {
-    color: red !important;
-    border: 2px solid red;
-}
 .nuxt-link-exact-active::after {
-    border: 2px solid #7abe8f;
+    border: 2px solid linear-gradient(to left, #5a8254, #629162, #6a9f70, #72af7f, #7abe8f);
     width: 100%;
 }
 
@@ -255,8 +219,9 @@ button:hover, button:active {
     text-transform: capitalize;
     .flag {
         margin: 0;
-        & i {
-            @include flag-icon;
+        img {
+            width: 30px;
+            height: 30px;
         }
     }
     .lang-list {
@@ -347,9 +312,9 @@ paper-nav {
     position: absolute;
     bottom: 105px;
     left: 150px;
-    font-size: .7rem;
+    font-size: 0.7rem;
     color: ghostwhite;
-    background-color: #7abe8f;
+    background-color: #b65f34;
     padding: 1px 3px;
     border-radius: 35px;
 }
@@ -378,9 +343,6 @@ paper-nav {
         .setting {
             padding-left: 0;
         }
-        // .menu-list:hover, .menu-list:active {
-        //   background: #7abe8f !important;
-        // }
         .auth-btns {
             text-transform: capitalize;
             font-size: 24px;
@@ -390,7 +352,7 @@ paper-nav {
         }
     }
 }
- 
+
 .v-list-item {
     padding: 0;
 }

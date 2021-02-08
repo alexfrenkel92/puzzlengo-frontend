@@ -16,12 +16,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang='scss'>
 .button {
   font: inherit;
   border-radius: 5px;
   color: #fffffb;
-  /* margin: 7px 10% 8px 10%; */
   border: none;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
@@ -42,10 +41,11 @@ export default {
 }
 
 .approve {
-  background-color: #7abe8f;
+  /* background-color: #7abe8f; */
+  @include dark-green-color;
 }
 
 .cancel {
-  background-color: #cd4a45;
+  @include error-orange-color;
 }
 </style>

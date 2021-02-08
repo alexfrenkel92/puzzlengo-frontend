@@ -28,14 +28,6 @@
     <AppButton class="login-btn" btn-style="approve" @click="handleLogin">
       Sign In
     </AppButton>
-    <!-- <div class="big-image-container">
-      <img
-        class="survey-image"
-        :src="bigpic"
-        alt="survey-image"
-        height="400px"
-      >
-    </div> -->
     <SignUp :show-modal="toogleSignUpModal" @closeModal="closeModal" />
     <Login :show-modal="toogleLoginModal" @closeModal="closeModal" />
     <v-btn
@@ -46,7 +38,6 @@
       fixed
       bottom
       right
-      color="#7abe8f"
       @click="toTop"
     >
       <v-icon>keyboard_arrow_up</v-icon>
@@ -113,7 +104,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang='scss'>
 .centered-input >>> input {
   text-align: center
 }
@@ -129,10 +120,12 @@ export default {
   font-size: 2.5rem !important;
   padding: 10px;
   text-align: center;
+  color: rgb(36, 35, 35);
 }
 .description {
   font-size: 1.5rem;
   padding: 10px 10px 20px 10px;
+  @include primary-text-color;
 }
 .signup-container {
   display: flex;
@@ -156,6 +149,7 @@ export default {
 .already-registered {
   font-size: 1rem;
   padding: 10px 0 0 0;
+  @include primary-text-color;
 }
 .login-btn {
   font-size: 2rem !important;
@@ -211,5 +205,9 @@ export default {
 }
 .v-btn:active {
   transform: translateY(4px);
+}
+.v-btn {
+  background-color: #983428 !important;
+  // @include dark-green-color
 }
 </style>

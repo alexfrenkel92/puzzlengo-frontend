@@ -172,7 +172,6 @@ export default {
   text-decoration: none;
 }
 .balance-text {
-  color: black;
   padding: 2px 5px 0 ;
   margin: 0;
   font-size: 1rem !important;

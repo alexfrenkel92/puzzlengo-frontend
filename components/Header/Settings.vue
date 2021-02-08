@@ -59,7 +59,7 @@
           @click="switchLang(locale.code)"
         >
           <v-list-item-avatar class="flag">
-            <i :class="locale.code" />
+            <img :src="require('~/static/images/flags/' + locale.code + '.png')" alt="language-flag">
           </v-list-item-avatar>
           <v-list-item-content>
             <v-list-item-title class="lang-opt">
@@ -108,6 +108,9 @@ export default {
     ...mapGetters(['getDir']),
     isLoggedIn() {
       return this.$store.getters.isLoggedIn
+    },
+    languageFLag() {
+      return require('~/static/images/flags/en.png')
     }
   },
   methods: {

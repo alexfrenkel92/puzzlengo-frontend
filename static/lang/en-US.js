@@ -23,7 +23,8 @@ export default () => {
         form_send: 'Send Message',
         accept: 'Accept',
         en: 'English',
-        hu: 'Magyar',
+        es: 'Espanol',
+        // hu: 'Magyar',
         notif_msg: 'This is an example of a message that is commonly used for important information to visitors or users. Please click the button beside to close this message.'
       },
       menu: {

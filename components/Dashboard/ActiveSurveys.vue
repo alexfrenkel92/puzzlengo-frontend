@@ -19,12 +19,12 @@
                   <p class="payment-value">Payment: {{ survey.payment }}$</p>
                 </div>
                 <div v-if="survey.isEnrolled === false" class="btn-wrapper">
-                  <v-btn class="btn-enroll" @click="toogleEnrollment(survey)" @click.native.stop>
+                  <v-btn btn-style="approve" class="btn-enroll" @click="toogleEnrollment(survey)" @click.native.stop>
                     Enroll
                   </v-btn>
                 </div>
                 <div v-if="survey.isEnrolled === true && survey.isCompleted === false" class="btn-wrapper">
-                  <v-btn class="btn-withdraw" @click="withdraw(survey.id)" @click.native.stop>
+                  <v-btn btn-style="approve" class="btn-withdraw" @click="withdraw(survey.id)" @click.native.stop>
                     Withdraw
                   </v-btn>
                   <v-btn class="btn-resume" @click="toogleCompletion(survey)" @click.native.stop>

@@ -7,10 +7,10 @@ export default [
     dir: 'ltr'
   },
   {
-    code: 'hu',
-    iso: 'hu-HU',
-    name: 'Hungarian',
-    file: 'hu-HU.js',
+    code: 'es',
+    iso: 'es-ES',
+    name: 'Espanol',
+    file: 'es-ES.js',
     dir: 'ltr'
   }
 

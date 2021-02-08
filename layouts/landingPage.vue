@@ -3,13 +3,17 @@
     <v-main>
       <nuxt />
     </v-main>
-    <Footer />
+    <FooterLandingPage />
   </v-app>
 </template>
 
-<style scoped>
+<style scoped lang='scss'>
 body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
 }
+.v-main {
+  @include background-color-gradient;
+}
+
 </style>

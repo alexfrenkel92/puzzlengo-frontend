@@ -95,6 +95,8 @@
 }
 
 /* Background color palette */
+
+
 @mixin palette-background-paper {
   .theme--light & {
     background-color: $light-background-paper
@@ -411,5 +413,70 @@
   }
   .theme--light & {
     box-shadow: 0px 11px 15px -7px rgba(128,128,128, 0.2),0px 24px 38px 3px rgba(128,128,128, 0.14),0px 9px 46px 8px rgba(128,128,128, 0.12)
+  }
+}
+
+
+//////////////////////////////////////////////////////////////////
+/* Background colors */
+@mixin background-color-gradient {
+  .theme--light & {
+    background-image: $light-background-color-gradient;
+  }
+  .theme--dark & {
+    background-color: $dark-background-paper
+  }
+}
+
+@mixin whitish-background-color {
+  .theme--light & {
+    background-color: $light-whitish-background-color;
+  }
+}
+
+@mixin dark-background-color {
+  .theme--light & {
+    background-color: $ligth-dark-color;
+  }
+}
+
+@mixin creamy-white-color {
+  .theme--light & {
+    background-color: $light-creamy-white;
+  }
+}
+
+@mixin default-layout-background-color {
+  .theme--light & {
+    background-color: $light-default-layout-background;
+  }
+}
+
+@mixin dark-green-color {
+  .theme--light & {
+    background-color: $light-dark-green;
+  }
+}
+
+@mixin error-orange-color {
+  .theme--light & {
+    background-color: $light-error-orange;
+  }
+}
+
+//////////////////////////////////////////////////////////////////
+/* Text color palette */
+@mixin primary-text-color {
+  .theme--light & {
+    color: $light-text-primary
+  }
+  .theme--dark & {
+    color: $dark-text-primary
+  }
+}
+
+@mixin primary-error-color {
+  .theme--light & {
+    background-color: $light-error-orange;
   }
 }

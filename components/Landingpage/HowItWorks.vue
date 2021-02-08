@@ -2,7 +2,7 @@
   <div class="wrapper">
     <h1
       id="howItWorks"
-      class="text-center display-1 font-weight-thin mb-4 mt-4"
+      class="text-center display-1"
     >
       How It Works
     </h1>
@@ -12,13 +12,13 @@
         :key="i"
         :icon="item.icon"
         fill-dot
-        color="#7abe8f"
+        color="#00633B"
       >
-        <v-card color="#ffffff">
-          <v-card-title class="title">
+        <v-card color="#fcf5ea">
+          <v-card-title>
             {{ item.title }}
           </v-card-title>
-          <v-card-text class="text--primary">
+          <v-card-text>
             <p>{{ item.text }}</p>
           </v-card-text>
         </v-card>
@@ -60,9 +60,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .wrapper {
   padding: 20px 80px 0 80px;
+  max-width: 1100px;
+  margin: auto;
 }
 @media screen and (max-width: 800px) {
   .wrapper {
@@ -73,5 +75,16 @@ export default {
   .wrapper {
     padding: 20px 15px 0 0;
   }
+}
+#howItWorks {
+  @include primary-text-color;
+}
+.v-card__title {
+  @include primary-text-color;
+  font-weight: 600;
+}
+.v-card__text {
+  @include primary-text-color;
+  font-weight: 500;
 }
 </style>

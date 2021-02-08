@@ -3,7 +3,10 @@
     <div class="main-wrap">
       <main-header />
       <v-main>
-        <div v-if="progressBar !== 100 && showCompletionWarning == true" class="progress-bar">
+        <div
+          v-if="progressBar !== 100 && showCompletionWarning == true"
+          class="progress-bar"
+        >
           <v-progress-linear :value="progressBar" height="15" color="#7abe8f">
             <strong>{{ progressBar }}%</strong>
           </v-progress-linear>
@@ -61,13 +64,14 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style scoped lang='scss'>
 .text-center {
-    padding: 4px;
+  padding: 4px;
 }
 .v-main {
-    padding-top: 100px;
-    margin-bottom: 20px;
+  padding-top: 100px;
+  margin-bottom: 20px;
+  @include whitish-background-color;
 }
 @media screen and (max-width: 320px) {
   .v-main {
@@ -75,8 +79,8 @@ export default {
   }
 }
 .container {
-    margin: auto;
-    padding: 0;
+  margin: auto;
+  padding: 0;
 }
 .progress-bar {
   margin-top: 5px;
@@ -85,7 +89,7 @@ export default {
   height: 10px;
 }
 .progress-text {
-  background-color:#FF4081;
+  background-color: #ff4081;
   text-align: center;
   font-style: italic;
   padding: 0 25px;

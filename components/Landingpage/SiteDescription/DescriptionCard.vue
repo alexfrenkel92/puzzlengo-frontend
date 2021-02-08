@@ -41,14 +41,15 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang='scss'>
 #card-container {
   height: 290px;
   width: 300px;
   padding: 15px;
   margin: 20px;
   border-radius: 5px;
-  background: #fffffb;
+  background: #fcf5ea;
+  // background-color: #f8f4ed;
   position: relative;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
@@ -56,7 +57,7 @@ h1 {
   text-align: start;
   margin: 0 0 10px 0;
   font-size: 1.2rem;
-  color: black;
+  @include primary-text-color;
 }
 .image {
   float: left;
@@ -69,15 +70,14 @@ img {
 .description {
   text-align: justify;
   font-size: 1rem;
-  color: black;
+  @include primary-text-color;
   padding: 10px 0 0 10px;
 }
 footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #7abe8f;
-  color: #ffffff;
+  @include dark-green-color;
   width: 100%;
   position: absolute;
   bottom: 0;
