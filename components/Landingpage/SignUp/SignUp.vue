@@ -56,7 +56,7 @@
                   />
                 </div>
               </v-form>
-              <AppButton class="continue-btn" btn-style="approve" @click="saveUserInfo">
+              <AppButton class="continue-btn" btn-style="approve-dark" @click="saveUserInfo">
                 Continue
               </AppButton>
             </div>

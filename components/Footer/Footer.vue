@@ -46,6 +46,7 @@ export default {
 .v-footer {
   height: fit-content;
   @include background-color-gradient;
+  // background-color: #CA8643;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;

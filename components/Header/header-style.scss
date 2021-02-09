@@ -20,6 +20,7 @@
     padding: 5px !important;
 }
 .header.v-app-bar.v-toolbar.v-sheet {
+    // background-color: white;
     @include whitish-background-color;
     @include primary-text-color;
     z-index: 11;

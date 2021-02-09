@@ -458,6 +458,12 @@
   }
 }
 
+@mixin ligth-green-color {
+  .theme--light & {
+    background-color: $ligth-ligth-green;
+  }
+}
+
 @mixin error-orange-color {
   .theme--light & {
     background-color: $light-error-orange;

@@ -18,6 +18,7 @@ export default {
 
 <style scoped lang='scss'>
 .button {
+  padding: 0 10px;
   font: inherit;
   border-radius: 5px;
   color: #fffffb;
@@ -42,6 +43,9 @@ export default {
 
 .approve {
   /* background-color: #7abe8f; */
+  @include ligth-green-color;
+}
+.approve-dark {
   @include dark-green-color;
 }
 

@@ -39,7 +39,7 @@
               required
             />
           </v-form>
-          <AppButton class="continue-btn" btn-style="approve" @click="login">
+          <AppButton class="continue-btn" btn-style="approve-dark" @click="login">
             Sign In
           </AppButton>
           <nuxt-link to="" class="password-reset">Forgot your password?</nuxt-link>

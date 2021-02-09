@@ -20,12 +20,12 @@
           clearable
         />
       </v-form>
-      <AppButton class="signup-btn" btn-style="approve" @click="handleSignUp">
+      <AppButton class="signup-btn" btn-style="approve-dark" @click="handleSignUp">
         Sign Up
       </AppButton>
     </div>
     <div class="already-registered">Already registered?</div>
-    <AppButton class="login-btn" btn-style="approve" @click="handleLogin">
+    <AppButton class="login-btn" btn-style="approve-dark" @click="handleLogin">
       Sign In
     </AppButton>
     <SignUp :show-modal="toogleSignUpModal" @closeModal="closeModal" />
