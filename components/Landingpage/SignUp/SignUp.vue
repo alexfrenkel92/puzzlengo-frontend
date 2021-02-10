@@ -141,6 +141,7 @@ export default {
 <style scoped lang='scss'>
 .v-card {
   @include background-color-gradient;
+
 }
 .centered-input >>> input {
   text-align: center

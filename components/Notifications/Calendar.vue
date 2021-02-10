@@ -140,7 +140,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .calendar {
   flex: 1 1 0;
   margin: 10px;
@@ -150,5 +150,11 @@ export default {
 }
 .toolbar >>> .v-toolbar__content {
   padding: 0 16px !important;
+}
+.toolbar {
+  @include whitish-background-color;
+}
+.v-calendar-monthly {
+  @include whitish-background-color;
 }
 </style>

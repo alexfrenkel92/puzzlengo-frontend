@@ -6,7 +6,7 @@
     hide-overlay
     transition="dialog-bottom-transition"
   >
-    <v-card color="rgba(224, 242, 241, 0.562)">
+    <v-card>
       <div class="main-wrapper">
         <div v-if="responseData.status === 'COMPLETE' && !isLoading">
           <h1>Thank you for your purchase</h1>
@@ -82,7 +82,7 @@ export default {
   @import './css-loader.css';
 </style>
 
-<style scoped>
+<style scoped lang="scss">
 h1 {
   font-weight: bold;
   text-align: center;
@@ -139,5 +139,8 @@ p {
   text-align: center;
   background-color: transparent !important;
   margin: 25px 0;
+}
+.v-card {
+  @include whitish-background-color;
 }
 </style>

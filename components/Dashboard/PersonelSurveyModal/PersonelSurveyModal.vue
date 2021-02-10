@@ -1,7 +1,6 @@
 <template>
   <div>
     <v-dialog v-model="showModal" persistent width="500">
-
       <v-tabs>
         <v-tab>
           <v-icon left>

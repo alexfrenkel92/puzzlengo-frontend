@@ -92,7 +92,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .title {
   font-size: 1.5rem;
   text-align: center;
@@ -119,6 +119,7 @@ export default {
 .v-expansion-panel-header {
   padding: 15px 20px;
   line-height: 1.2rem;
+  @include whitish-background-color;
 }
 li {
   list-style: none;

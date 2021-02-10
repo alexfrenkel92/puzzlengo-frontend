@@ -4,8 +4,9 @@
       <v-dialog v-model="showModal" persistent max-width="300">
         <v-card>
           <v-card-title class="headline">
-            Survey title
+            {{ survey.title }}
           </v-card-title>
+          <v-card-text>{{ survey.description }}</v-card-text>
           <v-card-text>
             Press Confirm to start the survey. You will be navigated to another page. When finished, come back to check your survey's status.
           </v-card-text>
@@ -30,6 +31,21 @@ export default {
     showModal: {
       type: Boolean,
       required: true
+    },
+    id: {
+      type: Number,
+      required: false,
+      default: -1
+    }
+  },
+  data() {
+    return {
+      survey: []
+    }
+  },
+  watch: {
+    showModal() {
+      this.survey = this.$store.getters.getActiveSurveys.filter(item => item.id === this.id)[0]
     }
   },
   methods: {

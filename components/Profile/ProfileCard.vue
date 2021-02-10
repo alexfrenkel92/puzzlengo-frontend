@@ -57,7 +57,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 #card-container {
   height: 175px;
   width: 350px;
@@ -70,6 +70,7 @@ export default {
   display: grid;
   grid-template-columns: 100px auto;
   grid-template-rows: 1fr 1fr;
+  @include whitish-background-color;
 }
 #card-container:hover {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);

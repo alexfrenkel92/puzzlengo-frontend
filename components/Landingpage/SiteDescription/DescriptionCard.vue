@@ -48,8 +48,9 @@ export default {
   padding: 15px;
   margin: 20px;
   border-radius: 5px;
-  background: #fcf5ea;
+  // background: #fcf5ea;
   // background-color: #f8f4ed;
+  @include whitish-background-color;
   position: relative;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
