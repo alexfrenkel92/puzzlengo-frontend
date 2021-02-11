@@ -63,7 +63,7 @@ export default {
   width: 350px;
   padding: 15px;
   margin: 20px;
-  border-radius: 5px;
+  border-radius: 3px;
   background: #fffffb;
   position: relative;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
@@ -123,7 +123,7 @@ footer {
   height: 30px;
   padding: 0 15px;
   /* margin-left: -15px; */
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 </style>

@@ -67,7 +67,7 @@
             </v-list-item-title>
           </v-list-item-content>
           <v-list-item-action>
-            <v-icon v-if="locale.code === $i18n.locale" color="primary">
+            <v-icon v-if="locale.code === $i18n.locale" color="#7abe8f" class="selected-language-icon">
               mdi-check
             </v-icon>
           </v-list-item-action>

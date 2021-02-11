@@ -21,7 +21,7 @@
           </nuxt-link>
         </div>
         <nuxt-link v-if="!invert" class="menu-list" to="/health">My Health</nuxt-link>
-        <Settings v-if="isLoggedIn" class="setting-btn" :invert="invert" />
+        <SettingsGear v-if="isLoggedIn" class="setting-btn" :invert="invert" />
       </div>
       <!-- <v-list tag="nav" class="auth-section">
         <v-list-item :style="{ animationDuration: 1 * 0.15 + 's' }">
@@ -40,13 +40,13 @@
 </style>
 
 <script>
-import Settings from './Settings'
+import SettingsGear from './SettingsGear'
 import navMenu from '~/components/Header/menu'
 import logo from '~/static/images/de_emblema_RGB.png'
 
 export default {
   components: {
-    Settings
+    SettingsGear
   },
   props: {
     open: {

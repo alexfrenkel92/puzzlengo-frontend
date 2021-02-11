@@ -46,7 +46,7 @@
             <p class="balance-text">{{ balanceNr }}</p>
             <img :src="usd" alt="balance-button">
           </nuxt-link>
-          <setting-menu v-if="isLoggedIn && isDesktop" :invert="invert" />
+          <SettingsGear v-if="isLoggedIn && isDesktop" :invert="invert" />
           <v-btn
             v-if="isMobile"
             :class="{ 'is-active': openDrawer }"
@@ -70,14 +70,14 @@
 </style>
 
 <script>
-import Settings from './Settings'
+import SettingsGear from './SettingsGear'
 import MobileMenu from './MobileMenu'
 import logo from '~/static/images/de_emblema_RGB.png'
 import brand from '~/static/text/brand'
 
 export default {
   components: {
-    'setting-menu': Settings,
+    SettingsGear,
     MobileMenu
   },
   props: {

@@ -71,7 +71,7 @@ export default {
 .v-main {
   padding-top: 100px;
   margin-bottom: 20px;
-  // background-color: white;
+  min-height: 100vh;
   @include whitish-background-color;
 }
 @media screen and (max-width: 320px) {

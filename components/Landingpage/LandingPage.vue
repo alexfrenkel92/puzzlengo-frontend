@@ -143,6 +143,7 @@ export default {
   font-size: 2rem !important;
   margin: 0 10px;
   padding: 0 5px 5px 5px;
+  top: 0;
   width: 160px !important;
   height: 48px;
 }
