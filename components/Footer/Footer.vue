@@ -85,4 +85,29 @@ img {
   font-weight: 500;
   @include primary-text-color;
 }
+
+@media screen and (max-width: 369px) {
+  .v-footer {
+    padding: 15px 0;
+  }
+  img {
+    width: 50px !important;
+    height: 50px !important
+  }
+  ul, li {
+    padding: 0;
+    margin: 0;
+    margin: auto;
+  }
+  a,
+  span {
+    font-size: .7rem !important;
+  }
+  .image,
+  .column1,
+  .column2 {
+    padding: 0;
+}
+}
+
 </style>

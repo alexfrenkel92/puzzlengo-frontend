@@ -10,46 +10,45 @@ export default {
         birthDate: '1970-12-24',
         sex: 'Male',
         password: 'cefre'
+      },
+      notificationSettings: {
+        newSurvey: true,
+        surveyStatus: true,
+        creditReceived: true
+      },
+      activityPermissions: {
+        steps: true,
+        sleep: false,
+        floorsClimbed: true,
+        activeTime: false
+      },
+      healthPermissions: {
+        heartRate: true,
+        bloodPressure: false,
+        bloodOxygen: false,
+        weight: true
+      },
+      locationPermissions: {
+        location: false
       }
-      // notificationsSettings: {
-      //   newSurvey: true,
-      //   surveyStatus: true,
-      //   creditReceived: true,
-      //   creditSpent: true
-      // },
-      // healthPermissions: {
-      //   heartRate: true,
-      //   bloodPressure: false,
-      //   bloodOxygen: false,
-      //   weight: true
-      // },
-      // activityPermissions: {
-      //   steps: true,
-      //   sleep: true,
-      //   floors: true,
-      //   activeTime: false
-      // },
-      // locationPermissions: {
-      //   location: true
-      // }
     }
   },
   getters: {
     getUserInformation(state) {
       return state.personalData
+    },
+    getNotificationSettings(state) {
+      return state.notificationSettings
+    },
+    getActivityPermissions(state) {
+      return state.activityPermissions
+    },
+    getHealthPermissions(state) {
+      return state.healthPermissions
+    },
+    getLocationPermission(state) {
+      return state.locationPermissions
     }
-    // notificationsSettings(state) {
-    //   return state.notificationsSettings
-    // },
-    // healthPermissions(state) {
-    //   return state.healthPermissions
-    // },
-    // activityPermissions(state) {
-    //   return state.activityPermissions
-    // },
-    // locationPermissions(state) {
-    //   return state.locationPermissions
-    // }
   },
   mutations: {
     updateUserName(state, data) {
@@ -70,28 +69,49 @@ export default {
     },
     updatePassword(state, data) {
       state.personalData.password = data.password
+    },
+
+    // NOTIFICATIONS ////////////////////////////////
+    updateNewSurvey(state, data) {
+      state.notificationSettings.newSurvey = data
+    },
+    updateSurveyStatus(state, data) {
+      state.notificationSettings.surveyStatus = data
+    },
+    updateCreditsReceived(state, data) {
+      state.notificationSettings.creditReceived = data
+    },
+    // ACTIVITIES /////////////////////////////
+    updateSteps(state, data) {
+      state.activityPermissions.steps = data
+    },
+    updateSleep(state, data) {
+      state.activityPermissions.sleep = data
+    },
+    updateFloorsClimbed(state, data) {
+      state.activityPermissions.floorsClimbed = data
+    },
+    updateActiveTime(state, data) {
+      state.activityPermissions.activeTime = data
+    },
+    // HEALTH ////////////////////////////////
+    updateHeartRate(state, data) {
+      state.healthPermissions.heartRate = data
+    },
+    updateBloodPresure(state, data) {
+      state.healthPermissions.bloodPressure = data
+    },
+    updateBloodOxygen(state, data) {
+      state.healthPermissions.bloodOxygen = data
+    },
+    updateWeightValue(state, data) {
+      state.healthPermissions.weight = data
+    },
+
+    // LOCATION ////////////////////////////////
+    updateLocationPermission(state, data) {
+      state.locationPermissions.location = data
     }
-    // updateNotifications(state, data) {
-    //   state.notificationsSettings.newSurvey = data[0]
-    //   state.notificationsSettings.surveyStatus = data[1]
-    //   state.notificationsSettings.creditReceived = data[2]
-    //   state.notificationsSettings.creditSpent = data[3]
-    // },
-    // updateHealth(state, data) {
-    //   state.healthPermissions.heartRate = data[0]
-    //   state.healthPermissions.bloodPressure = data[1]
-    //   state.healthPermissions.bloodOxygen = data[2]
-    //   state.healthPermissions.weight = data[3]
-    // },
-    // updateActivity(state, data) {
-    //   state.activityPermissions.steps = data[0]
-    //   state.activityPermissions.sleep = data[1]
-    //   state.activityPermissions.floors = data[2]
-    //   state.activityPermissions.activeTime = data[3]
-    // },
-    // updateLocation(state, data) {
-    //   state.locationPermissions.location = data[0]
-    // }
   },
   actions: {
     updateUserName(context, payload) {
@@ -111,21 +131,45 @@ export default {
     },
     updatePassword(context, payload) {
       context.commit('updatePassword', payload)
+    },
+    updateNewSurvey(context, payload) {
+      context.commit('updateNewSurvey', payload)
+    },
+    updateSurveyStatus(context, payload) {
+      context.commit('updateSurveyStatus', payload)
+    },
+    updateCreditsReceived(context, payload) {
+      context.commit('updateCreditsReceived', payload)
+    },
+    // ACTIVITIES /////////////////////////////
+    updateSteps(context, payload) {
+      context.commit('updateSteps', payload)
+    },
+    updateSleep(context, payload) {
+      context.commit('updateSleep', payload)
+    },
+    updateFloorsClimbed(context, payload) {
+      context.commit('updateFloorsClimbed', payload)
+    },
+    updateActiveTime(context, payload) {
+      context.commit('updateActiveTime', payload)
+    },
+    // HEALTH ////////////////////////////////
+    updateHeartRate(context, payload) {
+      context.commit('updateHeartRate', payload)
+    },
+    updateBloodPresure(context, payload) {
+      context.commit('updateBloodPresure', payload)
+    },
+    updateBloodOxygen(context, payload) {
+      context.commit('updateBloodOxygen', payload)
+    },
+    updateWeightValue(context, payload) {
+      context.commit('updateWeightValue', payload)
+    },
+
+    updateLocationPermission(context, payload) {
+      context.commit('updateLocationPermission', payload)
     }
-    // updateContact(context, payload) {
-    //   context.commit('updateContact', payload)
-    // },
-    // updateNotifications(context, payload) {
-    //   context.commit('updateNotifications', payload)
-    // },
-    // updateHealth(context, payload) {
-    //   context.commit('updateHealth', payload)
-    // },
-    // updateActivity(context, payload) {
-    //   context.commit('updateActivity', payload)
-    // },
-    // updateLocation(context, payload) {
-    //   context.commit('updateLocation', payload)
-    // }
   }
 }

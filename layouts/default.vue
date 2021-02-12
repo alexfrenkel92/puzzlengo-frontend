@@ -69,14 +69,14 @@ export default {
   padding: 4px;
 }
 .v-main {
-  padding-top: 100px;
+  // padding-top: 100px;
   margin-bottom: 20px;
   min-height: 100vh;
   @include whitish-background-color;
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 369px) {
   .v-main {
-    margin-bottom: 100px;
+    margin-bottom: 0;
   }
 }
 .container {
