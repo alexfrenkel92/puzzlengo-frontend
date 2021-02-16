@@ -126,6 +126,7 @@ export default {
   font-size: 1.5rem;
   padding: 10px 10px 20px 10px;
   @include primary-text-color;
+  text-align: center;
 }
 .signup-container {
   display: flex;
@@ -170,6 +171,13 @@ export default {
     width: auto;
     height: auto;
   }
+  .signup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+  }
 }
 @media screen and (max-width: 380px) {
   .landing-wrapper {
@@ -192,6 +200,9 @@ export default {
     max-width: 280px;
     width: auto;
     height: auto;
+  }
+  .v-text-field {
+    width: 250px;
   }
 }
 .v-btn {

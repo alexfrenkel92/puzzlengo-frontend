@@ -45,8 +45,9 @@ export default {
 @import "~/assets/styles";
 .v-footer {
   height: fit-content;
-  @include background-color-gradient;
-  // background-color: #CA8643;
+  // @include background-color-gradient;
+  background: linear-gradient(110deg, #FEE181 60%, #95E38E 60%);
+  // background-color: #AFCC8C;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;

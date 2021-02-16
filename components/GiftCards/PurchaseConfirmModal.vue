@@ -107,6 +107,18 @@ span {
   flex-direction: column;
   align-items: center;
 }
+@media screen and (max-width: 330px) {
+  .main-wrapper {
+    width: 300px;
+    top: 10px;
+  }
+}
+@media screen and (max-width: 300px) {
+  .main-wrapper {
+    width: 270px;
+    top: 10px;
+  }
+}
 .close-btn {
   font-size: 2rem !important;
   padding: 0 5px 5px 5px;

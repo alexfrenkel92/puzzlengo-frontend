@@ -3,13 +3,16 @@ export default {
     return {
       personalData: {
         userId: 7,
-        firstName: 'Karesz',
+        firstName: 'Karesz Jr.',
         lastName: 'Pálinkás',
-        email: 'detoxforlife@gmail.com',
+        email: 'detoxforlife_karcsi@gmail.com',
         phoneNr: '06969696969',
         birthDate: '1970-12-24',
         sex: 'Male',
-        password: 'cefre'
+        password: 'cefre',
+        emailVerified: false,
+        phoneVerified: false,
+        profileCompletion: 100
       },
       notificationSettings: {
         newSurvey: true,
@@ -58,8 +61,14 @@ export default {
     updateUserEmail(state, data) {
       state.personalData.email = data.email
     },
+    verifyEmail(state) {
+      state.personalData.emailVerified = true
+    },
     updateUserPhoneNumber(state, data) {
       state.personalData.phoneNr = data.phoneNr
+    },
+    verifyPhoneNumber(state) {
+      state.personalData.phoneVerified = true
     },
     updateDateOfBirth(state, data) {
       state.personalData.birthDate = data
@@ -67,8 +76,8 @@ export default {
     updateUserSex(state, data) {
       state.personalData.sex = data.sex
     },
-    updatePassword(state, data) {
-      state.personalData.password = data.password
+    completeProfile(state, data) {
+      state.personalData.profileCompletion = 100
     },
 
     // NOTIFICATIONS ////////////////////////////////
@@ -114,14 +123,23 @@ export default {
     }
   },
   actions: {
+    completeProfile(context, payload) {
+      context.commit('completeProfile', payload)
+    },
     updateUserName(context, payload) {
       context.commit('updateUserName', payload)
     },
     updateUserEmail(context, payload) {
       context.commit('updateUserEmail', payload)
     },
+    verifyEmail(context, payload) {
+      context.commit('verifyEmail', payload)
+    },
     updateUserPhoneNumber(context, payload) {
       context.commit('updateUserPhoneNumber', payload)
+    },
+    verifyPhoneNumber(context, payload) {
+      context.commit('verifyPhoneNumber', payload)
     },
     updateDateOfBirth(context, payload) {
       context.commit('updateDateOfBirth', payload)

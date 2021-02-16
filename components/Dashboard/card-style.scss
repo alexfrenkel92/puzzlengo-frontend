@@ -140,7 +140,8 @@ $darkBackground: #3f5567;
         justify-content: space-between;
         align-items: center;
         // @include dark-background-color;
-        background-color: #303030;
+        // background-color: #303030;
+        background-color: #464444;
         color: white;
         width: 100%;
         position: absolute;
@@ -176,10 +177,10 @@ $darkBackground: #3f5567;
         font-size: 0.9rem;
     }
     .btn-withdraw {
-        margin: 5px 5% 35px 10% !important;
+        margin: 5px 5% 0 10% !important;
     }
     .btn-resume {
-        margin: 5px 10% 35px 5% !important;
+        margin: 5px 10% 0 5% !important;
     }
 }
 @media screen and (max-width: 280px) {
@@ -188,10 +189,10 @@ $darkBackground: #3f5567;
         font-size: 0.7rem;
     }
     .btn-withdraw {
-        margin: 5px 2% 35px 10% !important;
+        margin: 5px 2% 0 10% !important;
     }
     .btn-resume {
-        margin: 5px 10% 35px 2% !important;
+        margin: 5px 10% 0 2% !important;
     }
 }
 

@@ -54,7 +54,7 @@ export default {
       }
     },
     progressBar() {
-      return this.$store.getters.getProfileCompletion
+      return this.$store.getters.getUserInformation.profileCompletion
     }
   },
   methods: {
@@ -90,7 +90,7 @@ export default {
   height: 10px;
 }
 .progress-text {
-  background-color: #ff4081;
+  background-color: #f8ababb9;
   text-align: center;
   font-style: italic;
   padding: 0 25px;

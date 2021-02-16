@@ -1,68 +1,71 @@
 <template>
   <div class="account-information-container">
-    <h3>Personal information</h3>
-    <div class="info-containers-wrapper">
-      <div class="info-container">
-        <p>User ID</p>
-        <div class="data-container">
-          <p class="data">007</p>
+    <ProfileVerification v-if="profileCompletion !== 100" />
+    <div class="settings">
+      <h3>Personal information</h3>
+      <div class="info-containers-wrapper">
+        <div class="info-container">
+          <p>User ID</p>
+          <div class="data-container">
+            <p class="data">007</p>
+          </div>
+        </div>
+        <div class="info-container">
+          <p>Fullname</p>
+          <div class="data-container">
+            <p class="data">{{ userInfo.lastName }} {{ userInfo.firstName }}</p>
+            <AppButton class="edit-btn" btn-style="approve" @click="editUserName">Edit</AppButton>
+          </div>
+        </div>
+        <div class="info-container">
+          <p>E-mail</p>
+          <div class="data-container">
+            <p class="data">{{ userInfo.email }}</p>
+            <AppButton class="edit-btn" btn-style="approve" @click="editEmail">Edit</AppButton>
+          </div>
+        </div>
+        <div class="info-container">
+          <p>Phone number</p>
+          <div class="data-container">
+            <p class="data">{{ userInfo.phoneNr }}</p>
+            <AppButton class="edit-btn" btn-style="approve" @click="editPhoneNr">Edit</AppButton>
+          </div>
+        </div>
+        <div class="info-container">
+          <p>Date of birth</p>
+          <div class="data-container">
+            <p class="data">{{ userInfo.birthDate }}</p>
+            <AppButton class="edit-btn" btn-style="approve" @click="editDateOfBirth">Edit</AppButton>
+          </div>
+        </div>
+        <div class="info-container">
+          <p>Sex</p>
+          <div class="data-container">
+            <p class="data">{{ userInfo.sex }}</p>
+            <AppButton class="edit-btn" btn-style="approve" @click="editSex">Edit</AppButton>
+          </div>
+        </div>
+        <div class="info-container">
+          <p>Password</p>
+          <div class="data-container">
+            <p class="data">{{ userInfo.password }}</p>
+            <AppButton class="edit-btn" btn-style="cancel" @click="editPassword">Change password</AppButton>
+          </div>
         </div>
       </div>
-      <div class="info-container">
-        <p>Fullname</p>
-        <div class="data-container">
-          <p class="data">{{ userInfo.lastName }} {{ userInfo.firstName }}</p>
-          <AppButton class="edit-btn" btn-style="approve" @click="editUserName">Edit</AppButton>
-        </div>
+      <h3>Privacy information</h3>
+      <div class="privacy-container-wrapper">
+        <AppButton class="edit-btn" btn-style="approve">Request collected personal data</AppButton>
+        <AppButton class="edit-btn" btn-style="cancel">Delete profile</AppButton>
       </div>
-      <div class="info-container">
-        <p>E-mail</p>
-        <div class="data-container">
-          <p class="data">{{ userInfo.email }}</p>
-          <AppButton class="edit-btn" btn-style="approve" @click="editEmail">Edit</AppButton>
-        </div>
+      <div>
+        <EditUserNameModal :show-user-name-modal="showUserNameModal" @save="showUserNameModal = !showUserNameModal" @cancel="showUserNameModal = !showUserNameModal" />
+        <EditEmailModal :show-email-modal="showEmailModal" @save="showEmailModal = !showEmailModal" @cancel="showEmailModal = !showEmailModal" />
+        <EditPhoneNrModal :show-phone-nr-modal="showPhoneNrModal" @save="showPhoneNrModal = !showPhoneNrModal" @cancel="showPhoneNrModal = !showPhoneNrModal" />
+        <EditDateOfBirthModal :show-date-of-birth-modal="showDateOfBirthModal" @save="showDateOfBirthModal = !showDateOfBirthModal" @cancel="showDateOfBirthModal = !showDateOfBirthModal" />
+        <EditSexModal :show-sex-modal="showSexModal" @save="showSexModal = !showSexModal" @cancel="showSexModal = !showSexModal" />
+        <EditPasswordModal :show-password-modal="showPasswordModal" @save="showPasswordModal = !showPasswordModal" @cancel="showPasswordModal = !showPasswordModal" />
       </div>
-      <div class="info-container">
-        <p>Phone number</p>
-        <div class="data-container">
-          <p class="data">{{ userInfo.phoneNr }}</p>
-          <AppButton class="edit-btn" btn-style="approve" @click="editPhoneNr">Edit</AppButton>
-        </div>
-      </div>
-      <div class="info-container">
-        <p>Date of birth</p>
-        <div class="data-container">
-          <p class="data">{{ userInfo.birthDate }}</p>
-          <AppButton class="edit-btn" btn-style="approve" @click="editDateOfBirth">Edit</AppButton>
-        </div>
-      </div>
-      <div class="info-container">
-        <p>Sex</p>
-        <div class="data-container">
-          <p class="data">{{ userInfo.sex }}</p>
-          <AppButton class="edit-btn" btn-style="approve" @click="editSex">Edit</AppButton>
-        </div>
-      </div>
-      <div class="info-container">
-        <p>Password</p>
-        <div class="data-container">
-          <p class="data">{{ userInfo.password }}</p>
-          <AppButton class="edit-btn" btn-style="cancel" @click="editPassword">Change password</AppButton>
-        </div>
-      </div>
-    </div>
-    <h3>Privacy information</h3>
-    <div class="privacy-container-wrapper">
-      <AppButton class="edit-btn" btn-style="approve">Request collected personal data</AppButton>
-      <AppButton class="edit-btn" btn-style="cancel">Delete profile</AppButton>
-    </div>
-    <div>
-      <EditUserNameModal :show-user-name-modal="showUserNameModal" @save="showUserNameModal = !showUserNameModal" @cancel="showUserNameModal = !showUserNameModal" />
-      <EditEmailModal :show-email-modal="showEmailModal" @save="showEmailModal = !showEmailModal" @cancel="showEmailModal = !showEmailModal" />
-      <EditPhoneNrModal :show-phone-nr-modal="showPhoneNrModal" @save="showPhoneNrModal = !showPhoneNrModal" @cancel="showPhoneNrModal = !showPhoneNrModal" />
-      <EditDateOfBirthModal :show-date-of-birth-modal="showDateOfBirthModal" @save="showDateOfBirthModal = !showDateOfBirthModal" @cancel="showDateOfBirthModal = !showDateOfBirthModal" />
-      <EditSexModal :show-sex-modal="showSexModal" @save="showSexModal = !showSexModal" @cancel="showSexModal = !showSexModal" />
-      <EditPasswordModal :show-password-modal="showPasswordModal" @save="showPasswordModal = !showPasswordModal" @cancel="showPasswordModal = !showPasswordModal" />
     </div>
   </div>
 </template>
@@ -83,6 +86,9 @@ export default {
   computed: {
     hiddenPassword() {
       return 'hiddenPassworddd'
+    },
+    profileCompletion() {
+      return this.$store.getters.getUserInformation.profileCompletion
     }
   },
   created() {
@@ -113,10 +119,28 @@ export default {
 
 <style scoped lang="scss">
 .account-information-container {
-  min-width: 300px;
-  width: 500px;
+  width: fit-content;
   margin-bottom: 30px;
   padding: 0 1rem;
+}
+.settings {
+  width: 500px;
+  margin: auto;
+}
+@media screen and (max-width: 520px){
+  .settings {
+    width: 330px;
+  }
+}
+@media screen and (max-width: 350px){
+  .settings {
+    width: 300px;
+  }
+}
+@media screen and (max-width: 320px){
+  .settings {
+    width: 300px;
+  }
 }
 h3 {
   padding-left: 10px;
@@ -129,13 +153,13 @@ h3 {
 .info-container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 5px;
 }
 .data-container {
   display: flex;
-  flex-direction: row;
 }
 p {
   margin: 0 0 0 10px;

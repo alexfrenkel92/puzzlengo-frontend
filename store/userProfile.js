@@ -93,7 +93,6 @@ export default {
           type: 'psy'
         }
       ],
-      profileCompletion: 100,
       balanceNr: 75
     }
   },
@@ -103,9 +102,6 @@ export default {
     },
     getPsychologicalProfiling(state) {
       return state.psychologicalProfiling
-    },
-    getProfileCompletion(state) {
-      return state.profileCompletion
     },
     getBalanceNr(state) {
       return state.balanceNr
