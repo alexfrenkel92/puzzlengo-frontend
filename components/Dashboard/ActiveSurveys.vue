@@ -84,7 +84,7 @@ export default {
       } else if (survey.type === 'personal') {
         this.btnText = 'Reschedule'
       }
-      this.$emit('openModal', survey.id, survey.type)
+      this.$emit('openModal', survey.id, survey.type, survey)
     },
     withdraw(surveyId) {
       this.$store.dispatch('toogleWithdrawal', surveyId)

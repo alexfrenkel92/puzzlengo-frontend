@@ -20,7 +20,7 @@ export default {
 .button {
   padding: 0 10px;
   font: inherit;
-  border-radius: 5px;
+  border-radius: 3px;
   color: #fffffb;
   border: none;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);

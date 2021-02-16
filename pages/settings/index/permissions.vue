@@ -14,16 +14,7 @@
 </template>
 
 <script>
-import Health from '@/components/Settings/Permissions/Health'
-import Activity from '@/components/Settings/Permissions/Activity'
-import Location from '@/components/Settings/Permissions/Location'
-
 export default {
-  components: {
-    Health,
-    Activity,
-    Location
-  },
   data() {
     return {
 

@@ -430,7 +430,7 @@
 
 @mixin whitish-background-color {
   .theme--light & {
-    background-color: $light-whitish-background-color;
+    background-color: $light-whitish-background-color !important;
   }
 }
 

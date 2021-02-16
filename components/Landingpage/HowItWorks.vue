@@ -14,7 +14,7 @@
         fill-dot
         color="#00633B"
       >
-        <v-card color="#fcf5ea">
+        <v-card color="#faf9f8">
           <v-card-title>
             {{ item.title }}
           </v-card-title>

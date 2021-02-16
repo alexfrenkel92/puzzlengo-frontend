@@ -57,19 +57,20 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 #card-container {
   height: 175px;
   width: 350px;
   padding: 15px;
   margin: 20px;
-  border-radius: 5px;
+  border-radius: 3px;
   background: #fffffb;
   position: relative;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   display: grid;
   grid-template-columns: 100px auto;
   grid-template-rows: 1fr 1fr;
+  @include whitish-background-color;
 }
 #card-container:hover {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
@@ -122,7 +123,7 @@ footer {
   height: 30px;
   padding: 0 15px;
   /* margin-left: -15px; */
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 </style>

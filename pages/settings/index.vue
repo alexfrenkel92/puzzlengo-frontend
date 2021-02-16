@@ -1,36 +1,11 @@
 <template>
-  <div class="settingsContainer">
-    <SettingsNav :progress="progressBar" />
-    <div class="settingsChild">
-      <NuxtChild />
-    </div>
+  <div class="settings-page">
+    <Settings />
   </div>
 </template>
 
-<script>
-import SettingsNav from '@/components/Settings/SettingsNav'
-export default {
-  components: {
-    SettingsNav
-  },
-  data() {
-    return {
-    }
-  },
-  computed: {
-    progressBar() {
-      return this.$store.getters.getProfileCompletion
-    }
-  }
-}
-</script>
-
-<style scoped>
-  .settingsContainer{
-    display: flex;
-    margin-top: 30px;
-  }
-  .settingsChild{
-    padding: 10px 50px;
-  }
+<style scoped lang="scss">
+// .settings-page {
+//   padding-top: 20px;
+// }
 </style>

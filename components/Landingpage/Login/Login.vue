@@ -96,7 +96,8 @@ export default {
 
 <style scoped lang='scss'>
 .v-card {
-  @include background-color-gradient;
+  // @include background-color-gradient;
+  background: linear-gradient(110deg, #FEE181 60%, #95E38E 60%);
 }
 h1 {
   font-weight: bold;
@@ -149,6 +150,34 @@ form {
   align-items: center;
   justify-content: center;
 }
+
+@media screen and (max-width: 700px) {
+  .main-wrapper {
+    width: 400px !important
+  }
+  .form-container {
+    padding: 5px 15px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .main-wrapper {
+    width: 330px !important
+  }
+}
+@media screen and (max-width: 400px) {
+  .main-wrapper {
+    width: 290px !important
+  }
+}
+@media screen and (max-width: 300px) {
+  .main-wrapper {
+    width: 260px !important
+  }
+  .form-container {
+    padding: 5px;
+  }
+}
+
 .social-container {
   margin: 20px 0 10px 0;
 }

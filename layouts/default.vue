@@ -54,7 +54,7 @@ export default {
       }
     },
     progressBar() {
-      return this.$store.getters.getProfileCompletion
+      return this.$store.getters.getUserInformation.profileCompletion
     }
   },
   methods: {
@@ -69,14 +69,14 @@ export default {
   padding: 4px;
 }
 .v-main {
-  padding-top: 100px;
+  // padding-top: 100px;
   margin-bottom: 20px;
-  // background-color: white;
+  min-height: 100vh;
   @include whitish-background-color;
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 369px) {
   .v-main {
-    margin-bottom: 100px;
+    margin-bottom: 0;
   }
 }
 .container {
@@ -90,7 +90,7 @@ export default {
   height: 10px;
 }
 .progress-text {
-  background-color: #ff4081;
+  background-color: #f8ababb9;
   text-align: center;
   font-style: italic;
   padding: 0 25px;

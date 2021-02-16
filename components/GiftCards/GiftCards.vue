@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card-container">
     <v-tabs v-model="activeTab" background-color="transparent" grow>
       <v-tabs-slider color="#7abe8f" />
       <v-tab>Tango Cards</v-tab>
@@ -7,7 +7,7 @@
     </v-tabs>
     <v-tabs-items v-model="activeTab">
       <v-tab-item>
-        <div class="title">Chose your reward below.</div>
+        <div class="title">Choose your reward below.</div>
         <div class="tango-cards-wrapper">
           <GiftCard
             v-for="brand in giftCards.slice(0, 30)"
@@ -20,6 +20,7 @@
         </div>
       </v-tab-item>
       <v-tab-item>
+        <div class="title">Choose to donate.</div>
         <div class="tango-cards-wrapper">
           <GiftCard
             v-for="brand in donationCards.slice(0, 30)"
@@ -58,12 +59,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .title {
   text-align: center;
   font-size: 1.7rem;
-  padding: 0;
-  margin: 10px;
+  padding: 10px;
+  // margin: 10px;
 }
 .tango-cards-wrapper {
   display: flex;
@@ -71,6 +72,10 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  @include whitish-background-color;
+}
+.v-window-item {
+  @include whitish-background-color;
 }
 .v-tab {
   color: black;

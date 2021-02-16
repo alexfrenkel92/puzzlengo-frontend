@@ -57,7 +57,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .profile-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -72,5 +72,8 @@ export default {
 }
 .v-tab--active {
   color: black !important;
+}
+.v-window-item {
+  @include whitish-background-color;
 }
 </style>

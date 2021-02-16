@@ -8,9 +8,8 @@
 <style scoped>
   .notification-container{
     display: flex;
-    width: 100%;
-    justify-content: space-around;
+    max-width: 1300px;
+    margin: auto;
     flex-wrap: wrap;
-    padding: 20px 10px;
   }
 </style>

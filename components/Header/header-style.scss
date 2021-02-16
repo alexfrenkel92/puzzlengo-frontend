@@ -219,7 +219,7 @@ button:active {
 .lang-menu {
     text-transform: capitalize;
     .flag {
-        margin: 0;
+        margin: 0 0 0 5px;
         img {
             width: 30px;
             height: 30px;
@@ -262,6 +262,11 @@ button:active {
 
 .v-list-item--link:hover {
     background: #7abe8f !important;
+}
+
+.mode-menu,
+.lang-menu {
+    @include whitish-background-color;
 }
 
 // Theme switcher
@@ -384,6 +389,9 @@ paper-nav {
     ::v-deep .v-input--switch__thumb {
         color: var(--v-secondary-base);
     }
+}
+.selected-language-icon {
+    padding-right: 10px;
 }
 
 .flex-menu {

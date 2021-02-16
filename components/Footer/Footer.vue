@@ -45,8 +45,9 @@ export default {
 @import "~/assets/styles";
 .v-footer {
   height: fit-content;
-  @include background-color-gradient;
-  // background-color: #CA8643;
+  // @include background-color-gradient;
+  background: linear-gradient(110deg, #FEE181 60%, #95E38E 60%);
+  // background-color: #AFCC8C;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -85,4 +86,29 @@ img {
   font-weight: 500;
   @include primary-text-color;
 }
+
+@media screen and (max-width: 369px) {
+  .v-footer {
+    padding: 15px 0;
+  }
+  img {
+    width: 50px !important;
+    height: 50px !important
+  }
+  ul, li {
+    padding: 0;
+    margin: 0;
+    margin: auto;
+  }
+  a,
+  span {
+    font-size: .7rem !important;
+  }
+  .image,
+  .column1,
+  .column2 {
+    padding: 0;
+}
+}
+
 </style>

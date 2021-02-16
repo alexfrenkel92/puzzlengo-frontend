@@ -117,7 +117,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .notification-wrapper {
   flex: 1 1 0;
   margin: 10px;
@@ -131,6 +131,9 @@ export default {
 .v-expansion-panel-header--active {
   background-color: #7abe8f !important;
   /* background-image: linear-gradient(to left, #5a8254, #629162, #6a9f70, #72af7f, #7abe8f) ; */
+}
+.v-expansion-panel {
+  @include whitish-background-color;
 }
 .notified {
   animation: pulse .1s infinite;
