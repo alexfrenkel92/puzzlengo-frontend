@@ -1,88 +1,52 @@
 <template>
-  <echarts :options="option" />
+  <client-only>
+    <VueApexCharts height="400" width="310" :options="options" :series="series" />
+  </client-only>
 </template>
 
 <script>
-import 'echarts/lib/chart/gauge'
-import Echarts from 'vue-echarts'
+// import VueApexCharts from 'vue-apexcharts'
 
 export default {
   components: {
-    Echarts
+    VueApexCharts: () => process.browser ? import('vue-apexcharts') : null
   },
   // eslint-disable-next-line vue/require-prop-types
   props: ['max', 'current', 'color', 'title', 'date'],
   data() {
     return {
-      show: false,
-      option: {
-        title: {
-          top: '80%',
-          left: 'center',
-          textStyle: {
-            fontSize: 16
-          },
-          text: this.current + ' steps. ' + Math.floor(this.current / this.max * 100) + '% of target reached.'
+      series: [(this.current / this.max) * 100],
+      options: {
+        chart: {
+          type: 'radialBar',
+          offsetY: -20,
+          sparkline: {
+            enabled: true
+          }
         },
-        series: [{
-          type: 'gauge',
-          grid: {
-            top: 'top'
-          },
-          center: ['50%', '60%'],
-          startAngle: 200,
-          endAngle: -20,
-          min: 0,
-          max: this.max,
-          splitNumber: 10,
-          itemStyle: {
-            color: this.color
-          },
-          progress: {
-            show: true,
-            width: 50
-          },
-
-          pointer: {
-            show: false
-          },
-          axisLine: {
-            lineStyle: {
-              width: 50
+        plotOptions: {
+          radialBar: {
+            startAngle: -135,
+            endAngle: 135,
+            dataLabels: {
+              value: {
+                show: false
+              }
             }
-          },
-          axisTick: {
-            show: false
-          },
-          splitLine: {
-            show: false
-          },
-          axisLabel: {
-            show: false
-          },
-          anchor: {
-            show: false
-          },
-          title: {
-            show: false
-          },
-          detail: {
-            valueAnimation: true,
-            width: '60%',
-            lineHeight: 40,
-            height: '15%',
-            borderRadius: 8,
-            offsetCenter: [0, '-15%'],
-            fontSize: 20,
-            fontWeight: 'bolder',
-            formatter: '{value}/' + this.max,
-            color: this.color
-          },
-          data: [{
-            value: this.current
+          }
+        },
+        labels: [this.current + ' / ' + this.max + ' steps'],
+        fill: {
+          colors: [function({ value }) {
+            if (value < 50) {
+              return '#f54242'
+            } else if (value < 100) {
+              return '#f5ef42'
+            } else {
+              return '#90f542'
+            }
           }]
         }
-        ]
       }
     }
   }

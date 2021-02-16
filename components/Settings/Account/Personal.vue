@@ -38,8 +38,8 @@
                   OK
                 </v-btn>
               </v-date-picker>
-            </v-date-picker></v-menu>
-          </v-dialog></v-col>
+
+            </v-date-picker></v-dialog></v-col>
       </v-row>
       <v-btn text @click="refreshPersonal"><v-icon>mdi-alpha-x-circle</v-icon> Cancel</v-btn>
       <v-btn text @click="updatePersonal"><v-icon>mdi-check-circle</v-icon> Save</v-btn>

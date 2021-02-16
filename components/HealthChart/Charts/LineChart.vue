@@ -1,25 +1,50 @@
 <template>
   <div>
-    <echarts :options="option" />
+    <VueApexCharts height="150" width="310" type="line" :options="options" :series="series" />
+    <!--<echarts :options="option" />-->
   </div>
 </template>
 
 <script>
-import 'echarts/lib/chart/line'
-import 'echarts/lib/coord/cartesian/Grid'
-import 'echarts/lib/coord/cartesian/Axis2D'
-import 'echarts/lib/component/title'
-import 'echarts/lib/component/tooltip'
-import Echarts from 'vue-echarts'
 
 export default {
   components: {
-    Echarts
+    VueApexCharts: () => process.browser ? import('vue-apexcharts') : null
   },
   // eslint-disable-next-line vue/require-prop-types
   props: ['data', 'mindata', 'maxdata', 'colormax', 'colormin'],
   data() {
     return {
+      series: [{
+        name: 'Heart Rate',
+        data: this.data.map(function(item) {
+          return item[1]
+        })
+      }],
+      options: {
+        dataLabels: {
+          // enabled: false
+        },
+        stroke: {
+          curve: 'straight'
+        },
+        grid: {
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          }
+        },
+        xaxis: {
+          type: 'datetime',
+          categories: this.data.map(function(item) {
+            return new Date(item[0]).getTime()
+          }),
+          labels: {
+            // hideOverlappingLabels: true,
+            format: 'HH:mm'
+          }
+        }
+      },
       option: {
         dataZoom: [
           {
