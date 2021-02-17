@@ -82,6 +82,6 @@ export default {
   font-weight: 550;
 }
 .v-tab--active {
-  color: black !important;
+  @include primary-text-color;
 }
 </style>

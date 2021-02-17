@@ -1,6 +1,6 @@
 <template>
   <client-only>
-    <VueApexCharts height="400" width="310" :options="options" :series="series" />
+    <VueApexCharts height="380" width="290" :options="options" :series="series" />
   </client-only>
 </template>
 
@@ -53,8 +53,3 @@ export default {
 }
 
 </script>
-<style scoped>
-  .echarts{
-    width: 100% !important;
-  }
-</style>

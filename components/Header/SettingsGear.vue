@@ -10,7 +10,7 @@
     <template v-slot:activator="{ on }">
       <div class="setting">
         <v-btn fab text small class="ma-3" v-on="on">
-          <v-icon :class="{ invert: invert, active: open }" class="icon" color="#4d4a4a">
+          <v-icon :class="{ invert: invert, active: open }" class="icon">
             settings
           </v-icon>
         </v-btn>
@@ -137,10 +137,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .menu-nuxtlink {
   text-decoration: none !important;
-  color: black;
+  @include primary-text-color;
   padding: 10px 16px;
   margin: 0;
 }
@@ -153,11 +153,14 @@ export default {
   text-decoration: none !important;
   box-shadow: none !important;
   border: none !important;
-  color: black;
+  @include primary-text-color;
   padding: 10px 16px;
   margin: 0;
 }
 .v-btn {
   margin: 0 !important;
+}
+.v-icon{
+  @include primary-text-color;
 }
 </style>

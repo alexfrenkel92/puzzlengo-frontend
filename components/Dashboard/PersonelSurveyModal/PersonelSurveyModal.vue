@@ -4,7 +4,7 @@
       <v-tabs>
         <v-tabs-slider color="#7abe8f" />
         <v-tab><v-icon left>mdi-calendar</v-icon>Date</v-tab>
-        <v-tab><v-icon left>mdi-information-variant</v-icon>More information</v-tab>
+        <v-tab><v-icon left>mdi-information-variant</v-icon>More info</v-tab>
         <v-tab-item>
           <v-card>
             <v-card-title class="headline">
@@ -143,7 +143,6 @@ export default {
   methods: {
     book(item) {
       this.myAppointment = item
-      console.log('cicked')
     },
     toogleAppointment() {
       this.$store.dispatch('toogleAppointment', [
@@ -185,13 +184,6 @@ export default {
 .v-data-table {
   margin-bottom: 10px;
 }
-.selected,
-.selected >>> .v-data-table__mobile-row {
-  background-color: #7abe8f;
-}
-.selected:hover {
-  background-color: #7abe90bb !important;
-}
 .v-tab--active {
   color: black !important;
 }
@@ -209,5 +201,17 @@ export default {
   box-shadow: none !important;
   margin: auto;
   margin-left: 25px;
+}
+</style>
+
+<style>
+.selected {
+  background-color: #7abe8f !important;
+}
+.selected > .v-data-table__mobile-row{
+  background-color: #7abe8f !important;
+}
+.selected:hover {
+  background-color: #7abe90bb !important;
 }
 </style>

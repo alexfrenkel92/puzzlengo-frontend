@@ -1,30 +1,31 @@
 <template>
   <div class="settings-container">
-    <v-tabs v-model="activeTab" background-color="transparent" grow>
+    <v-tabs background-color="transparent" grow>
       <v-tabs-slider color="#7abe8f" />
-      <v-tab>Account Settings</v-tab>
-      <v-tab>Permissions</v-tab>
+      <v-tab>Health</v-tab>
+      <v-tab>Activity</v-tab>
+      <v-tab-item>
+        <Health />
+      </v-tab-item>
+      <v-tab-item>
+        <Activity />
+      </v-tab-item>
     </v-tabs>
-    <v-tabs-items v-model="activeTab">
-      <v-tab-item>
-        <AccountSettings />
-      </v-tab-item>
-      <v-tab-item>
-        <Permissions />
-      </v-tab-item>
-    </v-tabs-items>
   </div>
 </template>
 
 <script>
+import Health from '@/components/HealthChart/Health'
+import Activity from '@/components/HealthChart/Activity'
+
 export default {
+  components: {
+    Health,
+    Activity
+  },
   data() {
     return {
-      activeTab: ''
     }
-  },
-  created() {
-    this.activeTab = this.$store.getters.getActiveTabNr
   }
 }
 </script>

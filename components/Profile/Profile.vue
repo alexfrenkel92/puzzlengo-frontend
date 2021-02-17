@@ -71,7 +71,7 @@ export default {
   font-weight: 600;
 }
 .v-tab--active {
-  color: black !important;
+  @include primary-text-color;
 }
 .v-window-item {
   @include whitish-background-color;

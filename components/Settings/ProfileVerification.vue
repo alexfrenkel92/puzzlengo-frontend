@@ -70,7 +70,7 @@
     </div>
     <div>
       <VerificationPhone :show-phone-ver-modal="showPhoneVerModal" @save="showPhoneVerModal = !showPhoneVerModal" @close="showPhoneVerModal = !showPhoneVerModal" />
-      <VerificationEmail :show-email-ver-modal="showEmailVerModal" @save="showEmailVerModal = !showEmailVerModal" @close="showEmailVerModal = !showEmailVerModal" /></verificationemail></div>
+      <VerificationEmail :show-email-ver-modal="showEmailVerModal" @save="showEmailVerModal = !showEmailVerModal" @close="showEmailVerModal = !showEmailVerModal" /></div>
   </div>
 </template>
 

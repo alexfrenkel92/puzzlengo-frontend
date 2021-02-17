@@ -63,7 +63,7 @@ li {
 a {
   text-decoration: none;
   font-weight: 500;
-  @include primary-text-color;
+  color: $light-text-primary !important
 }
 a:focus, a:active {
   text-decoration: none !important;
@@ -84,7 +84,8 @@ img {
 }
 .motto {
   font-weight: 500;
-  @include primary-text-color;
+  color: $light-text-primary
+  //@include primary-text-color;
 }
 
 @media screen and (max-width: 369px) {

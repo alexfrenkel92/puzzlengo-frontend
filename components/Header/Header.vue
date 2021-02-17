@@ -162,7 +162,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .balance-button {
   margin: 0;
   display: flex;
@@ -176,7 +176,7 @@ export default {
   margin: 0;
   font-size: 1rem !important;
   font-weight: 450;
-  color: rgb(58, 57, 57);
+  @include primary-text-color;
 }
 img {
   width: 30px;

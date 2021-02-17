@@ -1,6 +1,6 @@
 <template>
   <client-only>
-    <VueApexCharts height="400" width="310" type="bar" :options="options" :series="series" />
+    <VueApexCharts height="400" width="290" type="bar" :options="options" :series="series" />
   </client-only>
 </template>
 
@@ -12,12 +12,12 @@ export default {
     VueApexCharts: () => process.browser ? import('vue-apexcharts') : null
   },
   // eslint-disable-next-line vue/require-prop-types
-  props: ['data', 'color'],
+  props: ['data', 'color', 'name'],
   data() {
     return {
       options: {
         chart: {
-          id: 'stepsThisWeek'
+          id: this.name
         },
         xaxis: {
           categories: this.data.map(function(item) {
@@ -26,10 +26,11 @@ export default {
         },
         dataLabels: {
           enabled: false
-        }
+        },
+        colors: this.color
       },
       series: [{
-        name: 'Steps',
+        name: this.name,
         data: this.data.map(function(item) {
           return item[1]
         })
@@ -38,8 +39,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-  .echarts{
-    width: 100% !important;
-  }
-</style>
