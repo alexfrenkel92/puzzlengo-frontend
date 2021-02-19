@@ -71,7 +71,7 @@ export default {
       const phoneNr = {
         phoneNr: this.phoneNr.val
       }
-      console.log(phoneNr)
+      // console.log(phoneNr)
       this.$store.dispatch('verifyPhoneNumber', phoneNr)
       this.$emit('save')
     },

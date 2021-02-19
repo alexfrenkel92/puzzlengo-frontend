@@ -187,6 +187,9 @@ export default {
 .v-tab--active {
   color: black !important;
 }
+.v-card__actions {
+  justify-content: center;
+}
 .action-btn {
   margin: 0 10px;
   padding: 5px;

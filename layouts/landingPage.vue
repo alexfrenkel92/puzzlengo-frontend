@@ -13,8 +13,8 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 .v-main {
-   @include background-color;
-  //background: linear-gradient(110deg, #FEE181 60%, #95E38E 60%);
+  @include background-color-gradient;
+  // background: linear-gradient(110deg, #FEE181 60%, #95E38E 60%);
 }
 
 </style>

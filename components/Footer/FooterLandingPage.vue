@@ -45,10 +45,9 @@ export default {
 @import "~/assets/styles";
 .v-footer {
   height: fit-content;
-  @include footer-background-color;
-  //background-color: #FEE181;
-  //border-top: 3px solid #95E38E;
-  // @include whitish-background-color;
+  // background-color: #FEE181;
+  // border-top: 3px solid #95E38E;
+  @include whitish-background-color;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
