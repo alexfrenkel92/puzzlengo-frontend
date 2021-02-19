@@ -49,13 +49,15 @@
             :type="type"
             @click:event="showEvent"
           />
-          <PersonelSurveyModal
-            :id="selectedEvent.id"
-            :show-modal="selectedOpen"
-            :selected-time="selectedEvent"
-            @confirm="confirm"
-            @withdraw="withdraw"
-          />
+          <div>
+            <PersonelSurveyModal
+              :id="selectedEvent.id"
+              :show-modal="selectedOpen"
+              :selected-time="selectedEvent"
+              @confirm="confirm"
+              @withdraw="withdraw"
+            />
+          </div>
         </v-sheet>
       </v-col>
     </v-row>
@@ -148,8 +150,15 @@ export default {
 .col {
   padding: 0 12px;
 }
-.toolbar >>> .v-toolbar__content {
-  padding: 0 16px !important;
+@media screen and (max-width: 330px) {
+  .col {
+    width: 300px !important;
+  }
+}
+@media screen and (max-width: 300px) {
+  .col {
+    width: 270px !important;
+  }
 }
 .toolbar {
   @include whitish-background-color;

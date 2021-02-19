@@ -71,7 +71,7 @@ export default {
       const email = {
         email: this.email.val
       }
-      console.log(email)
+      // console.log(email)
       this.$store.dispatch('verifyEmail', email)
       this.$emit('save')
     },
