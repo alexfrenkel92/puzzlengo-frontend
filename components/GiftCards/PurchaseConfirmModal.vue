@@ -9,26 +9,26 @@
     <v-card>
       <div class="main-wrapper">
         <div v-if="responseData.status === 'COMPLETE' && !isLoading">
-          <h1>Thank you for your purchase</h1>
+          <h1>{{ $t('giftcards.purchase_confirm') }}</h1>
           <div class="order-details-wrapper">
             <div class="details">
-              <p class="response-name">Purchased Item: </p>
+              <p class="response-name">{{ $t('giftcards.purchased_item') }}: </p>
               <p>{{ responseData.rewardName }}</p>
             </div>
             <div class="details">
-              <p class="response-name">Amount Charged: </p>
+              <p class="response-name">{{ $t('giftcards.amount_charged') }}: </p>
               <p>{{ responseData.amountCharged.value }} {{ responseData.amountCharged.currencyCode }}</p>
             </div>
             <div class="details">
-              <p class="response-name">Current Balance: </p>
+              <p class="response-name">{{ $t('giftcards.current_balance') }}: </p>
               <p>35 {{ responseData.amountCharged.currencyCode }}</p>
             </div>
             <div class="details">
-              <p class="response-name">Claim Code: </p>
+              <p class="response-name">{{ $t('giftcards.claim_code') }}: </p>
               <p>{{ responseData.reward.credentials["Claim Code"] }}</p>
             </div>
             <div class="redemption">
-              <p class="response-name">Redemption Instruction: </p>
+              <p class="response-name">{{ $t('giftcards.instruction') }}: </p>
               <!-- eslint-disable-next-line vue/no-v-html -->
               <div v-html="responseData.reward.redemptionInstructions" />
             </div>

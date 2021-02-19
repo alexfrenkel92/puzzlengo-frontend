@@ -20,11 +20,11 @@
       <v-list class="mode-menu">
         <v-list-item>
           <v-list-item-content>
-            <nuxt-link class="menu-nuxtlink" to="/profile">My Profiling</nuxt-link>
-            <nuxt-link class="menu-nuxtlink" to="/balance">Balance</nuxt-link>
-            <nuxt-link class="menu-nuxtlink" to="/settings/account">Settings</nuxt-link>
+            <nuxt-link class="menu-nuxtlink" to="/profile">{{ $t('menu.profiling') }}</nuxt-link>
+            <nuxt-link class="menu-nuxtlink" to="/balance">{{ $t('menu.balance') }}</nuxt-link>
+            <nuxt-link class="menu-nuxtlink" to="/settings/account">{{ $t('menu.settings') }}</nuxt-link>
             <button v-if="isLoggedIn" class="menu-btn" @click="handleAuth">
-              Logout
+              {{ $t('menu.logout') }}
             </button>
           </v-list-item-content>
         </v-list-item>

@@ -2,29 +2,28 @@ export default () => {
   return new Promise(function(resolve) {
     resolve({
       common: {
-        title: 'A simple example',
-        subtitle: "It's a blank-page. Start to build your'e page from here.",
-        error_with_status: 'An error occurred on server',
-        404: 'This page could not be found.',
-        '404_subtitle':
-          'You can either stay and chill here, or go back to the beginning.',
-        back: 'back to home',
-        error_without_status: 'An error occurred on the server',
-        accept: 'Accept',
         en: 'English',
-        es: 'Espanol',
-        notif_msg: 'This is an example of a message that is commonly used for important information to visitors or users. Please click the button beside to close this message.'
+        es: 'Espanol'
       },
       menu: {
-        header_index: 'Home',
-        header_dashboard: 'Inspire',
-        header_menu3: 'ask doctors',
-        header_menu4: 'clinics',
-        header_static: 'Contact',
-        header_language: 'language',
-        header_theme: 'theme mode',
-        header_dark: 'dark',
-        header_light: 'light'
+        dashboard: 'Tablero',
+        notifications: 'Notificaciones',
+        health: 'Mi salud',
+        login: 'Acceso',
+        profiling: 'Mi perfil',
+        balance: 'Equilibrio',
+        settings: 'Ajustes',
+        logout: 'Cerrar sesión',
+        header_light: 'ligero',
+        header_dark: 'oscuro',
+        header_language: 'idioma'
+      },
+      balance: {
+        title: 'Gaste el saldo ganado comprando <b>tarjetas de regalo electrónicas</b> o <b>Donando</b> a proyectos de caridad.',
+        eGift: {
+          title: 'Las tarjetas de regalo electrónicas significan entrega instantánea, un rastro digital y sin necesidad de inventario',
+          description: '<li>Seleccione una tarjeta de una marca</li><li>Seleccione o proporcione una cantidad para gastar /li><li>Complete el nombre y la dirección de correo electrónico del destinatario y agregue un mensaje si lo desea</li><li>In case you are buying for yourself, press the <b>Buying For Myself</b> button</li><li>Review your order then click on the <b>Buy Card</b> button</li><li>The recipient receives the Claim Code to active the eGift Card on the brand\'s page</li>'
+        }
       }
     })
   })

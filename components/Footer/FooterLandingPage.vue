@@ -2,29 +2,29 @@
   <v-footer absolute inset app>
     <div class="image">
       <img :src="logo" :alt="logo" width="80px" height="80px">
-      <span class="motto">Some motto xyz</span>
+      <span class="motto">{{ $t('footer.motto') }}</span>
       <span class="motto">&copy; {{ new Date().getFullYear() }}</span>
     </div>
     <div class="column1">
       <ul>
         <li>
-          <nuxt-link to="/ak/aboutus">About Us</nuxt-link>
+          <nuxt-link to="/ak/aboutus">{{ $t('footer.about') }}</nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/ak/terms">Terms of Service</nuxt-link>
+          <nuxt-link to="/ak/terms">{{ $t('footer.terms') }}</nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/ak/privacy">Privacy Policy</nuxt-link>
+          <nuxt-link to="/ak/privacy">{{ $t('footer.privacy') }}</nuxt-link>
         </li>
       </ul>
     </div>
     <div class="column2">
       <ul>
         <li>
-          <nuxt-link to="/ak/faq">FAQ</nuxt-link>
+          <nuxt-link to="/ak/faq">{{ $t('footer.faq') }}</nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/ak/gdpr">GDPR</nuxt-link>
+          <nuxt-link to="/ak/gdpr">{{ $t('footer.gdpr') }}</nuxt-link>
         </li>
       </ul>
     </div>
@@ -45,8 +45,9 @@ export default {
 @import "~/assets/styles";
 .v-footer {
   height: fit-content;
-  background-color: #FEE181;
-  border-top: 3px solid #95E38E;
+  @include footer-background-color;
+  //background-color: #FEE181;
+  //border-top: 3px solid #95E38E;
   // @include whitish-background-color;
   display: flex;
   flex-direction: row;

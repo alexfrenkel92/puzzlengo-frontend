@@ -39,3 +39,9 @@ export default {
   }
 }
 </script>
+
+<style lang='scss'>
+.apexcharts-tooltip {
+    color: $light-text-primary !important
+  }
+</style>

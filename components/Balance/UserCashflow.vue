@@ -14,7 +14,7 @@
     >
       <template v-slot:top>
         <v-toolbar flat>
-          <v-toolbar-title>Spendings</v-toolbar-title>
+          <v-toolbar-title> {{ $t('balance.spending') }}</v-toolbar-title>
           <v-spacer />
           <v-text-field
             v-model="searchTangoCards"
@@ -31,11 +31,11 @@
           <div>{{ item.message }}</div>
           <div class="recipient">
             <p>
-              <span>Recipient's name: </span>{{ item.recipient.firstName }}
+              <span>{{ $t('balance.name') }} </span>{{ item.recipient.firstName }}
               {{ item.recipient.lastName }}
             </p>
             <p>
-              <span>Recipient's e-mail: </span>{{ item.recipient.email }}
+              <span>{{ $t('balance.email') }} </span>{{ item.recipient.email }}
             </p>
           </div>
         </td>
@@ -54,7 +54,7 @@
     >
       <template v-slot:top>
         <v-toolbar flat>
-          <v-toolbar-title>Earnings</v-toolbar-title>
+          <v-toolbar-title>{{ $t('balance.earning') }}</v-toolbar-title>
           <v-spacer />
           <v-text-field
             v-model="searchSurveys"
@@ -68,7 +68,7 @@
       </template>
       <template v-slot:expanded-item="{ headers, item }">
         <td :colspan="headers.length" class="expanded-content">
-          More info about {{ item.title }}
+          {{ $t('balance.more_info') }} {{ item.title }}
         </td>
       </template>
     </v-data-table>

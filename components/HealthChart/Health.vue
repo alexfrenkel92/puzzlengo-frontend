@@ -5,14 +5,14 @@
       width="300"
     >
       <v-card-title>
-        Weight
+        {{ $t('charts.weight') }}
       </v-card-title>
       <line-chart
         :format-date="'MMM d.'"
         :data="weight.data"
         :colormax="weight.colorMax"
         :colormin="weight.colorMin"
-        :name="'Weight'"
+        :name="$t('charts.weight')"
       />
     </v-card>
     <v-card
@@ -20,14 +20,14 @@
       width="300"
     >
       <v-card-title>
-        Heart Rate
+        {{ $t('charts.heart_rate') }}
       </v-card-title>
       <line-chart
         :format-date="'HH:mm'"
         :data="heartRateToday.data"
         :colormax="heartRateToday.colorMax"
         :colormin="heartRateToday.colorMin"
-        :name="'Heart Rate'"
+        :name="$t('charts.heart_rate')"
       />
     </v-card>
     <v-card
@@ -36,9 +36,9 @@
       height="500"
     >
       <v-card-title>
-        Sleep
+        {{ $t('charts.sleep') }}
       </v-card-title>
-      <bar-chart :name="'Sleep'" :data="weeklySleep.data" :color="weeklySleep.color" />
+      <bar-chart :name="$t('charts.sleep')" :data="weeklySleep.data" :color="weeklySleep.color" />
     </v-card>
   </div>
 </template>
@@ -63,7 +63,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang='scss' scoped>
   .health-container{
     display: flex;
     flex-wrap: wrap;

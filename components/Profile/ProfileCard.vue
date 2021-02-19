@@ -109,7 +109,7 @@ img {
   position: relative;
   bottom: 15px;
   font-size: x-large;
-  color: black;
+  @include primary-text-color;
 }
 footer {
   display: flex;

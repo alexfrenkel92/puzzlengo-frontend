@@ -7,12 +7,12 @@
     </div>
     <div class="details-container">
       <div class="divider-horizontal-mobile" />
-      <p class="brand-name">{{ brand.brandName }} eGift Card</p>
+      <p class="brand-name">{{ brand.brandName }} {{ $t('giftcards.egift') }}</p>
       <div class="divider-horizontal-desktop" />
       <div class="form-container">
         <form @submit.prevent="sendOrder">
           <div class="form-control">
-            <p class="amount">Amount</p>
+            <p class="amount">{{ $t('giftcards.amount') }}</p>
             <div v-if="faceValueExist !== 0" class="face-values">
               <div v-for="item in brand.items" :key="item.utid">
                 <button
@@ -32,15 +32,15 @@
             </div>
           </div>
           <div class="form-control">
-            <label for="email">E-mail:</label>
+            <label for="email">{{ $t('form.email') }}</label>
             <input id="email" v-model.trim="email.val" type="text">
           </div>
           <div class="form-control">
-            <label for="firstName">First Name:</label>
+            <label for="firstName">{{ $t('form.first_name') }}</label>
             <input id="firstName" v-model.trim="firstName.val" type="text">
           </div>
           <div class="form-control">
-            <label for="lastName">Last Name:</label>
+            <label for="lastName">{{ $t('form.last_name') }}</label>
             <input id="lastName" v-model.trim="lastName.val" type="text">
           </div>
         </form>
@@ -50,24 +50,24 @@
             btn-style="approve"
             @click="sendOrder"
           >
-            <span v-if="brand.items[0].rewardType === 'donation'">Donate</span>
-            <span v-else>Buy Card</span>
+            <span v-if="brand.items[0].rewardType === 'donation'">{{ $t('giftcards.donate') }}</span>
+            <span v-else>{{ $t('giftcards.buy') }}</span>
           </app-button>
           <app-button
             type="button"
             btn-style="approve"
             @click="$router.go(-1)"
           >
-            Back to Cards
+            {{ $t('giftcards.back') }}
           </app-button>
         </div>
       </div>
     </div>
     <div class="brand-details-container">
-      <p class="details-title">Description:</p>
+      <p class="details-title">{{ $t('common.description') }}:</p>
       <!-- eslint-disable-next-line vue/no-v-html -->
       <div class="details-content" v-html="brand.description" />
-      <p class="details-title">Disclaimer:</p>
+      <p class="details-title">{{ $t('giftcards.disclaimer') }}:</p>
       <!-- eslint-disable-next-line vue/no-v-html -->
       <div class="details-content" v-html="brand.disclaimer" />
     </div>

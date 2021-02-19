@@ -3,10 +3,9 @@
     <div class="image">
       <img :src="logo" :alt="logo" width="80px" height="80px">
     </div>
-    <div class="title">Rx Community Site Demo</div>
+    <div class="title">{{ $t('landing.title') }}</div>
     <div class="description">
-      Take part in engaging research, earn credits, and help improve human
-      knowledge
+      {{ $t('landing.description') }}
     </div>
     <div class="signup-container">
       <v-form ref="form" v-model="valid" @submit.prevent>
@@ -21,12 +20,12 @@
         />
       </v-form>
       <AppButton class="signup-btn" btn-style="approve-dark" @click="handleSignUp">
-        Sign Up
+        {{ $t('form.sign_up') }}
       </AppButton>
     </div>
-    <div class="already-registered">Already registered?</div>
+    <div class="already-registered">{{ $t('landing.registered') }}</div>
     <AppButton class="login-btn" btn-style="approve-dark" @click="handleLogin">
-      Sign In
+      {{ $t('form.sign_in') }}
     </AppButton>
     <SignUp :show-modal="toogleSignUpModal" @closeModal="closeModal" />
     <Login :show-modal="toogleLoginModal" @closeModal="closeModal" />

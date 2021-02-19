@@ -36,6 +36,7 @@ export default {
           }
         },
         labels: [this.current + ' / ' + this.max + ' steps'],
+        colors: ['#546E7A'],
         fill: {
           colors: [function({ value }) {
             if (value < 50) {

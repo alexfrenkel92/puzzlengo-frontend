@@ -13,14 +13,14 @@
             {{ item.title }}
           </nuxt-link>
         </v-list-item> -->
-        <nuxt-link v-if="!invert" class="menu-list" to="/dashboard">Dashboard</nuxt-link>
+        <nuxt-link v-if="!invert" class="menu-list" to="/dashboard">{{ $t('menu.dashboard') }}</nuxt-link>
         <div v-if="!invert" class="notification-btn-wrapper-mobile">
           <nuxt-link class="menu-list" to="/notifications">
-            Notifications
+            {{ $t('menu.notifications') }}
             <div v-if="notificationNumber > 0" class="notification-nr-mobile">{{ notificationNumber }}</div>
           </nuxt-link>
         </div>
-        <nuxt-link v-if="!invert" class="menu-list" to="/health">My Health</nuxt-link>
+        <nuxt-link v-if="!invert" class="menu-list" to="/health">{{ $t('menu.health') }}</nuxt-link>
         <SettingsGear v-if="isLoggedIn" class="setting-btn" :invert="invert" />
       </div>
       <!-- <v-list tag="nav" class="auth-section">

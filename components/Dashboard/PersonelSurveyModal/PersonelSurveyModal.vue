@@ -3,12 +3,12 @@
     <v-dialog v-model="showModal" persistent width="500">
       <v-tabs>
         <v-tabs-slider color="#7abe8f" />
-        <v-tab><v-icon left>mdi-calendar</v-icon>Date</v-tab>
-        <v-tab><v-icon left>mdi-information-variant</v-icon>More info</v-tab>
+        <v-tab><v-icon left>mdi-calendar</v-icon>{{ $t('common.date') }}</v-tab>
+        <v-tab><v-icon left>mdi-information-variant</v-icon>{{ $t('common.more_info') }}</v-tab>
         <v-tab-item>
           <v-card>
             <v-card-title class="headline">
-              <span v-if="selectedTime === null">Please select an appointment for<br></span>{{ survey.title }}
+              <span v-if="selectedTime === null">{{ $t('dashboard.appointment_for') }}<br></span>{{ survey.title }}
             </v-card-title>
             <v-divider />
             <v-card-text>
@@ -29,7 +29,7 @@
                 @click="book"
               >
                 <template v-slot:[`item.actions`]="{ item }" class="book-btn-wrapper">
-                  <AppButton class="book-button" btn-style="approve" @click="book(item)">Book</AppButton>
+                  <AppButton class="book-button" btn-style="approve" @click="book(item)">{{ $t('dashboard.book') }}</AppButton>
                 </template>
               </v-data-table>
             </v-card-text>
@@ -39,7 +39,7 @@
                 btn-style="cancel"
                 @click="withdraw"
               >
-                Cancel
+                {{ $t('common.cancel') }}
               </AppButton>
               <AppButton
                 v-if="myAppointment != null"
@@ -47,7 +47,7 @@
                 btn-style="approve"
                 @click="toogleAppointment"
               >
-                Confirm
+                {{ $t('common.confirm') }}
               </AppButton>
             </v-card-actions>
           </v-card>
@@ -62,15 +62,15 @@
               {{ survey.description }}
             </v-card-subtitle>
             <v-card-text>
-              Your appointment:
+              {{ $t('dashboard.your_appointment') }}
               <span
                 v-if="selectedTime === null"
-              >Please select an appointment</span><span v-else>{{ myAppointment.date }}</span>
+              >{{ $t('dashboard.appointment') }}</span><span v-else>{{ myAppointment.date }}</span>
               <v-divider />
-              Location:
+              {{ $t('dashboard.location') }}
               <span
                 v-if="selectedTime === null"
-              >Please select an appointment</span><span v-else>{{ myAppointment.address }}</span>
+              >{{ $t('dashboard.appointment') }}</span><span v-else>{{ myAppointment.address }}</span>
             </v-card-text>
             <v-card-actions>
               <AppButton
@@ -78,7 +78,7 @@
                 btn-style="cancel"
                 @click="withdraw"
               >
-                Cancel
+                {{ $t('common.cancel') }}
               </AppButton>
               <AppButton
                 v-if="myAppointment != null"
@@ -86,7 +86,7 @@
                 btn-style="approve"
                 @click="toogleAppointment"
               >
-                Confirm
+                {{ $t('common.confirm') }}
               </AppButton>
             </v-card-actions>
           </v-card>

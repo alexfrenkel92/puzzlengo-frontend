@@ -10,7 +10,7 @@
       >
         <template v-slot:header>
           <div class="page-controller" align="center" justify="center">
-            <span class="mr-4 black--text">
+            <span class="mr-4">
               Page {{ page }} of {{ numberOfPages }}
             </span>
             <v-btn dark color="#7abe8f" icon @click="formerPage">
@@ -33,10 +33,10 @@
               <v-expansion-panel-content>
                 <div class="completion-details">
                   <p class="completed-on">
-                    Description: {{ notification.description }}
+                    {{ $t('common.description') }}: {{ notification.description }}
                   </p>
                   <p class="payment-value">
-                    Payment: {{ notification.payment }}$
+                    {{ $t('common.payment') }}: {{ notification.payment }}$
                   </p>
                 </div>
               </v-expansion-panel-content>
@@ -48,13 +48,13 @@
               <v-expansion-panel-content>
                 <div class="completion-details">
                   <p class="completed-on">
-                    Description: {{ notification.description }}
+                    {{ $t('common.description') }}: {{ notification.description }}
                   </p>
                   <p class="payment-value">
-                    Payment on completion: {{ notification.payment }}$
+                    {{ $t('common.payment') }}: {{ notification.payment }}$
                   </p>
                   <p class="payment-value">
-                    Duration: {{ notification.duration }} min
+                    {{ $t('common.duration') }}: {{ notification.duration }} min
                   </p>
                 </div>
               </v-expansion-panel-content>
@@ -66,10 +66,10 @@
               <v-expansion-panel-content>
                 <div class="completion-details">
                   <p class="completed-on">
-                    Description: {{ notification.description }}
+                    {{ $t('common.description') }}: {{ notification.description }}
                   </p>
                   <p class="payment-value">
-                    Payment: {{ notification.payment }}$
+                    {{ $t('common.payment') }}: {{ notification.payment }}$
                   </p>
                 </div>
               </v-expansion-panel-content>

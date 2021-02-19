@@ -9,8 +9,8 @@
           v-for="(item,i) in steps"
           :key="i"
         >
-          <v-card-title>
-            Steps {{ item.date }}
+          <v-card-title class="carouselTitle">
+            {{ $t('charts.steps') }} {{ item.date }}
           </v-card-title>
           <gauge-chart
             class="gauge"
@@ -18,7 +18,7 @@
             :current="item.current"
             :color="item.current < item.max? item.current < item.max/2? 'red': 'orange' :'green'"
             :date="item.date"
-            :title="'Steps'"
+            :title="$t('charts.steps')"
           />
         </v-carousel-item>
       </v-carousel>
@@ -28,13 +28,13 @@
       width="300"
     >
       <v-card-title>
-        Heart Rate
+        {{ $t('charts.heart_rate') }}
       </v-card-title>
       <line-chart
         :data="heartRateToday.data"
         :colormax="heartRateToday.colorMax"
         :colormin="heartRateToday.colorMin"
-        :name="'Heart Rate'"
+        :name="$t('charts.heart_rate')"
       />
     </v-card>
     <v-card
@@ -43,9 +43,9 @@
       height="500"
     >
       <v-card-title>
-        Steps this week
+        {{ $t('charts.weekly_steps') }}
       </v-card-title>
-      <bar-chart :name="'Steps'" :data="weeklySteps.data" :color="weeklySteps.color" />
+      <bar-chart :name="$t('charts.steps')" :data="weeklySteps.data" :color="weeklySteps.color" />
     </v-card>
   </div>
 </template>
@@ -76,7 +76,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .health-container{
     display: flex;
     flex-wrap: wrap;
@@ -89,5 +89,8 @@ export default {
   .gauge{
     display: flex;
     justify-content: center;
+  }
+  .carouselTitle{
+    @include primary-text-color;
   }
 </style>

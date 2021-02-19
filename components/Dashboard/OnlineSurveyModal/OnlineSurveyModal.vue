@@ -8,15 +8,15 @@
           </v-card-title>
           <v-card-text>{{ survey.description }}</v-card-text>
           <v-card-text>
-            Press Confirm to start the survey. You will be navigated to another page. When finished, come back to check your survey's status.
+            {{ $t('dashboard.online_title') }}
           </v-card-text>
           <v-card-actions>
             <v-spacer />
             <v-btn color="green darken-1" text @click="withdraw">
-              Withdraw
+              {{ $t('common.withdraw') }}
             </v-btn>
             <v-btn color="green darken-1" text @click="toogleModal">
-              Confirm
+              {{ $t('common.confirm') }}
             </v-btn>
           </v-card-actions>
         </v-card>

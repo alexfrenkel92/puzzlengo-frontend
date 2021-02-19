@@ -2,12 +2,12 @@
   <div class="card-container">
     <v-tabs v-model="activeTab" background-color="transparent" grow>
       <v-tabs-slider color="#7abe8f" />
-      <v-tab>Tango Cards</v-tab>
-      <v-tab>Charity</v-tab>
+      <v-tab>{{ $t('giftcards.tango') }}</v-tab>
+      <v-tab>{{ $t('giftcards.charity') }}</v-tab>
     </v-tabs>
     <v-tabs-items v-model="activeTab">
       <v-tab-item>
-        <div class="title">Choose your reward below.</div>
+        <div class="title">{{ $t('giftcards.choose_reward') }}</div>
         <div class="tango-cards-wrapper">
           <GiftCard
             v-for="brand in giftCards.slice(0, 30)"
@@ -20,7 +20,7 @@
         </div>
       </v-tab-item>
       <v-tab-item>
-        <div class="title">Choose to donate.</div>
+        <div class="title">{{ $t('giftcards.choose_donate') }}</div>
         <div class="tango-cards-wrapper">
           <GiftCard
             v-for="brand in donationCards.slice(0, 30)"

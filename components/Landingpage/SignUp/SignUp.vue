@@ -15,14 +15,14 @@
         </v-toolbar>
         <div class="main-wrapper">
           <div class="form-container">
-            <h1>Let’s get started</h1>
-            <h4>Sign up with</h4>
+            <h1>{{ $t('form.start') }}</h1>
+            <h4>{{ $t('form.sign_up_with') }}</h4>
             <div class="social-container">
               <nuxt-link to=""><v-icon large>mdi-facebook</v-icon></nuxt-link>
               <nuxt-link to=""><v-icon large>mdi-google</v-icon></nuxt-link>
               <nuxt-link to=""><v-icon large>mdi-linkedin</v-icon></nuxt-link>
             </div>
-            <h4 class="alternate-signup">Or fill in and submit this form, and we’ll get back to you very soon.</h4>
+            <h4 class="alternate-signup">{{ $t('form.fill_form') }}</h4>
             <div class="sign-up-form">
               <v-form ref="form" v-model="valid" lazy-validation @submit.prevent>
                 <div v-if="basicUserInfo.firstName == ''">
@@ -31,7 +31,7 @@
                     class="centered-input"
                     solo
                     :rules="nameRules"
-                    label="First Name"
+                    :label="$t('form.first_name')"
                     clearable
                   />
                 </div>
@@ -41,7 +41,7 @@
                     class="centered-input"
                     solo
                     :rules="nameRules"
-                    label="Last Name"
+                    :label="$t('form.last_name')"
                     clearable
                   />
                 </div>
@@ -51,13 +51,13 @@
                     class="centered-input"
                     solo
                     :rules="ageRules"
-                    label="Age"
+                    :label="$t('form.age')"
                     clearable
                   />
                 </div>
               </v-form>
               <AppButton class="continue-btn" btn-style="approve-dark" @click="saveUserInfo">
-                Continue
+                {{ $t('form.continue') }}
               </AppButton>
             </div>
             <!-- <div class="progressBar" /> -->
@@ -140,8 +140,8 @@ export default {
 
 <style scoped lang='scss'>
 .v-card {
-  // @include background-color-gradient;
-  background: linear-gradient(110deg, #FEE181 60%, #95E38E 60%);
+   @include background-color;
+  //background: linear-gradient(110deg, #FEE181 60%, #95E38E 60%);
 
 }
 .centered-input >>> input {

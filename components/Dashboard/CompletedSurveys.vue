@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="enrolled component-title">Completed surveys</div>
+    <div class="enrolled component-title">{{ $t('dashboard.completed_title') }}</div>
     <div v-if="completedSurveysLength === 0" class="error-case">
-      <h3>No completed surveys yet</h3>
+      <h3>{{ $t('dashboard.no_completed') }}</h3>
     </div>
     <div v-else class="survey-card-wrapper">
       <v-expansion-panels>
@@ -13,18 +13,18 @@
         >
           <v-expansion-panel-header>
             <div class="card-details-wrapper">
-              <h1>Survey name: {{ survey.title }}</h1>
+              <h1>{{ $t('dashboard.survey_name') }} {{ survey.title }}</h1>
               <div class="completion-details">
-                <p class="payment-value">Payment: {{ survey.payment }}$</p>
-                <p class="completed-on">Completed on: {{ survey.completedOn }}</p>
+                <p class="payment-value">{{ $t('common.payment') }}: {{ survey.payment }}$</p>
+                <p class="completed-on">{{ $t('dashboard.complete_time') }} {{ survey.completedOn }}</p>
               </div>
               <footer>
                 <div class="duration">
-                  <p>Duration</p>
-                  <p>{{ survey.duration }} minutes</p>
+                  <p>{{ $t('common.duration') }}</p>
+                  <p>{{ survey.duration }} {{ $t('dashboard.minutes') }}</p>
                 </div>
                 <div class="quota">
-                  <p>Quota</p>
+                  <p>{{ $t('dashboard.quota') }}</p>
                   <p>{{ survey.enrolled }}/{{ survey.quota }}</p>
                 </div>
               </footer>
@@ -32,7 +32,7 @@
           </v-expansion-panel-header>
           <v-expansion-panel-content>
             <div class="description">
-              <p class="description-title">Description:</p>
+              <p class="description-title">{{ $t('common.description') }}:</p>
               <p class="description-content">
                 {{ survey.description }}
               </p>

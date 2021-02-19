@@ -2,8 +2,8 @@
   <div class="settings-container">
     <v-tabs background-color="transparent" grow>
       <v-tabs-slider color="#7abe8f" />
-      <v-tab>Health</v-tab>
-      <v-tab>Activity</v-tab>
+      <v-tab>{{ $t('charts.health') }}</v-tab>
+      <v-tab>{{ $t('charts.activity') }}</v-tab>
       <v-tab-item>
         <Health />
       </v-tab-item>
