@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- eslint-disable-next-line vue/no-v-html -->
     <p class="title" v-html="$t('balance.title')" />
     <div class="info-container">
       <div class="e-gift-card-container">
@@ -12,6 +13,7 @@
               </template>
             </v-expansion-panel-header>
             <v-expansion-panel-content>
+              <!-- eslint-disable-next-line vue/no-v-html -->
               <ul v-html="$t('balance.eGift.description')" />
             </v-expansion-panel-content>
           </v-expansion-panel>
@@ -35,6 +37,7 @@
               </template>
             </v-expansion-panel-header>
             <v-expansion-panel-content>
+              <!-- eslint-disable-next-line vue/no-v-html -->
               <ul v-html="$t('balance.charity.description')" />
             </v-expansion-panel-content>
           </v-expansion-panel>

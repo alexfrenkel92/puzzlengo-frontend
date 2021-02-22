@@ -10,6 +10,7 @@ export default {
   components: {
     VueApexCharts: () => process.browser ? import('vue-apexcharts') : null
   },
+  // eslint-disable-next-line vue/require-prop-types
   props: ['data', 'mindata', 'maxdata', 'colormax', 'colormin', 'name', 'formatDate'],
   data() {
     return {

@@ -149,6 +149,7 @@ export default {
 }
 .already-registered {
   font-size: 1rem;
+  font-weight: 600;
   padding: 10px 0 0 0;
   @include primary-text-color;
 }
