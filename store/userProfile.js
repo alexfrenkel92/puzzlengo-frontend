@@ -5,92 +5,93 @@ export default {
         {
           id: 1,
           title: 'Basic info',
-          totalQuestions: 9,
-          answered: 9,
           img: 'basics',
-          type: 'dem'
+          type: 'dem',
+          url: 'http://localhost/LimeSurvey/index.php/759823?lang=en',
+          isCompleted: false
         },
         {
           id: 2,
           title: 'Education',
-          totalQuestions: 5,
-          answered: 0,
           img: 'education',
-          type: 'dem'
+          type: 'dem',
+          url: 'http://localhost/LimeSurvey/index.php/111897?lang=en',
+          isCompleted: false
         },
         {
           id: 3,
           title: 'Work',
           totalQuestions: 10,
-          answered: 0,
           img: 'work',
-          type: 'dem'
+          type: 'dem',
+          url: '',
+          isCompleted: false
         },
         {
           id: 4,
           title: 'Relationship',
-          totalQuestions: 6,
-          answered: 3,
           img: 'relationship',
-          type: 'dem'
+          type: 'dem',
+          url: '',
+          isCompleted: true
         },
         {
           id: 5,
           title: 'Health',
-          totalQuestions: 10,
-          answered: 0,
           img: 'health',
-          type: 'dem'
+          type: 'dem',
+          url: '',
+          isCompleted: false
         },
         {
           id: 6,
           title: 'Hobbies',
-          totalQuestions: 10,
-          answered: 0,
           img: 'hobbies',
-          type: 'dem'
+          type: 'dem',
+          url: '',
+          isCompleted: true
         }
       ],
       psychologicalProfiling: [
         {
           id: 1,
           title: 'Mental Health',
-          totalQuestions: 15,
-          answered: 7,
           img: 'basics',
-          type: 'psy'
+          type: 'psy',
+          url: '',
+          isCompleted: true
         },
         {
           id: 2,
           title: 'Behavioral Patterns',
-          totalQuestions: 5,
-          answered: 0,
           img: 'education',
-          type: 'psy'
+          type: 'psy',
+          url: '',
+          isCompleted: false
         },
         {
           id: 3,
           title: 'Cognitive skills',
-          totalQuestions: 10,
-          answered: 0,
           img: 'work',
-          type: 'psy'
+          type: 'psy',
+          url: '',
+          isCompleted: true
         },
         {
           id: 4,
           title: 'Educational patterns',
-          totalQuestions: 10,
-          answered: 0,
           img: 'work',
-          type: 'psy'
+          type: 'psy',
+          url: '',
+          isCompleted: false
         },
         {
           id: 5,
           title: 'Other',
-          totalQuestions: 6,
-          answered: 3,
           img: 'relationship',
-          type: 'psy'
+          type: 'psy',
+          url: '',
+          isCompleted: false
         }
       ],
       balanceNr: 75
@@ -110,11 +111,25 @@ export default {
   mutations: {
     calculateBalance(state, balanceNr) {
       state.balanceNr += balanceNr
+    },
+    toogleSurveyCompletion(state, payload) {
+      const surveyId = payload[0]
+      const type = payload[1]
+      if (type === 'dem') {
+        const surveyToComplete = state.demographicProfiling.find(survey => survey.id === surveyId)
+        surveyToComplete.isCompleted = true
+      } else if (type === 'psy') {
+        const surveyToComplete = state.psychologicalProfiling.find(survey => survey.id === surveyId)
+        surveyToComplete.isCompleted = true
+      }
     }
   },
   actions: {
     calculateBalance(context, payload) {
       context.commit('calculateBalance', payload)
+    },
+    toogleSurveyCompletion(context, payload) {
+      context.commit('toogleSurveyCompletion', payload)
     }
   }
 }

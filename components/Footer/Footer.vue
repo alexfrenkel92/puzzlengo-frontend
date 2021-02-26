@@ -48,8 +48,9 @@ export default {
   // @include background-color-gradient;
   // background: linear-gradient(110deg, #FEE181 60%, #95E38E 60%);
   // background-color: #AFCC8C;
-  background-color: #cf8a46;
+  // background-color: #a9c193;
   // @include footer-background-color;
+  @include ligth-green-color;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;

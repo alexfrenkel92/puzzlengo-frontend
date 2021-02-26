@@ -8,15 +8,15 @@
           </v-card-title>
           <v-card-text>{{ survey.description }}</v-card-text>
           <v-card-text>
-            {{ $t('dashboard.online_title') }}
+            {{ $t("dashboard.online_title") }}
           </v-card-text>
           <v-card-actions>
             <v-spacer />
             <v-btn color="green darken-1" text @click="withdraw">
-              {{ $t('common.withdraw') }}
+              {{ $t("common.withdraw") }}
             </v-btn>
             <v-btn color="green darken-1" text @click="toogleModal">
-              {{ $t('common.confirm') }}
+              {{ $t("common.confirm") }}
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -45,7 +45,9 @@ export default {
   },
   watch: {
     showModal() {
-      this.survey = this.$store.getters.getActiveSurveys.filter(item => item.id === this.id)[0]
+      this.survey = this.$store.getters.getActiveSurveys.filter(
+        item => item.id === this.id
+      )[0]
     }
   },
   methods: {
@@ -60,8 +62,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .v-card {
-    border-radius: 3px !important;
-    @include whitish-background-color;
-  }
+.v-card {
+  border-radius: 3px !important;
+  @include whitish-background-color;
+}
 </style>

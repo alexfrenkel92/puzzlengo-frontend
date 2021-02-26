@@ -207,7 +207,7 @@ export default {
 }
 </style>
 
-<style>
+<style scoped>
 .selected {
   background-color: #7abe8f !important;
 }
