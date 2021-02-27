@@ -113,12 +113,12 @@ export default () => {
         sleep: 'Sleep'
       },
       description: {
-        how_it_works: 'How It Works'
+        title: 'How It Works'
       },
       landing: {
         registered: 'Already registered?',
-        title: 'Rx Community Site Demo',
-        description: 'Take part in engaging research, earn credits, and help improve human knowledge'
+        title: 'Play\'n Go',
+        description: 'Take part in engaging short games and earn credits'
       }
     })
   })

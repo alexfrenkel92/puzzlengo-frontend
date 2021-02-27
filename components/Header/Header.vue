@@ -36,7 +36,7 @@
             <nuxt-link class="nav-btn" to="/notifications">{{ $t('menu.notifications') }}</nuxt-link>
             <div v-if="notificationNumber > 0" class="notification-nr">{{ notificationNumber }}</div>
           </div>
-          <nuxt-link v-if="!invert" class="nav-btn" to="/health">{{ $t('menu.health') }}</nuxt-link>
+          <nuxt-link v-if="!invert" class="nav-btn" to="/balance">{{ $t('menu.balance') }}</nuxt-link>
         </nav>
         <nav :class="{ invert: invert }">
           <div v-if="isDesktop">

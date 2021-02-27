@@ -39,19 +39,19 @@ export default {
       },
       {
         icon: 'mdi-book-variant',
-        title: 'Complete your profile',
+        title: 'Play a game',
         text:
           'Aliquam erat volutpat. Cras a velit a urna rutrum auctor. Aliquam vitae sollicitudin nulla. Aliquam erat volutpat. Duis nec purus a est pharetra lacinia eget quis mauris.'
       },
       {
         icon: 'mdi-airballoon',
-        title: 'Participate in online or personal surveys',
+        title: 'Get paid',
         text:
           'Ut fermentum leo sit amet sapien pharetra, non facilisis mauris lacinia. Suspendisse in odio in urna cursus dictum a id ex.'
       },
       {
         icon: 'mdi-buffer',
-        title: 'Get paid',
+        title: 'Spend your earned credits on eGift Cards',
         text:
           'Pellentesque feugiat bibendum luctus. Etiam sollicitudin leo leo, ac fringilla felis ultricies sollicitudin. Aliquam blandit ex quis dui tincidunt sagittis. Praesent fermentum lobortis consectetur. Proin volutpat nec nibh vel cursus. Sed iaculis rutrum aliquam. Vestibulum rhoncus velit id maximus efficitur.'
       }

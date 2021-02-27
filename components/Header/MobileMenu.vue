@@ -20,7 +20,7 @@
             <div v-if="notificationNumber > 0" class="notification-nr-mobile">{{ notificationNumber }}</div>
           </nuxt-link>
         </div>
-        <nuxt-link v-if="!invert" class="menu-list" to="/health">{{ $t('menu.health') }}</nuxt-link>
+        <nuxt-link v-if="!invert" class="menu-list" to="/balance">{{ $t('menu.balance') }}</nuxt-link>
         <SettingsGear v-if="isLoggedIn" class="setting-btn" :invert="invert" />
       </div>
     </div>

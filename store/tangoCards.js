@@ -56,7 +56,7 @@ export default {
       return this.$axios
         .$post('http://localhost:8080/api/postorder', order)
         .then((data) => {
-          console.log(data)
+          // console.log(data)
           // if (data.status === 'COMPLETE') {
           //   // console.log('successss')
           //   // console.log(data)
