@@ -6,6 +6,7 @@
       <completed-surveys class="completed-container" @openModal="openModal" />
     </div>
     <online-survey-modal
+      :id="surveyId"
       :show-modal="onlineSurveyModal"
       @confirm="confirmEnrollment"
       @withdraw="closeOnlineModal"
@@ -26,7 +27,8 @@ export default {
       onlineSurveyModal: false,
       personalSurveyModal: false,
       surveyId: null,
-      surveyType: null
+      surveyType: null,
+      surveyToEnrollDetails: null
     }
   },
   methods: {

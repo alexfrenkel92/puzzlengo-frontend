@@ -8,11 +8,9 @@
 <style scoped>
   .notification-container{
     display: flex;
-    width: 80%;
+    max-width: 1300px;
     margin: auto;
-    justify-content: space-around;
     flex-wrap: wrap;
-    padding: 20px 10px;
   }
   @media screen and (max-width: 1400px) {
     .notification-container {

@@ -1,219 +1,219 @@
 $background: #fffffb;
 $green: #7abe8f;
-$red: #FFA17A;
+$red: #ffa17a;
 $darkBackground: #3f5567;
 
 #card-container {
-    // @include creamy-white-color;
-    @include whitish-background-color;
+  // @include creamy-white-color;
+  @include whitish-background-color;
+  height: fit-content;
+  width: 90%;
+  position: relative;
+  box-shadow: 5px 5px 10px rgba(92, 92, 92, 0.5);
+  .card-details-wrapper {
+    padding: 8px;
+  }
+  h1 {
     height: fit-content;
-    width: 90%;
-    position: relative;
-    box-shadow: 5px 5px 10px rgba(92, 92, 92, 0.5);
-    .card-details-wrapper {
-        padding: 8px;
+    text-align: left;
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+    @include primary-text-color;
+  }
+  .description-title {
+    margin: 0;
+    font-weight: 550;
+  }
+  .description-content {
+    margin: 0;
+    height: fit-content;
+  }
+  .completion-details {
+    margin: 10px 0 35px 0;
+    font-weight: 550;
+  }
+  .payment-value,
+  .completed-on {
+    margin: 0 0 5px 0;
+  }
+  .payment {
+    margin: 10px 0 5px 0;
+    font-weight: 550;
+  }
+  .btn-enroll {
+    width: fit-content;
+    height: fit-content;
+    font-size: 1rem;
+    font-weight: normal;
+    padding: 5px 20px;
+    @include ligth-green-color;
+    color: whitesmoke;
+    border: none;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    background-size: 300% 300%;
+    outline: none;
+    transition: all 200ms ease-in-out;
+    &:hover {
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+      transform: translateY(2px);
+      -webkit-animation: gradientBG 1.5s ease-in-out forwards;
+      animation: gradientBG 1.5s ease-in-out forwards;
+      cursor: pointer;
     }
-    h1 {
-        height: fit-content;
-        text-align: left;
-        margin-bottom: 5px;
-        font-size: 1.2rem;
-        color: black;
+    &:active {
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+      transform: translateY(4px);
     }
-    .description-title {
-        margin: 0;
-        font-weight: 550;
+  }
+  .btn-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 10% 35px 10%;
+  }
+  .btn-withdraw {
+    width: 120px;
+    height: fit-content;
+    font-size: 1rem;
+    font-weight: normal;
+    padding: 5px 20px;
+    margin: 0 10% 0 10%;
+    @include primary-error-color;
+    color: whitesmoke;
+    border: none;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    background-size: 300% 300%;
+    outline: none;
+    transition: all 200ms ease-in-out;
+    &:hover {
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+      transform: translateY(2px);
+      -webkit-animation: gradientBG 1.5s ease-in-out forwards;
+      animation: gradientBG 1.5s ease-in-out forwards;
+      cursor: pointer;
     }
-    .description-content {
-        margin: 0;
-        height: fit-content;
+    &:active {
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+      transform: translateY(4px);
     }
-    .completion-details {
-        margin: 10px 0 35px 0;
-        font-weight: 550;
+  }
+  .btn-resume {
+    width: 120px;
+    height: fit-content;
+    font-size: 1rem;
+    font-weight: normal;
+    padding: 5px 20px;
+    margin: 0 10% 0 10%;
+    @include ligth-green-color;
+    color: whitesmoke;
+    border: none;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    background-size: 300% 300%;
+    outline: none;
+    transition: all 200ms ease-in-out;
+    &:hover {
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+      transform: translateY(2px);
+      -webkit-animation: gradientBG 1.5s ease-in-out forwards;
+      animation: gradientBG 1.5s ease-in-out forwards;
+      cursor: pointer;
     }
-    .payment-value,
-    .completed-on {
-      margin: 0 0 5px 0;
+    &:active {
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+      transform: translateY(4px);
     }
-    .payment {
-      margin: 10px 0 5px 0;
-      font-weight: 550;
+  }
+  .completion-btn {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    bottom: 20px;
+    background-color: red;
+  }
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // @include dark-background-color;
+    // background-color: #303030;
+    background-color: #464444;
+    color: white;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 30px;
+    padding: 0 15px;
+    margin-left: -8px;
+    // border-bottom-left-radius: 5px;
+    // border-bottom-right-radius: 5px;
+    div {
+      display: flex;
+      p {
+        margin-bottom: 0;
+      }
+      p:first-child {
+        margin-right: 5px;
+        border-right: 4px solid white;
+        padding-right: 5px;
+      }
     }
-    .btn-enroll {
-        width: fit-content;
-        height: fit-content;
-        font-size: 1rem;
-        font-weight: normal;
-        padding: 5px 20px;
-        @include ligth-green-color;
-        color: whitesmoke;
-        border: none;
-        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-        border-radius: 5px;
-        background-size: 300% 300%;
-        outline: none;
-        transition: all 200ms ease-in-out;
-        &:hover {
-            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-            transform: translateY(2px);
-            -webkit-animation: gradientBG 1.5s ease-in-out forwards;
-            animation: gradientBG 1.5s ease-in-out forwards;
-            cursor: pointer;
-        }
-        &:active {
-            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
-            transform: translateY(4px);
-        }
-    }
-    .btn-wrapper {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-                margin: 5px 10% 35px 10%;
-
-    }
-    .btn-withdraw {
-        width: 120px;
-        height: fit-content;
-        font-size: 1rem;
-        font-weight: normal;
-        padding: 5px 20px;
-        margin: 0 10% 0 10%;
-        @include primary-error-color;
-        color: whitesmoke;
-        border: none;
-        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-        border-radius: 5px;
-        background-size: 300% 300%;
-        outline: none;
-        transition: all 200ms ease-in-out;
-        &:hover {
-            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-            transform: translateY(2px);
-            -webkit-animation: gradientBG 1.5s ease-in-out forwards;
-            animation: gradientBG 1.5s ease-in-out forwards;
-            cursor: pointer;
-        }
-        &:active {
-            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
-            transform: translateY(4px);
-        }
-    }
-    .btn-resume {
-        width: 120px;
-        height: fit-content;
-        font-size: 1rem;
-        font-weight: normal;
-        padding: 5px 20px;
-        margin: 0 10% 0 10%;
-        @include ligth-green-color;
-        color: whitesmoke;
-        border: none;
-        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-        border-radius: 5px;
-        background-size: 300% 300%;
-        outline: none;
-        transition: all 200ms ease-in-out;
-        &:hover {
-            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-            transform: translateY(2px);
-            -webkit-animation: gradientBG 1.5s ease-in-out forwards;
-            animation: gradientBG 1.5s ease-in-out forwards;
-            cursor: pointer;
-        }
-        &:active {
-            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
-            transform: translateY(4px);
-        }
-    }
-    .completion-btn {
-        width: 20px;
-        height: 20px;
-        position: absolute;
-        bottom: 20px;
-        background-color: red;
-    }
-    footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        // @include dark-background-color;
-        background-color: #303030;
-        color: white;
-        width: 100%;
-        position: absolute;
-        bottom: 0;
-        height: 30px;
-        padding: 0 15px;
-        margin-left: -8px;
-        // border-bottom-left-radius: 5px;
-        // border-bottom-right-radius: 5px;
-        div {
-            display: flex;
-            p {
-                margin-bottom: 0;
-            }
-            p:first-child {
-                margin-right: 5px;
-                border-right: 4px solid white;
-                padding-right: 5px;
-            }
-        }
-    }
+  }
 }
 
 @media screen and (max-width: 800px) {
-    .duration p,
-    .quota p {
-        font-size: 0.9rem;
-    }
+  .duration p,
+  .quota p {
+    font-size: 0.9rem;
+  }
 }
 @media screen and (max-width: 325px) {
-    .duration p,
-    .quota p {
-        font-size: 0.9rem;
-    }
-    .btn-withdraw {
-        margin: 5px 5% 35px 10% !important;
-    }
-    .btn-resume {
-        margin: 5px 10% 35px 5% !important;
-    }
+  .duration p,
+  .quota p {
+    font-size: 0.9rem;
+  }
+  .btn-withdraw {
+    margin: 5px 5% 0 10% !important;
+  }
+  .btn-resume {
+    margin: 5px 10% 0 5% !important;
+  }
 }
 @media screen and (max-width: 280px) {
-    .duration p,
-    .quota p {
-        font-size: 0.7rem;
-    }
-    .btn-withdraw {
-        margin: 5px 2% 35px 10% !important;
-    }
-    .btn-resume {
-        margin: 5px 10% 35px 2% !important;
-    }
+  .duration p,
+  .quota p {
+    font-size: 0.7rem;
+  }
+  .btn-withdraw {
+    margin: 5px 2% 0 10% !important;
+  }
+  .btn-resume {
+    margin: 5px 10% 0 2% !important;
+  }
 }
 
 @-webkit-keyframes gradientBG {
-    0% {
-        background-position: 0% 50%;
-    }
-    100% {
-        background-position: 100% 50%;
-    }
-    // 100% {
-    //   background-position: 0% 50%;
-    // }
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+  // 100% {
+  //   background-position: 0% 50%;
+  // }
 }
 @keyframes gradientBG {
-    0% {
-        background-position: 0% 50%;
-    }
-    100% {
-        background-position: 100% 50%;
-    }
-    // 100% {
-    //   background-position: 0% 50%;
-    // }
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+  // 100% {
+  //   background-position: 0% 50%;
+  // }
 }

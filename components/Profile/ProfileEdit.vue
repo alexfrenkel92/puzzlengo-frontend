@@ -1,13 +1,12 @@
 <template>
   <div id="profile-edit-container">
-    <h3>Edit {{ filteredFields.title }} related data</h3>
+    <h1>{{ filteredFields.title }}</h1>
     <div class="completion">
-      <p>
-        {{ filteredFields.answered }} /
-        {{ filteredFields.totalQuestions }} completed
-      </p>
+      <p>Not completed</p>
     </div>
-    <h4>Category specific questions will come here</h4>
+    <!-- <h4>Category specific questions will come here</h4> -->
+    <h3>Click on the button below to complete the survey</h3>
+    <v-btn @click="executeSurvey">This Button</v-btn>
     <app-button
       type="button"
       btn-style="approve"
@@ -30,6 +29,9 @@ export default {
   methods: {
     navigateBack() {
       this.$router.go(-1)
+    },
+    executeSurvey() {
+      window.location.href = 'http://localhost/LimeSurvey/index.php/759823?lang=en'
     }
   }
 }
@@ -46,10 +48,23 @@ export default {
 }
 .completion {
   font-size: x-large;
-  color: black;
+  color: red;
 }
 h4 {
-  margin: 30px 0;
-  background-color: aqua;
+  margin: 30px 5px 0 5px;
+  /* background-color: aqua; */
+}
+.v-btn {
+  margin: 15px 15px 30px 15px;
+  color: #9C27B0 !important;
+  animation: pulse .1s infinite !important;
+}
+@keyframes pulse {
+  0% {
+    background-color: #AEEA00;
+  }
+  100% {
+    background-color: #9C27B0;
+  }
 }
 </style>

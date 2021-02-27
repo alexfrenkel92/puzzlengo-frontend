@@ -1,40 +1,22 @@
-<template>
-  <!-- <div class="error-container">
-    <h1 v-if="error.statusCode === 404">
-      {{ pageNotFound }}
-    </h1>
-    <h1 v-else>
-      {{ otherError }}
-    </h1>
-  </div> -->
-
-  <div id="notfound">
-    <div class="notfound">
-      <div class="notfound-404">
-        <h1>4<span>0</span>4</h1>
-      </div>
-      <div class="texts">
-        <p>There's nothing here</p>
-        <p>Find out what you are looking for with our app</p>
-      </div>
-      <div class="download-buttons">
-        <nuxt-link to="">
-          <img :src="iosStore" alt="IOS Store">
-        </nuxt-link>
-        <nuxt-link to="">
-          <img :src="androidStore" alt="Android Store">
-        </nuxt-link>
-      </div>
-      <!-- <AppButton
-        type="button"
-        btn-style="approve"
-        style="height: 50px; width: fit-content"
-        @click="$router.push('/dashboard')"
-      >
-        Return to dashboard
-      </AppButton> -->
+<template><div id="notfound">
+  <div class="notfound">
+    <div class="notfound-404">
+      <h1>4<span>0</span>4</h1>
+    </div>
+    <div class="texts">
+      <p>There's nothing here</p>
+      <p>Find out what you are looking for with our app</p>
+    </div>
+    <div class="download-buttons">
+      <nuxt-link to="">
+        <img :src="iosStore" alt="IOS Store">
+      </nuxt-link>
+      <nuxt-link to="">
+        <img :src="androidStore" alt="Android Store">
+      </nuxt-link>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -57,7 +39,6 @@ export default {
   align-items: center;
   justify-content: center;
   padding-top: 10%;
-  background-color: red;
   // height: calc(100vh - 250px);
 }
 

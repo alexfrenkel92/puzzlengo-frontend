@@ -14,19 +14,19 @@
       </v-toolbar>
       <div class="main-wrapper">
         <div class="form-container">
-          <h1>Sign in with</h1>
+          <h1>{{ $t('form.sign_in_with') }}</h1>
           <div class="social-container">
             <nuxt-link to=""><v-icon large>mdi-facebook</v-icon></nuxt-link>
             <nuxt-link to=""><v-icon large>mdi-google</v-icon></nuxt-link>
             <nuxt-link to=""><v-icon large>mdi-linkedin</v-icon></nuxt-link>
           </div>
-          <span>or use your account</span>
+          <span>{{ $t('form.use_account') }}</span>
           <v-form ref="form" v-model="valid" lazy-validation @submit.prevent>
             <v-text-field
               v-model="user.loginEmail"
               solo
               :rules="loginEmailRules"
-              label="E-mail"
+              :label="$t('form.email')"
               clearable
               required
             />
@@ -34,15 +34,15 @@
               v-model="user.loginPassword"
               solo
               :rules="loginPasswordRules"
-              label="Password"
+              :label="$t('form.password')"
               clearable
               required
             />
           </v-form>
           <AppButton class="continue-btn" btn-style="approve-dark" @click="login">
-            Sign In
+            {{ $t('form.sign_in') }}
           </AppButton>
-          <nuxt-link to="" class="password-reset">Forgot your password?</nuxt-link>
+          <nuxt-link to="" class="password-reset">{{ $t('form.pswd_forget') }}</nuxt-link>
         </div>
       </div>
     </v-card>
@@ -97,6 +97,7 @@ export default {
 <style scoped lang='scss'>
 .v-card {
   @include background-color-gradient;
+  // background: linear-gradient(110deg, #FEE181 60%, #95E38E 60%);
 }
 h1 {
   font-weight: bold;
@@ -149,6 +150,34 @@ form {
   align-items: center;
   justify-content: center;
 }
+
+@media screen and (max-width: 700px) {
+  .main-wrapper {
+    width: 400px !important
+  }
+  .form-container {
+    padding: 5px 15px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .main-wrapper {
+    width: 330px !important
+  }
+}
+@media screen and (max-width: 400px) {
+  .main-wrapper {
+    width: 290px !important
+  }
+}
+@media screen and (max-width: 300px) {
+  .main-wrapper {
+    width: 260px !important
+  }
+  .form-container {
+    padding: 5px;
+  }
+}
+
 .social-container {
   margin: 20px 0 10px 0;
 }

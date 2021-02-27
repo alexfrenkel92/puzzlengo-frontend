@@ -14,7 +14,7 @@
     >
       <template v-slot:top>
         <v-toolbar flat>
-          <v-toolbar-title>Spendings</v-toolbar-title>
+          <v-toolbar-title> {{ $t('balance.spending') }}</v-toolbar-title>
           <v-spacer />
           <v-text-field
             v-model="searchTangoCards"
@@ -31,11 +31,11 @@
           <div>{{ item.message }}</div>
           <div class="recipient">
             <p>
-              <span>Recipient's name: </span>{{ item.recipient.firstName }}
+              <span>{{ $t('balance.name') }} </span>{{ item.recipient.firstName }}
               {{ item.recipient.lastName }}
             </p>
             <p>
-              <span>Recipient's e-mail: </span>{{ item.recipient.email }}
+              <span>{{ $t('balance.email') }} </span>{{ item.recipient.email }}
             </p>
           </div>
         </td>
@@ -54,7 +54,7 @@
     >
       <template v-slot:top>
         <v-toolbar flat>
-          <v-toolbar-title>Earnings</v-toolbar-title>
+          <v-toolbar-title>{{ $t('balance.earning') }}</v-toolbar-title>
           <v-spacer />
           <v-text-field
             v-model="searchSurveys"
@@ -68,7 +68,7 @@
       </template>
       <template v-slot:expanded-item="{ headers, item }">
         <td :colspan="headers.length" class="expanded-content">
-          More info about {{ item.title }}
+          {{ $t('balance.more_info') }} {{ item.title }}
         </td>
       </template>
     </v-data-table>
@@ -144,7 +144,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .user-cashflow-container {
     margin: 20px;
     width: 700px;
@@ -155,6 +155,7 @@ export default {
     border: 1px solid #7abe8f;
     border-radius: 5px;
     width: 800px;
+    @include whitish-background-color;
 }
 @media only screen and (max-width: 700px) {
     .v-data-table {
@@ -170,9 +171,12 @@ export default {
 .v-data-table >>> tbody tr.v-data-table__expanded__row {
     background-color: #7abe8f !important;
 }
+.v-toolbar {
+  @include whitish-background-color;
+}
 .expanded-content {
     padding: 10px !important;
-    background-color: ivory;
+    @include whitish-background-color;
 }
 .recipient {
     margin-top: 10px;

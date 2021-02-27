@@ -13,10 +13,10 @@
             :id="cat.id"
             :key="cat.id"
             :title="cat.title"
-            :total-questions="cat.totalQuestions"
-            :answered="cat.answered"
             :img="cat.img"
             :type="cat.type"
+            :url="cat.url"
+            :is-completed="cat.isCompleted"
             :tab-nr="activeTab"
           />
         </div>
@@ -28,10 +28,10 @@
             :id="cat.id"
             :key="cat.id"
             :title="cat.title"
-            :total-questions="cat.totalQuestions"
-            :answered="cat.answered"
             :img="cat.img"
             :type="cat.type"
+            :url="cat.url"
+            :is-completed="cat.isCompleted"
             :tab-nr="activeTab"
           />
         </div>
@@ -65,13 +65,17 @@ export default {
   justify-content: center;
   width: 100%;
   background-color: inherit;
+  padding-bottom: 30px;
 }
 .v-tab {
   color: black;
   font-weight: 600;
 }
 .v-tab--active {
-  color: black !important;
+  @include primary-text-color;
+}
+.v-window-item {
+  @include whitish-background-color;
 }
 .v-tabs-items {
   @include whitish-background-color;

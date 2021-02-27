@@ -31,23 +31,23 @@
               </nuxt-link>
             </div>
           </div>
-          <nuxt-link v-if="!invert" class="nav-btn" to="/dashboard">Dashboard</nuxt-link>
+          <nuxt-link v-if="!invert" class="nav-btn" to="/dashboard">{{ $t('menu.dashboard') }}</nuxt-link>
           <div v-if="!invert" class="notification-btn-wrapper">
-            <nuxt-link class="nav-btn" to="/notifications">Notifications</nuxt-link>
+            <nuxt-link class="nav-btn" to="/notifications">{{ $t('menu.notifications') }}</nuxt-link>
             <div v-if="notificationNumber > 0" class="notification-nr">{{ notificationNumber }}</div>
           </div>
-          <nuxt-link v-if="!invert" class="nav-btn" to="/balance">My Balance</nuxt-link>
+          <nuxt-link v-if="!invert" class="nav-btn" to="/health">{{ $t('menu.health') }}</nuxt-link>
         </nav>
         <nav :class="{ invert: invert }">
           <div v-if="isDesktop">
-            <button v-if="!isLoggedIn" @click="handleAuth">Login</button>
+            <button v-if="!isLoggedIn" @click="handleAuth">{{ $t('menu.login') }}</button>
           </div>
           <p class="user-name">Welcome Pistike</p>
           <nuxt-link class="balance-button" to="/balance">
             <p class="balance-text">{{ balanceNr }}</p>
             <img :src="usd" alt="balance-button">
           </nuxt-link>
-          <setting-menu v-if="isLoggedIn && isDesktop" :invert="invert" />
+          <SettingsGear v-if="isLoggedIn && isDesktop" :invert="invert" />
           <v-btn
             v-if="isMobile"
             :class="{ 'is-active': openDrawer }"
@@ -71,13 +71,13 @@
 </style>
 
 <script>
-import Settings from './Settings'
+import SettingsGear from './SettingsGear'
 import MobileMenu from './MobileMenu'
 import logo from '~/static/images/puzzle.png'
 
 export default {
   components: {
-    'setting-menu': Settings,
+    SettingsGear,
     MobileMenu
   },
   props: {
@@ -161,7 +161,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .balance-button {
   margin: 0;
   display: flex;
@@ -175,7 +175,7 @@ export default {
   margin: 0;
   font-size: 1rem !important;
   font-weight: 450;
-  color: rgb(58, 57, 57);
+  @include primary-text-color;
 }
 .user-name {
   padding: 2px 5px 0 ;

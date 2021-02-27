@@ -2,15 +2,26 @@
   <div class="mobile-nav">
     <div class="menu">
       <div v-if="isLoggedIn">
-        <nuxt-link v-if="!invert" class="menu-list" to="/dashboard">Dashboard</nuxt-link>
+        <!-- <v-list-item
+          v-for="(item, index) in navMenu"
+          :key="index"
+          link
+          :style="{ animationDuration: index * 0.15 + 's' }"
+          @click="closeMenu"
+        >
+          <nuxt-link class="menu-list" :to="item.url">
+            {{ item.title }}
+          </nuxt-link>
+        </v-list-item> -->
+        <nuxt-link v-if="!invert" class="menu-list" to="/dashboard">{{ $t('menu.dashboard') }}</nuxt-link>
         <div v-if="!invert" class="notification-btn-wrapper-mobile">
           <nuxt-link class="menu-list" to="/notifications">
-            Notifications
+            {{ $t('menu.notifications') }}
             <div v-if="notificationNumber > 0" class="notification-nr-mobile">{{ notificationNumber }}</div>
           </nuxt-link>
         </div>
-        <nuxt-link v-if="!invert" class="menu-list" to="/balance">My Balance</nuxt-link>
-        <Settings v-if="isLoggedIn" class="setting-btn" :invert="invert" />
+        <nuxt-link v-if="!invert" class="menu-list" to="/health">{{ $t('menu.health') }}</nuxt-link>
+        <SettingsGear v-if="isLoggedIn" class="setting-btn" :invert="invert" />
       </div>
     </div>
   </div>
@@ -21,13 +32,13 @@
 </style>
 
 <script>
-import Settings from './Settings'
+import SettingsGear from './SettingsGear'
 import navMenu from '~/components/Header/menu'
 import logo from '~/static/images/puzzle.png'
 
 export default {
   components: {
-    Settings
+    SettingsGear
   },
   props: {
     open: {

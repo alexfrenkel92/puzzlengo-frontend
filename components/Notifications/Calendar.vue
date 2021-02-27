@@ -49,13 +49,15 @@
             :type="type"
             @click:event="showEvent"
           />
-          <PersonelSurveyModal
-            :id="selectedEvent.id"
-            :show-modal="selectedOpen"
-            :selected-time="selectedEvent"
-            @confirm="confirm"
-            @withdraw="withdraw"
-          />
+          <div>
+            <PersonelSurveyModal
+              :id="selectedEvent.id"
+              :show-modal="selectedOpen"
+              :selected-time="selectedEvent"
+              @confirm="confirm"
+              @withdraw="withdraw"
+            />
+          </div>
         </v-sheet>
       </v-col>
     </v-row>
@@ -140,7 +142,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .calendar {
   flex: 1 1 0;
   margin: 10px;
@@ -148,7 +150,20 @@ export default {
 .col {
   padding: 0 12px;
 }
-.toolbar >>> .v-toolbar__content {
-  padding: 0 16px !important;
+@media screen and (max-width: 330px) {
+  .col {
+    width: 300px !important;
+  }
+}
+@media screen and (max-width: 300px) {
+  .col {
+    width: 270px !important;
+  }
+}
+.toolbar {
+  @include whitish-background-color;
+}
+.v-calendar-monthly {
+  @include whitish-background-color;
 }
 </style>

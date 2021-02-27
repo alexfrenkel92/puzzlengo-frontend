@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="active component-title">Available surveys to enroll</div>
+    <div class="active component-title">{{ $t('dashboard.available_title') }}</div>
     <div v-if="activeSurveysLength === 0" class="error-case">
-      <h3>There are no surveys available, check back later</h3>
+      <h3>{{ $t('dashboard.no_available') }}</h3>
     </div>
     <div v-else class="survey-card-wrapper">
       <v-expansion-panels>
@@ -14,18 +14,18 @@
           <v-expansion-panel-header>
             <client-only>
               <div class="card-details-wrapper">
-                <h1>Survey name: {{ survey.title }}</h1>
+                <h1>{{ $t('dashboard.survey_name') }} {{ survey.title }}</h1>
                 <div class="payment">
-                  <p class="payment-value">Payment: {{ survey.payment }}$</p>
+                  <p class="payment-value">{{ $t('common.payment') }} {{ survey.payment }}$</p>
                 </div>
                 <div v-if="survey.isEnrolled === false" class="btn-wrapper">
                   <v-btn btn-style="approve" class="btn-enroll" @click="toogleEnrollment(survey)" @click.native.stop>
-                    Enroll
+                    {{ $t('common.enroll') }}
                   </v-btn>
                 </div>
                 <div v-if="survey.isEnrolled === true && survey.isCompleted === false" class="btn-wrapper">
                   <v-btn btn-style="approve" class="btn-withdraw" @click="withdraw(survey.id)" @click.native.stop>
-                    Withdraw
+                    {{ $t('common.withdraw') }}
                   </v-btn>
                   <v-btn class="btn-resume" @click="toogleCompletion(survey)" @click.native.stop>
                     {{ btnText }}
@@ -34,11 +34,11 @@
                 </div>
                 <footer>
                   <div class="duration">
-                    <p>Duration</p>
-                    <p>{{ survey.duration }} minutes</p>
+                    <p>{{ $t('common.duration') }}</p>
+                    <p>{{ survey.duration }} {{ $t('dashboard.minutes') }}</p>
                   </div>
                   <div class="quota">
-                    <p>Quota</p>
+                    <p>{{ $t('dashboard.quota') }}</p>
                     <p>{{ survey.enrolled }}/{{ survey.quota }}</p>
                   </div>
                 </footer>
@@ -47,7 +47,7 @@
           </v-expansion-panel-header>
           <v-expansion-panel-content>
             <div class="description">
-              <p class="description-title">Description:</p>
+              <p class="description-title">{{ $t('common.description') }}</p>
               <p class="description-content">
                 {{ survey.description }}
               </p>
@@ -84,7 +84,7 @@ export default {
       } else if (survey.type === 'personal') {
         this.btnText = 'Reschedule'
       }
-      this.$emit('openModal', survey.id, survey.type)
+      this.$emit('openModal', survey.id, survey.type, survey)
     },
     withdraw(surveyId) {
       this.$store.dispatch('toogleWithdrawal', surveyId)

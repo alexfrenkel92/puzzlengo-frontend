@@ -10,7 +10,7 @@
     <template v-slot:activator="{ on }">
       <div class="setting">
         <v-btn fab text small class="ma-3" v-on="on">
-          <v-icon :class="{ invert: invert, active: open }" class="icon" color="#4d4a4a">
+          <v-icon :class="{ invert: invert, active: open }" class="icon">
             settings
           </v-icon>
         </v-btn>
@@ -20,11 +20,11 @@
       <v-list class="mode-menu">
         <v-list-item>
           <v-list-item-content>
-            <nuxt-link class="menu-nuxtlink" to="/profile">My Profiling</nuxt-link>
-            <nuxt-link class="menu-nuxtlink" to="/balance">Balance</nuxt-link>
-            <nuxt-link class="menu-nuxtlink" to="/settings">Settings</nuxt-link>
+            <nuxt-link class="menu-nuxtlink" to="/profile">{{ $t('menu.profiling') }}</nuxt-link>
+            <nuxt-link class="menu-nuxtlink" to="/balance">{{ $t('menu.balance') }}</nuxt-link>
+            <nuxt-link class="menu-nuxtlink" to="/settings/account">{{ $t('menu.settings') }}</nuxt-link>
             <button v-if="isLoggedIn" class="menu-btn" @click="handleAuth">
-              Logout
+              {{ $t('menu.logout') }}
             </button>
           </v-list-item-content>
         </v-list-item>
@@ -67,7 +67,7 @@
             </v-list-item-title>
           </v-list-item-content>
           <v-list-item-action>
-            <v-icon v-if="locale.code === $i18n.locale" color="primary">
+            <v-icon v-if="locale.code === $i18n.locale" color="#7abe8f" class="selected-language-icon">
               mdi-check
             </v-icon>
           </v-list-item-action>
@@ -137,10 +137,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .menu-nuxtlink {
   text-decoration: none !important;
-  color: black;
+  @include primary-text-color;
   padding: 10px 16px;
   margin: 0;
 }
@@ -153,11 +153,14 @@ export default {
   text-decoration: none !important;
   box-shadow: none !important;
   border: none !important;
-  color: black;
+  @include primary-text-color;
   padding: 10px 16px;
   margin: 0;
 }
 .v-btn {
   margin: 0 !important;
+}
+.v-icon{
+  @include primary-text-color;
 }
 </style>

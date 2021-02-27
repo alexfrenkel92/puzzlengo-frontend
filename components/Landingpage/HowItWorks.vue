@@ -4,7 +4,7 @@
       id="howItWorks"
       class="text-center display-1"
     >
-      How It Works
+      {{ $t('description.title') }}
     </h1>
     <v-timeline align-top :dense="$vuetify.breakpoint.smAndDown">
       <v-timeline-item
@@ -14,7 +14,7 @@
         fill-dot
         color="#00633B"
       >
-        <v-card color="#fcf5ea">
+        <v-card>
           <v-card-title>
             {{ item.title }}
           </v-card-title>

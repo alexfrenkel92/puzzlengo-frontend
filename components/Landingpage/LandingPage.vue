@@ -3,10 +3,9 @@
     <div class="image">
       <img :src="logo" :alt="logo" width="80px" height="80px">
     </div>
-    <div class="title" style="padding: 20px 0">Play'n Go</div>
+    <div class="title">{{ $t('landing.title') }}</div>
     <div class="description">
-      Take part in engaging research, earn credits, and help improve human
-      knowledge
+      {{ $t('landing.description') }}
     </div>
     <div class="signup-container">
       <v-form ref="form" v-model="valid" @submit.prevent>
@@ -21,12 +20,12 @@
         />
       </v-form>
       <AppButton class="signup-btn" btn-style="approve-dark" @click="handleSignUp">
-        Sign Up
+        {{ $t('form.sign_up') }}
       </AppButton>
     </div>
-    <div class="already-registered">Already registered?</div>
+    <div class="already-registered">{{ $t('landing.registered') }}</div>
     <AppButton class="login-btn" btn-style="approve-dark" @click="handleLogin">
-      Sign In
+      {{ $t('form.sign_in') }}
     </AppButton>
     <SignUp :show-modal="toogleSignUpModal" @closeModal="closeModal" />
     <Login :show-modal="toogleLoginModal" @closeModal="closeModal" />
@@ -126,6 +125,7 @@ export default {
   font-size: 1.5rem;
   padding: 10px 10px 20px 10px;
   @include primary-text-color;
+  text-align: center;
 }
 .signup-container {
   display: flex;
@@ -143,11 +143,13 @@ export default {
   font-size: 2rem !important;
   margin: 0 10px;
   padding: 0 5px 5px 5px;
+  top: 0;
   width: 160px !important;
   height: 48px;
 }
 .already-registered {
   font-size: 1rem;
+  font-weight: 600;
   padding: 10px 0 0 0;
   @include primary-text-color;
 }
@@ -168,6 +170,13 @@ export default {
     max-width: 400px;
     width: auto;
     height: auto;
+  }
+  .signup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
   }
 }
 @media screen and (max-width: 380px) {
@@ -191,6 +200,9 @@ export default {
     max-width: 280px;
     width: auto;
     height: auto;
+  }
+  .v-text-field {
+    width: 250px;
   }
 }
 .v-btn {
