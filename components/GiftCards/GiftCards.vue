@@ -58,7 +58,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .title {
   text-align: center;
   font-size: 1.7rem;
@@ -78,5 +78,8 @@ export default {
 }
 .v-tab--active {
   color: black !important;
+}
+.v-tabs-items {
+  @include whitish-background-color;
 }
 </style>

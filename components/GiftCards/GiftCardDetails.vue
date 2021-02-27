@@ -23,7 +23,7 @@
               </div>
             </div>
             <div v-else class="form-control">
-              <input v-model.trim="amount" type="text" :placeholder="minMaxValues" class="usd-input-field">
+              <input v-model.trim="amount" type="text" :placeholder="minMaxValues" class="usd-input-field" required>
               <p class="usd-sign">$</p>
             </div>
           </div>

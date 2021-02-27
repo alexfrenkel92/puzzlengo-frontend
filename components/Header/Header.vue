@@ -21,13 +21,13 @@
         <nav :class="{ invert: invert }">
           <div class="nav-logo">
             <div class="logo">
-              <nuxt-link :to="brand.dex.url">
+              <nuxt-link to="/dashboard">
                 <img
                   :src="logo"
                   alt="logo"
                 >
                 <!-- header-style.scss 188-as sor palette-text-primary-t irja felul...az szurke szint ad neki, de hunnét -->
-                <span class="logo-title">{{ brand.dex.name }}</span>
+                <span class="logo-title">Play'n Go</span>
               </nuxt-link>
             </div>
           </div>
@@ -36,12 +36,13 @@
             <nuxt-link class="nav-btn" to="/notifications">Notifications</nuxt-link>
             <div v-if="notificationNumber > 0" class="notification-nr">{{ notificationNumber }}</div>
           </div>
-          <nuxt-link v-if="!invert" class="nav-btn" to="/health">My Health</nuxt-link>
+          <nuxt-link v-if="!invert" class="nav-btn" to="/balance">My Balance</nuxt-link>
         </nav>
         <nav :class="{ invert: invert }">
           <div v-if="isDesktop">
             <button v-if="!isLoggedIn" @click="handleAuth">Login</button>
           </div>
+          <p class="user-name">Welcome Pistike</p>
           <nuxt-link class="balance-button" to="/balance">
             <p class="balance-text">{{ balanceNr }}</p>
             <img :src="usd" alt="balance-button">
@@ -72,8 +73,7 @@
 <script>
 import Settings from './Settings'
 import MobileMenu from './MobileMenu'
-import logo from '~/static/images/de_emblema_RGB.png'
-import brand from '~/static/text/brand'
+import logo from '~/static/images/puzzle.png'
 
 export default {
   components: {
@@ -86,7 +86,6 @@ export default {
     return {
       logo,
       loaded: true,
-      brand,
       section: 0,
       fixed: false,
       openDrawer: false,
@@ -177,6 +176,18 @@ export default {
   font-size: 1rem !important;
   font-weight: 450;
   color: rgb(58, 57, 57);
+}
+.user-name {
+  padding: 2px 5px 0 ;
+  margin: 0;
+  font-size: 1rem !important;
+  /* font-weight: 450; */
+  color: rgb(116, 113, 113);
+}
+@media screen and (max-width: 450px) {
+  .user-name {
+    display: none;
+  }
 }
 img {
   width: 30px;

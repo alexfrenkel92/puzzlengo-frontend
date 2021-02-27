@@ -133,7 +133,8 @@ export default {
   /* background-image: linear-gradient(to left, #5a8254, #629162, #6a9f70, #72af7f, #7abe8f) ; */
 }
 .notified {
-  animation: pulse .1s infinite;
+  /* animation: pulse 1s infinite; */
+  background-color: #7abe8f !important;
 }
 @keyframes pulse {
   0% {

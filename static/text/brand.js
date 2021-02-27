@@ -1,11 +1,10 @@
 const brand = {
-  dex: {
-    name: 'Rx CS Demo',
+  play: {
+    name: 'PLay\'n GO',
     desc: 'Site description',
-    prefix: 'rx',
     footerText: 'Footer text',
-    logoText: 'RX Community',
-    projectName: 'Dex Project',
+    logoText: 'PLay\'n GO',
+    projectName: 'Personal Project',
     url: '/dashboard',
     img: '/static/images/de_emblema_RGB.png',
     notifMsg:

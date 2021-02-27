@@ -12,31 +12,45 @@
           <h1>Thank you for your purchase</h1>
           <div class="order-details-wrapper">
             <div class="details">
-              <p class="response-name">Purchased Item: </p>
+              <p class="response-name">Purchased Item:</p>
               <p>{{ responseData.rewardName }}</p>
             </div>
             <div class="details">
-              <p class="response-name">Amount Charged: </p>
-              <p>{{ responseData.amountCharged.value }} {{ responseData.amountCharged.currencyCode }}</p>
+              <p class="response-name">Amount Charged:</p>
+              <p>
+                {{ responseData.amountCharged.value }}
+                {{ responseData.amountCharged.currencyCode }}
+              </p>
             </div>
             <div class="details">
-              <p class="response-name">Current Balance: </p>
+              <p class="response-name">Current Balance:</p>
               <p>35 {{ responseData.amountCharged.currencyCode }}</p>
             </div>
             <div class="details">
-              <p class="response-name">Claim Code: </p>
-              <p>{{ responseData.reward.credentials["Claim Code"] }}</p>
+              <p class="response-name">Claim Code:</p>
+              <p>{{ responseData.reward.credentials['Claim Code'] }}</p>
             </div>
             <div class="redemption">
-              <p class="response-name">Redemption Instruction: </p>
+              <p class="response-name">Redemption Instruction:</p>
               <!-- eslint-disable-next-line vue/no-v-html -->
               <div v-html="responseData.reward.redemptionInstructions" />
             </div>
           </div>
         </div>
-        <div v-if="responseData.name === 'Error' && !isLoading" class="error">Error: {{ responseData.message }}</div>
+        <!-- <div v-if="responseData.name === 'Error' && !isLoading" class="error">Error: {{ responseData.message }}</div> -->
+        <div
+          v-if="responseData.status !== 'COMPLETE' && !isLoading"
+          class="error"
+        >
+          {{ responseData }}
+        </div>
         <div v-if="isLoading" class="error">
-          <div class="lds-ring"><div /><div /><div /><div /></div>
+          <div class="lds-ring">
+            <div />
+            <div />
+            <div />
+            <div />
+          </div>
         </div>
         <AppButton class="close-btn" btn-style="approve" @click="closeModal">
           Close
@@ -66,20 +80,21 @@ export default {
   methods: {
     closeModal() {
       if (this.responseData.status === 'COMPLETE') {
+        this.$store.dispatch('clearResponseData')
         this.$router.push('/balance')
       }
       this.$emit('closeModal')
     },
     log() {
-      // console.log('Response below')
-      // console.log(this.responseData)
+      //   console.log('Response below')
+      //   console.log(this.responseData)
     }
   }
 }
 </script>
 
 <style lang="css" scoped>
-  @import './css-loader.css';
+@import './css-loader.css';
 </style>
 
 <style scoped>
@@ -119,7 +134,8 @@ button {
   text-decoration: none;
   color: rgb(165, 164, 164);
 }
-.order-details-wrapper, .redemption {
+.order-details-wrapper,
+.redemption {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

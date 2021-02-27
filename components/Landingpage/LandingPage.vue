@@ -3,7 +3,7 @@
     <div class="image">
       <img :src="logo" :alt="logo" width="80px" height="80px">
     </div>
-    <div class="title">Rx Community Site Demo</div>
+    <div class="title" style="padding: 20px 0">Play'n Go</div>
     <div class="description">
       Take part in engaging research, earn credits, and help improve human
       knowledge
@@ -65,7 +65,7 @@ export default {
       return this.$store.getters.isLoggedIn
     },
     logo() {
-      return require('~/static/images/de_emblema_RGB.png')
+      return require('~/static/images/puzzle.png')
     },
     bigpic() {
       return require('~/static/images/survey1.png')

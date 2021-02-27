@@ -35,7 +35,7 @@
 export default {
   computed: {
     logo() {
-      return require('~/static/images/de_emblema_RGB.png')
+      return require('~/static/images/puzzle.png')
     }
   }
 }

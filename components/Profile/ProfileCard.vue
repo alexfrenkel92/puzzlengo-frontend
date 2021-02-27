@@ -114,7 +114,8 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #3f5567;
+  /* background: #3f5567; */
+  background-color: #303030;
   color: white;
   width: 100%;
   position: absolute;

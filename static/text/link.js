@@ -1,8 +1,8 @@
-const link = {
-  dex: {
-    home: '/',
-    contact: '/contact'
-  }
-}
+// const link = {
+//   dex: {
+//     home: '/',
+//     contact: '/contact'
+//   }
+// }
 
-export default link
+// export default link

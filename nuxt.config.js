@@ -1,10 +1,7 @@
 // import nodeExternals from 'webpack-node-externals'
 import { theme } from './config/vuetify.options'
 import brand from './static/text/brand'
-// import nodeExternals from 'webpack-node-externals'
-// import { theme } from './config/vuetify.options'
 import languages from './static/lang/languages'
-// import brand from './static/text/brand'
 
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
@@ -15,11 +12,11 @@ export default {
     htmlAttrs: {
       dir: 'ltr'
     },
-    title: 'RX',
+    title: 'Play\'n Go',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'description', content: brand.dex.desc },
+      { name: 'description', content: brand.play.desc },
       { name: 'msapplication-TileColor', content: '#FFFFFF' },
       { name: 'msapplication-TileImage', content: '/favicons/ms-icon-144x144.png' },
       // PWA primary color
@@ -35,13 +32,10 @@ export default {
       { property: 'twitter:creator', content: 'luxi' },
       { property: 'twitter:card', content: 'summary' },
       { property: 'twitter:image:src', content: '/images/logo.png' },
-      { property: 'og:url', content: brand.dex.url },
-      { property: 'og:title', content: brand.dex.projectName },
-      { property: 'og:description', content: brand.dex.desc },
-      { name: 'twitter:site', content: brand.dex.url },
+      { property: 'og:title', content: brand.play.projectName },
+      { property: 'og:description', content: brand.play.desc },
+      { name: 'twitter:site', content: brand.play.url },
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:image', content: brand.dex.img },
-      { property: 'og:image', content: brand.dex.img },
       { property: 'og:image:width', content: '1200' },
       { property: 'og:image:height', content: '630' }
     ],

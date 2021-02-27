@@ -26,6 +26,12 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 80%;
+  margin: auto;
 }
+@media screen and (max-width: 1400px) {
+    #tango-card-details-container {
+      width: 100%;
+    }
+  }
 </style>

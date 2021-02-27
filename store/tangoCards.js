@@ -56,21 +56,27 @@ export default {
       return this.$axios
         .$post('http://localhost:8080/api/postorder', order)
         .then((data) => {
-          // console.log(order)
-          // console.log('STORE DATA BELOW')
-          if (data.status === 'COMPLETE') {
-            // console.log('successss')
-            // console.log(data)
-            context.commit('setOrderResponseData', data)
-          }
-          if (data.name === 'Error') {
-            // console.log('faiiiiiiil')
-            // console.log(data)
-            context.commit('setOrderResponseData', data)
-          }
+          console.log(data)
+          // if (data.status === 'COMPLETE') {
+          //   // console.log('successss')
+          //   // console.log(data)
+          //   context.commit('setOrderResponseData', data)
+          // }
+          // if (data.errors) {
+          //   // console.log('faiiiiiiil')
+          //   // console.log(data)
+          //   context.commit('setOrderResponseData', data)
+          // }
+          context.commit('setOrderResponseData', data)
           context.commit('setOrderIsLoading')
         })
-        .catch(error => context.commit('setError', error))
+        .catch((error) => {
+          context.commit('setOrderResponseData', error)
+          context.commit('setOrderIsLoading')
+        })
+    },
+    clearResponseData(context) {
+      context.commit('clearResponseData')
     }
   },
   mutations: {
@@ -85,6 +91,9 @@ export default {
     },
     setPastOders(state, payload) {
       state.pastOrders = payload
+    },
+    clearResponseData(state) {
+      state.orderResponseData = ''
     }
   }
 }

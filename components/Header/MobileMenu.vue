@@ -2,17 +2,6 @@
   <div class="mobile-nav">
     <div class="menu">
       <div v-if="isLoggedIn">
-        <!-- <v-list-item
-          v-for="(item, index) in navMenu"
-          :key="index"
-          link
-          :style="{ animationDuration: index * 0.15 + 's' }"
-          @click="closeMenu"
-        >
-          <nuxt-link class="menu-list" :to="item.url">
-            {{ item.title }}
-          </nuxt-link>
-        </v-list-item> -->
         <nuxt-link v-if="!invert" class="menu-list" to="/dashboard">Dashboard</nuxt-link>
         <div v-if="!invert" class="notification-btn-wrapper-mobile">
           <nuxt-link class="menu-list" to="/notifications">
@@ -20,17 +9,9 @@
             <div v-if="notificationNumber > 0" class="notification-nr-mobile">{{ notificationNumber }}</div>
           </nuxt-link>
         </div>
-        <nuxt-link v-if="!invert" class="menu-list" to="/health">My Health</nuxt-link>
+        <nuxt-link v-if="!invert" class="menu-list" to="/balance">My Balance</nuxt-link>
         <Settings v-if="isLoggedIn" class="setting-btn" :invert="invert" />
       </div>
-      <!-- <v-list tag="nav" class="auth-section">
-        <v-list-item :style="{ animationDuration: 1 * 0.15 + 's' }">
-          <v-list-item-content v-if="!isLoggedIn">
-            <v-list-item-title class="auth-btns" @click="signUp">Sign Up</v-list-item-title>
-            <v-list-item-title class="auth-btns" @click="handleAuth">Login</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list> -->
     </div>
   </div>
 </template>
@@ -42,7 +23,7 @@
 <script>
 import Settings from './Settings'
 import navMenu from '~/components/Header/menu'
-import logo from '~/static/images/de_emblema_RGB.png'
+import logo from '~/static/images/puzzle.png'
 
 export default {
   components: {

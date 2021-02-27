@@ -12,5 +12,6 @@ export default {
 <style scoped>
   .terms-container {
     padding-top: 30px;
+    height: calc(100vh - 350px);
   }
 </style>
