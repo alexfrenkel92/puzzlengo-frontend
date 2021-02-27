@@ -6,7 +6,7 @@ export default {
         firstName: 'Karesz Jr.',
         lastName: 'Pálinkás',
         email: 'detoxforlife_karcsi@gmail.com',
-        phoneNr: '06969696969',
+        phoneNr: '06703639098',
         birthDate: '1970-12-24',
         sex: 'Male',
         password: 'cefre',
@@ -15,21 +15,11 @@ export default {
         profileCompletion: 100
       },
       notificationSettings: {
-        newSurvey: true,
-        surveyStatus: true,
-        creditReceived: true
-      },
-      activityPermissions: {
-        steps: true,
-        sleep: false,
-        floorsClimbed: true,
-        activeTime: false
-      },
-      healthPermissions: {
-        heartRate: true,
-        bloodPressure: false,
-        bloodOxygen: false,
-        weight: true
+        newGame: true,
+        gameInvitation: false,
+        creditReceived: true,
+        emailNotification: true,
+        pushNotification: false
       },
       locationPermissions: {
         location: false
@@ -42,12 +32,6 @@ export default {
     },
     getNotificationSettings(state) {
       return state.notificationSettings
-    },
-    getActivityPermissions(state) {
-      return state.activityPermissions
-    },
-    getHealthPermissions(state) {
-      return state.healthPermissions
     },
     getLocationPermission(state) {
       return state.locationPermissions
@@ -81,42 +65,21 @@ export default {
     },
 
     // NOTIFICATIONS ////////////////////////////////
-    updateNewSurvey(state, data) {
-      state.notificationSettings.newSurvey = data
+    updateNewGame(state, data) {
+      state.notificationSettings.newGame = data
     },
-    updateSurveyStatus(state, data) {
-      state.notificationSettings.surveyStatus = data
+    updateGameInvitation(state, data) {
+      state.notificationSettings.gameInvitation = data
     },
     updateCreditsReceived(state, data) {
       state.notificationSettings.creditReceived = data
     },
-    // ACTIVITIES /////////////////////////////
-    updateSteps(state, data) {
-      state.activityPermissions.steps = data
+    updateEmailNotification(state, data) {
+      state.notificationSettings.emailNotification = data
     },
-    updateSleep(state, data) {
-      state.activityPermissions.sleep = data
+    updatePushNotification(state, data) {
+      state.notificationSettings.pushNotification = data
     },
-    updateFloorsClimbed(state, data) {
-      state.activityPermissions.floorsClimbed = data
-    },
-    updateActiveTime(state, data) {
-      state.activityPermissions.activeTime = data
-    },
-    // HEALTH ////////////////////////////////
-    updateHeartRate(state, data) {
-      state.healthPermissions.heartRate = data
-    },
-    updateBloodPresure(state, data) {
-      state.healthPermissions.bloodPressure = data
-    },
-    updateBloodOxygen(state, data) {
-      state.healthPermissions.bloodOxygen = data
-    },
-    updateWeightValue(state, data) {
-      state.healthPermissions.weight = data
-    },
-
     // LOCATION ////////////////////////////////
     updateLocationPermission(state, data) {
       state.locationPermissions.location = data
@@ -150,42 +113,22 @@ export default {
     updatePassword(context, payload) {
       context.commit('updatePassword', payload)
     },
-    updateNewSurvey(context, payload) {
-      context.commit('updateNewSurvey', payload)
+    updateNewGame(context, payload) {
+      context.commit('updateNewGame', payload)
     },
-    updateSurveyStatus(context, payload) {
-      context.commit('updateSurveyStatus', payload)
+    updateGameInvitation(context, payload) {
+      context.commit('updateGameInvitation', payload)
     },
     updateCreditsReceived(context, payload) {
       context.commit('updateCreditsReceived', payload)
     },
-    // ACTIVITIES /////////////////////////////
-    updateSteps(context, payload) {
-      context.commit('updateSteps', payload)
+    updateEmailNotification(context, payload) {
+      context.commit('updateEmailNotification', payload)
     },
-    updateSleep(context, payload) {
-      context.commit('updateSleep', payload)
+    updatePushNotification(context, payload) {
+      context.commit('updatePushNotification', payload)
     },
-    updateFloorsClimbed(context, payload) {
-      context.commit('updateFloorsClimbed', payload)
-    },
-    updateActiveTime(context, payload) {
-      context.commit('updateActiveTime', payload)
-    },
-    // HEALTH ////////////////////////////////
-    updateHeartRate(context, payload) {
-      context.commit('updateHeartRate', payload)
-    },
-    updateBloodPresure(context, payload) {
-      context.commit('updateBloodPresure', payload)
-    },
-    updateBloodOxygen(context, payload) {
-      context.commit('updateBloodOxygen', payload)
-    },
-    updateWeightValue(context, payload) {
-      context.commit('updateWeightValue', payload)
-    },
-
+    // LOCATION ////////////////////////////////
     updateLocationPermission(context, payload) {
       context.commit('updateLocationPermission', payload)
     }

@@ -33,7 +33,6 @@
 
 <script>
 import SettingsGear from './SettingsGear'
-import navMenu from '~/components/Header/menu'
 import logo from '~/static/images/puzzle.png'
 
 export default {
@@ -48,19 +47,11 @@ export default {
   },
   data() {
     return {
-      // link,
-      navMenu,
       logo,
       isSideMenuOpen: this.open // closes menu after clicking on it, if already on route
     }
   },
   computed: {
-    showMenu() {
-      return this.navMenu.filter(
-        navItem =>
-          navItem.loginShow === this.navItem.isLoggedIn || navItem.alwaysShow
-      )
-    },
     isLoggedIn() {
       return this.$store.getters.isLoggedIn
     },

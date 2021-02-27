@@ -3,54 +3,24 @@
     <h3>Notification settings (receiving e-mails)</h3>
     <div class="permission-containers-wrapper">
       <div class="permission">
-        <p>New survey</p>
-        <v-switch v-model="newSurvey" hide-details color="#7abe8f" @change="postNewSurveyChange" />
+        <p>New game</p>
+        <v-switch v-model="newGame" hide-details color="#7abe8f" @change="postNewGame" />
       </div>
       <div class="permission">
-        <p>Survey status change</p>
-        <v-switch v-model="surveyStatusChange" hide-details color="#7abe8f" @change="postSurveyStatusChange" />
+        <p>Game invitation</p>
+        <v-switch v-model="gameInvitation" hide-details color="#7abe8f" @change="postGameInvitation" />
       </div>
       <div class="permission">
         <p>Credit received</p>
         <v-switch v-model="creditReceived" hide-details color="#7abe8f" @change="postCreditReceivedChange" />
       </div>
-    </div>
-    <h3>Manage your activity tracking permissions</h3>
-    <div class="permission-containers-wrapper">
       <div class="permission">
-        <p>Steps</p>
-        <v-switch v-model="steps" hide-details color="#7abe8f" @change="postStepsValue" />
+        <p>E-mail notification</p>
+        <v-switch v-model="emailNotification" hide-details color="#7abe8f" @change="postEmailNotification" />
       </div>
       <div class="permission">
-        <p>Sleep</p>
-        <v-switch v-model="sleep" hide-details color="#7abe8f" @change="postSleepValue" />
-      </div>
-      <div class="permission">
-        <p>Floors climbed</p>
-        <v-switch v-model="floorsClimbed" hide-details color="#7abe8f" @change="postFloorsClimbedValue" />
-      </div>
-      <div class="permission">
-        <p>Active time</p>
-        <v-switch v-model="activeTime" hide-details color="#7abe8f" @change="postActiveTimeValue" />
-      </div>
-    </div>
-    <h3>Manage your Apple Health data tracking permissions</h3>
-    <div class="permission-containers-wrapper">
-      <div class="permission">
-        <p>Heart rate</p>
-        <v-switch v-model="heartRate" hide-details color="#7abe8f" @change="postHeartRateValue" />
-      </div>
-      <div class="permission">
-        <p>Blood presure</p>
-        <v-switch v-model="bloodPresure" hide-details color="#7abe8f" @change="postBloodPresureValue" />
-      </div>
-      <div class="permission">
-        <p>Blood oxygen level</p>
-        <v-switch v-model="bloodOxygen" hide-details color="#7abe8f" @change="postBloodOxygenValue" />
-      </div>
-      <div class="permission">
-        <p>Weight</p>
-        <v-switch v-model="weight" hide-details color="#7abe8f" @change="postWeightValue" />
+        <p>Push notification</p>
+        <v-switch v-model="pushNotification" hide-details color="#7abe8f" @change="postPushNotification" />
       </div>
     </div>
     <h3>Location settings</h3>
@@ -67,108 +37,57 @@
 export default {
   data() {
     return {
-      newSurvey: this.newSurveyValue,
-      surveyStatusChange: this.surveyStatusChangeValue,
+      newGame: this.newGameValue,
+      gameInvitation: this.gameInvitationValue,
+      emailNotification: this.emailNotificationValue,
       creditReceived: this.creditReceivedValue,
-      steps: this.stepsValue,
-      sleep: this.sleepValue,
-      floorsClimbed: this.floorsClimbed,
-      activeTime: this.activeTimeValue,
-      heartRate: this.heartRateValue,
-      bloodPresure: this.bloodPresureValue,
-      bloodOxygen: this.bloodOxygenValue,
-      weight: this.weightValue,
+      pushNotification: this.pushNotificationValue,
       location: this.locationValue
     }
   },
   computed: {
-    newSurveyValue() {
-      return this.$store.getters.getNotificationSettings.newSurvey
+    newGameValue() {
+      return this.$store.getters.getNotificationSettings.newGame
     },
-    surveyStatusChangeValue() {
-      return this.$store.getters.getNotificationSettings.surveyStatus
+    gameInvitationValue() {
+      return this.$store.getters.getNotificationSettings.gameInvitation
     },
-    creditReceivedValue() {
-      return this.$store.getters.getNotificationSettings.creditReceived
+    emailNotificationValue() {
+      return this.$store.getters.getNotificationSettings.emailNotification
     },
-    stepsValue() {
-      return this.$store.getters.getActivityPermissions.steps
-    },
-    sleepValue() {
-      return this.$store.getters.getActivityPermissions.sleep
-    },
-    floorClimbedValue() {
-      return this.$store.getters.getActivityPermissions.floorsClimbed
-    },
-    activeTimeValue() {
-      return this.$store.getters.getActivityPermissions.activeTime
-    },
-    heartRateValue() {
-      return this.$store.getters.getHealthPermissions.heartRate
-    },
-    bloodPresureValue() {
-      return this.$store.getters.getHealthPermissions.bloodPresure
-    },
-    bloodOxygenValue() {
-      return this.$store.getters.getHealthPermissions.bloodOxygen
-    },
-    weightValue() {
-      return this.$store.getters.getHealthPermissions.weight
+    pushNotificationValue() {
+      return this.$store.getters.getNotificationSettings.pushNotification
     },
     locationValue() {
       return this.$store.getters.getLocationPermission.location
     }
   },
   created() {
-    this.newSurvey = this.$store.getters.getNotificationSettings.newSurvey
-    this.surveyStatusChange = this.$store.getters.getNotificationSettings.surveyStatus
+    this.newGame = this.$store.getters.getNotificationSettings.newGame
+    this.gameInvitation = this.$store.getters.getNotificationSettings.gameInvitation
     this.creditReceived = this.$store.getters.getNotificationSettings.creditReceived
-    this.steps = this.$store.getters.getActivityPermissions.steps
-    this.sleep = this.$store.getters.getActivityPermissions.sleep
-    this.floorsClimbed = this.$store.getters.getActivityPermissions.floorsClimbed
-    this.activeTime = this.$store.getters.getActivityPermissions.activeTime
-    this.heartRate = this.$store.getters.getHealthPermissions.heartRate
-    this.bloodPresure = this.$store.getters.getHealthPermissions.bloodPresureValue
-    this.bloodOxygen = this.$store.getters.getHealthPermissions.bloodOxygen
-    this.weight = this.$store.getters.getHealthPermissions.weight
+    this.emailNotification = this.$store.getters.getNotificationSettings.emailNotification
+    this.pushNotification = this.$store.getters.getNotificationSettings.pushNotification
     this.location = this.$store.getters.getLocationPermission.location
   },
   methods: {
-    postNewSurveyChange(value) {
-      this.$store.dispatch('updateNewSurvey', value)
+    postNewGame(value) {
+      this.$store.dispatch('updateNewGame', value)
     },
-    postSurveyStatusChange(value) {
-      this.$store.dispatch('updateSurveyStatus', value)
+    postGameInvitation(value) {
+      this.$store.dispatch('updateGameInvitation', value)
     },
     postCreditReceivedChange(value) {
       this.$store.dispatch('updateCreditsReceived', value)
     },
+    postEmailNotification(value) {
+      this.$store.dispatch('updateEmailNotification', value)
+    },
+    postPushNotification(value) {
+      this.$store.dispatch('updatePushNotification', value)
+    },
     postLocationChange(value) {
       this.$store.dispatch('updateLocationPermission', value)
-    },
-    postStepsValue(value) {
-      this.$store.dispatch('updateSteps', value)
-    },
-    postSleepValue(value) {
-      this.$store.dispatch('updateSleep', value)
-    },
-    postFloorsClimbedValue(value) {
-      this.$store.dispatch('updateFloorsClimbed', value)
-    },
-    postActiveTimeValue(value) {
-      this.$store.dispatch('updateActiveTime', value)
-    },
-    postHeartRateValue(value) {
-      this.$store.dispatch('updateHeartRate', value)
-    },
-    postBloodPresureValue(value) {
-      this.$store.dispatch('updateBloodPresure', value)
-    },
-    postBloodOxygenValue(value) {
-      this.$store.dispatch('updateBloodOxygen', value)
-    },
-    postWeightValue(value) {
-      this.$store.dispatch('updateWeightValue', value)
     }
   }
 }

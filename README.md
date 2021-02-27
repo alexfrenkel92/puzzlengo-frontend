@@ -1,4 +1,4 @@
-# rxCommunity
+# Play'n Go
 
 ## Build Setup
 
