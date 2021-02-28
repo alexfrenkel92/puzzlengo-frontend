@@ -28,7 +28,7 @@
           >
             <div v-if="notification.type === 'online'">
               <v-expansion-panel-header :class="{ notified: !notification.notificationChecked }" @click="notified(notification)">
-                {{ notification.title }}: {{ notification.surveyTitle }}
+                {{ notification.title }}: {{ notification.puzzleTitle }}
               </v-expansion-panel-header>
               <v-expansion-panel-content>
                 <div class="completion-details">
@@ -43,7 +43,7 @@
             </div>
             <div v-if="notification.type === 'personal' && notification.status === 'request'">
               <v-expansion-panel-header :class="{ notified: !notification.notificationChecked }" @click="notified(notification)">
-                {{ notification.title }} for '{{ notification.surveyTitle }}' has been approved
+                {{ notification.title }} for '{{ notification.puzzleTitle }}' has been approved
               </v-expansion-panel-header>
               <v-expansion-panel-content>
                 <div class="completion-details">
@@ -61,7 +61,7 @@
             </div>
             <div v-if="notification.type === 'personal' && notification.status === 'approved'">
               <v-expansion-panel-header :class="{ notified: !notification.notificationChecked }" @click="notified(notification)">
-                {{ notification.title }}: {{ notification.surveyTitle }}
+                {{ notification.title }}: {{ notification.puzzleTitle }}
               </v-expansion-panel-header>
               <v-expansion-panel-content>
                 <div class="completion-details">

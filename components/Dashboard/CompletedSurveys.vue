@@ -1,31 +1,30 @@
 <template>
   <div>
     <div class="enrolled component-title">{{ $t('dashboard.completed_title') }}</div>
-    <div v-if="completedSurveysLength === 0" class="error-case">
+    <div v-if="completedPuzzlesLength === 0" class="error-case">
       <h3>{{ $t('dashboard.no_completed') }}</h3>
     </div>
-    <div v-else class="survey-card-wrapper">
+    <div v-else class="puzzle-card-wrapper">
       <v-expansion-panels>
         <v-expansion-panel
-          v-for="survey in completedSurveys"
+          v-for="puzzle in completedPuzzles"
           id="card-container"
-          :key="survey.id"
+          :key="puzzle.id"
         >
           <v-expansion-panel-header>
             <div class="card-details-wrapper">
-              <h1>{{ $t('dashboard.survey_name') }} {{ survey.title }}</h1>
+              <h1>{{ $t('dashboard.puzzle_name') }} {{ puzzle.title }}</h1>
               <div class="completion-details">
-                <p class="payment-value">{{ $t('common.payment') }}: {{ survey.payment }}$</p>
-                <p class="completed-on">{{ $t('dashboard.complete_time') }} {{ survey.completedOn }}</p>
+                <p class="completed-on">{{ $t('dashboard.complete_time') }} {{ puzzle.completedOn }}</p>
               </div>
               <footer>
                 <div class="duration">
                   <p>{{ $t('common.duration') }}</p>
-                  <p>{{ survey.duration }} {{ $t('dashboard.minutes') }}</p>
+                  <p>{{ puzzle.duration }} {{ $t('dashboard.minutes') }}</p>
                 </div>
                 <div class="quota">
-                  <p>{{ $t('dashboard.quota') }}</p>
-                  <p>{{ survey.enrolled }}/{{ survey.quota }}</p>
+                  <p>{{ $t('common.payment') }}</p>
+                  <p>{{ puzzle.payment }}$</p>
                 </div>
               </footer>
             </div>
@@ -34,7 +33,7 @@
             <div class="description">
               <p class="description-title">{{ $t('common.description') }}:</p>
               <p class="description-content">
-                {{ survey.description }}
+                {{ puzzle.description }}
               </p>
             </div>
           </v-expansion-panel-content>
@@ -47,11 +46,11 @@
 <script>
 export default {
   computed: {
-    completedSurveys() {
-      return this.$store.getters.getActiveSurveys.filter(survey => survey.isCompleted === true)
+    completedPuzzles() {
+      return this.$store.getters.getActivePuzzles.filter(puzzle => puzzle.isCompleted === true)
     },
-    completedSurveysLength() {
-      return this.completedSurveys.length
+    completedPuzzlesLength() {
+      return this.completedPuzzles.length
     }
   }
 }
@@ -72,7 +71,7 @@ export default {
 h3 {
   margin: 0 10px;
 }
-.survey-card-wrapper {
+.puzzle-card-wrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

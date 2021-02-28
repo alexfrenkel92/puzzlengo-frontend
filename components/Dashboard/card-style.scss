@@ -36,16 +36,17 @@ $darkBackground: #3f5567;
   .completed-on {
     margin: 0 0 5px 0;
   }
-  .payment {
-    margin: 10px 0 5px 0;
-    font-weight: 550;
-  }
+  // .payment {
+  //   margin: 10px 0 5px 0;
+  //   font-weight: 550;
+  // }
   .btn-enroll {
     width: fit-content;
     height: fit-content;
     font-size: 1rem;
     font-weight: normal;
     padding: 5px 20px;
+    margin-top: 10px;
     @include ligth-green-color;
     color: whitesmoke;
     border: none;
@@ -166,13 +167,13 @@ $darkBackground: #3f5567;
 
 @media screen and (max-width: 800px) {
   .duration p,
-  .quota p {
+  .payment p {
     font-size: 0.9rem;
   }
 }
 @media screen and (max-width: 325px) {
   .duration p,
-  .quota p {
+  .payment p {
     font-size: 0.9rem;
   }
   .btn-withdraw {

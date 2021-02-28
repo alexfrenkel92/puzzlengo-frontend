@@ -114,7 +114,7 @@ export default {
     }
   },
   created() {
-    this.completedSurveys = this.$store.getters.getActiveSurveys.filter(survey => survey.isCompleted === true)
+    this.completedSurveys = this.$store.getters.getActivePuzzles.filter(survey => survey.isCompleted === true)
     for (let i = 0; i < this.completedSurveys.length; i++) {
       const paymentFormatted = this.completedSurveys[i].payment + ' USD'
       this.completedSurveys[i].paymentFormatted = paymentFormatted

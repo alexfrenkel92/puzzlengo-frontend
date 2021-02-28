@@ -1,45 +1,33 @@
 <template>
   <div>
     <div class="active component-title">{{ $t('dashboard.available_title') }}</div>
-    <div v-if="activeSurveysLength === 0" class="error-case">
+    <div v-if="activePuzzlesLength === 0" class="error-case">
       <h3>{{ $t('dashboard.no_available') }}</h3>
     </div>
-    <div v-else class="survey-card-wrapper">
+    <div v-else class="puzzle-card-wrapper">
       <v-expansion-panels>
         <v-expansion-panel
-          v-for="survey in activeSurveys"
+          v-for="puzzle in activePuzzles"
           id="card-container"
-          :key="survey.id"
+          :key="puzzle.id"
         >
           <v-expansion-panel-header>
             <client-only>
               <div class="card-details-wrapper">
-                <h1>{{ $t('dashboard.survey_name') }} {{ survey.title }}</h1>
-                <div class="payment">
-                  <p class="payment-value">{{ $t('common.payment') }} {{ survey.payment }}$</p>
-                </div>
-                <div v-if="survey.isEnrolled === false" class="btn-wrapper">
-                  <v-btn btn-style="approve" class="btn-enroll" @click="toogleEnrollment(survey)" @click.native.stop>
+                <h1>{{ $t('dashboard.puzzle_name') }} {{ puzzle.title }}</h1>
+                <div class="btn-wrapper">
+                  <v-btn btn-style="approve" class="btn-enroll" @click="toogleEnrollment(puzzle)" @click.native.stop>
                     {{ $t('common.enroll') }}
                   </v-btn>
-                </div>
-                <div v-if="survey.isEnrolled === true && survey.isCompleted === false" class="btn-wrapper">
-                  <v-btn btn-style="approve" class="btn-withdraw" @click="withdraw(survey.id)" @click.native.stop>
-                    {{ $t('common.withdraw') }}
-                  </v-btn>
-                  <v-btn class="btn-resume" @click="toogleCompletion(survey)" @click.native.stop>
-                    {{ btnText }}
-                  </v-btn>
-                  <div v-if="survey.type === 'personal'" class="completion-btn" title="cheatBtn for hackers, press to detonate" @click="hackerStyle(survey)" />
                 </div>
                 <footer>
                   <div class="duration">
                     <p>{{ $t('common.duration') }}</p>
-                    <p>{{ survey.duration }} {{ $t('dashboard.minutes') }}</p>
+                    <p>{{ puzzle.duration }} {{ $t('dashboard.minutes') }}</p>
                   </div>
                   <div class="quota">
-                    <p>{{ $t('dashboard.quota') }}</p>
-                    <p>{{ survey.enrolled }}/{{ survey.quota }}</p>
+                    <p>{{ $t('common.payment') }}</p>
+                    <p>{{ puzzle.payment }}$</p>
                   </div>
                 </footer>
               </div>
@@ -49,7 +37,7 @@
             <div class="description">
               <p class="description-title">{{ $t('common.description') }}</p>
               <p class="description-content">
-                {{ survey.description }}
+                {{ puzzle.description }}
               </p>
             </div>
           </v-expansion-panel-content>
@@ -61,45 +49,36 @@
 
 <script>
 export default {
-  data() {
-    return {
-      btnText: 'RESUME'
-    }
-  },
   computed: {
-    activeSurveys() {
-      return this.$store.getters.getActiveSurveys.filter(
-        survey => survey.isCompleted === false
+    activePuzzles() {
+      return this.$store.getters.getActivePuzzles.filter(
+        puzzle => puzzle.isCompleted === false
       )
     },
-    activeSurveysLength() {
-      return this.activeSurveys.length
+    activePuzzlesLength() {
+      return this.activePuzzles.length
     }
   },
   methods: {
-    toogleEnrollment(survey) {
-      if (survey.type === 'online') {
-        this.btnText = 'Resume'
-        this.$store.dispatch('calculateBalance', survey.payment)
-      } else if (survey.type === 'personal') {
-        this.btnText = 'Reschedule'
-      }
-      this.$emit('openModal', survey.id, survey.type, survey)
+    toogleEnrollment(puzzle) {
+      // if (survey.type === 'online') {
+      // this.$store.dispatch('calculateBalance', puzzle.payment)
+      // } else if (survey.type === 'personal') {
+      //   this.btnText = 'Reschedule'
+      // }
+      this.$emit('openModal', puzzle.id, puzzle)
     },
-    withdraw(surveyId) {
-      this.$store.dispatch('toogleWithdrawal', surveyId)
+    toogleCompletion(puzzle) {
+      // if (survey.type === 'online') {
+      //   this.$store.dispatch('toogleCompletion', survey.id)
+      //   this.$store.dispatch('calculateBalance', survey.payment)
+      // } else if (survey.type === 'personal') {
+      //   this.$emit('openModal', puzzle.id, puzzle.type)
+      // }
     },
-    toogleCompletion(survey) {
-      if (survey.type === 'online') {
-        this.$store.dispatch('toogleCompletion', survey.id)
-        this.$store.dispatch('calculateBalance', survey.payment)
-      } else if (survey.type === 'personal') {
-        this.$emit('openModal', survey.id, survey.type)
-      }
-    },
-    hackerStyle(survey) {
-      this.$store.dispatch('toogleCompletion', survey.id)
-      this.$store.dispatch('calculateBalance', survey.payment)
+    hackerStyle(puzzle) {
+      this.$store.dispatch('toogleCompletion', puzzle.id)
+      this.$store.dispatch('calculateBalance', puzzle.payment)
     }
   }
 }

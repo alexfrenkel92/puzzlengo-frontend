@@ -84,7 +84,7 @@ export default {
   },
   created() {
     const _this = this
-    _this.enrolledSurveys = _this.$store.getters.getActiveSurveys.filter(
+    _this.enrolledSurveys = _this.$store.getters.getActivePuzzles.filter(
       item => item.isEnrolled === true && item.isCompleted === false
     )
     _this.enrolledSurveys.forEach((element) => {

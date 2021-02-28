@@ -17,7 +17,6 @@ export default () => {
       menu: {
         dashboard: 'Dashboard',
         notifications: 'Notifications',
-        health: 'My Health',
         login: 'Login',
         profiling: 'My Profiling',
         balance: 'Balance',
@@ -54,19 +53,19 @@ export default () => {
         more_info: 'More info about'
       },
       dashboard: {
-        online_title: 'Press Confirm to start the survey. You will be navigated to another page. When finished, come back to check your survey\'s status.',
+        online_title: 'Press Confirm to start the puzzle game. When finished, come back to check your game\'s status.',
         appointment_for: 'Please select an appointment for',
         your_appointment: 'Your appointment:',
         appointment: 'Please select an appointment',
         book: 'Book',
         location: 'Location :',
-        available_title: 'Available surveys to enroll',
-        no_available: 'There are no surveys available, check back later',
-        survey_name: 'Survey name:',
+        available_title: 'Available puzzles to enroll',
+        no_available: 'There are no puzzles available, check back later',
+        puzzle_name: 'Puzzle name:',
         minutes: 'minutes',
         quota: 'Quota',
-        completed_title: 'Completed surveys',
-        no_completed: 'No completed surveys yet',
+        completed_title: 'Completed puzzles',
+        no_completed: 'No completed puzzles yet',
         complete_time: 'Completed on: '
       },
       giftcards: {

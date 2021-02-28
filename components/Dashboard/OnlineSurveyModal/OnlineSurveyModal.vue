@@ -4,9 +4,9 @@
       <v-dialog v-model="showModal" persistent max-width="300">
         <v-card>
           <v-card-title class="headline">
-            {{ survey.title }}
+            {{ puzzle.title }}
           </v-card-title>
-          <v-card-text>{{ survey.description }}</v-card-text>
+          <v-card-text>{{ puzzle.description }}</v-card-text>
           <v-card-text>
             {{ $t("dashboard.online_title") }}
           </v-card-text>
@@ -40,12 +40,12 @@ export default {
   },
   data() {
     return {
-      survey: []
+      puzzle: []
     }
   },
   watch: {
     showModal() {
-      this.survey = this.$store.getters.getActiveSurveys.filter(
+      this.puzzle = this.$store.getters.getActivePuzzles.filter(
         item => item.id === this.id
       )[0]
     }

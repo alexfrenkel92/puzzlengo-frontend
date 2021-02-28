@@ -6,16 +6,10 @@
       <completed-surveys class="completed-container" @openModal="openModal" />
     </div>
     <online-survey-modal
-      :id="surveyId"
-      :show-modal="onlineSurveyModal"
+      :id="puzzleId"
+      :show-modal="puzzleModal"
       @confirm="confirmEnrollment"
-      @withdraw="closeOnlineModal"
-    />
-    <personel-survey-modal
-      :id="surveyId"
-      :show-modal="personalSurveyModal"
-      @confirm="confirmEnrollment"
-      @withdraw="closePersonelModal"
+      @withdraw="closeModal"
     />
   </div>
 </template>
@@ -24,36 +18,24 @@
 export default {
   data() {
     return {
-      onlineSurveyModal: false,
-      personalSurveyModal: false,
-      surveyId: null,
-      surveyType: null,
-      surveyToEnrollDetails: null
+      puzzleModal: false,
+      puzzleId: null,
+      puzzleToEnrollDetails: null
     }
   },
   methods: {
-    openModal(surveyId, surveyType) {
-      this.surveyId = surveyId
-      this.surveyType = surveyType
-      if (surveyType === 'online') {
-        this.onlineSurveyModal = !this.onlineSurveyModal
-      } else if (surveyType === 'personal') {
-        this.personalSurveyModal = !this.personalSurveyModal
-      }
+    openModal(puzzleId) {
+      this.puzzleId = puzzleId
+      this.puzzleModal = !this.puzzleModal
     },
-    closeOnlineModal() {
-      this.onlineSurveyModal = !this.onlineSurveyModal
-    },
-    closePersonelModal() {
-      this.personalSurveyModal = !this.personalSurveyModal
+    closeModal() {
+      this.puzzleModal = !this.puzzleModal
     },
     confirmEnrollment() {
-      this.$store.dispatch('toogleEnrollment', this.surveyId)
-      if (this.surveyType === 'online') {
-        this.closeOnlineModal()
-      } else if (this.surveyType === 'personal') {
-        this.closePersonelModal()
-      }
+      const puzzle = this.$store.getters.getActivePuzzles.find(puzzle => puzzle.id === this.puzzleId)
+      this.$store.dispatch('calculateBalance', puzzle.payment)
+      this.$store.dispatch('toogleEnrollment', this.puzzleId)
+      this.closeModal()
     }
   }
 }
