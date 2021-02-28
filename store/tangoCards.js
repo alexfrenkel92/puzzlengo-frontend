@@ -1,5 +1,12 @@
 const url = 'https://integration-api.tangocard.com/raas/v2/'
 const key = 'UUFQbGF0Zm9ybTI6YXBZUGZUNkhOT05wRFJVajNDTEdXWXQ3Z3ZJSE9OcERSVVlQZlQ2SGo='
+let backendUrl = null
+
+if (process.env.NODE_ENV === 'development') {
+  backendUrl = 'http://localhost:8080'
+} else {
+  backendUrl = 'https://chargeport-backend.herokuapp.com'
+}
 
 export default {
   state() {
@@ -39,34 +46,11 @@ export default {
       })
       commit('setPastOders', pastOrders.data)
     },
-    // nuxtServerInit(context, context) {
-    //   return context.app.$axios
-    //     .$get(url + 'catalogs?verbose=true', {
-    //       headers: {
-    //         Authorization: `Basic ${key}`
-    //       }
-    //     })
-    //     .then((data) => {
-    //       context.commit('setTangoCards', data)
-    //     })
-    //     .catch(error => context.error(error))
-    // },
     postOrders(context, order) {
       context.commit('setOrderIsLoading')
       return this.$axios
-        .$post('http://localhost:8080/api/postorder', order)
+        .$post(backendUrl + '/api/postorder', order)
         .then((data) => {
-          // console.log(data)
-          // if (data.status === 'COMPLETE') {
-          //   // console.log('successss')
-          //   // console.log(data)
-          //   context.commit('setOrderResponseData', data)
-          // }
-          // if (data.errors) {
-          //   // console.log('faiiiiiiil')
-          //   // console.log(data)
-          //   context.commit('setOrderResponseData', data)
-          // }
           context.commit('setOrderResponseData', data)
           context.commit('setOrderIsLoading')
         })
