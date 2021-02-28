@@ -13,10 +13,10 @@
             :id="cat.id"
             :key="cat.id"
             :title="cat.title"
+            :total-questions="cat.totalQuestions"
+            :answered="cat.answered"
             :img="cat.img"
             :type="cat.type"
-            :url="cat.url"
-            :is-completed="cat.isCompleted"
             :tab-nr="activeTab"
           />
         </div>
@@ -28,10 +28,10 @@
             :id="cat.id"
             :key="cat.id"
             :title="cat.title"
+            :total-questions="cat.totalQuestions"
+            :answered="cat.answered"
             :img="cat.img"
             :type="cat.type"
-            :url="cat.url"
-            :is-completed="cat.isCompleted"
             :tab-nr="activeTab"
           />
         </div>

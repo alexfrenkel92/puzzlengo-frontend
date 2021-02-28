@@ -116,7 +116,7 @@ export default () => {
       },
       landing: {
         registered: 'Already registered?',
-        title: 'Play\'n Go',
+        title: 'Puzzle\'n Go',
         description: 'Take part in engaging short games and earn credits'
       }
     })

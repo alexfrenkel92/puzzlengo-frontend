@@ -1,7 +1,7 @@
 export default {
   state() {
     return {
-      isLoggedIn: true,
+      isLoggedIn: false,
       email: null,
       password: null
     }

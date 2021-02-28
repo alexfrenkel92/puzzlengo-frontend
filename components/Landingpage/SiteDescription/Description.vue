@@ -19,20 +19,23 @@ export default {
       description: [
         {
           id: 1,
-          title: 'Join us on our mission to improve human knowledge.',
-          description: 'Researchers want to understand how people feel, think and behave. Take part in engaging researches and help them to achieve their goals. No PhDs required!',
+          title: 'What is Lorem Ipsum?',
+          // eslint-disable-next-line quotes
+          description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer created it.`,
           img: 'improve'
         },
         {
           id: 2,
-          title: 'Get paid for your participation',
-          description: 'Got some time to kill? Close the YouTube cat videos. dozens of market research companies recruiting new members from around the world to fill out surveys for money.',
+          title: 'Why do we use it?',
+          // eslint-disable-next-line quotes
+          description: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a normal distribution of letters.`,
           img: 'paid'
         },
         {
           id: 3,
-          title: 'Your opinion matters',
-          description: 'Complete surveys and give yout honest feedback to market research companies. Your opinion helps companies and brands create better, new products and services.',
+          title: 'Where does it come from?',
+          // eslint-disable-next-line quotes
+          description: `Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.`,
           img: 'opinion'
         }
       ]

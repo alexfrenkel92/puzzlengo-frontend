@@ -1,9 +1,9 @@
 const brand = {
-  play: {
-    name: 'PLay\'n GO',
+  puzzle: {
+    name: 'Puzzle\'n GO',
     desc: 'Site description',
     footerText: 'Footer text',
-    logoText: 'PLay\'n GO',
+    logoText: 'Puzzle\'n GO',
     projectName: 'Personal Project',
     url: '/dashboard',
     img: '/static/images/de_emblema_RGB.png',

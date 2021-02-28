@@ -12,11 +12,11 @@ export default {
     htmlAttrs: {
       dir: 'ltr'
     },
-    title: 'Play\'n Go',
+    title: 'Puzzle\'n Go',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'description', content: brand.play.desc },
+      { name: 'description', content: brand.puzzle.desc },
       { name: 'msapplication-TileColor', content: '#FFFFFF' },
       { name: 'msapplication-TileImage', content: '/favicons/ms-icon-144x144.png' },
       // PWA primary color
@@ -32,9 +32,9 @@ export default {
       { property: 'twitter:creator', content: 'luxi' },
       { property: 'twitter:card', content: 'summary' },
       { property: 'twitter:image:src', content: '/images/logo.png' },
-      { property: 'og:title', content: brand.play.projectName },
-      { property: 'og:description', content: brand.play.desc },
-      { name: 'twitter:site', content: brand.play.url },
+      { property: 'og:title', content: brand.puzzle.projectName },
+      { property: 'og:description', content: brand.puzzle.desc },
+      { name: 'twitter:site', content: brand.puzzle.url },
       { name: 'twitter:card', content: 'summary_large_image' },
       { property: 'og:image:width', content: '1200' },
       { property: 'og:image:height', content: '630' }

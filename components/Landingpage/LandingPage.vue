@@ -65,9 +65,6 @@ export default {
     },
     logo() {
       return require('~/static/images/puzzle.png')
-    },
-    bigpic() {
-      return require('~/static/images/survey1.png')
     }
   },
   methods: {
@@ -160,17 +157,7 @@ export default {
   width: 165px;
   height: 48px;
 }
-.big-image-container {
-  padding: 10px;
-  background: transparent;
-}
 @media screen and (max-width: 500px) {
-  .survey-image {
-    display: block;
-    max-width: 400px;
-    width: auto;
-    height: auto;
-  }
   .signup-container {
     display: flex;
     flex-direction: column;
@@ -194,12 +181,6 @@ export default {
     justify-content: center;
     align-items: center;
     margin: 10px 0;
-  }
-  .survey-image {
-    display: block;
-    max-width: 280px;
-    width: auto;
-    height: auto;
   }
   .v-text-field {
     width: 250px;
