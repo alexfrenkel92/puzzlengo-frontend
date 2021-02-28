@@ -42,22 +42,22 @@
       </template>
     </v-data-table>
     <v-data-table
-      :headers="headerSurveys"
-      :items="completedSurveys"
+      :headers="headerPuzzles"
+      :items="completedPuzzles"
       :items-per-page="5"
       :single-expand="singleExpand1"
-      :expanded.sync="expandedSurveys"
-      :search="searchSurveys"
+      :expanded.sync="expandedPuzzles"
+      :search="searchPuzzles"
       item-key="id"
       show-expand
-      class="completed-surveys-container"
+      class="completed-puzzles-container"
     >
       <template v-slot:top>
         <v-toolbar flat>
           <v-toolbar-title>{{ $t('balance.earning') }}</v-toolbar-title>
           <v-spacer />
           <v-text-field
-            v-model="searchSurveys"
+            v-model="searchPuzzles"
             append-icon="mdi-magnify"
             label="Search"
             single-line
@@ -79,9 +79,9 @@
 export default {
   data() {
     return {
-      headerSurveys: [
+      headerPuzzles: [
         {
-          text: 'Survey Name',
+          text: 'Puzzle Name',
           align: 'start',
           sortable: false,
           value: 'title'
@@ -89,10 +89,10 @@ export default {
         { text: 'Completed', value: 'completedOn' },
         { text: 'Payment', value: 'paymentFormatted' }
       ],
-      searchSurveys: '',
-      expandedSurveys: [],
+      searchPuzzles: '',
+      expandedPuzzles: [],
       singleExpand1: false,
-      completedSurveys: null,
+      completedPuzzles: null,
 
       headerTangoCards: [
         {
@@ -114,10 +114,10 @@ export default {
     }
   },
   created() {
-    this.completedSurveys = this.$store.getters.getActivePuzzles.filter(survey => survey.isCompleted === true)
-    for (let i = 0; i < this.completedSurveys.length; i++) {
-      const paymentFormatted = this.completedSurveys[i].payment + ' USD'
-      this.completedSurveys[i].paymentFormatted = paymentFormatted
+    this.completedPuzzles = this.$store.getters.getActivePuzzles.filter(puzzle => puzzle.isCompleted === true)
+    for (let i = 0; i < this.completedPuzzles.length; i++) {
+      const paymentFormatted = this.completedPuzzles[i].payment + ' USD'
+      this.completedPuzzles[i].paymentFormatted = paymentFormatted
     }
 
     this.tangoCardOrders = this.$store.getters.getPastOrders.orders

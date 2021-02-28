@@ -26,7 +26,7 @@
             v-for="notification in props.items"
             :key="notification.id"
           >
-            <div v-if="notification.type === 'online'">
+            <div>
               <v-expansion-panel-header :class="{ notified: !notification.notificationChecked }" @click="notified(notification)">
                 {{ notification.title }}: {{ notification.puzzleTitle }}
               </v-expansion-panel-header>
@@ -35,38 +35,8 @@
                   <p class="completed-on">
                     {{ $t('common.description') }}: {{ notification.description }}
                   </p>
-                  <p class="payment-value">
-                    {{ $t('common.payment') }}: {{ notification.payment }}$
-                  </p>
-                </div>
-              </v-expansion-panel-content>
-            </div>
-            <div v-if="notification.type === 'personal' && notification.status === 'request'">
-              <v-expansion-panel-header :class="{ notified: !notification.notificationChecked }" @click="notified(notification)">
-                {{ notification.title }} for '{{ notification.puzzleTitle }}' has been approved
-              </v-expansion-panel-header>
-              <v-expansion-panel-content>
-                <div class="completion-details">
                   <p class="completed-on">
-                    {{ $t('common.description') }}: {{ notification.description }}
-                  </p>
-                  <p class="payment-value">
-                    {{ $t('common.payment') }}: {{ notification.payment }}$
-                  </p>
-                  <p class="payment-value">
-                    {{ $t('common.duration') }}: {{ notification.duration }} min
-                  </p>
-                </div>
-              </v-expansion-panel-content>
-            </div>
-            <div v-if="notification.type === 'personal' && notification.status === 'approved'">
-              <v-expansion-panel-header :class="{ notified: !notification.notificationChecked }" @click="notified(notification)">
-                {{ notification.title }}: {{ notification.puzzleTitle }}
-              </v-expansion-panel-header>
-              <v-expansion-panel-content>
-                <div class="completion-details">
-                  <p class="completed-on">
-                    {{ $t('common.description') }}: {{ notification.description }}
+                    {{ $t('dashboard.complete_time') }}: {{ notification.completedOn }}
                   </p>
                   <p class="payment-value">
                     {{ $t('common.payment') }}: {{ notification.payment }}$

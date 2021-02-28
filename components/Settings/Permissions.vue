@@ -1,6 +1,6 @@
 <template>
   <div class="permissions-main-container">
-    <h3>Notification settings (receiving e-mails)</h3>
+    <h3>Notification settings</h3>
     <div class="permission-containers-wrapper">
       <div class="permission">
         <p>New game</p>

@@ -7,7 +7,6 @@ export default {
           title: 'Basic info',
           img: 'basics',
           type: 'dem',
-          url: 'http://localhost/LimeSurvey/index.php/759823?lang=en',
           isCompleted: false
         },
         {
@@ -15,7 +14,6 @@ export default {
           title: 'Education',
           img: 'education',
           type: 'dem',
-          url: 'http://localhost/LimeSurvey/index.php/111897?lang=en',
           isCompleted: false
         },
         {
@@ -24,7 +22,6 @@ export default {
           totalQuestions: 10,
           img: 'work',
           type: 'dem',
-          url: '',
           isCompleted: false
         },
         {
@@ -32,7 +29,6 @@ export default {
           title: 'Relationship',
           img: 'relationship',
           type: 'dem',
-          url: '',
           isCompleted: true
         },
         {
@@ -40,7 +36,6 @@ export default {
           title: 'Health',
           img: 'health',
           type: 'dem',
-          url: '',
           isCompleted: false
         },
         {
@@ -48,7 +43,6 @@ export default {
           title: 'Hobbies',
           img: 'hobbies',
           type: 'dem',
-          url: '',
           isCompleted: true
         }
       ],
@@ -58,7 +52,6 @@ export default {
           title: 'Mental Health',
           img: 'basics',
           type: 'psy',
-          url: '',
           isCompleted: true
         },
         {
@@ -66,7 +59,6 @@ export default {
           title: 'Behavioral Patterns',
           img: 'education',
           type: 'psy',
-          url: '',
           isCompleted: false
         },
         {
@@ -74,7 +66,6 @@ export default {
           title: 'Cognitive skills',
           img: 'work',
           type: 'psy',
-          url: '',
           isCompleted: true
         },
         {
@@ -82,7 +73,6 @@ export default {
           title: 'Educational patterns',
           img: 'work',
           type: 'psy',
-          url: '',
           isCompleted: false
         },
         {
@@ -90,7 +80,6 @@ export default {
           title: 'Other',
           img: 'relationship',
           type: 'psy',
-          url: '',
           isCompleted: false
         }
       ],
@@ -111,25 +100,11 @@ export default {
   mutations: {
     calculateBalance(state, balanceNr) {
       state.balanceNr += balanceNr
-    },
-    toogleSurveyCompletion(state, payload) {
-      const surveyId = payload[0]
-      const type = payload[1]
-      if (type === 'dem') {
-        const surveyToComplete = state.demographicProfiling.find(survey => survey.id === surveyId)
-        surveyToComplete.isCompleted = true
-      } else if (type === 'psy') {
-        const surveyToComplete = state.psychologicalProfiling.find(survey => survey.id === surveyId)
-        surveyToComplete.isCompleted = true
-      }
     }
   },
   actions: {
     calculateBalance(context, payload) {
       context.commit('calculateBalance', payload)
-    },
-    toogleSurveyCompletion(context, payload) {
-      context.commit('toogleSurveyCompletion', payload)
     }
   }
 }

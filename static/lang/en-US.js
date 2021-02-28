@@ -66,7 +66,7 @@ export default () => {
         quota: 'Quota',
         completed_title: 'Completed puzzles',
         no_completed: 'No completed puzzles yet',
-        complete_time: 'Completed on: '
+        complete_time: 'Completed on '
       },
       giftcards: {
         egift: 'eGift Card',

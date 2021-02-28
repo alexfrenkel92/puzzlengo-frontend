@@ -1,12 +1,13 @@
 <template>
   <div class="dashboard-wrapper">
     <div class="active-completed-container">
-      <active-surveys class="active-container" @openModal="openModal" />
+      <active-puzzles class="active-container" @openModal="openModal" />
       <div class="divider-vertical" />
-      <completed-surveys class="completed-container" @openModal="openModal" />
+      <completed-puzzles class="completed-container" @openModal="openModal" />
     </div>
-    <online-survey-modal
+    <puzzle-modal
       :id="puzzleId"
+      :puzzle="puzzle"
       :show-modal="puzzleModal"
       @confirm="confirmEnrollment"
       @withdraw="closeModal"
@@ -20,12 +21,14 @@ export default {
     return {
       puzzleModal: false,
       puzzleId: null,
+      puzzle: null,
       puzzleToEnrollDetails: null
     }
   },
   methods: {
-    openModal(puzzleId) {
-      this.puzzleId = puzzleId
+    openModal(puzzle) {
+      this.puzzleId = puzzle.id
+      this.puzzle = puzzle
       this.puzzleModal = !this.puzzleModal
     },
     closeModal() {
@@ -82,7 +85,7 @@ export default {
 h3 {
   margin: 0 10px;
 }
-.survey-card-wrapper {
+.puzzle-card-wrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -94,7 +97,7 @@ h3 {
 }
 
 @media screen and (max-width: 320px) {
-  .surveys-title {
+  .puzzle-title {
     font-size: 1.5rem;
   }
 }

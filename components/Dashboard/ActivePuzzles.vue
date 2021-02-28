@@ -61,20 +61,7 @@ export default {
   },
   methods: {
     toogleEnrollment(puzzle) {
-      // if (survey.type === 'online') {
-      // this.$store.dispatch('calculateBalance', puzzle.payment)
-      // } else if (survey.type === 'personal') {
-      //   this.btnText = 'Reschedule'
-      // }
-      this.$emit('openModal', puzzle.id, puzzle)
-    },
-    toogleCompletion(puzzle) {
-      // if (survey.type === 'online') {
-      //   this.$store.dispatch('toogleCompletion', survey.id)
-      //   this.$store.dispatch('calculateBalance', survey.payment)
-      // } else if (survey.type === 'personal') {
-      //   this.$emit('openModal', puzzle.id, puzzle.type)
-      // }
+      this.$emit('openModal', puzzle)
     },
     hackerStyle(puzzle) {
       this.$store.dispatch('toogleCompletion', puzzle.id)
@@ -99,7 +86,7 @@ export default {
 h3 {
   margin: 0 10px;
 }
-.survey-card-wrapper {
+.puzzle-card-wrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

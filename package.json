@@ -16,7 +16,6 @@
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "echarts": "^5.0.0",
-    "jigsaw-puzzle": "^1.0.4",
     "js-cookie": "^2.2.1",
     "nuxt": "^2.14.6",
     "nuxt-i18n": "^6.17.0",
@@ -38,7 +37,8 @@
     "@nuxtjs/eslint-module": "^2.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.10.0",
-    "eslint-plugin-nuxt": "^1.0.0"
+    "eslint-plugin-nuxt": "^1.0.0",
+    "jigsaw-puzzle": "^1.0.4"
   },
   "prettier": {
     "trailingComma": "none",

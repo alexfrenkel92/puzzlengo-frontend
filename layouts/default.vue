@@ -16,7 +16,7 @@
           <div class="progress-text">
             <span>Please complete your profile in the
               <nuxt-link to="/profile">My Profiling</nuxt-link>
-              page to get the most surveys
+              page to get the most puzzles
             </span>
           </div>
         </div>

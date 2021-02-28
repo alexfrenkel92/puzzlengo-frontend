@@ -49,15 +49,6 @@
             :type="type"
             @click:event="showEvent"
           />
-          <div>
-            <PersonelSurveyModal
-              :id="selectedEvent.id"
-              :show-modal="selectedOpen"
-              :selected-time="selectedEvent"
-              @confirm="confirm"
-              @withdraw="withdraw"
-            />
-          </div>
         </v-sheet>
       </v-col>
     </v-row>
@@ -73,38 +64,13 @@ export default {
       month: 'Month',
       week: 'Week'
     },
-    selectedEvent: {},
     selectedElement: null,
-    selectedOpen: false,
-    enrolledSurveys: null,
     eventList: []
   }),
   mounted() {
     this.$refs.calendar.checkChange()
   },
-  created() {
-    const _this = this
-    _this.enrolledSurveys = _this.$store.getters.getActivePuzzles.filter(
-      item => item.isEnrolled === true && item.isCompleted === false
-    )
-    _this.enrolledSurveys.forEach((element) => {
-      const id = element.id
-      const name = element.title
-      const start = element.allTime.filter(
-        item => item.id === element.myTime
-      )[0].date
-      _this.eventList.push({ id, name, start, color: '#7abe8f' })
-    })
-  },
   methods: {
-    updateData(id) {
-      const newDate = this.enrolledSurveys
-        .filter(item => item.id === this.selectedEvent.id)[0]
-        .allTime.filter(item => item.id === id)[0].date
-      this.eventList.find(
-        event => event.id === this.selectedEvent.id
-      ).start = newDate
-    },
     setToday() {
       this.focus = ''
     },

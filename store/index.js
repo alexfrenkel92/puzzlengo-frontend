@@ -1,7 +1,7 @@
 import Vuex from 'vuex'
 
 import authModule from './auth.js'
-import surveysModule from './surveys.js'
+import puzzleModule from './puzzle.js'
 import userProfileModule from './userProfile.js'
 import tangoCardModule from './tangoCards.js'
 import activeTabNrModule from './activeTabNr'
@@ -12,7 +12,7 @@ const createStore = () => {
   return new Vuex.Store({
     modules: {
       auth: authModule,
-      surveys: surveysModule,
+      puzzles: puzzleModule,
       userProfile: userProfileModule,
       tangoCards: tangoCardModule,
       activeTabNr: activeTabNrModule,

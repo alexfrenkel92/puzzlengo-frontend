@@ -50,7 +50,7 @@
         <h3>Complete your profile</h3>
       </div>
       <div class="content">
-        <p style="margin-bottom: 0">In order to get the most surveys, please complete your profile.</p>
+        <p style="margin-bottom: 0">In order to get the most puzzles, please complete your profile.</p>
         <p style="font-weight: 600; color: red"><span>Current completion: </span>{{ profileCompletion }}/100%</p>
       </div>
       <div class="status">

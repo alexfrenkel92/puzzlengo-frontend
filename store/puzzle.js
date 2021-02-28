@@ -4,80 +4,84 @@ export default {
       activePuzzles: [
         {
           id: 1,
-          title: 'Puzzle1',
+          title: 'Dog on board',
           description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla, tellus at finibus interdum, dui tortor suscipit nisi, et tempor nunc nisl nec diam and again dui tortor suscipit nisi, et tempor nunc nisl nec diam.',
           duration: '~5',
           payment: 1,
           isEnrolled: true,
           isCompleted: true,
-          completedOn: '31/01/2021'
+          completedOn: '2021-02-15'
         },
         {
           id: 2,
-          title: 'Puzzle2',
+          title: 'Turtles',
           description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla, tellus at finibus interdum, dui tortor suscipit nisi, et tempor nunc nisl nec diam and again dui tortor suscipit nisi, et tempor nunc nisl nec diam.',
           duration: '~10',
           payment: 2,
           isEnrolled: true,
           isCompleted: true,
-          completedOn: '15/02/2021'
+          completedOn: '2021-02-24'
         },
         {
           id: 3,
-          title: 'Puzzle3',
+          title: 'Cat in the Air',
           description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla, tellus at finibus interdum, dui tortor suscipit nisi, et tempor nunc nisl nec diam and again dui tortor suscipit nisi, et tempor nunc nisl nec diam.',
           duration: '~5',
           payment: 1,
           isEnrolled: true,
           isCompleted: true,
-          completedOn: '20/02/2021'
+          completedOn: '2021-02-25'
         },
         {
           id: 4,
-          title: 'Puzzle4',
+          title: 'Surfing dog',
           description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla, tellus at finibus interdum, dui tortor suscipit nisi, et tempor nunc nisl nec diam and again dui tortor suscipit nisi, et tempor nunc nisl nec diam.',
-          duration: '~7',
+          duration: '~1',
           payment: 1.5,
+          img: 'dog',
           isEnrolled: false,
           isCompleted: false,
-          completedOn: '20/02/2021'
+          completedOn: null
         },
         {
           id: 5,
-          title: 'Puzzle5',
+          title: 'Surfing cat',
           description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla, tellus at finibus interdum, dui tortor suscipit nisi, et tempor nunc nisl nec diam and again dui tortor suscipit nisi, et tempor nunc nisl nec diam.',
-          duration: '~15',
+          duration: '~1',
           payment: 2.5,
+          img: 'cat',
           isEnrolled: false,
           isCompleted: false,
-          completedOn: '20/02/2021'
+          completedOn: null
         },
         {
           id: 6,
-          title: 'Puzzle6',
+          title: 'Monkey on board',
           description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla, tellus at finibus interdum, dui tortor suscipit nisi, et tempor nunc nisl nec diam and again dui tortor suscipit nisi, et tempor nunc nisl nec diam.',
-          duration: '~8',
+          duration: '~1',
           payment: 1.5,
+          img: 'monkey',
           isEnrolled: false,
           isCompleted: false,
-          completedOn: '20/02/2021'
+          completedOn: null
         },
         {
           id: 7,
-          title: 'Puzzle7',
+          title: 'Hamster',
           description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla, tellus at finibus interdum, dui tortor suscipit nisi, et tempor nunc nisl nec diam and again dui tortor suscipit nisi, et tempor nunc nisl nec diam.',
-          duration: '~5',
+          duration: '~1',
           payment: 1,
+          img: 'hamster',
           isEnrolled: false,
           isCompleted: false,
-          completedOn: '20/02/2021'
+          completedOn: null
         }
       ],
       notifications: [
@@ -85,49 +89,37 @@ export default {
           id: 11,
           status: 'approved',
           title: 'Puzzle completed',
-          puzzleTitle: 'Puzzle1',
+          puzzleTitle: 'Dog on board',
           description:
-            'Thank you for completing our survey, your answers have been approved.',
+            'Thank you for completing our puzzle, your credits have been approved',
           payment: 3,
           duration: 5,
-          approvedOn: '09/27/2018',
+          completedOn: '2021-02-15',
           notificationChecked: true
         },
         {
           id: 22,
           status: 'approved',
           title: 'Puzzle completed',
-          puzzleTitle: 'Puzzle2',
+          puzzleTitle: 'Turtles',
           description:
-            'Thank you for completing our survey, your answers have been approved.',
+            'Thank you for completing our puzzle, your credits have been approved.',
           payment: 2,
           duration: 15,
-          approvedOn: '12/15/2013',
-          notificationChecked: false
+          completedOn: '2021-02-24',
+          notificationChecked: true
         },
         {
           id: 33,
           status: 'approved',
           title: 'Puzzle completed',
-          puzzleTitle: 'Puzzle3',
+          puzzleTitle: 'Cat in the air',
           description:
-          'Thank you for completing our survey, your answers have been approved.',
+          'Thank you for completing our puzzle, your credits have been approved.',
           payment: 8,
           duration: 20,
-          approvedOn: '12/15/2013',
-          notificationChecked: true
-        },
-        {
-          id: 8,
-          status: 'approved',
-          title: 'Puzzle completed',
-          puzzleTitle: 'Puzzle4',
-          description:
-            'Thank you for completing our survey, your answers have been approved.',
-          payment: 2,
-          duration: 25,
-          approvedOn: '12/15/2013',
-          notificationChecked: true
+          completedOn: '2021-02-25',
+          notificationChecked: false
         }
       ]
     }
@@ -145,16 +137,17 @@ export default {
       const puzzleToEnroll = state.activePuzzles.find(puzzle => puzzle.id === puzzleId)
       puzzleToEnroll.isEnrolled = true
       puzzleToEnroll.isCompleted = true
+      puzzleToEnroll.completedOn = new Date().toISOString().split('T')[0]
       state.notifications.push({
         id: puzzleToEnroll.id,
         status: 'approved',
         title: 'Puzzle completed',
-        surveyTitle: puzzleToEnroll.title,
+        puzzleTitle: puzzleToEnroll.title,
         description:
-          'Thank you for completing our puzzle.',
+          'Thank you for completing our puzzle, your credits have been approved.',
         payment: puzzleToEnroll.payment,
         duration: puzzleToEnroll.duration,
-        approvedOn: puzzleToEnroll.completedOn,
+        completedOn: puzzleToEnroll.completedOn,
         notificationChecked: false
       })
       state.newNotification++
