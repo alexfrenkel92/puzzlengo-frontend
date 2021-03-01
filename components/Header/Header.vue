@@ -39,15 +39,12 @@
           <nuxt-link v-if="!invert" class="nav-btn" to="/balance">{{ $t('menu.balance') }}</nuxt-link>
         </nav>
         <nav :class="{ invert: invert }">
-          <div v-if="isDesktop">
-            <button v-if="!isLoggedIn" @click="handleAuth">{{ $t('menu.login') }}</button>
-          </div>
-          <p class="user-name">Welcome Pistike</p>
+          <p class="user-name">Welcome {{ loggedInUser.username }}</p>
           <nuxt-link class="balance-button" to="/balance">
             <p class="balance-text">{{ balanceNr }}</p>
             <img :src="usd" alt="balance-button">
           </nuxt-link>
-          <SettingsGear v-if="isLoggedIn && isDesktop" :invert="invert" />
+          <SettingsGear v-if="isAuthenticated && isDesktop" :invert="invert" />
           <v-btn
             v-if="isMobile"
             :class="{ 'is-active': openDrawer }"
@@ -71,6 +68,7 @@
 </style>
 
 <script>
+import { mapGetters } from 'vuex'
 import SettingsGear from './SettingsGear'
 import MobileMenu from './MobileMenu'
 import logo from '~/static/images/puzzle.png'
@@ -93,9 +91,7 @@ export default {
     }
   },
   computed: {
-    isLoggedIn() {
-      return this.$store.getters.isLoggedIn
-    },
+    ...mapGetters(['isAuthenticated', 'loggedInUser']),
     isMobile() {
       const smDown = this.$store.state.breakpoints.smDown
       return smDown.includes(this.$mq)
@@ -142,20 +138,6 @@ export default {
     },
     closeMobileMenu() {
       this.openDrawer = !this.openDrawer
-    },
-    handleAuth() {
-      this.$store.dispatch('setAuth')
-      if (this.isLoggedIn) {
-        this.$router.push('/dashboard')
-      } else {
-        this.$router.push('/')
-      }
-    },
-    signUp() {
-      this.$router.push('/auth/signup')
-    },
-    navigate(item) {
-      this.$router.push({ path: item.url })
     }
   }
 }

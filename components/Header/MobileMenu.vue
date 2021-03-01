@@ -1,18 +1,7 @@
 <template>
   <div class="mobile-nav">
     <div class="menu">
-      <div v-if="isLoggedIn">
-        <!-- <v-list-item
-          v-for="(item, index) in navMenu"
-          :key="index"
-          link
-          :style="{ animationDuration: index * 0.15 + 's' }"
-          @click="closeMenu"
-        >
-          <nuxt-link class="menu-list" :to="item.url">
-            {{ item.title }}
-          </nuxt-link>
-        </v-list-item> -->
+      <div v-if="isAuthenticated">
         <nuxt-link v-if="!invert" class="menu-list" to="/dashboard">{{ $t('menu.dashboard') }}</nuxt-link>
         <div v-if="!invert" class="notification-btn-wrapper-mobile">
           <nuxt-link class="menu-list" to="/notifications">
@@ -21,7 +10,7 @@
           </nuxt-link>
         </div>
         <nuxt-link v-if="!invert" class="menu-list" to="/balance">{{ $t('menu.balance') }}</nuxt-link>
-        <SettingsGear v-if="isLoggedIn" class="setting-btn" :invert="invert" />
+        <SettingsGear v-if="isAuthenticated" class="setting-btn" :invert="invert" />
       </div>
     </div>
   </div>
@@ -32,6 +21,7 @@
 </style>
 
 <script>
+import { mapGetters } from 'vuex'
 import SettingsGear from './SettingsGear'
 import logo from '~/static/images/puzzle.png'
 
@@ -52,9 +42,7 @@ export default {
     }
   },
   computed: {
-    isLoggedIn() {
-      return this.$store.getters.isLoggedIn
-    },
+    ...mapGetters(['isAuthenticated', 'loggedInUser']),
     invert() {
       return !!this.isMobile
     },
@@ -63,14 +51,6 @@ export default {
     }
   },
   methods: {
-    handleAuth() {
-      this.$store.dispatch('setAuth')
-      if (this.isLoggedIn) {
-        this.$router.push('/dashboard')
-      } else {
-        this.$router.push('/')
-      }
-    },
     signUp() {
       this.$router.push('/auth/signup')
     },

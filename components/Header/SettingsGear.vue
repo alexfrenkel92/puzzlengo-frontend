@@ -23,7 +23,7 @@
             <nuxt-link class="menu-nuxtlink" to="/profile">{{ $t('menu.profiling') }}</nuxt-link>
             <nuxt-link class="menu-nuxtlink" to="/balance">{{ $t('menu.balance') }}</nuxt-link>
             <nuxt-link class="menu-nuxtlink" to="/settings">{{ $t('menu.settings') }}</nuxt-link>
-            <button v-if="isLoggedIn" class="menu-btn" @click="handleAuth">
+            <button class="menu-btn" @click="logout">
               {{ $t('menu.logout') }}
             </button>
           </v-list-item-content>
@@ -105,10 +105,7 @@ export default {
   }),
   computed: {
     ...mapState(['counter', 'darkMode']),
-    ...mapGetters(['getDir']),
-    isLoggedIn() {
-      return this.$store.getters.isLoggedIn
-    },
+    ...mapGetters(['getDir', 'isAuthenticated']),
     languageFLag() {
       return require('~/static/images/flags/en.png')
     }
@@ -125,13 +122,8 @@ export default {
       this.$vuetify.rtl = this.rtl
       document.dir = this.rtl ? 'rtl' : 'ltr'
     },
-    handleAuth() {
-      this.$store.dispatch('setAuth')
-      if (this.isLoggedIn) {
-        this.$router.push('/dashboard')
-      } else {
-        this.$router.push('/')
-      }
+    async logout() {
+      await this.$auth.logout()
     }
   }
 }

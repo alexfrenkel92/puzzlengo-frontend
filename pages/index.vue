@@ -8,6 +8,7 @@
 
 <script>
 export default {
+  middleware: 'guest',
   layout: 'landingPage'
 }
 </script>

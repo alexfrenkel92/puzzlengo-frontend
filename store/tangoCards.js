@@ -1,12 +1,12 @@
 const url = 'https://integration-api.tangocard.com/raas/v2/'
 const key = 'UUFQbGF0Zm9ybTI6YXBZUGZUNkhOT05wRFJVajNDTEdXWXQ3Z3ZJSE9OcERSVVlQZlQ2SGo='
-let backendUrl = null
+// let backendUrl = null
 
-if (process.env.NODE_ENV === 'development') {
-  backendUrl = 'http://localhost:8080'
-} else {
-  backendUrl = 'https://chargeport-backend.herokuapp.com'
-}
+// if (process.env.NODE_ENV === 'development') {
+//   backendUrl = 'http://localhost:3333/api'
+// } else {
+//   backendUrl = 'https://chargeport-backend.herokuapp.com'
+// }
 
 export default {
   state() {
@@ -49,8 +49,11 @@ export default {
     postOrders(context, order) {
       context.commit('setOrderIsLoading')
       return this.$axios
-        .$post(backendUrl + '/api/postorder', order)
+        // .$post(backendUrl + '/api/postcard', order)
+        .$post('postcard', order)
         .then((data) => {
+          // console.log('RESPONSE DATA BELOW')
+          // console.log(data)
           context.commit('setOrderResponseData', data)
           context.commit('setOrderIsLoading')
         })

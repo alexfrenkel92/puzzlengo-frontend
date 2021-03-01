@@ -1,6 +1,5 @@
 import Vuex from 'vuex'
 
-import authModule from './auth.js'
 import puzzleModule from './puzzle.js'
 import userProfileModule from './userProfile.js'
 import tangoCardModule from './tangoCards.js'
@@ -11,7 +10,6 @@ import settingsModule from './settings.js'
 const createStore = () => {
   return new Vuex.Store({
     modules: {
-      auth: authModule,
       puzzles: puzzleModule,
       userProfile: userProfileModule,
       tangoCards: tangoCardModule,
@@ -29,6 +27,14 @@ const createStore = () => {
         smDown: ['smDown', 'xsDown'],
         mdDown: ['mdDown', 'smDown', 'xsDown'],
         lgDown: ['lgDown', 'mdDown', 'smDown', 'xsDown']
+      }
+    },
+    getters: {
+      isAuthenticated(state) {
+        return state.auth.loggedIn
+      },
+      loggedInUser(state) {
+        return state.auth.user
       }
     }
   })

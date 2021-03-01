@@ -7,20 +7,20 @@
         <div class="info-container">
           <p>User ID</p>
           <div class="data-container">
-            <p class="data">007</p>
+            <p class="data">{{ loggedInUser.id }}</p>
           </div>
         </div>
         <div class="info-container">
-          <p>Fullname</p>
+          <p>User name</p>
           <div class="data-container">
-            <p class="data">{{ userInfo.lastName }} {{ userInfo.firstName }}</p>
+            <p class="data">{{ loggedInUser.username }}</p>
             <AppButton class="edit-btn" btn-style="approve" @click="editUserName">Edit</AppButton>
           </div>
         </div>
         <div class="info-container">
           <p>E-mail</p>
           <div class="data-container">
-            <p class="data">{{ userInfo.email }}</p>
+            <p class="data">{{ loggedInUser.email }}</p>
             <AppButton class="edit-btn" btn-style="approve" @click="editEmail">Edit</AppButton>
           </div>
         </div>
@@ -71,6 +71,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   data() {
     return {
@@ -84,6 +86,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(['loggedInUser']),
     hiddenPassword() {
       return 'hiddenPassworddd'
     },

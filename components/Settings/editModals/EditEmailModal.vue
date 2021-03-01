@@ -55,6 +55,7 @@ export default {
   created() {
     this.userData = this.$store.getters.getUserInformation
     this.email.val = this.userData.email
+    this.email.val = this.$store.state.auth.user.email
   },
   methods: {
     clearValidity(input) {

@@ -24,10 +24,10 @@
       </AppButton>
     </div>
     <div class="already-registered">{{ $t('landing.registered') }}</div>
-    <AppButton class="login-btn" btn-style="approve-dark" @click="handleLogin">
+    <AppButton class="login-btn" btn-style="approve-dark" @click="openLoginModal">
       {{ $t('form.sign_in') }}
     </AppButton>
-    <SignUp :show-modal="toogleSignUpModal" @closeModal="closeModal" />
+    <SignUp :show-modal="toogleSignUpModal" :email="email" @closeModal="closeModal" />
     <Login :show-modal="toogleLoginModal" @closeModal="closeModal" />
     <v-btn
       v-show="fab"
@@ -53,26 +53,19 @@ export default {
       toogleSignUpModal: false,
       toogleLoginModal: false,
       emailRules: [
-        // v => !!v || 'E-mail is required',
+        v => !!v || 'E-mail is required'
         // v => /.+@.+/.test(v) || 'E-mail must be valid'
       ],
       fab: false
     }
   },
   computed: {
-    isLoggedIn() {
-      return this.$store.getters.isLoggedIn
-    },
     logo() {
       return require('~/static/images/puzzle.png')
     }
   },
   methods: {
-    handleLogin() {
-      // this.$store.dispatch('setAuth')
-      // if (this.isLoggedIn) {
-      //   this.$router.push('/dashboard')
-      // }
+    openLoginModal() {
       this.toogleLoginModal = !this.toogleLoginModal
     },
     handleSignUp() {

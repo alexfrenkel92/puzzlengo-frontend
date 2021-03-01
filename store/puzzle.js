@@ -92,8 +92,8 @@ export default {
           puzzleTitle: 'Dog on board',
           description:
             'Thank you for completing our puzzle, your credits have been approved',
-          payment: 3,
-          duration: 5,
+          payment: 1,
+          duration: 4,
           completedOn: '2021-02-15',
           notificationChecked: true
         },
@@ -104,8 +104,8 @@ export default {
           puzzleTitle: 'Turtles',
           description:
             'Thank you for completing our puzzle, your credits have been approved.',
-          payment: 2,
-          duration: 15,
+          payment: 1.5,
+          duration: 7,
           completedOn: '2021-02-24',
           notificationChecked: true
         },
@@ -116,8 +116,8 @@ export default {
           puzzleTitle: 'Cat in the air',
           description:
           'Thank you for completing our puzzle, your credits have been approved.',
-          payment: 8,
-          duration: 20,
+          payment: 1,
+          duration: 3,
           completedOn: '2021-02-25',
           notificationChecked: false
         }

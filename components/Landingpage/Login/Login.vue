@@ -43,6 +43,9 @@
             {{ $t('form.sign_in') }}
           </AppButton>
           <nuxt-link to="" class="password-reset">{{ $t('form.pswd_forget') }}</nuxt-link>
+          <v-alert v-if="error" color="red lighten-2" border="top" dark>
+            {{ error }}
+          </v-alert>
         </div>
       </div>
     </v-card>
@@ -71,7 +74,8 @@ export default {
       loginPasswordRules: [
         v => !!v || 'Password is required'
         // v => /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/.test(v) || 'Password must contain at least lowercase letter, one number, a special character and one uppercase letter'
-      ]
+      ],
+      error: ''
     }
   },
   methods: {
@@ -84,10 +88,21 @@ export default {
     login() {
       this.validate()
       if (this.valid) {
-        this.$store.dispatch('setAuth')
-        this.$router.push('/dashboard')
+        this.loginAuth()
       }
-      console.log(this.user)
+    },
+    async loginAuth() {
+      try {
+        await this.$auth.loginWith('local', {
+          data: {
+            email: this.user.loginEmail,
+            password: this.user.loginPassword
+          }
+        })
+        this.$router.push('/dashboard')
+      } catch (error) {
+        this.error = error.response.data.message
+      }
     }
   }
 }
@@ -96,7 +111,6 @@ export default {
 <style scoped lang='scss'>
 .v-card {
   @include background-color-gradient;
-  // background: linear-gradient(110deg, #FEE181 60%, #95E38E 60%);
 }
 h1 {
   font-weight: bold;

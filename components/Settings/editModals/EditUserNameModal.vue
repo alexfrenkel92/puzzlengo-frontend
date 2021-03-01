@@ -7,7 +7,7 @@
             Update your name below
           </h3>
           <form @submit.prevent>
-            <div class="form-control" :class="{ invalid: !firstName.isValid }">
+            <!-- <div class="form-control" :class="{ invalid: !firstName.isValid }">
               <label for="firstName">Firstname</label>
               <input
                 id="firstName"
@@ -16,7 +16,7 @@
                 @blur="clearValidity('firstName')"
               >
               <p v-if="!firstName.isValid">Firstname must not be empty</p>
-            </div>
+            </div> -->
             <div class="form-control" :class="{ invalid: !lastName.isValid }">
               <label for="lastName">Lastname</label>
               <input
@@ -44,6 +44,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   props: {
     showUserNameModal: {
@@ -55,20 +57,24 @@ export default {
     return {
       userData: [],
       formIsValid: true,
-      firstName: {
-        val: '',
-        isValid: true
-      },
+      // firstName: {
+      //   val: '',
+      //   isValid: true
+      // },
       lastName: {
         val: '',
         isValid: true
       }
     }
   },
+  computed: {
+    ...mapGetters(['loggedInUser'])
+  },
   created() {
     this.userData = this.$store.getters.getUserInformation
-    this.firstName.val = this.userData.firstName
-    this.lastName.val = this.userData.lastName
+    // this.firstName.val = this.userData.firstName
+    // this.lastName.val = this.userData.lastName
+    this.lastName.val = this.$store.state.auth.user.username
   },
   methods: {
     clearValidity(input) {
@@ -76,10 +82,10 @@ export default {
     },
     validateForm() {
       this.formIsValid = true
-      if (this.firstName.val === '') {
-        this.firstName.isValid = false
-        this.formIsValid = false
-      }
+      // if (this.firstName.val === '') {
+      //   this.firstName.isValid = false
+      //   this.formIsValid = false
+      // }
       if (this.lastName.val === '') {
         this.lastName.isValid = false
         this.formIsValid = false
@@ -92,7 +98,7 @@ export default {
         return
       }
       const userData = {
-        firstName: this.firstName.val,
+        // firstName: this.firstName.val,
         lastName: this.lastName.val
       }
       this.$store.dispatch('updateUserName', userData)

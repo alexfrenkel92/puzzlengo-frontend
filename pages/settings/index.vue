@@ -4,6 +4,12 @@
   </div>
 </template>
 
+<script>
+export default {
+  middleware: 'auth'
+}
+</script>
+
 <style scoped lang="scss">
 // .settings-page {
 //   padding-top: 20px;

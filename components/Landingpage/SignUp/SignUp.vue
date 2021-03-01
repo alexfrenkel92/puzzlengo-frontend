@@ -25,38 +25,47 @@
             <h4 class="alternate-signup">{{ $t('form.fill_form') }}</h4>
             <div class="sign-up-form">
               <v-form ref="form" v-model="valid" @submit.prevent>
-                <div v-if="basicUserInfo.firstName == ''">
+                <div v-if="basicUserInfo.name == ''">
                   <v-text-field
-                    v-model="formInput.firstName"
+                    v-model="formInput.name"
                     class="centered-input"
                     solo
-                    :rules="firstNameRule"
-                    :label="$t('form.first_name')"
+                    :rules="nameRule"
+                    label="Name"
                     clearable
                   />
                 </div>
-                <div v-show="basicUserInfo.firstName !== '' && basicUserInfo.lastName == ''">
+                <div
+                  v-show="
+                    basicUserInfo.name !== '' &&
+                      basicUserInfo.password == ''
+                  "
+                >
                   <v-text-field
-                    v-model="formInput.lastName"
+                    v-model="formInput.password"
                     class="centered-input"
                     solo
-                    :rules="lastNameRule"
-                    :label="$t('form.last_name')"
+                    :rules="passwordRule"
+                    label="Password"
                     clearable
                   />
                 </div>
-                <div v-if="basicUserInfo.lastName !== ''">
+                <div v-if="basicUserInfo.password !== ''">
                   <v-text-field
                     v-model="formInput.age"
                     class="centered-input"
                     solo
-                    :rules="ageRules"
-                    :label="$t('form.age')"
+                    :rules="ageRule"
+                    label="Age"
                     clearable
                   />
                 </div>
               </v-form>
-              <AppButton class="continue-btn" btn-style="approve-dark" @click="saveUserInfo">
+              <AppButton
+                class="continue-btn"
+                btn-style="approve-dark"
+                @click="saveUserInfo"
+              >
                 {{ $t('form.continue') }}
               </AppButton>
             </div>
@@ -64,6 +73,9 @@
             <v-progress-linear :value="progressBar" height="20" color="#7abe8f">
               <strong>{{ Math.floor(progressBar) }}%</strong>
             </v-progress-linear>
+            <v-alert v-if="error" color="red lighten-2" border="top" dark>
+              {{ error }}
+            </v-alert>
           </div>
         </div>
       </v-card>
@@ -77,6 +89,10 @@ export default {
     showModal: {
       type: Boolean,
       required: true
+    },
+    email: {
+      type: String,
+      required: true
     }
   },
   data() {
@@ -84,32 +100,34 @@ export default {
       progress: 0,
       valid: true,
       formInput: {
-        firstName: '',
-        lastName: '',
+        name: '',
+        password: '',
         age: ''
       },
       basicUserInfo: {
-        firstName: '',
-        lastName: '',
+        email: '',
+        name: '',
+        password: '',
         age: ''
       },
-      firstNameRule: [
-        v => !!v || 'Input is required'
+      nameRule: [
+        v => !!v || 'Name is required'
         // v => (v && v.length >= 2) || 'Input must be at least 2 characters'
       ],
-      lastNameRule: [
-        v => !!v || 'Input is required'
+      passwordRule: [
+        v => !!v || 'Password is required'
         // v => (v && v.length >= 2) || 'Input must be at least 2 characters'
       ],
-      ageRules: [
-        v => !!v || 'Input is required'
+      ageRule: [
+        v => !!v || 'Age is required'
         // v => (v && v.length >= 2) || 'Input must be at least 2 characters'
-      ]
+      ],
+      error: ''
     }
   },
   computed: {
     progressBar() {
-      return (this.progress / 3) * 100
+      return (this.progress / 4) * 100
     }
   },
   methods: {
@@ -121,13 +139,35 @@ export default {
     },
     saveUserInfo() {
       this.validate()
-      this.basicUserInfo.firstName = this.formInput.firstName
-      this.basicUserInfo.lastName = this.formInput.lastName
+      this.basicUserInfo.email = this.email
+      this.basicUserInfo.name = this.formInput.name
+      this.basicUserInfo.password = this.formInput.password
       this.basicUserInfo.age = this.formInput.age
       this.getProgress()
-      if (this.progress === 3) {
-        this.$store.dispatch('setAuth')
+      if (this.progress === 4) {
+        // this.$store.dispatch('setAuth')
+        // this.$router.push('/dashboard')
+        this.register()
+      }
+    },
+    async register() {
+      try {
+        await this.$axios.post('register', {
+          username: this.basicUserInfo.name,
+          email: this.basicUserInfo.email,
+          password: this.basicUserInfo.password
+        })
+
+        await this.$auth.loginWith('local', {
+          data: {
+            email: this.basicUserInfo.email,
+            password: this.basicUserInfo.password
+          }
+        })
+
         this.$router.push('/dashboard')
+      } catch (error) {
+        this.error = error.response.data.message
       }
     },
     saveForm() {
@@ -135,21 +175,21 @@ export default {
       this.$router.push('/dashboard')
     },
     getProgress() {
-      const progress = Object.keys(this.basicUserInfo).filter(x => this.basicUserInfo[x] !== '').length
+      const progress = Object.keys(this.basicUserInfo).filter(
+        x => this.basicUserInfo[x] !== ''
+      ).length
       this.progress = progress
     }
   }
 }
 </script>
 
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .v-card {
   @include background-color-gradient;
-  // background: linear-gradient(110deg, #FEE181 60%, #95E38E 60%);
-
 }
 .centered-input >>> input {
-  text-align: center
+  text-align: center;
 }
 h1 {
   font-weight: bold;
@@ -205,7 +245,7 @@ a {
 
 @media screen and (max-width: 700px) {
   .main-wrapper {
-    width: 400px !important
+    width: 400px !important;
   }
   .form-container {
     padding: 5px 15px;
@@ -213,17 +253,17 @@ a {
 }
 @media screen and (max-width: 450px) {
   .main-wrapper {
-    width: 330px !important
+    width: 330px !important;
   }
 }
 @media screen and (max-width: 400px) {
   .main-wrapper {
-    width: 290px !important
+    width: 290px !important;
   }
 }
 @media screen and (max-width: 300px) {
   .main-wrapper {
-    width: 260px !important
+    width: 260px !important;
   }
   .form-container {
     padding: 5px;

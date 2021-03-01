@@ -1,4 +1,4 @@
-# Play'n Go
+# Puzzle'n Go
 
 ## Build Setup
 

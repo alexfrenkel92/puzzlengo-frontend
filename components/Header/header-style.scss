@@ -249,9 +249,6 @@ button:active {
   .icon.v-icon {
     font-size: 32px;
     transition: all 0.3s ease;
-    @include breakpoints-down(sm) {
-      color: $palette-common-white;
-    }
   }
   padding: 5px 10px;
   .active {
