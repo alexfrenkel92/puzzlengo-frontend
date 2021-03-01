@@ -24,13 +24,13 @@
             </div>
             <h4 class="alternate-signup">{{ $t('form.fill_form') }}</h4>
             <div class="sign-up-form">
-              <v-form ref="form" v-model="valid" lazy-validation @submit.prevent>
+              <v-form ref="form" v-model="valid" @submit.prevent>
                 <div v-if="basicUserInfo.firstName == ''">
                   <v-text-field
                     v-model="formInput.firstName"
                     class="centered-input"
                     solo
-                    :rules="nameRules"
+                    :rules="firstNameRule"
                     :label="$t('form.first_name')"
                     clearable
                   />
@@ -40,7 +40,7 @@
                     v-model="formInput.lastName"
                     class="centered-input"
                     solo
-                    :rules="nameRules"
+                    :rules="lastNameRule"
                     :label="$t('form.last_name')"
                     clearable
                   />
@@ -93,7 +93,11 @@ export default {
         lastName: '',
         age: ''
       },
-      nameRules: [
+      firstNameRule: [
+        v => !!v || 'Input is required'
+        // v => (v && v.length >= 2) || 'Input must be at least 2 characters'
+      ],
+      lastNameRule: [
         v => !!v || 'Input is required'
         // v => (v && v.length >= 2) || 'Input must be at least 2 characters'
       ],

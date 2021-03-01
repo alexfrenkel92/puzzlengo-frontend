@@ -21,7 +21,7 @@
             <nuxt-link to=""><v-icon large>mdi-linkedin</v-icon></nuxt-link>
           </div>
           <span>{{ $t('form.use_account') }}</span>
-          <v-form ref="form" v-model="valid" lazy-validation @submit.prevent>
+          <v-form ref="form" v-model="valid" @submit.prevent>
             <v-text-field
               v-model="user.loginEmail"
               solo
@@ -86,9 +86,8 @@ export default {
       if (this.valid) {
         this.$store.dispatch('setAuth')
         this.$router.push('/dashboard')
-      } else {
-        alert('Bad credentials')
       }
+      console.log(this.user)
     }
   }
 }
