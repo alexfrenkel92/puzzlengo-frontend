@@ -143,7 +143,8 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    baseURL: process.env.BASE_URL || 'http://127.0.0.1:3333/api'
+    // baseURL: process.env.BASE_URL || 'http://127.0.0.1:3333/api'
+    baseURL: 'https://puzzlengo-backend.herokuapp.com/api/'
   },
 
   auth: {

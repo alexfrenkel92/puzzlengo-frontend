@@ -48,7 +48,7 @@
         <div class="info-container">
           <p>Password</p>
           <div class="data-container">
-            <p class="data">{{ userInfo.password }}</p>
+            <p class="data">{{ loggedInUser.password }}</p>
             <AppButton class="edit-btn" btn-style="cancel" @click="editPassword">Change password</AppButton>
           </div>
         </div>

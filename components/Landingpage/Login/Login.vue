@@ -114,7 +114,7 @@ export default {
 }
 h1 {
   font-weight: bold;
-  margin: 0;
+  margin: 20px 0 0 0;
 }
 span {
   font-size: 12px;
@@ -155,7 +155,7 @@ form {
 .form-container {
   position: absolute;
   top: 0;
-  height: 100%;
+  height: fit-content;
   width: 100%;
   transition: all 0.6s ease-in-out;
   display: flex;
