@@ -13,7 +13,7 @@
         </v-btn>
       </v-toolbar>
       <div class="main-wrapper">
-        <div class="form-container">
+        <div v-if="!isLoading" class="form-container">
           <h1>{{ $t('form.sign_in_with') }}</h1>
           <div class="social-container">
             <nuxt-link to=""><v-icon large>mdi-facebook</v-icon></nuxt-link>
@@ -47,6 +47,14 @@
             {{ error }}
           </v-alert>
         </div>
+        <div v-if="isLoading" class="loader-container">
+          <div class="lds-ring">
+            <div />
+            <div />
+            <div />
+            <div />
+          </div>
+        </div>
       </div>
     </v-card>
   </v-dialog>
@@ -62,6 +70,7 @@ export default {
   },
   data() {
     return {
+      isLoading: false,
       valid: true,
       user: {
         loginEmail: '',
@@ -92,6 +101,7 @@ export default {
       }
     },
     async loginAuth() {
+      this.isLoading = true
       try {
         await this.$auth.loginWith('local', {
           data: {
@@ -100,13 +110,19 @@ export default {
           }
         })
         this.$router.push('/dashboard')
+        this.isLoading = false
       } catch (error) {
         this.error = error.response.data.message
+        this.isLoading = false
       }
     }
   }
 }
 </script>
+
+<style lang="css" scoped>
+@import '../css-loader.css';
+</style>
 
 <style scoped lang='scss'>
 .v-card {
@@ -157,6 +173,14 @@ form {
   top: 0;
   height: fit-content;
   width: 100%;
+  transition: all 0.6s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.loader-container {
+  margin-top: 50%;
   transition: all 0.6s ease-in-out;
   display: flex;
   flex-direction: column;

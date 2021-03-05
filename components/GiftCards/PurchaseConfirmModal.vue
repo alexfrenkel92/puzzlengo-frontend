@@ -34,7 +34,6 @@
             </div>
           </div>
         </div>
-        <!-- <div v-if="responseData.name === 'Error' && !isLoading" class="error">Error: {{ responseData.message }}</div> -->
         <div
           v-if="responseData.status !== 'COMPLETE' && !isLoading"
           class="error"

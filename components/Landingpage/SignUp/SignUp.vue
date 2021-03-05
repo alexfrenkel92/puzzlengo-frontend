@@ -14,7 +14,7 @@
           </v-btn>
         </v-toolbar>
         <div class="main-wrapper">
-          <div class="form-container">
+          <div v-if="!isLoading" class="form-container">
             <h1>{{ $t('form.start') }}</h1>
             <h4>{{ $t('form.sign_up_with') }}</h4>
             <div class="social-container">
@@ -37,8 +37,7 @@
                 </div>
                 <div
                   v-show="
-                    basicUserInfo.name !== '' &&
-                      basicUserInfo.password == ''
+                    basicUserInfo.name !== '' && basicUserInfo.password == ''
                   "
                 >
                   <v-text-field
@@ -77,6 +76,14 @@
               {{ error }}
             </v-alert>
           </div>
+          <div v-if="isLoading" class="loader-container">
+            <div class="lds-ring">
+              <div />
+              <div />
+              <div />
+              <div />
+            </div>
+          </div>
         </div>
       </v-card>
     </v-dialog>
@@ -97,6 +104,7 @@ export default {
   },
   data() {
     return {
+      isLoading: false,
       progress: 0,
       valid: true,
       formInput: {
@@ -151,6 +159,7 @@ export default {
       }
     },
     async register() {
+      this.isLoading = true
       try {
         await this.$axios.post('register', {
           username: this.basicUserInfo.name,
@@ -166,8 +175,10 @@ export default {
         })
 
         this.$router.push('/dashboard')
+        this.isLoading = false
       } catch (error) {
         this.error = error.response.data.message
+        this.isLoading = false
       }
     },
     saveForm() {
@@ -183,6 +194,10 @@ export default {
   }
 }
 </script>
+
+<style lang="css" scoped>
+@import '../css-loader.css';
+</style>
 
 <style scoped lang="scss">
 .v-card {
@@ -236,6 +251,14 @@ a {
   top: 0;
   height: fit-content;
   width: 100%;
+  transition: all 0.6s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.loader-container {
+  margin-top: 30%;
   transition: all 0.6s ease-in-out;
   display: flex;
   flex-direction: column;
