@@ -52,8 +52,14 @@
         @include palette-text-primary;
       }
       img {
-        height: 32px;
-        width: 32px;
+        animation: rotation .75s;
+        // height: 32px;
+        // width: 32px;
+      }
+      @keyframes rotation {
+        100% {
+          transform: rotate(360deg);
+        }
       }
     }
     .bar {

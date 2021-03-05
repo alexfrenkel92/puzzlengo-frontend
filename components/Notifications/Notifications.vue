@@ -106,15 +106,18 @@ export default {
   @include whitish-background-color;
 }
 .notified {
-  /* animation: pulse 1s infinite; */
-  background-color: #7abe8f !important;
+  animation: pulse 2s infinite;
+  // background-color: #7abe8f !important;
 }
 @keyframes pulse {
   0% {
-    background-color: #AEEA00;
+    background-color: #7abe8f;
+  }
+  50% {
+    background-color: #faf9f8;
   }
   100% {
-    background-color: #9C27B0;
+    background-color: #7abe8f;
   }
 }
 .v-expansion-panel--active {

@@ -78,7 +78,7 @@ export default {
       this.started = true
       puzzle({
         element: '#puzzleApp',
-        pieces: { x: 2, y: 2 },
+        pieces: { x: 3, y: 3 },
         draggable: true,
         onComplete: (state) => {
           this.win = true

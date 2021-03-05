@@ -3,22 +3,35 @@ import { theme } from './config/vuetify.options'
 import brand from './static/text/brand'
 import languages from './static/lang/languages'
 
+let backendUrl = null
+
+if (process.env.NODE_ENV === 'development') {
+  backendUrl = 'http://127.0.0.1:3333/api'
+} else {
+  backendUrl = 'https://puzzlengo-backend.herokuapp.com/api/'
+}
+
 export default {
+  ssr: true,
+
   // Global page headers (https://go.nuxtjs.dev/config-head)
   /*
-  ** Headers of the page
-  */
+   ** Headers of the page
+   */
   head: {
     htmlAttrs: {
       dir: 'ltr'
     },
-    title: 'Puzzle\'n Go',
+    title: "Puzzle'n Go",
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'description', content: brand.puzzle.desc },
       { name: 'msapplication-TileColor', content: '#FFFFFF' },
-      { name: 'msapplication-TileImage', content: '/favicons/ms-icon-144x144.png' },
+      {
+        name: 'msapplication-TileImage',
+        content: '/favicons/ms-icon-144x144.png'
+      },
       // PWA primary color
       { name: 'theme-color', content: theme.primary },
       // Facebook
@@ -57,19 +70,30 @@ export default {
       { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicons/favicon-16x16.png' },
       { rel: 'manifest', href: '/favicons/manifest.json' }, */
       // Fonts and Icons
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' },
-      { rel: 'stylesheet', href: 'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' }
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/icon?family=Material+Icons'
+      },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'
+      }
     ]
   },
 
   /*
-  ** Customize the progress-bar color
-  */
+   ** Customize the progress-bar color
+   */
   loading: { color: theme.primary },
   /*
- ** Global CSS
- */
+   ** Global CSS
+   */
   css: [
     '~/assets/transition.scss',
     '~/assets/vuetify-overide.scss',
@@ -81,7 +105,7 @@ export default {
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     '~/plugins/vue-fragment-config',
-    { src: '~/plugins/vue-scroll-nav', ssr: false }
+    { src: '~/plugins/vue-scroll-nav', ssr: true }
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -144,7 +168,8 @@ export default {
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
     // baseURL: process.env.BASE_URL || 'http://127.0.0.1:3333/api'
-    baseURL: 'https://puzzlengo-backend.herokuapp.com/api/'
+    // baseURL: 'https://puzzlengo-backend.herokuapp.com/api/'
+    baseURL: backendUrl
   },
 
   auth: {
@@ -169,12 +194,12 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   /*
-  ** Build configuration
-  */
+   ** Build configuration
+   */
   build: {
-  /*
-  ** You can extend webpack config here
-  */
+    /*
+     ** You can extend webpack config here
+     */
     extend(config, ctx) {
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
@@ -190,8 +215,8 @@ export default {
     }
   },
   /*
-** Page Layout transition
-*/
+   ** Page Layout transition
+   */
   layoutTransition: {
     name: 'layout',
     mode: 'out-in'
@@ -213,5 +238,4 @@ export default {
       }
     }
   }
-
 }
