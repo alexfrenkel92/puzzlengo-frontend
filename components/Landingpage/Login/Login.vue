@@ -37,6 +37,9 @@
               :label="$t('form.password')"
               clearable
               required
+              :append-icon="value ? 'visibility' : 'visibility_off'"
+              :type="value ? 'password' : 'text'"
+              @click:append="() => (value = !value)"
             />
           </v-form>
           <AppButton class="continue-btn" btn-style="approve-dark" @click="login">
@@ -71,6 +74,7 @@ export default {
   data() {
     return {
       isLoading: false,
+      value: String,
       valid: true,
       user: {
         loginEmail: '',
