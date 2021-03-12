@@ -27,7 +27,7 @@ Password: elek
 Clone the project repository by running the command below
 
 ```
-git clone https://github.com/alexfrenkel92/puzzlengo-backend.git
+git clone https://github.com/alexfrenkel92/puzzlengo-frontend.git
 ```
 
 ## Build Setup
