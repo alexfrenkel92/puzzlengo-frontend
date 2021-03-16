@@ -18,8 +18,8 @@ https://puzzlengo.herokuapp.com/
 Sign up to create a user profile or use the following sign in details:
 
 ```
-E-mail: feles@gmail.com
-Password: elek
+E-mail: test@gmail.com
+Password: test
 ```
 
 ## Cloning this repo
