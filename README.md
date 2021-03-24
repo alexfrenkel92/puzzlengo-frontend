@@ -9,9 +9,7 @@ https://github.com/alexfrenkel92/puzzlengo-backend
 
 ## This demo is deployed on the link below
 
-```
-https://puzzlengo.herokuapp.com/
-```
+[link to DEMO!](https://puzzlengo.herokuapp.com/)
 
 ## Login details
 
